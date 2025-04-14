@@ -1,0 +1,11 @@
+pandas
+joblib
+alpaca-trade-api
+fuzzywuzzy
+numpy
+scikit-learn
+tensorflow
+matplotlib
+
+# Optionally, for improved performance of fuzzywuzzy:
+python-Levenshtein
