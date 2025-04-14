@@ -1,2 +1,0 @@
-# Prometheus
-Quantitative Finance Research 
