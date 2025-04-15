@@ -3,31 +3,30 @@
 <div align="center">
   <img src="Assets/Images/logo.jpg" alt="Prometheus Logo" width="700"/>
   
-  [![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+  [![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)
   [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-  [![ API](https://img.shields.io/badge/%20API-v2-blue.svg)](https://.markets/)
+  [![Alpaca API](https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg)](https://alpaca.markets/)
 </div>
 
 ## 🚀 Overview
 
-Prometheus is a sophisticated algorithmic trading platform that leverages the  Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.
+Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.
 
 ## ✨ Features
 
 - **Real-time Market Data Integration**
-  - Seamless integration with  Markets API
+  - Seamless integration with Alpaca Markets API
   - High-frequency data collection with rate limit management
-  - Support for multiple timeframes (1Min, 5Min, 15Min, etc.)
+  - Support for multiple timeframes and market data types
 
 - **Advanced Trading Models**
-  - SIP (Securities Information Processor) based analysis
-  - IEX (Investors Exchange) data integration
+  - Machine learning model integration with TensorFlow
   - Custom trading strategies implementation
-  - Machine learning model integration
+  - Research-based approach with separate modules for different strategies
 
 - **Data Analysis & Visualization**
-  - Comprehensive market data analysis
-  - Interactive data visualization
+  - Comprehensive market data analysis using pandas and numpy
+  - Interactive data visualization with matplotlib
   - Performance metrics and reporting
   - Historical data analysis
 
@@ -45,68 +44,74 @@ git clone https://github.com/yourusername/Prometheus.git
 cd Prometheus
 ```
 
-2. Install required dependencies:
+2. Create and activate a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+3. Install required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up your  API credentials:
-   - Create an account at [ Markets](https://.markets/)
+4. Set up your Alpaca API credentials:
+   - Create an account at [Alpaca Markets](https://alpaca.markets/)
    - Generate your API keys
-   - Create a `Settings/API_Keys.txt` file with your credentials:
-     ```
-     YOUR_API_KEY
-     YOUR_SECRET_KEY
-     https://api..markets
-     ```
+   - Configure your credentials in the appropriate configuration files
 
 ## 📊 Project Structure
 
 ```
 Prometheus/
-├── /              #  API integration and trading logic
-├── Data/               # Market data storage and processing
-├── Images/             # Project images and logos
-├── Models/             # Trading models and strategies
-│   ├── IEX/           # IEX-specific models
-│   └── SIP/           # SIP-based models
-├── Report/             # Analysis reports and visualizations
-│   ├── IEX/           # IEX analysis reports
-│   └── SIP/           # SIP analysis reports
+├── Assets/             # Project assets including images
+├── Simons/             # Simons trading strategy implementation
+│   ├── backend/        # Backend logic and API integration
+│   ├── frontend/       # Frontend interface
+│   └── research/       # Research and analysis modules
+├── Sun_Tzu/            # Sun Tzu trading strategy implementation
+│   ├── backend/        # Backend logic and API integration
+│   └── research/       # Research and analysis modules
+├── .venv/              # Python virtual environment
 └── Settings/           # Configuration files and API keys
 ```
 
 ## 🚀 Usage
 
-1. **Data Collection**
+1. **Data Collection and Analysis**
 ```python
-from .Legacy import _autentification
+import alpaca_trade_api as tradeapi
 
 # Initialize API connection
-api = _autentification('Settings/API_Keys.txt')
+api = tradeapi.REST(
+    key_id='YOUR_API_KEY',
+    secret_key='YOUR_SECRET_KEY',
+    base_url='https://paper-api.alpaca.markets'
+)
 
-# Fetch historical data
-data = get_all_data(symbol='AAPL', timeframe='1Min')
+# Fetch market data
+data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df
 ```
 
 2. **Running Trading Strategies**
 ```python
-# Import your preferred strategy
-from Models.SIP import your_strategy
+# Import your preferred strategy module
+from Simons.backend import strategy as simons_strategy
+# or
+from Sun_Tzu.backend import strategy as sun_tzu_strategy
 
 # Execute the strategy
-strategy = your_strategy(data)
 results = strategy.execute()
 ```
 
 ## 📈 Performance
 
-The platform has been tested with various trading strategies and timeframes. Key performance metrics include:
+The platform implements multiple trading strategies:
 
-- Sharpe Ratio: [On Progress]
-- Maximum Drawdown: [On Progress]
-- Annual Return: [On Progress]
-- Win Rate: [On Progress]
+- **Simons Strategy**: Advanced quantitative trading approach
+- **Sun Tzu Strategy**: Tactical market analysis and execution
+
+Performance metrics are continuously monitored and updated based on live trading results.
 
 ## 🤝 Contributing
 
@@ -124,7 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- [ Markets](https://.markets/) for providing the trading API
+- [Alpaca Markets](https://alpaca.markets/) for providing the trading API
 - Contributors and maintainers
 - The open-source community
 
