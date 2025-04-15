@@ -225,7 +225,7 @@ utilized two distinct and complementary market data sources:
 
 \subsection{Feature Scaling Techniques}
 
-In this study, we performed an extensive investigation into various feature scaling techniques and their influence on the predictive capabilities of Long Short‑Term Memory (LSTM) networks within the context of financial forecasting. Feature scaling is a fundamental preprocessing step in time series modeling, critically impacting convergence behavior, numerical stability, computational efficiency, and the overall accuracy of predictions. Employing appropriate scaling methods is particularly vital when handling financial datasets, characterized by heterogeneous feature distributions, wide‑ranging magnitudes, and inherent non‑linearities typical of market dynamics.
+In this study, we performed an extensive investigation into various feature scaling techniques and their influence on the predictive capabilities of LSTM networks within the context of financial forecasting. Feature scaling is a fundamental preprocessing step in time series modeling, critically impacting convergence behavior, numerical stability, computational efficiency, and the overall accuracy of predictions. Employing appropriate scaling methods is particularly vital when handling financial datasets, characterized by heterogeneous feature distributions, wide‑ranging magnitudes, and inherent non‑linearities typical of market dynamics.
 
 To systematically evaluate the effects of feature scaling, we adopted three prominent methods—Standard Scaler, MinMax Scaler, and Robust Scaler—implemented using the scikit‑learn Python library \cite{scikit-learn}. Each method uniquely addresses distinct statistical properties and data characteristics, offering specific benefits under varying conditions as described below.
 
@@ -250,7 +250,7 @@ x' = \frac{x - \mathrm{median}(x)}{\mathrm{IQR}(x)},
 \]
 where \(\mathrm{IQR} = Q_{3} - Q_{1}\). This method is highly effective on datasets exhibiting heavy‑tailed distributions or containing substantial outliers, both common in financial market data. By relying on median and IQR, Robust scaling significantly reduces sensitivity to anomalous observations, providing greater stability in feature scaling and maintaining consistent model performance even during periods of elevated volatility.
 
-Each scaling method was individually applied to the Volume Weighted Average Price (VWAP) feature across all assets in our study. To quantify their impact, we benchmarked each scaled model against a baseline LSTM trained without feature scaling. This comparative analysis enabled precise assessment of the incremental benefits of each strategy in terms of predictive accuracy, convergence rates, and robustness under diverse market scenarios.```
+Each scaling method was individually applied to the VWAP feature across all assets in our study. To quantify their impact, we benchmarked each scaled model against a baseline LSTM trained without feature scaling. This comparative analysis enabled precise assessment of the incremental benefits of each strategy in terms of predictive accuracy, convergence rates, and robustness under diverse market scenarios.```
 
 \subsection{Neural Networks}
 
