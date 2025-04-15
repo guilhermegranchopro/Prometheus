@@ -7,6 +7,8 @@ scikit-learn
 tensorflow
 matplotlib
 ruff
+scipy
+python-dateutil
 # google-colab
 
 # Optionally, for improved performance of fuzzywuzzy:
