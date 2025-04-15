@@ -6,6 +6,7 @@ numpy
 scikit-learn
 tensorflow
 matplotlib
+ruff
 
 # Optionally, for improved performance of fuzzywuzzy:
 python-Levenshtein
