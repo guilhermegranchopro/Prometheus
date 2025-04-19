@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{hochreiter1997}
+Hochreiter, S., Schmidhuber, J.: Long short-term memory. Neural Computation
+  \textbf{9}(8),  1735--1780 (1997)
+
+\bibitem{alpaca_api}
+Markets, A.: Alpaca trading api documentation.
+  \url{https://docs.alpaca.markets/docs/trading-api} (2024)
+
+\bibitem{moghar2020stock}
+Moghar, A., Hamiche, M.: Stock market prediction using lstm recurrent neural
+  network. Procedia Computer Science  \textbf{170},  1168--1173 (2020).
+  \doi{10.1016/j.procs.2020.03.049}
+
+\bibitem{olah2015lstm}
+Olah, C.: Understanding lstm networks (2015),
+  \url{https://colah.github.io/posts/2015-08-Understanding-LSTMs/}
+
+\bibitem{scikit-learn}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
+  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
+  Passos, A., Cournapeau, D., Brucher, M., Perrot, M., Duchesnay, {\'E}.:
+  Scikit-learn: Machine learning in python. Journal of Machine Learning
+  Research  \textbf{12},  2825--2830 (2011)
+
+\bibitem{shen2020shortterm}
+Shen, J., Shafiq, M.O.: Short-term stock market price trend prediction using a
+  comprehensive deep learning system. Journal of Big Data  \textbf{7}(66)
+  (2020). \doi{10.1186/s40537-020-00333-6}
+
+\bibitem{zarattini2023vwap}
+Zarattini, C., Aziz, A.: Volume weighted average price (vwap): The holy grail
+  for day trading systems. SSRN (2023), \url{https://ssrn.com/abstract=4631351}
+
+\end{thebibliography}
