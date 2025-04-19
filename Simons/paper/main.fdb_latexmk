@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1745077600 "main.aux" "main.bbl" "main" 1745078144
+["bibtex main"] 1745105213 "main.aux" "main.bbl" "main" 1745105365
   "/usr/share/texlive/texmf-dist/bibtex/bst/llncs/splncs04.bst" 1642453212 32146 ee21ae2a29028dc8ad842a97200982c7 ""
-  "main.aux" 1745078144 7160 0b0442ce0eb19f9eed5874eaca2bef61 "pdflatex"
+  "main.aux" 1745105365 7568 e9945898423d0662df898500396b08e8 "pdflatex"
   "referencias.bib" 1745071476 2391 9743b4eb08e5b78eeacdfe192303dc8d ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1745078142 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745078144
+["pdflatex"] 1745105363 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745105365
   "/etc/texmf/web2c/texmf.cnf" 1744990280 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745078142 41624 9561d6b8233ae135b564fb4f225d0ba1 ""
+  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745105363 43678 3ea5055fac5070208960f7e3cef663c5 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -164,6 +164,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty" 1575499565 5766 13a9e8766c47f30327caf893ece86ac8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex" 1632168149 95525 6fd0552101a6b1f9b7a84b402ec435ba ""
   "/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty" 1632168149 14690 c2c754218a7108db7823a4839c1bc3cd ""
+  "/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def" 1639175081 48111 8787e991b62f522e20e25cfcf22da5e1 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg" 1639175081 26645 99abe152cb45cee54a727fdf4ef65681 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty" 1639175081 88856 75be68db27878453d58d492b457973ea ""
+  "/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg" 1635714533 22905 d04845fe2810f982374bd0d47ab7706c ""
+  "/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg" 1635714533 5928 73817a3576c87e17bcff2a717017f3ec ""
+  "/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg" 1635714533 5593 428f02443ecf7ba7329e84a32c80d72c ""
   "/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty" 1615762720 4288 94714aa7f535440f33181fec52a31963 ""
   "/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty" 1575674318 6575 25396d208d8f2b9395d06ef315d5886c ""
   "/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty" 1643492961 54508 3fd4fcb0ce463ba481db9f80ae95dad2 ""
@@ -208,10 +214,10 @@
   "Attachments.pdf" 1745071476 24026180 5d9a44d7f897e97ea765825603ae1451 ""
   "LSTM-chain.png" 1745071476 229688 2795bc16b012322f7767cd4d940ba2e3 ""
   "accuracy_improvement.png" 1745071476 36105 589bc52bafa6216dc61e6fde7277b3bd ""
-  "main.aux" 1745078144 7160 0b0442ce0eb19f9eed5874eaca2bef61 "pdflatex"
-  "main.bbl" 1745077601 1563 f62e6506a58e51fced0f8a877890f9db "bibtex main"
-  "main.out" 1745078144 3174 953da621e0839e20cb4ca3f673974506 "pdflatex"
-  "main.tex" 1745078142 41624 9561d6b8233ae135b564fb4f225d0ba1 ""
+  "main.aux" 1745105365 7568 e9945898423d0662df898500396b08e8 "pdflatex"
+  "main.bbl" 1745105213 1563 f62e6506a58e51fced0f8a877890f9db "bibtex main"
+  "main.out" 1745105365 3795 e918a186fde4e8ce102ba5065f64113a "pdflatex"
+  "main.tex" 1745105363 43678 3ea5055fac5070208960f7e3cef663c5 ""
   "scaler_comparison.png" 1745071476 36853 2935b67d624aa2d42ee72205c5fc06ef ""
   "volatility_accuracy.png" 1745071476 46648 fc245889e84b7982059e011d6fdfe652 ""
   (generated)
