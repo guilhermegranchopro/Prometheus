@@ -1,0 +1,27 @@
+{
+    "data_source": "sip",
+    "symbol": "NVDA",
+    "max_period": false,
+    "start_date": "2016-01-1",
+    "end_date": "2024-12-30",
+    "timeframe": "5Min",
+    "fisrt_marker": "vwap",
+    "second_marker": "trade_count",
+    "third_marker": "",
+    "n_rows": 36,
+    "sort": false,
+    "relative_first_marker": false,
+    "relative_second_marker": false,
+    "relative_third_marker": false,
+    "decimals": "",
+    "scaler_type": "standard",
+    "cols_to_scale": [
+        0
+    ],
+    "LSTM_boolean": true,
+    "epochs": 500,
+    "early_stopping": true,
+    "call_back": "val_accuracy",
+    "patience": 100,
+    "batch_size": 128
+}
