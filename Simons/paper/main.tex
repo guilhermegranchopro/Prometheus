@@ -48,6 +48,8 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{pdfpages}
+\usepackage{microtype}       % improves justification and allows margin protrusion
+\sloppy
  
 
 
@@ -84,13 +86,13 @@
 \begin{titlepage}
     \centering
     \vspace*{\fill} % Início da centralização vertical
-    {\LARGE\bfseries Predicting Stock Price Movements utilizing LSTM Networks\par}
+    {\LARGE\bfseries Short‑Term Stock Movement Forecasting Utilizing LSTM-Based Recurrent Neural Networks\par}
     \vspace{1cm} % Espaço entre o título e o subtítulo
     % Subtítulo em itálico
     \vspace{2cm}
     {\Large\bfseries Guilherme Grancho Duarte Fernandes\par}
     \vspace{0.5cm} % Espaço entre o nome e a afiliação
-    {\large Department of Physics, Instituto Superior Técnico, Lisbon, Portugal\par}
+    {\large Department of Earth Science and Engineering, Imperial College London, London, United Kingdom\par}
     {\large \href{mailto:guilhermegrancho@tecnico.ulisboa.pt}{guilhermegrancho@tecnico.ulisboa.pt}\par}
     \vspace{1cm} % Espaço entre os autores
     {\Large\bfseries Vasco Vieira Rosado Serpa Pereira\par}
@@ -131,33 +133,40 @@ In general, this study not only demonstrates the robustness of LSTM networks in 
 %Introdução
 \section{Introduction}
 
-Investing successfully in the stock market has long been an unpredictable and challenging endeavor. According to the Efficient Market Hypothesis (EMH), asset prices fully reflect all available information, suggesting that consistently outperforming the market is nearly impossible if it is truly efficient. However, the rise of machine learning—particularly deep neural networks like Recurrent Neural Networks (RNNs) and their advanced variant, Long Short-Term Memory (LSTM)—offers new possibilities for analyzing and predicting market behavior by detecting nonlinear patterns in time series that traditional models often miss.
+Effective intraday forecasting of stock price movements is crucial for market participants seeking to capitalize on transient opportunities and manage risk within rapidly evolving, volatile trading environments. Contemporary financial markets function as complex adaptive systems, characterized by nonlinear feedback loops, microstructure frictions, heterogeneous agents, and calendar-based irregularities. While the Efficient Market Hypothesis (EMH) posits instantaneous price discovery, empirical evidence reveals persistent anomalies such as momentum effects, reversals, and volatility clustering, indicating the presence of exploitable inefficiencies and latent structural dynamics in price formation.
 
-In this paper, we employ an LSTM-based approach to model and forecast short-term stock price movements. Unlike conventional feedforward networks, LSTMs excel at retaining temporal dependencies across time steps, making them ideal for sequential financial data. To enrich our model’s inputs, we incorporate two technical indicators: Volume Weighted Average Price (VWAP) and Trade Count. These metrics capture real-time trading behavior and market microstructure dynamics, potentially revealing subtle patterns hidden in raw price data.
+In response to these challenges, advances in machine learning have yielded powerful sequence modeling techniques, with Long Short-Term Memory (LSTM) networks emerging as a state-of-the-art architecture for analyzing temporal data. By employing gated memory cells and explicit mechanisms for information retention and attenuation, LSTMs effectively mitigate the vanishing and exploding gradient problems that hinder traditional Recurrent Neural Networks (RNNs). This capability allows LSTMs to capture complex nonlinear interactions and long-range dependencies inherent in high-frequency financial time series, making them well-suited for discerning subtle, path-dependent patterns relevant to intraday forecasting.
 
-Our goal is to empirically evaluate whether this LSTM model can challenge the EMH by demonstrating predictive power across diverse financial instruments. We hypothesize that LSTMs, using VWAP and Trade Count, can detect short-term price inefficiencies, particularly in volatile markets, thus questioning the universality of the EMH. The study spans five major technology stocks and three prominent exchange-traded funds (ETFs) from January 1, 2016 to December 30, 2024, a period that includes bull markets, corrections, and increased volatility.
+In this study, we enhance the standard LSTM framework by incorporating two finely resolved microstructure descriptors: Volume Weighted Average Price (VWAP) and trade count. VWAP, calculated as the dollar-volume weighted average price over discrete intervals, reflects the interplay between execution volume and price levels, often serving as an institutional benchmark. Trade count acts as a proxy for market liquidity and order flow intensity. Integrating these features provides the model with a richer representation of intraday supply-demand dynamics and momentum shifts than price data alone can offer. Using 36 five-minute lags, representing a three-hour look-back period, we aim to forecast intraday price directionality.
 
-To test this model rigorously, we compare two data sources: the SIP feed, which includes full-day trading (pre-market and post-market hours), and the IEX feed, limited to regular trading hours. Extended-hours data from the SIP feed may capture early market reactions to news, potentially improving predictions compared to regular-hours IEX data. By training separate models on each feed, we assess the value of including extended-hours activity.
+A central contribution of this research is the systematic comparison of two distinct data feeds: the Securities Information Processor (SIP), which includes pre-market and post-market extended trading sessions, and the Investors Exchange (IEX), which is restricted to regular trading hours. We hypothesize that activity during extended hours—capturing reactions to overnight news and early institutional order flow—provides incremental predictive power. By training LSTM models independently on each feed, we seek to isolate and quantify the marginal informational value of this off-hours data.
 
-We also explore the impact of data normalization on model performance. Given financial data’s outliers and non-stationary nature, we test three scalers: Standard Scaler, MinMax Scaler, and Robust Scaler to identify the best approach for stabilizing inputs and enhancing model accuracy.
+Equally important is our rigorous evaluation of data preprocessing strategies. We implement and compare three feature normalization techniques: Standard Scaler (z-score standardization), MinMax Scaler (linear rescaling), and Robust Scaler (using median and interquartile range). This analysis investigates their impact on model convergence, training stability, and out-of-sample predictive performance, aiming to elucidate how appropriate scaling can mitigate distributional shifts, reduce outlier sensitivity, and enhance model robustness, particularly under volatile market conditions.
 
-Finally, predictions are made at three-hour intervals to capture intraday market dynamics. This interval aligns with short-term trading cycles, allowing actionable forecasts while reflecting intraday volatility. This granularity is especially relevant for short-term traders and high-frequency strategies, where timely and accurate predictions are critical.
+Our empirical investigation covers five leading technology equities (NVIDIA, Apple, Microsoft, Amazon, Alphabet) and three broad-market ETFs (VOO, DIA, IWM) from January 1, 2016, to December 30, 2024. This extensive period encompasses diverse market regimes, including sustained bull markets, sharp corrections, liquidity shocks, and episodes of macroeconomic volatility.
 
+The results demonstrate that LSTM models trained using the comprehensive SIP dataset consistently outperform those limited to IEX data, confirming the predictive value of extended-hours information. Furthermore, we find that Robust scaling significantly improves training stability and resilience, especially during periods of heightened market volatility. This study advances the application of deep learning in finance by (1) integrating microstructure indicators into an LSTM forecasting architecture, (2) quantifying the informational advantage of extended-hours trading data, (3) systematically evaluating the role of feature scaling in model robustness, and (4) providing actionable insights for the design of adaptive, microstructure-aware intraday trading systems.
 
 %Papers Relacionados
 \section{Related Works}
 
 This section discusses related work, particularly highlighting studies that utilize LSTM networks and VWAP as an indicator.
 
-Moghar and Hamiche (2020) \cite{moghar2020stock} conducted a study employing LSTM models to predict stock market values, emphasizing the capability of machine learning techniques to model non-linear patterns effectively. They highlighted that LSTM significantly outperformed traditional linear models like ARIMA in predictive accuracy, especially with financial time series data characterized by high volatility and non-linearity. Their analysis underlined how LSTM models could enhance precision by learning temporal dependencies that traditional forecasting methods might overlook.
+\subsection{Empirical Validation of LSTM Models}
+Moghar and Hamiche (2020) \cite{moghar2020stock}, who trained LSTM models on two years of one‑minute equity data across multiple sectors, demonstrated early on that LSTM‑based predictors yield superior out‑of‑sample performance compared to classical benchmarks. Their rigorous backtesting revealed that LSTMs adapt dynamically to regime changes and internalize path‑dependent features that static models overlook. Building on this, Shen and Shafiq (2020) \cite{shen2020shortterm} highlighted the importance of domain‑informed feature engineering: by integrating technical indicators such as MACD, RSI, and volatility bands into a multi‑layer LSTM framework, they reported a 15\% uplift in directional accuracy on high‑frequency Chinese equity data, illustrating how thoughtful feature design amplifies network efficacy.
 
-Further expanding on the capabilities of LSTM networks, Shen and Shafiq (2020) \cite{shen2020shortterm} proposed a comprehensive deep learning-based system tailored specifically for short-term stock market price trend prediction. Their approach incorporated extensive feature engineering and customization of the LSTM architecture. By conducting experiments with two years of data from the Chinese stock market, they demonstrated significant improvement in predictive accuracy due to their detailed feature engineering process, which proved crucial in refining model performance. Their results suggested that carefully engineered features could notably augment the predictive power of deep learning models.
-
+\subsection{VWAP‑Driven Day Trading Strategies}
 Regarding the application of the VWAP, Zarattini and Aziz (2023) \cite{zarattini2023vwap} explored its efficacy as a day trading indicator for detecting market imbalances and making trading decisions. Using VWAP, they developed a straightforward day trading strategy that initiated long positions when the price was above VWAP and short positions when below it. Their study, involving trading instruments like QQQ and TQQQ over several volatile market periods from 2018 to 2023, showed substantial profitability and superior risk-adjusted returns compared to traditional buy-and-hold strategies. Notably, the VWAP-based strategy significantly reduced the maximum drawdown and provided robust returns across diverse market conditions.
 
-Collectively, these studies emphasize the potential of combining advanced LSTM and hybrid architectures with strategically selected trading indicators such as VWAP. The literature clearly indicates that deep learning models, particularly LSTM, are highly effective for capturing complex patterns within financial data, while the VWAP indicator provides significant insights into real-time market trading behaviors. These findings form a critical foundation for the current research, which integrates these concepts to explore new dimensions of stock market predictability and market efficiency debates.
+\subsection{Identified Gaps}
+Collectively, these works demonstrate the power of deep learning—especially LSTM and its hybrid variants—when paired with carefully chosen microstructure indicators like VWAP.  LSTM networks excel at uncovering complex, nonlinear dependencies in financial time series, while VWAP enriches the model’s view of real‑time supply–demand dynamics.
 
-
+However, two critical gaps remain:
+\begin{enumerate}[noitemsep]
+  \item \textbf{Session‑based informational asymmetry:} Most studies focus exclusively on core trading hours, overlooking the unique predictive signals embedded in pre‑market and post‑market activity.
+  \item \textbf{Normalization strategy evaluation:} Little work has systematically compared Standard, MinMax, and Robust scaling to understand how each affects LSTM training stability and generalization in volatile regimes.
+\end{enumerate}
+This study addresses these gaps by evaluating the impact of extended trading hours on LSTM performance and rigorously comparing different normalization techniques. By doing so, we aim to provide a more comprehensive understanding of how these factors influence intraday stock price movement prediction.
 
 %Métodos e Materiais
 \section{Methods and Materials}
