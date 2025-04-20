@@ -1,8 +1,11 @@
 import streamlit as st
 
+
 def main_portfolio_management():
     st.header("Portfolio Management")
-    st.write("Detailed portfolio management strategies and visualizations will be presented here.")
+    st.write(
+        "Detailed portfolio management strategies and visualizations will be presented here."
+    )
     # Add more content specific to the Portfolio Management tab
     # Example content
     st.subheader("Portfolio Optimization")

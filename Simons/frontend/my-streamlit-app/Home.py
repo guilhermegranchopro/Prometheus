@@ -5,15 +5,26 @@ from Academic_References import main_academic_references
 from Predictions import main_predictions
 from Portfolio_Management import main_portfolio_management
 
+
 def main():
     # Set the page configuration
-    st.set_page_config(layout="wide", page_title="Prometheus - Quant Research", page_icon="🔥")
+    st.set_page_config(
+        layout="wide", page_title="Prometheus - Quant Research", page_icon="🔥"
+    )
 
     # Page Title
     st.title("Prometheus")
 
     # Create tabs
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Overview", "Predictions", "Portfolio Management", "Model Stats", "Academic References"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(
+        [
+            "Overview",
+            "Predictions",
+            "Portfolio Management",
+            "Model Stats",
+            "Academic References",
+        ]
+    )
 
     with tab1:
         main_overview()

@@ -1,16 +1,18 @@
 import streamlit as st
 
+
 # Function to load CSS
 def local_css(file_name):
     try:
         with open(file_name) as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     except FileNotFoundError:
-        st.error(f"CSS file not found: {file_name}. Ensure it's in the 'static/css' directory.")
+        st.error(
+            f"CSS file not found: {file_name}. Ensure it's in the 'static/css' directory."
+        )
 
 
 def main_overview():
-
     # Load the Tailwind CSS file
     local_css("static/css/tailwind.css")
 
@@ -20,15 +22,20 @@ def main_overview():
 
     # Centered Logo
     # Adjusted column proportions to give the image more space
-    col1, col2, col3 = st.columns([0.5, 2, 0.5]) # Give middle column more relative width
+    col1, col2, col3 = st.columns(
+        [0.5, 2, 0.5]
+    )  # Give middle column more relative width
     with col2:
         try:
             # Corrected path relative to Home.py and used use_container_width
             st.image("../../../Assets/Images/logo.jpg", use_container_width=True)
         except Exception as e:
-            st.warning(f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}")
+            st.warning(
+                f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
+            )
 
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>🚀 Overview</h2>
             <p class='text-lg text-gray-600 leading-relaxed'>
@@ -38,10 +45,12 @@ def main_overview():
                 machine learning models, and real-time market data to make informed trading decisions.
             </p>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
-
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>✨ Features</h2>
             <div class='grid md:grid-cols-2 gap-6'>
@@ -81,10 +90,12 @@ def main_overview():
                 </div>
             </div>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
-
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>📈 Implemented Strategies</h2>
             <ul class='list-disc list-inside space-y-2 text-gray-600'>
@@ -93,10 +104,12 @@ def main_overview():
             </ul>
             <p class='mt-4 text-sm text-gray-500'>Performance metrics are continuously monitored and updated based on live trading results.</p>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
-
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>🛠️ Installation</h2>
             <p class='text-gray-600 mb-4'>Follow these steps to set up the project locally:</p>
@@ -118,18 +131,23 @@ def main_overview():
                 <li>Set up your Alpaca API credentials (refer to project configuration).</li>
             </ol>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
-
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>🚀 Usage Example</h2>
             <p class='text-gray-600 mb-4'>Basic example of fetching market data using the Alpaca API:</p>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     # Use st.code for better code display
-    st.code('''
+    st.code(
+        """
     import alpaca_trade_api as tradeapi
 
     # Initialize API connection (replace with your actual keys)
@@ -146,16 +164,21 @@ def main_overview():
         # print(data.head())
     except Exception as e:
         print(f"Error fetching data: {e}") # Use print or logging in actual script
-    ''', language='python')
+    """,
+        language="python",
+    )
 
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <p class='text-gray-600 mt-4'>To run specific trading strategies, import and execute the respective modules from the `Simons/backend` or `Sun_Tzu/backend` directories.</p>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
-
-    st.markdown("""
+    st.markdown(
+        """
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
             <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>🤝 Contributing</h2>
             <p class='text-gray-600 mb-4'>Contributions are welcome! Please follow these steps:</p>
@@ -168,10 +191,12 @@ def main_overview():
             </ol>
             <p class='text-gray-600 mt-4'>For major changes, please open an issue first to discuss what you would like to change.</p>
         </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
-
-    st.markdown("""
+    st.markdown(
+        """
         <footer class='text-center mt-10 py-6 border-t border-gray-200'>
             <p class='text-sm text-gray-500 mb-2'>
                 Project licensed under the MIT License. See LICENSE file for details.
@@ -183,8 +208,9 @@ def main_overview():
                 Acknowledgments: Alpaca Markets, Contributors, Open-Source Community
             </p>
         </footer>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     # Close the wrapping div
     st.markdown("</div>", unsafe_allow_html=True)
-
