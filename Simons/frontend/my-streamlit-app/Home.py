@@ -14,6 +14,8 @@ def local_css(file_name):
 local_css("static/css/tailwind.css")
 
 # --- Page Content ---
+# Wrap content in a div with Tailwind classes
+st.markdown("<div class='bg-gray-100 min-h-screen p-8'>", unsafe_allow_html=True)
 
 # Centered Logo
 # Adjusted column proportions to give the image more space
@@ -189,3 +191,6 @@ st.markdown("""
         </p>
     </footer>
 """, unsafe_allow_html=True)
+
+# Close the wrapping div
+st.markdown("</div>", unsafe_allow_html=True)
