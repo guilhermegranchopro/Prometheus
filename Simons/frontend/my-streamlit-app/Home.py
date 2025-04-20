@@ -1,17 +1,21 @@
 import streamlit as st
+from Info import main_info
 
-st.set_page_config(layout="wide", page_title="Prometheus - Algorithmic Trading", page_icon="🔥")
+
+# Set the page configuration
+# Set the page configuration
+st.set_page_config(layout="wide", page_title="Prometheus - Quant Research", page_icon="🔥")
 
 # Page Title
 st.title("Prometheus")
+st.subheader("Quantitative Research")
 
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Info", "Model Stats", "Academic References"])
 
 with tab1:
-   st.header("Info")
-   st.write("Information about the Prometheus AI model and its predictions will go here.")
-   # Add more content specific to the Info tab
+    main_info()
+    # Add more content specific to the Info tab
 
 with tab2:
    st.header("Model Stats")
