@@ -16,7 +16,8 @@ local_css("static/css/tailwind.css")
 # --- Page Content ---
 
 # Centered Logo
-col1, col2, col3 = st.columns([1, 2, 1]) # Create columns to center the image
+# Adjusted column proportions to give the image more space
+col1, col2, col3 = st.columns([0.5, 2, 0.5]) # Give middle column more relative width
 with col2:
     try:
         # Corrected path relative to Home.py and used use_container_width
