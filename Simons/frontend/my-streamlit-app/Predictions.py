@@ -5,31 +5,70 @@ import alpaca_trade_api as tradeapi
 import os
 import pandas as pd
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../../..'))
-MODELS_BASE_PATH = os.path.join(BASE_DIR, "Models/SIP")
-DATA_BASE_PATH = os.path.join(BASE_DIR, "Data/SIP/Scalers")
-
 def get_paths(stock_ID):
-   model_filename = f"model_{stock_ID}.h5"
-   scaler_filename = f"scaler_{stock_ID}.pkl"
+   BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
+   MODELS_BASE_PATH = os.path.join(BASE_DIR, "Models/SIP")
+   DATA_BASE_PATH = os.path.join(BASE_DIR, "Data/SIP/Scalers")
 
-   model_path = os.path.join(MODELS_BASE_PATH, "Standard", model_filename)
-   scaler_path = os.path.join(DATA_BASE_PATH, "Standard", scaler_filename)
+   model_file_extension = ".h5"
+   scaler_file_extension = ".pkl"
 
-   if not os.path.exists(model_path):
-       raise FileNotFoundError(f"Model file not found at {model_path}")
-   if not os.path.exists(scaler_path):
-       raise FileNotFoundError(f"Scaler file not found at {scaler_path}")
-
-   return model_path, scaler_path
+   if stock_ID == "VOO":
+      model_filename = "ds=sip+s=VOO+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.31953105330467224+ta=0.8718245029449463" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+      return model_path
+   elif stock_ID == "DIA":
+      model_filename = "ds=sip+s=DIA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.36404281854629517+ta=0.8434399366378784" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+      return model_path
+   elif stock_ID == "IWM":
+      model_filename = "ds=sip+s=IWM+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.39144110679626465+ta=0.832350492477417" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+      return model_path
+   elif stock_ID == "NVDA":
+      scaler_name = "Robust"
+      scaler_filename = "robust_ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
+      model_filename = "ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.6547278761863708+ta=0.7020547986030579" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
+      scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
+      return model_path, scaler_path
+   elif stock_ID == "AAPL":
+      scaler_name = "MinMax"
+      scaler_filename = "minmax_ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
+      model_filename = "ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.41606152057647705+ta=0.8365758657455444" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
+      scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
+      return model_path, scaler_path
+   elif stock_ID == "MSFT":
+      model_filename = "ds=sip+s=MSFT+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3996354639530182+ta=0.8395842909812927" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+      return model_path
+   elif stock_ID == "AMZN":
+      scaler_name = "Robust"
+      scaler_filename = "robust_ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
+      model_filename = "ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.475951611995697+ta=0.8117924332618713" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
+      scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
+      return model_path, scaler_path
+   elif stock_ID == "GOOG":
+      scaler_name = "Robust"
+      scaler_filename = "scaler_GOOG" + scaler_file_extension
+      model_filename = "ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.539172351360321+ta=0.813238799571991" + model_file_extension
+      model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
+      scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
+      return model_path, scaler_path
+   else:
+      raise ValueError(f"Unsupported stock ID: {stock_ID}")
+   
+   return None, None
 
 def get_data(stock_ID):
-   API_KEY = os.getenv('ALPACA_API_KEY', 'YOUR_API_KEY')
-   SECRET_KEY = os.getenv('ALPACA_SECRET_KEY', 'YOUR_SECRET_KEY')
-   BASE_URL = 'https://paper-api.alpaca.markets'
+   API_KEY = os.getenv('ALPACA_API_KEY')
+   SECRET_KEY = os.getenv('ALPACA_SECRET_KEY')
+   BASE_URL = 'https://api.alpaca.markets'
 
-   if API_KEY == 'YOUR_API_KEY' or SECRET_KEY == 'YOUR_SECRET_KEY':
-       st.error("Please set your Alpaca API Key and Secret Key.")
+   if API_KEY is None or SECRET_KEY is None:
+       st.error("Please set your Alpaca API Key and Alpaca Secret Key.")
        return None
 
    api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
@@ -49,6 +88,7 @@ def get_data(stock_ID):
    except Exception as e:
       st.error(f"Error fetching data from Alpaca for {stock_ID}: {e}")
       return None
+
 
 def get_predictions(stock_ID):
    try:
@@ -73,7 +113,7 @@ def get_predictions(stock_ID):
    if data_df is None:
       return None, data_df, scaler, None
 
-   features = ['open', 'high', 'low', 'close', 'volume']
+   features = ['vwap', 'trade_count']
    if not all(feature in data_df.columns for feature in features):
        st.error(f"Required features ({features}) not found in Alpaca data columns: {data_df.columns.tolist()}")
        return None, data_df, scaler, None
@@ -106,6 +146,7 @@ def get_predictions(stock_ID):
    else:
        st.error("Scaled data is empty or invalid, cannot make prediction.")
        return None, data_df, scaler, scaled_data
+
 
 def main_predictions():
     st.header("Predictions")
