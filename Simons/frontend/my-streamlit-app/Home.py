@@ -3,7 +3,6 @@ from Overview import main_overview
 from Model_Stats import main_model_stats
 from Academic_References import main_academic_references
 from Predictions import main_predictions
-from Portfolio_Management import main_portfolio_management
 
 
 def main():
@@ -16,11 +15,10 @@ def main():
     st.title("Prometheus")
 
     # Create tabs
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(
+    tab1, tab2, tab3, tab4 = st.tabs(
         [
             "Overview",
             "Predictions",
-            "Portfolio Management",
             "Model Stats",
             "Academic References",
         ]
@@ -35,14 +33,10 @@ def main():
         # Add more content specific to the Predictions tab
 
     with tab3:
-        main_portfolio_management()
-        # Add more content specific to the Portfolio Management tab
-
-    with tab4:
         main_model_stats()
         # Stock Selection - Moved inside the Model Stats tab
 
-    with tab5:
+    with tab4:
         main_academic_references()
         # Add references or links here
 
