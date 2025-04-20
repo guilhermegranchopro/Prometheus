@@ -52,7 +52,7 @@ def get_paths(stock_ID):
       return model_path, scaler_path
    elif stock_ID == "GOOG":
       scaler_name = "Robust"
-      scaler_filename = "scaler_GOOG" + scaler_file_extension
+      scaler_filename = "robust_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
       model_filename = "ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.539172351360321+ta=0.813238799571991" + model_file_extension
       model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
       scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
