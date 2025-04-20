@@ -131,6 +131,7 @@ In general, this study not only demonstrates the robustness of LSTM networks in 
 
 
 %Introdução
+
 \section{Introduction}
 
 Effective intraday forecasting of stock price movements is crucial for market participants seeking to capitalize on transient opportunities and manage risk within rapidly evolving, volatile trading environments. Contemporary financial markets function as complex adaptive systems, characterized by nonlinear feedback loops, microstructure frictions, heterogeneous agents, and calendar-based irregularities. While the Efficient Market Hypothesis (EMH) posits instantaneous price discovery, empirical evidence reveals persistent anomalies such as momentum effects, reversals, and volatility clustering, indicating the presence of exploitable inefficiencies and latent structural dynamics in price formation.
@@ -143,11 +144,12 @@ A central contribution of this research is the systematic comparison of two dist
 
 Equally important is our rigorous evaluation of data preprocessing strategies. We implement and compare three feature normalization techniques: Standard Scaler (z-score standardization), MinMax Scaler (linear rescaling), and Robust Scaler (using median and interquartile range). This analysis investigates their impact on model convergence, training stability, and out-of-sample predictive performance, aiming to elucidate how appropriate scaling can mitigate distributional shifts, reduce outlier sensitivity, and enhance model robustness, particularly under volatile market conditions.
 
-Our empirical investigation covers five leading technology equities (NVIDIA, Apple, Microsoft, Amazon, Alphabet) and three broad-market ETFs (VOO, DIA, IWM) from January 1, 2016, to December 30, 2024. This extensive period encompasses diverse market regimes, including sustained bull markets, sharp corrections, liquidity shocks, and episodes of macroeconomic volatility.
+Our empirical investigation covers five leading technology equities and three broad-market ETFs from January 1, 2016, to December 30, 2024. This extensive period encompasses diverse market regimes, including sustained bull markets, sharp corrections, liquidity shocks, and episodes of macroeconomic volatility.
 
 The results demonstrate that LSTM models trained using the comprehensive SIP dataset consistently outperform those limited to IEX data, confirming the predictive value of extended-hours information. Furthermore, we find that Robust scaling significantly improves training stability and resilience, especially during periods of heightened market volatility. This study advances the application of deep learning in finance by (1) integrating microstructure indicators into an LSTM forecasting architecture, (2) quantifying the informational advantage of extended-hours trading data, (3) systematically evaluating the role of feature scaling in model robustness, and (4) providing actionable insights for the design of adaptive, microstructure-aware intraday trading systems.
 
 %Papers Relacionados
+
 \section{Related Works}
 
 This section discusses related work, particularly highlighting studies that utilize LSTM networks and VWAP as an indicator.
@@ -158,7 +160,7 @@ Moghar and Hamiche (2020) \cite{moghar2020stock}, who trained LSTM models on two
 \subsection{VWAP‑Driven Day Trading Strategies}
 Regarding the application of the VWAP, Zarattini and Aziz (2023) \cite{zarattini2023vwap} explored its efficacy as a day trading indicator for detecting market imbalances and making trading decisions. Using VWAP, they developed a straightforward day trading strategy that initiated long positions when the price was above VWAP and short positions when below it. Their study, involving trading instruments like QQQ and TQQQ over several volatile market periods from 2018 to 2023, showed substantial profitability and superior risk-adjusted returns compared to traditional buy-and-hold strategies. Notably, the VWAP-based strategy significantly reduced the maximum drawdown and provided robust returns across diverse market conditions.
 
-\subsection{Identified Gaps}
+\subsection{Identified Gaps and Research Contribution}
 Collectively, these works demonstrate the power of deep learning—especially LSTM and its hybrid variants—when paired with carefully chosen microstructure indicators like VWAP.  LSTM networks excel at uncovering complex, nonlinear dependencies in financial time series, while VWAP enriches the model’s view of real‑time supply–demand dynamics.
 
 However, two critical gaps remain:
@@ -169,14 +171,15 @@ However, two critical gaps remain:
 This study addresses these gaps by evaluating the impact of extended trading hours on LSTM performance and rigorously comparing different normalization techniques. By doing so, we aim to provide a more comprehensive understanding of how these factors influence intraday stock price movement prediction.
 
 %Métodos e Materiais
-\section{Methods and Materials}
 
+\section{Methods and Materials}
+This section outlines the methodology employed in this study, detailing the data sources, features, neural network architecture, and training process. The objective is to provide a comprehensive understanding of the approach taken to forecast intraday stock price movements using LSTM networks.
 %Data
 \subsection{Data}
 
 To explore diverse market dynamics and ensure a comprehensive evaluation, we chose to build individual LSTM models for each of the following companies and indexes: Nvidia (NVDA), Apple (AAPL), Microsoft (MSFT), Amazon (AMZN), Alphabet (GOOG), the S\&P500 (VOO), the Dow Jones Industrial Average (DIA) and the Russel 2000 (IWM). These selections were made because they represent the five largest companies in the world by market capitalization and three of the most significant stock market indices, providing a well-rounded perspective on both individual stock performance and broader market trends. 
 
-All data is retrieved through the Alpaca Trading API \cite{alpaca_api}, using the SIP (Securities Information Processor) data source, covering the period from January 1, 2016, to December 30, 2024 and contains information not only about regular trading hours but also pre-market and after-hours trading.  Although we will only utilize the VWAP and trade count, the Alpaca API also provides open, close, high, low, and volume information for each interval. The data is retrieved at 5-minute intervals to capture fine-grained intraday price movements and trading behaviors effectively.
+All data is retrieved through the Alpaca Trading API \cite{alpaca_api}, using the two distinct data sources - SIP and IEX - covering the period from January 1, 2016, to December 30, 2024. Although we will only utilize the VWAP and trade count, the Alpaca API also provides open, close, high, low, and volume information for each interval. The data is retrieved at 5-minute intervals to capture fine-grained intraday price movements and trading behaviors effectively.
 
 To ensure an effective training process and robust model evaluation, the data is divided into three subsets: 60\% is allocated for training, 20\% for validation, and the remaining 20\% is reserved for testing. This division allows the model to learn effectively, tune hyperparameters without overfitting, and assess its predictive performance accurately on unseen data.
 
@@ -198,23 +201,56 @@ Trade Count represents the total number of executed trades within a 5-minute int
 
 \subsection{Data Sources and Market Hours}
 
-To evaluate the effect of extended trading hours on prediction performance, we trained and compared models using two distinct data sources:
+To comprehensively assess the predictive advantages conferred by extended trading sessions, we
+utilized two distinct and complementary market data sources: 
 
 \begin{itemize}
-    \item \textbf{SIP (Securities Information Processor)}: Provides full-day trading data, including pre-market (before 9:30 AM) and post-market (after 4:00 PM) sessions. This feed captures institutional and retail activity occurring outside standard trading hours.
+    \item \textbf{SIP (Securities Information Processor)}: This consolidated data feed aggregates trade
+    and quotation data across all major U.S. equity exchanges, thus providing comprehensive
+    market coverage. Critically, the SIP encompasses the entire trading day, incorporating
+    pre-market (04:00–09:30 ET), regular market (09:30–16:00 ET), and post-market sessions
+    (16:00–20:00 ET). By including these extended sessions, the SIP dataset captures vital trad
+   ing dynamics such as early institutional order placements, late-day retail investor activities,
+    and overnight information absorption, all potentially critical to intraday price discovery pro
+   cesses and short-term forecasting precision.
     
-    \item \textbf{IEX (Investors Exchange)}: Offers data restricted to regular trading hours (9:30 AM to 4:00 PM), excluding off-hours activity. This feed reflects more stable and regulated trading conditions.
+    \item \textbf{IEX (Investors Exchange)}: Incontrast, the IEX dataset exclusively contains data recorded
+    during standard trading hours (09:30–16:00 ET), sourced from a single trading venue. Char
+   acterized by greater regulatory homogeneity and reduced fragmentation, the IEX feed pro
+   vides a controlled data environment free from extraneous volatility typically introduced dur
+   ing off-hours trading periods. Consequently, the IEX data serve as a baseline reference,
+    facilitating the isolation and quantification of additional predictive insights available through
+    the SIP’s extended-hour coverage.
 \end{itemize}
 
-Each model was trained separately using identical architecture and scaling techniques to isolate the effect of the data source. Comparative performance was evaluated based on accuracy, loss and confusion matrix metrics.
+\subsection{Feature Scaling Techniques}
 
+In this study, we performed an extensive investigation into various feature scaling techniques and their influence on the predictive capabilities of Long Short‑Term Memory (LSTM) networks within the context of financial forecasting. Feature scaling is a fundamental preprocessing step in time series modeling, critically impacting convergence behavior, numerical stability, computational efficiency, and the overall accuracy of predictions. Employing appropriate scaling methods is particularly vital when handling financial datasets, characterized by heterogeneous feature distributions, wide‑ranging magnitudes, and inherent non‑linearities typical of market dynamics.
 
-\subsection{Scalers}
+To systematically evaluate the effects of feature scaling, we adopted three prominent methods—Standard Scaler, MinMax Scaler, and Robust Scaler—implemented using the scikit‑learn Python library \cite{scikit-learn}. Each method uniquely addresses distinct statistical properties and data characteristics, offering specific benefits under varying conditions as described below.
 
-In this study, we investigated the impact of different feature scaling techniques on the predictive performance of our models. Specifically, we utilized three distinct scaling methods — Standard Scaler, MinMax Scaler, and Robust Scaler — all implemented using the scikit-learn Python library \cite{scikit-learn}. 
-The Standard Scaler standardizes features by removing the mean and scaling to unit variance, thus normalizing data with an assumption of Gaussian distribution. The MinMax Scaler transforms features by scaling each feature to a specified range, typically [0,1], which helps handle features with significant differences in magnitudes. The Robust Scaler, on the other hand, scales features based on the median and interquartile range, making it particularly effective in handling outliers.
+\subsubsection{Standard Scaler}
+Standard scaling involves transforming features by removing their mean and scaling to unit variance. Mathematically, for each feature \(x\),  
+\[
+x' = \frac{x - \mu}{\sigma},
+\]
+where \(\mu\) and \(\sigma\) are the feature’s sample mean and standard deviation, respectively. This normalization yields features with zero mean and unit variance, assuming an approximately Gaussian distribution. Standard scaling effectively neutralizes discrepancies in feature magnitudes, ensuring balanced contributions from each feature during gradient‑based optimization. As a result, it enhances convergence speed, maintains numerical stability, and preserves consistent gradient magnitudes throughout model training.
 
-We applied each scaler individually to the VWAP values of each stock, systematically comparing their predictive performance against a baseline model without any scaling. This comprehensive evaluation enabled us to identify the most effective scaling technique, improving model accuracy and robustness across varying market conditions and stock behaviors.
+\subsubsection{MinMax Scaler}
+MinMax scaling linearly transforms feature values to a predefined range, typically \([0,1]\). For each feature \(x\),  
+\[
+x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}},
+\]
+where \(x_{\min}\) and \(x_{\max}\) denote the minimum and maximum observed values. By confining features within a bounded interval, MinMax scaling mitigates biases introduced by scale disparities and reduces numerical instabilities associated with extreme values. This approach is especially advantageous for datasets with significantly divergent feature magnitudes, facilitating more reliable and faster convergence of LSTM training procedures.
+
+\subsubsection{Robust Scaler}
+Robust scaling leverages robust statistical metrics—the median and interquartile range (IQR)—to scale feature values. For each feature \(x\),  
+\[
+x' = \frac{x - \mathrm{median}(x)}{\mathrm{IQR}(x)},
+\]
+where \(\mathrm{IQR} = Q_{3} - Q_{1}\). This method is highly effective on datasets exhibiting heavy‑tailed distributions or containing substantial outliers, both common in financial market data. By relying on median and IQR, Robust scaling significantly reduces sensitivity to anomalous observations, providing greater stability in feature scaling and maintaining consistent model performance even during periods of elevated volatility.
+
+Each scaling method was individually applied to the Volume Weighted Average Price (VWAP) feature across all assets in our study. To quantify their impact, we benchmarked each scaled model against a baseline LSTM trained without feature scaling. This comparative analysis enabled precise assessment of the incremental benefits of each strategy in terms of predictive accuracy, convergence rates, and robustness under diverse market scenarios.```
 
 \subsection{Neural Networks}
 
@@ -258,10 +294,6 @@ The structure of an LSTM unit includes:
     \item \textbf{Output Gate (\( o_t \))}: Regulates how much of the memory cell’s content contributes to the output.
 \end{itemize}
 
-%These gates use sigmoid activation functions (outputting values between 0 and 1) to filter information selectively. 
-
-%COLOCAR IMAGEM?
-
 These mechanisms allow LSTMs to selectively remember or forget information, making them highly effective for modeling temporal relationships in financial data.
 
 \begin{figure}[h]
@@ -282,14 +314,26 @@ In this study, LSTMs are employed to forecast intraday stock price movements bas
     \item \textbf{Dense Output Layer}: A single-unit layer with a sigmoid activation function, producing the probability that the stock price will increase within the next three hours.
 \end{itemize}
 
-The model comprises 50,241 trainable parameters and is trained using BPTT with the Adam optimizer and binary cross-entropy loss function. To prevent overfitting and ensure efficient training, an EarlyStopping callback is employed to monitor validation accuracy, stopping the training process once improvements plateau. The input to the model is a matrix with 36 rows and 2 columns, where each row represents a 5-minute interval containing VWAP and trade count values, spanning a 3-hour look-back window (36 \(\times\) 5 minutes = 180 minutes). The model’s output is a binary label— either 0 or 1 —indicating the predicted directional movement of the stock price in the next time interval, where 0 represents a decrease and 1 an increase. This binary classification approach simplifies the prediction task by focusing solely on the direction of the price movement, rather than attempting to forecast the exact price. % Ultima frase deixo ou nao?
+The model comprises 50,241 trainable parameters and is trained using BPTT with the Adam optimizer and binary cross-entropy loss function. To prevent overfitting and ensure efficient training, an EarlyStopping callback is employed to monitor validation accuracy, stopping the training process once improvements plateau and restoring the best weights. The input to the model is a matrix with 36 rows and 2 columns, where each row represents a 5-minute interval containing VWAP and trade count values, spanning a 3-hour look-back window (36 \(\times\) 5 minutes = 180 minutes). The model’s output is a binary label— either 0 or 1 —indicating the predicted directional movement of the stock price in the next time interval, where 0 represents a decrease and 1 an increase. This binary classification approach simplifies the prediction task by focusing solely on the direction of the price movement, rather than attempting to forecast the exact price. % Ultima frase deixo ou nao?
 
 This LSTM architecture leverages its gating mechanisms to retain relevant patterns in the data while discarding noise, enabling accurate predictions of stock price movements. By processing sequences of intraday market data, the model captures the intricate temporal dynamics that drive financial markets, offering a powerful tool for forecasting.
+
+\subsection{Evaluation Metrics}
+
+To robustly and comprehensively evaluate predictive performance, we deployed a suite of carefully selected metrics:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Accuracy}: Assesses the overall proportion of correctly predicted directional outcomes, providing an aggregate measure of predictive efficacy.
+  \item \textbf{Binary Cross‑Entropy Loss}: Evaluates the calibration, reliability, and confidence of probabilistic forecasts, ensuring accurate interpretation of predicted probabilities.
+  \item \textbf{Confusion Matrix Metrics}: Breaks down true positives, true negatives, false positives, and false negatives, enabling a nuanced diagnosis of predictive strengths and weaknesses.
+\end{itemize}
+
+All model training and evaluation were performed on NVIDIA W100 GPUs to ensure efficient computation and reproducibility.
 
 
 \section{Results}
 
-The performance of the LSTM models was evaluated based on two key metrics: test accuracy and test loss. These metrics were computed for each combination of scaler and ticker. Results are presented separately for the IEX and SIP datasets to investigate the influence of regular trading hours versus extended trading hours on model performance.
+Results are presented separately for the IEX and SIP datasets to investigate the influence of regular trading hours versus extended trading hours on model performance.
 
 \subsection{IEX}
 
@@ -368,7 +412,7 @@ DIA   & 0.8360 & 0.8400 & \cellcolor{lightgreen}{0.8420} & \cellcolor{lightgreen
 GOOG  & \cellcolor{lightgreen}{0.8160} & 0.8000 & \cellcolor{lightgreen}{0.8160} & 0.7080 \\
 IWM   & 0.8150 & 0.8150 & 0.8260 & \cellcolor{lightgreen}{0.8340} \\
 MSFT  & 0.8460 & 0.8500 & 0.8520 & \cellcolor{lightgreen}{0.8610} \\
-NVDA  &\cellcolor{lightgreen}{0.7290} & 0.7120 & 0.7820 & 0.7230 \\
+NVDA  &{0.7290} & 0.7120 & \cellcolor{lightgreen}0.7820 & 0.7230 \\
 VOO   & 0.8680 & 0.8610 & 0.8700 & \cellcolor{lightgreen}{0.8780} \\
 \midrule
 \textbf{Mean} & 0.8143 & 0.8119 & \cellcolor{lightgreen}{0.8201} & 0.7914 \\
