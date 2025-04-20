@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(layout="wide", page_title="Prometheus - Algorithmic Trading", page_icon="🔥")
 
 # Page Title
-st.title("Prometheus AI Model Predictions")
+st.title("Prometheus")
 
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Info", "Model Stats", "Academic References"])
