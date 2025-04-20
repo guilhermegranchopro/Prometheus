@@ -1,6 +1,7 @@
 import streamlit as st
-from Info import main_info
+from Overview import main_overview
 from Model_Stats import main_model_stats
+from Academic_References import main_academic_references
 
 
 # Set the page configuration
@@ -12,12 +13,12 @@ st.title("Prometheus")
 st.subheader("Quantitative Research")
 
 # Create tabs
-tab1, tab2, tab3 = st.tabs(["Info", "Model Stats", "Academic References"])
+tab1, tab2, tab3 = st.tabs(["Overview", "Model Stats", "Academic References"])
 
 with tab1:
 
-    main_info()
-    # Add more content specific to the Info tab
+    main_overview()
+    # Add more content specific to the Overview tab
 
 with tab2:
    
@@ -39,8 +40,7 @@ with tab2:
    # st.plotly_chart(fig) # Or use another Streamlit chart function
 
 with tab3:
-   st.header("Academic References")
-   st.write("Relevant academic papers and references supporting the model's methodology will be listed here.")
+   main_academic_references()
    # Add references or links here
 
 # Function to load CSS
