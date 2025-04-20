@@ -1,5 +1,6 @@
 import streamlit as st
 from Info import main_info
+from Model_Stats import main_model_stats
 
 
 # Set the page configuration
@@ -14,15 +15,14 @@ st.subheader("Quantitative Research")
 tab1, tab2, tab3 = st.tabs(["Info", "Model Stats", "Academic References"])
 
 with tab1:
+
     main_info()
     # Add more content specific to the Info tab
 
 with tab2:
-   st.header("Model Stats")
-   # Stock Selection - Moved inside the Model Stats tab
-   stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
-   selected_stock = st.selectbox("Select Stock/ETF:", stocks)
-   st.write(f"Detailed statistics and prediction visualization for {selected_stock} will go here.")
+   
+    main_model_stats()
+    # Stock Selection - Moved inside the Model Stats tab
 
    # --- Placeholder for Prediction Illustration ---
    # Here you will add the logic to:
@@ -33,7 +33,6 @@ with tab2:
    #    - Since the predictions are binary, you might show this alongside the price chart
    #      or as a separate plot indicating buy/sell signals.
 
-   st.info("Prediction visualization logic to be implemented here.")
    # Example:
    # data = load_prediction_data(selected_stock) # Replace with your data loading function
    # fig = create_prediction_chart(data) # Replace with your chart creation function
