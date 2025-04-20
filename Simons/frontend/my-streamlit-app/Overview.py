@@ -11,8 +11,6 @@ def local_css(file_name):
 
 def main_overview():
 
-    st.header("Overview")
-
     # Load the Tailwind CSS file
     local_css("static/css/tailwind.css")
 
@@ -29,14 +27,6 @@ def main_overview():
             st.image("../../../Assets/Images/logo.jpg", use_container_width=True)
         except Exception as e:
             st.warning(f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}")
-
-
-    st.markdown("""
-        <div class='text-center mt-4 mb-8'>
-            <h1 class='text-4xl font-bold text-gray-800'>Prometheus: Algorithmic Trading Platform</h1>
-        </div>
-    """, unsafe_allow_html=True)
-
 
     st.markdown("""
         <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>

@@ -9,7 +9,6 @@ def main():
 
     # Page Title
     st.title("Prometheus")
-    st.subheader("Quantitative Research")
 
     # Create tabs
     tab1, tab2, tab3 = st.tabs(["Overview", "Model Stats", "Academic References"])
@@ -26,6 +25,6 @@ def main():
         main_academic_references()
         # Add references or links here
 
-        
+
 if __name__ == "__main__":
     main()
