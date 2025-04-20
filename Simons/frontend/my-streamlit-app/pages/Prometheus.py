@@ -3,12 +3,6 @@ import streamlit as st
 # Page Title
 st.title("Prometheus AI Model Predictions")
 
-# Stock Selection
-stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
-selected_stock = st.selectbox("Select Stock/ETF:", stocks)
-
-st.write(f"Displaying predictions for: {selected_stock}")
-
 # Create tabs
 tab1, tab2, tab3 = st.tabs(["Info", "Model Stats", "Academic References"])
 
@@ -19,7 +13,11 @@ with tab1:
 
 with tab2:
    st.header("Model Stats")
+   # Stock Selection - Moved inside the Model Stats tab
+   stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
+   selected_stock = st.selectbox("Select Stock/ETF:", stocks)
    st.write(f"Detailed statistics and prediction visualization for {selected_stock} will go here.")
+
    # --- Placeholder for Prediction Illustration ---
    # Here you will add the logic to:
    # 1. Load the corresponding model/prediction data for the selected_stock.
