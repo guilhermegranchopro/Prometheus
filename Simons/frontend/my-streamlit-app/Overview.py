@@ -1,19 +1,17 @@
 import streamlit as st
-# Page Title
 
+# Function to load CSS
+def local_css(file_name):
+    try:
+        with open(file_name) as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error(f"CSS file not found: {file_name}. Ensure it's in the 'static/css' directory.")
 
 
 def main_overview():
 
     st.header("Overview")
-
-        # Function to load CSS
-    def local_css(file_name):
-        try:
-            with open(file_name) as f:
-                st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-        except FileNotFoundError:
-            st.error(f"CSS file not found: {file_name}. Ensure it's in the 'static/css' directory.")
 
     # Load the Tailwind CSS file
     local_css("static/css/tailwind.css")
