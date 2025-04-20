@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(layout="wide", page_title="Prometheus - Algorithmic Trading", page_icon="📈")
+st.set_page_config(layout="wide", page_title="Prometheus - Algorithmic Trading", page_icon="🔥")
 
 # Function to load CSS
 def local_css(file_name):
@@ -19,8 +19,8 @@ local_css("static/css/tailwind.css")
 col1, col2, col3 = st.columns([1, 2, 1]) # Create columns to center the image
 with col2:
     try:
-        # Adjusted path assuming Home.py is in my-streamlit-app
-        st.image("../../Assets/Images/logo.jpg", use_column_width=True)
+        # Corrected path relative to Home.py and used use_container_width
+        st.image("../../../Assets/Images/logo.jpg", use_container_width=True)
     except Exception as e:
         st.warning(f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}")
 
