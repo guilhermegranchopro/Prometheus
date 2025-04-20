@@ -1,6 +1,4 @@
 import streamlit as st
-import tensorflow as tf
-from tensorflow import keras
 from tensorflow.keras.models import load_model
 import joblib
 import alpaca_trade_api as tradeapi
@@ -57,28 +55,28 @@ def get_predictions(stock_ID):
       model_path, scaler_path = get_paths(stock_ID)
    except FileNotFoundError as e:
       st.error(f"Configuration error: {e}")
-      return None, None
+      return None, None, None, None
 
    try:
       scaler = joblib.load(scaler_path)
    except Exception as e:
       st.error(f"Error loading scaler from {scaler_path}: {e}")
-      return None, None
+      return None, None, None, None
 
    try:
       model = load_model(model_path)
    except Exception as e:
       st.error(f"Error loading model from {model_path}: {e}")
-      return None, None
+      return None, None, scaler, None
 
    data_df = get_data(stock_ID)
    if data_df is None:
-      return None, data_df
+      return None, data_df, scaler, None
 
    features = ['open', 'high', 'low', 'close', 'volume']
    if not all(feature in data_df.columns for feature in features):
        st.error(f"Required features ({features}) not found in Alpaca data columns: {data_df.columns.tolist()}")
-       return None, data_df
+       return None, data_df, scaler, None
 
    data_features = data_df[features]
    data_features = data_features.fillna(method='ffill').fillna(method='bfill')
@@ -87,26 +85,27 @@ def get_predictions(stock_ID):
 
    if data_features.empty:
        st.error("No valid data available for scaling after preprocessing.")
-       return None, data_df
+       return None, data_df, scaler, None
 
+   scaled_data = None
    try:
       scaled_data = scaler.transform(data_features)
    except Exception as e:
       st.error(f"Error scaling data: {e}")
-      return None, data_df
+      return None, data_df, scaler, scaled_data
 
-   if scaled_data.shape[0] > 0:
+   if scaled_data is not None and scaled_data.shape[0] > 0:
        latest_scaled_data = scaled_data[-1].reshape(1, -1)
 
        try:
            predictions = model.predict(latest_scaled_data)
-           return predictions, data_df
+           return predictions, data_df, scaler, scaled_data
        except Exception as e:
            st.error(f"Error during model prediction: {e}")
-           return None, data_df
+           return None, data_df, scaler, scaled_data
    else:
-       st.error("Scaled data is empty, cannot make prediction.")
-       return None, data_df
+       st.error("Scaled data is empty or invalid, cannot make prediction.")
+       return None, data_df, scaler, scaled_data
 
 def main_predictions():
     st.header("Predictions")
@@ -115,42 +114,46 @@ def main_predictions():
 
     if selected_stock:
         st.info(f"Fetching data and generating prediction for {selected_stock}...")
-        predictions, data_df = get_predictions(selected_stock)
+        predictions, data_df, scaler, scaled_data = get_predictions(selected_stock)
 
-        if predictions is not None and data_df is not None:
+        if predictions is not None and data_df is not None and scaler is not None and scaled_data is not None:
             latest_prediction = predictions[0][0]
+            features = ['open', 'high', 'low', 'close', 'volume']
 
             try:
-                num_features = len(['open', 'high', 'low', 'close', 'volume'])
-                dummy_row = scaled_data[-1].copy()
-                prediction_feature_index = ['open', 'high', 'low', 'close', 'volume'].index('close')
-                dummy_row[prediction_feature_index] = latest_prediction
+                if scaled_data.shape[0] > 0:
+                    dummy_row = scaled_data[-1].copy()
+                    prediction_feature_index = features.index('close')
+                    dummy_row[prediction_feature_index] = latest_prediction
 
-                inverse_transformed_row = scaler.inverse_transform(dummy_row.reshape(1, -1))
-                predicted_price = inverse_transformed_row[0, prediction_feature_index]
+                    inverse_transformed_row = scaler.inverse_transform(dummy_row.reshape(1, -1))
+                    predicted_price = inverse_transformed_row[0, prediction_feature_index]
 
-                last_actual_close = data_df['close'].iloc[-1]
-                delta = predicted_price - last_actual_close
+                    last_actual_close = data_df['close'].iloc[-1]
+                    delta = predicted_price - last_actual_close
 
-                st.metric(
-                    label=f"Predicted Next Close Price for {selected_stock}",
-                    value=f"${predicted_price:.2f}",
-                    delta=f"{delta:.2f} ({delta/last_actual_close:.2%}) vs last close"
-                )
-                st.write(f"Last actual close price: ${last_actual_close:.2f}")
+                    st.metric(
+                        label=f"Predicted Next Close Price for {selected_stock}",
+                        value=f"${predicted_price:.2f}",
+                        delta=f"{delta:.2f} ({delta/last_actual_close:.2%}) vs last close"
+                    )
+                    st.write(f"Last actual close price: ${last_actual_close:.2f}")
+                else:
+                    st.warning("Cannot perform inverse transform as scaled data is empty.")
+                    st.metric(label=f"Raw Predicted Value for {selected_stock}", value=f"{latest_prediction:.4f}")
 
             except Exception as e:
                 st.warning(f"Could not inverse transform prediction. Displaying raw value. Error: {e}")
                 st.metric(label=f"Raw Predicted Value for {selected_stock}", value=f"{latest_prediction:.4f}")
                 st.write("Note: This value might be scaled or represent something other than price.")
 
-            st.subheader("Recent Market Data")
+            st.subheader("Recent Market Data Used for Prediction")
             st.dataframe(data_df.tail())
 
         elif data_df is None and predictions is None:
             pass
         else:
-            st.error(f"Could not generate prediction for {selected_stock}, but data was fetched.")
+            st.error(f"Could not generate prediction for {selected_stock}. See errors above.")
             if data_df is not None:
                 st.subheader("Recent Market Data (Prediction Failed)")
                 st.dataframe(data_df.tail())
