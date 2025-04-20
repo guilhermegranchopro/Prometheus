@@ -2,6 +2,7 @@ import streamlit as st
 from Overview import main_overview
 from Model_Stats import main_model_stats
 from Academic_References import main_academic_references
+from Predictions import main_predictions
 
 def main():
     # Set the page configuration
@@ -11,17 +12,21 @@ def main():
     st.title("Prometheus")
 
     # Create tabs
-    tab1, tab2, tab3 = st.tabs(["Overview", "Model Stats", "Academic References"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Overview", "Predictions", "Model Stats", "Academic References"])
 
     with tab1:
         main_overview()
         # Add more content specific to the Overview tab
 
     with tab2:
+        main_predictions()
+        # Add more content specific to the Predictions tab
+
+    with tab3:
         main_model_stats()
         # Stock Selection - Moved inside the Model Stats tab
 
-    with tab3:
+    with tab4:
         main_academic_references()
         # Add references or links here
 
