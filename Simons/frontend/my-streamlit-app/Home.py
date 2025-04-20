@@ -50,7 +50,7 @@ st.markdown("""
     <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
         <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>✨ Features</h2>
         <div class='grid md:grid-cols-2 gap-6'>
-            <div>
+            <div class='bg-gray-50 p-4 rounded-lg shadow-sm'>
                 <h3 class='text-xl font-medium text-gray-800 mb-2'>Real-time Market Data Integration</h3>
                 <ul class='list-disc list-inside space-y-1 text-gray-600'>
                     <li>Seamless integration with Alpaca Markets API</li>
@@ -58,7 +58,7 @@ st.markdown("""
                     <li>Support for multiple timeframes and market data types</li>
                 </ul>
             </div>
-            <div>
+            <div class='bg-gray-50 p-4 rounded-lg shadow-sm'>
                 <h3 class='text-xl font-medium text-gray-800 mb-2'>Advanced Trading Models</h3>
                 <ul class='list-disc list-inside space-y-1 text-gray-600'>
                     <li>Machine learning model integration with TensorFlow</li>
@@ -66,7 +66,7 @@ st.markdown("""
                     <li>Research-based approach with separate modules</li>
                 </ul>
             </div>
-            <div>
+            <div class='bg-gray-50 p-4 rounded-lg shadow-sm'>
                 <h3 class='text-xl font-medium text-gray-800 mb-2'>Data Analysis & Visualization</h3>
                 <ul class='list-disc list-inside space-y-1 text-gray-600'>
                     <li>Comprehensive market data analysis using pandas and numpy</li>
@@ -75,7 +75,7 @@ st.markdown("""
                     <li>Historical data analysis</li>
                 </ul>
             </div>
-            <div>
+            <div class='bg-gray-50 p-4 rounded-lg shadow-sm'>
                 <h3 class='text-xl font-medium text-gray-800 mb-2'>Risk Management</h3>
                 <ul class='list-disc list-inside space-y-1 text-gray-600'>
                     <li>Position sizing algorithms</li>
@@ -88,6 +88,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+
 st.markdown("""
     <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
         <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>📈 Implemented Strategies</h2>
@@ -99,6 +100,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+
 st.markdown("""
     <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
         <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>🛠️ Installation</h2>
@@ -106,17 +108,17 @@ st.markdown("""
         <ol class='list-decimal list-inside space-y-2 text-gray-600 mb-4'>
             <li>Clone the repository:</li>
         </ol>
-        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto'><code>git clone https://github.com/yourusername/Prometheus.git
+        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-4'><code>git clone https://github.com/yourusername/Prometheus.git
 cd Prometheus</code></pre>
         <ol class='list-decimal list-inside space-y-2 text-gray-600 mb-4' start='2'>
             <li>Create and activate a virtual environment:</li>
         </ol>
-        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto'><code>python -m venv .venv
+        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-4'><code>python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate</code></pre>
         <ol class='list-decimal list-inside space-y-2 text-gray-600 mb-4' start='3'>
             <li>Install required dependencies:</li>
         </ol>
-        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto'><code>pip install -r requirements.txt</code></pre>
+        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-4'><code>pip install -r requirements.txt</code></pre>
          <ol class='list-decimal list-inside space-y-2 text-gray-600 mb-4' start='4'>
             <li>Set up your Alpaca API credentials (refer to project configuration).</li>
         </ol>
@@ -128,7 +130,12 @@ st.markdown("""
     <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
         <h2 class='text-2xl font-semibold text-gray-700 mb-4 border-b pb-2'>🚀 Usage Example</h2>
         <p class='text-gray-600 mb-4'>Basic example of fetching market data using the Alpaca API:</p>
-        <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto'><code>import alpaca_trade_api as tradeapi
+    </div>
+""", unsafe_allow_html=True)
+
+# Use st.code for better code display
+st.code('''
+import alpaca_trade_api as tradeapi
 
 # Initialize API connection (replace with your actual keys)
 api = tradeapi.REST(
@@ -140,11 +147,14 @@ api = tradeapi.REST(
 # Fetch market data for Apple (AAPL)
 try:
     data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df
-    st.write("AAPL Data Sample:") # Use st.write or st.dataframe for output in Streamlit
-    st.dataframe(data.head())
+    # Example: Print the first few rows
+    # print(data.head())
 except Exception as e:
-    st.error(f"Error fetching data: {e}")
-</code></pre>
+    print(f"Error fetching data: {e}") # Use print or logging in actual script
+''', language='python')
+
+st.markdown("""
+    <div class='container mx-auto px-4 py-6 bg-white shadow-md rounded-lg mb-8'>
         <p class='text-gray-600 mt-4'>To run specific trading strategies, import and execute the respective modules from the `Simons/backend` or `Sun_Tzu/backend` directories.</p>
     </div>
 """, unsafe_allow_html=True)
