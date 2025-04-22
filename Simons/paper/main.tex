@@ -325,7 +325,6 @@ To robustly and comprehensively evaluate predictive performance, we deployed a s
 \begin{itemize}[noitemsep]
   \item \textbf{Accuracy}: Assesses the overall proportion of correctly predicted directional outcomes, providing an aggregate measure of predictive efficacy.
   \item \textbf{Binary Cross‑Entropy Loss}: Evaluates the calibration, reliability, and confidence of probabilistic forecasts, ensuring accurate interpretation of predicted probabilities.
-  \item \textbf{Confusion Matrix Metrics}: Breaks down true positives, true negatives, false positives, and false negatives, enabling a nuanced diagnosis of predictive strengths and weaknesses.
 \end{itemize}
 
 All model training and evaluation were performed on NVIDIA W100 GPUs to ensure efficient computation and reproducibility.
@@ -335,9 +334,10 @@ All model training and evaluation were performed on NVIDIA W100 GPUs to ensure e
 
 Results are presented separately for the IEX and SIP datasets to investigate the influence of regular trading hours versus extended trading hours on model performance.
 
-\subsection{IEX}
+\subsection{IEX Data Evaluation}
 
-For the IEX dataset, which includes only regular trading hours, the test accuracy and test loss are summarized in Tables 1 and 2, respectively.
+For the IEX dataset, which includes only regular trading hours, the test accuracy and test loss are summarized in Tables~\ref{tab:iex_accuracy} and~\ref{tab:iex_loss}, respectively.
+
 
 \begin{table}[H]
 \centering
@@ -387,15 +387,14 @@ VOO   & \cellcolor{lightblue}{0.6730} & 0.6940 & 0.6840 & 0.6800 \\
 
 \subsubsection*{Key Observations for IEX}
 
-\textbf{Test Accuracy:} The MinMax scaler achieved the highest mean accuracy (0.6981), outperforming Standard (0.6838), Robust (0.6797), and NoScaler (0.6744). At the ticker-specific level, MinMax was optimal for AAPL, GOOG, and NVDA, while the Robust scaler excelled for AMZN and MSFT. NoScaler provided the best accuracy for DIA and IWM, and the Standard scaler was the most effective only for VOO.This variation highlights the importance of selecting appropriate scaling methods based on individual stocks or ETFs.
+\textbf{Test Accuracy:} The MinMax scaler achieved the highest mean accuracy (0.6981), outperforming Standard (0.6838), Robust (0.6797), and NoScaler (0.6744). At the ticker-specific level, MinMax was optimal for AAPL, GOOG and NVDA, while the Robust scaler excelled for AMZN and MSFT. NoScaler provided the best accuracy for DIA and IWM, and the Standard scaler was the most effective only for VOO. This variation highlights the importance of selecting appropriate scaling methods based on individual stocks or ETFs.
 
-\textbf{Test Loss:} MinMax also had the lowest mean loss (0.5935), clearly outperforming Standard (0.6165), Robust (0.6133), and NoScaler (0.6416). Ticker-specific analysis shows MinMax performed best for AAPL, GOOG, and MSFT, while NoScaler was optimal for DIA and IWM. Standard scaling achieved the lowest loss values for AMZN, NVDA, and VOO. These results confirm MinMax as generally effective in reducing loss during regular trading hours, despite some exceptions across tickers.
+\textbf{Test Loss:} MinMax also had the lowest mean loss (0.5935), clearly outperforming Standard (0.6165), Robust (0.6133), and NoScaler (0.6416). Ticker-specific analysis shows MinMax performed best for AAPL, GOOG and MSFT, while NoScaler was optimal for DIA and IWM. Standard scaling achieved the lowest loss values for AMZN, NVDA and VOO. These results confirm MinMax as generally effective in reducing loss during regular trading hours, despite some exceptions across tickers.
 
 
+\subsection{SIP Data Evaluation}
 
-\subsection{SIP}
-
-For the SIP dataset, which includes extended trading hours (pre-market, regular and post-market sessions), the test accuracy and test loss are summarized in Tables 3 and 4, respectively.
+For the SIP dataset, which includes extended trading hours (pre-market, regular and post-market sessions), the test accuracy and test loss are summarized in Tables~\ref{tab:sip_accuracy} and~\ref{tab:sip_loss}, respectively.
 
 
 \begin{table}[H]
@@ -451,6 +450,19 @@ VOO   & \cellcolor{lightblue}0.3050 & 0.3300 & 0.3320 & 0.3060 \\
 
 \textbf{Test Loss:} Robust scaler recorded the lowest mean loss (0.4454), outperforming MinMax (0.4547), Standard (0.4571), and NoScaler (0.4854). Ticker-specific performance indicates Robust scaling achieved the lowest loss for AAPL, AMZN, and GOOG. NoScaler performed best for DIA, IWM, and MSFT, while Standard scaler was optimal for VOO and tied with MinMax for NVDA. This consistency in Robust scaler performance highlights its suitability for stabilizing predictions across stocks when data includes extended trading hours, though exceptions exist for certain ETFs where NoScaler is more effective.
 
+\subsubsection*{Broader Applications}
+These findings affirm the pivotal role of feature scaling in deep learning
+ models applied to financial time series. The inclusion of extended-hour trading introduces greater
+ distributional variability and elevates the importance of robust normalization strategies. In this
+ context, the Robust scaler demonstrates consistent advantages in balancing accuracy and loss,
+ positioning it as a default choice for models ingesting full-session equity data. However, the notable
+ performance of NoScaler on ETFs and highly liquid instruments suggests that in some scenarios,
+ the preservation of raw feature distributions can retain signal characteristics otherwise obscured
+ by transformation.
+ To enhance generalization across diverse asset classes and volatility regimes, future research should
+ explore the integration of adaptive preprocessing strategies. These could involve dynamically select
+ing or parameterizing scaling methods based on real-time diagnostics. Such frameworks would allow for more intelligent, asset-aware pipelines capable
+ of maintaining optimal performance in dynamic and multifactorial financial environments.
 
 
 %Tabela e graficos do SP500.

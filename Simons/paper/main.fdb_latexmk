@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1745192184 "main.aux" "main.bbl" "main" 1745228286
+["bibtex main"] 1745349705 "main.aux" "main.bbl" "main" 1745349881
   "/usr/share/texlive/texmf-dist/bibtex/bst/llncs/splncs04.bst" 1642453212 32146 ee21ae2a29028dc8ad842a97200982c7 ""
-  "main.aux" 1745228285 8134 135f899452054ccbbe0c7769db3a837f "pdflatex"
-  "referencias.bib" 1745192836 2391 9743b4eb08e5b78eeacdfe192303dc8d ""
+  "main.aux" 1745349881 8168 4ea9fa0d642b0700eca0689f8a2ebc32 "pdflatex"
+  "referencias.bib" 1745229822 2391 9743b4eb08e5b78eeacdfe192303dc8d ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1745228283 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745228286
+["pdflatex"] 1745349879 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745349881
   "/etc/texmf/web2c/texmf.cnf" 1744990280 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745227043 47446 4662786bb372019bb2f3f2980b75f680 ""
+  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745349879 48531 902b4e243d75f8676e7ed080be1ab23a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -211,15 +211,15 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1744994284 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1744994312 2799266 5652160c7c85ac2d7b0a9339816e0561 ""
-  "Attachments.pdf" 1745192836 24026180 5d9a44d7f897e97ea765825603ae1451 ""
-  "LSTM-chain.png" 1745192836 229688 2795bc16b012322f7767cd4d940ba2e3 ""
-  "accuracy_improvement.png" 1745192836 36105 589bc52bafa6216dc61e6fde7277b3bd ""
-  "main.aux" 1745228285 8134 135f899452054ccbbe0c7769db3a837f "pdflatex"
-  "main.bbl" 1745192836 1563 f62e6506a58e51fced0f8a877890f9db "bibtex main"
-  "main.out" 1745228285 4604 7ee851feafc1e88da09db32a4b9d0fc1 "pdflatex"
-  "main.tex" 1745227043 47446 4662786bb372019bb2f3f2980b75f680 ""
-  "scaler_comparison.png" 1745228271 41085 211ec29a707edc302786bd89edc1a107 ""
-  "volatility_accuracy.png" 1745192836 46648 fc245889e84b7982059e011d6fdfe652 ""
+  "Attachments.pdf" 1745229822 24026180 5d9a44d7f897e97ea765825603ae1451 ""
+  "LSTM-chain.png" 1745229822 229688 2795bc16b012322f7767cd4d940ba2e3 ""
+  "accuracy_improvement.png" 1745229822 36105 589bc52bafa6216dc61e6fde7277b3bd ""
+  "main.aux" 1745349881 8168 4ea9fa0d642b0700eca0689f8a2ebc32 "pdflatex"
+  "main.bbl" 1745349705 1563 f62e6506a58e51fced0f8a877890f9db "bibtex main"
+  "main.out" 1745349881 4776 4593656a74cc4b7e4ed5af2943f5ef3c "pdflatex"
+  "main.tex" 1745349879 48531 902b4e243d75f8676e7ed080be1ab23a ""
+  "scaler_comparison.png" 1745229824 41085 211ec29a707edc302786bd89edc1a107 ""
+  "volatility_accuracy.png" 1745229822 46648 fc245889e84b7982059e011d6fdfe652 ""
   (generated)
   "main.aux"
   "main.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.18)  21 APR 2025 10:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.18)  22 APR 2025 20:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -842,276 +842,276 @@ Package pdftex.def Info: LSTM-chain.png  used on input line 301.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6] [7 <./LSTM-chain.png>] [8] [9]
-<scaler_comparison.png, id=210, 714.7503pt x 426.393pt>
+<scaler_comparison.png, id=214, 714.7503pt x 426.393pt>
 File: scaler_comparison.png Graphic file (type png)
 <use scaler_comparison.png>
-Package pdftex.def Info: scaler_comparison.png  used on input line 470.
+Package pdftex.def Info: scaler_comparison.png  used on input line 482.
 (pdftex.def)             Requested size: 405.45047pt x 241.88191pt.
-<accuracy_improvement.png, id=211, 859.2903pt x 426.393pt>
+<accuracy_improvement.png, id=215, 859.2903pt x 426.393pt>
 File: accuracy_improvement.png Graphic file (type png)
 <use accuracy_improvement.png>
-Package pdftex.def Info: accuracy_improvement.png  used on input line 477.
+Package pdftex.def Info: accuracy_improvement.png  used on input line 489.
 (pdftex.def)             Requested size: 426.79135pt x 211.77762pt.
- [10 <./scaler_comparison.png> <./accuracy_improvement.png>]
-<volatility_accuracy.png, id=221, 712.5822pt x 426.393pt>
+ [10 <./scaler_comparison.png>] [11 <./accuracy_improvement.png>]
+<volatility_accuracy.png, id=229, 712.5822pt x 426.393pt>
 File: volatility_accuracy.png Graphic file (type png)
 <use volatility_accuracy.png>
-Package pdftex.def Info: volatility_accuracy.png  used on input line 524.
+Package pdftex.def Info: volatility_accuracy.png  used on input line 536.
 (pdftex.def)             Requested size: 426.79135pt x 255.38232pt.
- [11] [12 <./volatility_accuracy.png>] [13]
-<Attachments.pdf, id=244, 597.50829pt x 845.0471pt>
+ [12 <./volatility_accuracy.png>] [13]
+<Attachments.pdf, id=248, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf>
-Package pdftex.def Info: Attachments.pdf  used on input line 546.
+Package pdftex.def Info: Attachments.pdf  used on input line 558.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf>
-Package pdftex.def Info: Attachments.pdf  used on input line 546.
+Package pdftex.def Info: Attachments.pdf  used on input line 558.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-<Attachments.pdf, id=247, page=1, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=251, page=1, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page1 used on input line 558.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page1 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page1 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page1 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page1 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [14 <./Attachments.pdf>]
-<Attachments.pdf, id=296, page=2, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=300, page=2, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 2>
-Package pdftex.def Info: Attachments.pdf , page2 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page2 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 2>
-Package pdftex.def Info: Attachments.pdf , page2 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page2 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 2>
-Package pdftex.def Info: Attachments.pdf , page2 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page2 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [15 <./Attachments.pdf>]
-<Attachments.pdf, id=326, page=3, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=330, page=3, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 3>
-Package pdftex.def Info: Attachments.pdf , page3 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page3 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 3>
-Package pdftex.def Info: Attachments.pdf , page3 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page3 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 3>
-Package pdftex.def Info: Attachments.pdf , page3 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page3 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [16 <./Attachments.pdf>]
-<Attachments.pdf, id=356, page=4, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=360, page=4, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 4>
-Package pdftex.def Info: Attachments.pdf , page4 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page4 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 4>
-Package pdftex.def Info: Attachments.pdf , page4 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page4 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 4>
-Package pdftex.def Info: Attachments.pdf , page4 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page4 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [17 <./Attachments.pdf>]
-<Attachments.pdf, id=386, page=5, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=390, page=5, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 5>
-Package pdftex.def Info: Attachments.pdf , page5 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page5 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 5>
-Package pdftex.def Info: Attachments.pdf , page5 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page5 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 5>
-Package pdftex.def Info: Attachments.pdf , page5 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page5 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [18 <./Attachments.pdf>]
-<Attachments.pdf, id=417, page=6, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=421, page=6, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 6>
-Package pdftex.def Info: Attachments.pdf , page6 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page6 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 6>
-Package pdftex.def Info: Attachments.pdf , page6 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page6 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 6>
-Package pdftex.def Info: Attachments.pdf , page6 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page6 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [19 <./Attachments.pdf>]
-<Attachments.pdf, id=447, page=7, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=452, page=7, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 7>
-Package pdftex.def Info: Attachments.pdf , page7 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page7 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 7>
-Package pdftex.def Info: Attachments.pdf , page7 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page7 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 7>
-Package pdftex.def Info: Attachments.pdf , page7 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page7 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [20 <./Attachments.pdf>]
-<Attachments.pdf, id=478, page=8, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=482, page=8, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 8>
-Package pdftex.def Info: Attachments.pdf , page8 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page8 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 8>
-Package pdftex.def Info: Attachments.pdf , page8 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page8 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 8>
-Package pdftex.def Info: Attachments.pdf , page8 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page8 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [21 <./Attachments.pdf>]
-<Attachments.pdf, id=508, page=9, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=512, page=9, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 9>
-Package pdftex.def Info: Attachments.pdf , page9 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page9 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 9>
-Package pdftex.def Info: Attachments.pdf , page9 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page9 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 9>
-Package pdftex.def Info: Attachments.pdf , page9 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page9 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [22 <./Attachments.pdf>]
-<Attachments.pdf, id=538, page=10, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=542, page=10, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 10>
-Package pdftex.def Info: Attachments.pdf , page10 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page10 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 10>
-Package pdftex.def Info: Attachments.pdf , page10 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page10 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 10>
-Package pdftex.def Info: Attachments.pdf , page10 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page10 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [23 <./Attachments.pdf>]
-<Attachments.pdf, id=568, page=11, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=572, page=11, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 11>
-Package pdftex.def Info: Attachments.pdf , page11 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page11 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 11>
-Package pdftex.def Info: Attachments.pdf , page11 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page11 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 11>
-Package pdftex.def Info: Attachments.pdf , page11 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page11 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [24 <./Attachments.pdf>]
-<Attachments.pdf, id=599, page=12, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=603, page=12, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 12>
-Package pdftex.def Info: Attachments.pdf , page12 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page12 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 12>
-Package pdftex.def Info: Attachments.pdf , page12 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page12 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 12>
-Package pdftex.def Info: Attachments.pdf , page12 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page12 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [25 <./Attachments.pdf>]
-<Attachments.pdf, id=629, page=13, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=633, page=13, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 13>
-Package pdftex.def Info: Attachments.pdf , page13 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page13 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 13>
-Package pdftex.def Info: Attachments.pdf , page13 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page13 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 13>
-Package pdftex.def Info: Attachments.pdf , page13 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page13 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [26 <./Attachments.pdf>]
-<Attachments.pdf, id=659, page=14, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=663, page=14, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 14>
-Package pdftex.def Info: Attachments.pdf , page14 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page14 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 14>
-Package pdftex.def Info: Attachments.pdf , page14 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page14 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 14>
-Package pdftex.def Info: Attachments.pdf , page14 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page14 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [27 <./Attachments.pdf>]
-<Attachments.pdf, id=689, page=15, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=693, page=15, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 15>
-Package pdftex.def Info: Attachments.pdf , page15 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page15 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 15>
-Package pdftex.def Info: Attachments.pdf , page15 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page15 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 15>
-Package pdftex.def Info: Attachments.pdf , page15 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page15 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [28 <./Attachments.pdf>]
-<Attachments.pdf, id=719, page=16, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=723, page=16, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 16>
-Package pdftex.def Info: Attachments.pdf , page16 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page16 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 16>
-Package pdftex.def Info: Attachments.pdf , page16 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page16 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 16>
-Package pdftex.def Info: Attachments.pdf , page16 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page16 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [29 <./Attachments.pdf>]
-<Attachments.pdf, id=749, page=17, 597.50829pt x 845.0471pt>
+<Attachments.pdf, id=753, page=17, 597.50829pt x 845.0471pt>
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 17>
-Package pdftex.def Info: Attachments.pdf , page17 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page17 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 17>
-Package pdftex.def Info: Attachments.pdf , page17 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page17 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
 File: Attachments.pdf Graphic file (type pdf)
 <use Attachments.pdf, page 17>
-Package pdftex.def Info: Attachments.pdf , page17 used on input line 546.
+Package pdftex.def Info: Attachments.pdf , page17 used on input line 558.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
  [30 <./Attachments.pdf>] (./main.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 12.
@@ -1129,21 +1129,21 @@ Underfull \hbox (badness 3492) in paragraph at lines 20--22
 
 ) [31] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7EE851FEAFC1E88DA09DB32A4B9D0FC1;4604.
+(rerunfilecheck)             Checksum: 4593656A74CC4B7E4ED5AF2943F5EF3C;4776.
  ) 
 Here is how much of TeX's memory you used:
- 30419 strings out of 478287
- 599632 string characters out of 5849289
+ 30421 strings out of 478287
+ 599652 string characters out of 5849289
  965289 words of memory out of 5000000
  47899 multiletter control sequences out of 15000+600000
- 483758 words of font info for 122 fonts, out of 8000000 for 9000
+ 483816 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,17n,104p,1230b,895s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,17n,104p,1230b,915s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (32 pages, 24496342 bytes).
+Output written on main.pdf (32 pages, 24497505 bytes).
 PDF statistics:
- 856 PDF objects out of 1000 (max. 8388607)
- 371 compressed objects within 4 object streams
+ 860 PDF objects out of 1000 (max. 8388607)
+ 375 compressed objects within 4 object streams
  84 named destinations out of 1000 (max. 500000)
  29557 words of extra memory for PDF output out of 29859 (max. 10000000)
 
