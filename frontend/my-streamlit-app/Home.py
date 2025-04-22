@@ -1,8 +1,8 @@
 import streamlit as st
-from Overview import main_overview
-from Model_Stats import main_model_stats
-from Academic_References import main_academic_references
-from Predictions import main_predictions
+from backend.Overview import main_overview
+from backend.Model_Stats import main_model_stats
+from backend.Academic_References import main_academic_references
+from backend.Predictions import main_predictions
 
 
 def main():
