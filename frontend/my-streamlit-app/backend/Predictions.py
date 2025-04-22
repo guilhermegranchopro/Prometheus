@@ -110,7 +110,7 @@ def get_predictions(stock_ID):
 def main_predictions():
    st.header("Predictions")
    stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
-   selected_stock = st.selectbox("Select Stock/ETF:", stocks)
+   selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
 
    if selected_stock:
       with st.spinner(f"Fetching data and generating prediction for {selected_stock}..."):

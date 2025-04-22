@@ -97,7 +97,7 @@ def main_model_stats():
     st.header("Model Stats")
 
     stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
-    selected_stock = st.selectbox("Select Stock/ETF:", stocks)
+    selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
 
     if selected_stock:
         st.subheader(f"Performance Metrics for {selected_stock}")
