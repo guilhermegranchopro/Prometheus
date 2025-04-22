@@ -143,6 +143,6 @@ def main_predictions():
             cols = ["vwap_scaled", "trade_count"]
             st.dataframe(pd.DataFrame(X_combined, columns=cols))
 
-
-if __name__ == "__main__":
-   main_predictions()
+# If running this script directly (optional)
+#if __name__ == '__main__':
+#   main_predictions()
