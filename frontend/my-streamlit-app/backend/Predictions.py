@@ -1,10 +1,11 @@
 import streamlit as st
 import tensorflow as tf
+import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
 import os
 from alpaca_trade_api.rest import TimeFrame
-import datetime
+from datetime import datetime, timezone
 
 def get_paths(stock_ID):
    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
@@ -68,20 +69,14 @@ def get_data(stock_ID):
    SECRET_KEY = os.getenv('ALPACA_SECRET_KEY')
    BASE_URL = 'https://api.alpaca.markets'
 
-   if API_KEY is None or SECRET_KEY is None:
-       st.error("Please set your Alpaca API Key and Alpaca Secret Key.")
-       return None
-
    api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
-   end_date = datetime.datetime.now()
-   start_date = end_date - datetime.timedelta(days=90)
+   now = datetime.now(timezone.utc)
+   end_date = (now - datetime.timedelta(minutes=15)).isoformat()
+   start_date = (now - datetime.timedelta(hours=3) - datetime.timedelta(minutes=15)).isoformat()
 
-   data = api.get_bars(stock_ID, TimeFrame.Day, start_date.strftime('%Y-%m-%d'), end_date.strftime('%Y-%m-%d')).df
-   if data.empty:
-       st.warning(f"No data received from Alpaca for {stock_ID}.")
-       return None
-   data = data.sort_index()
+   data = api.get_bars(stock_ID, "5Min", start_date, end_date, "sip").df
+
    return data
 
 
@@ -91,43 +86,22 @@ def get_predictions(stock_ID):
    # Load scaler if available
    if scaler_path:
        scaler = joblib.load(scaler_path)
-   else:
-       scaler = None
-
-   model = tf.keras.models.load_model(model_path)
 
    data_df = get_data(stock_ID)
-   if data_df is None:
-      return None, None, scaler, None
 
-   features = ['vwap', 'trade_count']
-   if not all(feature in data_df.columns for feature in features):
-       st.error(f"Required features ({features}) not found in Alpaca data columns: {data_df.columns.tolist()}")
-       return None, data_df, scaler, None
+   X_VWAP = data_df[['vwap']].to_numpy()
+   X_Trade_Count = data_df[['trade_count']].to_numpy()
 
-   data_features = data_df[features]
-   data_features = data_features.fillna(method='ffill').fillna(method='bfill')
-   if data_features.isnull().values.any():
-       st.warning("NaN values remain after fillna, prediction might be unreliable.")
+   if scaler_path:
+      X_VWAP_scaled = scaler.transform(X_VWAP)
 
-   if data_features.empty:
-       st.error("No valid data available for scaling after preprocessing.")
-       return None, data_df, scaler, None
+   X_combined = np.concatenate([X_VWAP_scaled, X_Trade_Count], axis=1)
+   X_Tensor = np.expand_dims(X_combined, axis=0)
 
-   # Scale or use raw data depending on scaler availability
-   if scaler:
-       scaled_data = scaler.transform(data_features)
-   else:
-       scaled_data = data_features.values
+   model = tf.keras.models.load_model(model_path)
+   predictions = model.predict(X_Tensor)
 
-   if scaled_data is not None and scaled_data.shape[0] > 0:
-       latest_scaled_data = scaled_data[-1].reshape(1, -1)
-
-       predictions = model.predict(latest_scaled_data)
-       return predictions, data_df, scaler, scaled_data
-   else:
-       st.error("Scaled data is empty or invalid, cannot make prediction.")
-       return None, data_df, scaler, scaled_data
+   return predictions, data_df, scaler, X_combined
 
 
 def main_predictions():
@@ -137,27 +111,9 @@ def main_predictions():
 
     if selected_stock:
         st.info(f"Fetching data and generating prediction for {selected_stock}...")
-        predictions, data_df, scaler, scaled_data = get_predictions(selected_stock)
+        predictions, data_df, scaler, X_combined = get_predictions(selected_stock)
 
-        if predictions is not None and data_df is not None and scaler is not None and scaled_data is not None:
-            latest_prediction = predictions[0][0]
 
-            st.metric(label=f"Raw Predicted Value for {selected_stock}", value=f"{latest_prediction:.4f}")
-            st.write("Note: This value might be scaled or represent something other than price. Inverse transform logic needs review based on scaler features.")
-
-            last_actual_close = data_df['close'].iloc[-1]
-            st.write(f"Last actual close price: ${last_actual_close:.2f}")
-
-            st.subheader("Recent Market Data Used for Prediction")
-            st.dataframe(data_df.tail())
-
-        elif data_df is None and predictions is None:
-            st.warning(f"Could not fetch data for {selected_stock}.")
-        else:
-            st.error(f"Could not generate prediction for {selected_stock}.")
-            if data_df is not None:
-                st.subheader("Recent Market Data (Prediction Failed)")
-                st.dataframe(data_df.tail())
 
 if __name__ == '__main__':
     main_predictions()
