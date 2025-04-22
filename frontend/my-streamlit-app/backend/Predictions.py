@@ -4,7 +4,8 @@ import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+import pandas as pd
 
 def get_paths(stock_ID):
    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
@@ -71,8 +72,8 @@ def get_data(stock_ID):
    api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
    now = datetime.now(timezone.utc)
-   end_date = (now - datetime.timedelta(minutes=15)).isoformat()
-   start_date = (now - datetime.timedelta(hours=3) - datetime.timedelta(minutes=15)).isoformat()
+   end_date = (now - timedelta(minutes=15)).isoformat()
+   start_date = (now - timedelta(hours=3) - timedelta(minutes=15)).isoformat()
 
    data = api.get_bars(stock_ID, "5Min", start_date, end_date, "sip").df
 
@@ -81,7 +82,7 @@ def get_data(stock_ID):
 
 def get_predictions(stock_ID):
    model_path, scaler_path = get_paths(stock_ID)
-
+   scaler = None
    # Load scaler if available
    if scaler_path:
       scaler = joblib.load(scaler_path)
@@ -91,8 +92,11 @@ def get_predictions(stock_ID):
    X_VWAP = data_df[['vwap']].to_numpy()
    X_Trade_Count = data_df[['trade_count']].to_numpy()
 
+   # Scale vwap if scaler provided, else use raw
    if scaler_path:
       X_VWAP_scaled = scaler.transform(X_VWAP)
+   else:
+      X_VWAP_scaled = X_VWAP
 
    X_combined = np.concatenate([X_VWAP_scaled, X_Trade_Count], axis=1)
    X_Tensor = np.expand_dims(X_combined, axis=0)
@@ -112,9 +116,32 @@ def main_predictions():
       with st.spinner(f"Fetching data and generating prediction for {selected_stock}..."):
          predictions, data_df, scaler, X_combined = get_predictions(selected_stock)
          st.success(f"Prediction for {selected_stock} generated successfully!")
-   
 
+         # Aesthetic and comprehensive display of results
+         preds = predictions.flatten()
+         st.subheader("Model Predictions")
+         # Key metrics in columns
+         latest = preds[-1]
+         mean_pred = preds.mean()
+         count = len(preds)
+         m1, m2, m3 = st.columns(3)
+         m1.metric("Latest Prediction", f"{latest:.4f}")
+         m2.metric("Mean Prediction", f"{mean_pred:.4f}")
+         m3.metric("Total Predictions", f"{count}")
+         # Line chart of predictions
+         st.line_chart(pd.DataFrame({"Prediction": preds}), use_container_width=True)
 
+         # Summary statistics of predictions
+         st.subheader("Prediction Summary")
+         stats_df = pd.DataFrame(preds, columns=["prediction"]).describe()
+         st.table(stats_df)
+
+         # Expanders for raw data and features
+         with st.expander("Raw Data", expanded=False):
+            st.dataframe(data_df)
+         with st.expander("Combined Feature Inputs", expanded=False):
+            cols = ["vwap_scaled", "trade_count"]
+            st.dataframe(pd.DataFrame(X_combined, columns=cols))
 
 
 if __name__ == '__main__':
