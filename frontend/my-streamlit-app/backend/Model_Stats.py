@@ -130,11 +130,11 @@ def main_model_stats():
         st.subheader("Model Training History & Evaluation")
         cols = st.columns(3)
         with cols[0]:
-            st.image(accuracy_curve_path, caption=f"{selected_stock} Accuracy Curve", use_column_width=True)
+            st.image(accuracy_curve_path, caption=f"{selected_stock} Accuracy Curve", use_container_width=True)
         with cols[1]:
-            st.image(loss_curve_path, caption=f"{selected_stock} Loss Curve", use_column_width=True)
+            st.image(loss_curve_path, caption=f"{selected_stock} Loss Curve", use_container_width=True)
         with cols[2]:
-            st.image(confusion_matrix_path, caption=f"{selected_stock} Confusion Matrix", use_column_width=True)
+            st.image(confusion_matrix_path, caption=f"{selected_stock} Confusion Matrix", use_container_width=True)
 
 # If running this script directly (optional)
 # if __name__ == "__main__":
