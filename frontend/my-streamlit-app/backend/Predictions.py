@@ -4,7 +4,6 @@ import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
 import os
-from alpaca_trade_api.rest import TimeFrame
 from datetime import datetime, timezone
 
 def get_paths(stock_ID):
@@ -85,7 +84,7 @@ def get_predictions(stock_ID):
 
    # Load scaler if available
    if scaler_path:
-       scaler = joblib.load(scaler_path)
+      scaler = joblib.load(scaler_path)
 
    data_df = get_data(stock_ID)
 
@@ -105,15 +104,18 @@ def get_predictions(stock_ID):
 
 
 def main_predictions():
-    st.header("Predictions")
-    stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
-    selected_stock = st.selectbox("Select Stock/ETF:", stocks)
+   st.header("Predictions")
+   stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
+   selected_stock = st.selectbox("Select Stock/ETF:", stocks)
 
-    if selected_stock:
-        st.info(f"Fetching data and generating prediction for {selected_stock}...")
-        predictions, data_df, scaler, X_combined = get_predictions(selected_stock)
+   if selected_stock:
+      with st.spinner(f"Fetching data and generating prediction for {selected_stock}..."):
+         predictions, data_df, scaler, X_combined = get_predictions(selected_stock)
+         st.success(f"Prediction for {selected_stock} generated successfully!")
+   
+
 
 
 
 if __name__ == '__main__':
-    main_predictions()
+   main_predictions()
