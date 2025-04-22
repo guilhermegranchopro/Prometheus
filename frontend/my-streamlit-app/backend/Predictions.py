@@ -7,6 +7,14 @@ import os
 from datetime import datetime, timezone, timedelta
 import pandas as pd
 
+# Cache model loading to prevent repeated retracing
+@st.cache_resource
+def _load_model(path):
+   model = tf.keras.models.load_model(path)
+   # Build the TF graph once to avoid retracing on each prediction
+   model.make_predict_function()
+   return model
+
 def get_paths(stock_ID):
    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
    MODELS_BASE_PATH = os.path.join(BASE_DIR, "Models/SIP")
@@ -101,7 +109,7 @@ def get_predictions(stock_ID):
    X_combined = np.concatenate([X_VWAP_scaled, X_Trade_Count], axis=1)
    X_Tensor = np.expand_dims(X_combined, axis=0)
 
-   model = tf.keras.models.load_model(model_path)
+   model = _load_model(model_path)
    predictions = model.predict(X_Tensor)
 
    return predictions, data_df, scaler, X_combined
