@@ -12,7 +12,7 @@ def get_paths(stock_ID):
    MODELS_BASE_PATH = os.path.join(BASE_DIR, "Models/SIP")
    DATA_BASE_PATH = os.path.join(BASE_DIR, "Data/SIP/Scalers")
 
-   model_file_extension = ".h5"
+   model_file_extension = ".keras"
    scaler_file_extension = ".pkl"
 
    if stock_ID == "VOO":
