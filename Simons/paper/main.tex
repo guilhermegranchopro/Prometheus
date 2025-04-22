@@ -470,12 +470,23 @@ ing or parameterizing scaling methods based on real-time diagnostics. Such frame
 %Colocar imagem do sp500 durante 2016 ate 2024
 \section{Discussion}
 
-The evaluation of LSTM model performance across different data scalers, tickers, and timeframes reveals important insights about model behavior and market characteristics.
+The empirical evaluation of LSTM architectures across a diverse array
+of normalization strategies, asset classes, and market session intervals yields a multidimensional
+understanding of how data preprocessing, model design, and market microstructure jointly influ
+ence forecasting efficacy. These findings provide actionable insights for financial machine learning
+practitioners, while also informing the development of adaptive, asset-aware predictive systems
+suitable for deployment in dynamic, high-frequency trading environments.
 
 \subsection{Performance Across Data Feeds}  
-The comparison between the IEX and SIP datasets highlights the value of incorporating extended trading hours. Models trained on SIP data consistently outperformed their IEX counterparts in terms of both mean test accuracy and loss. Specifically, the best-performing configuration under SIP (Robust scaler, 0.8201 mean accuracy) exceeded the best under IEX (MinMax scaler, 0.6981 mean accuracy) by a significant margin. This suggests that pre-market and post-market trading activity carries predictive signals that are beneficial for short-term forecasting, particularly for individual stocks like AMZN, MSFT, and GOOG. However, it also introduces greater volatility and noise, emphasizing the importance of robust preprocessing techniques.
+A central outcome of this investigation is the clear performance advantage achieved by incorporating extended trading sessions through the use of SIP data. Models trained on SIP data consistently outperformed their counterparts trained on IEX data across both mean test accuracy and loss. The top-performing configuration—Robust scaling applied to SIP—achieved a mean accuracy of 0.8201, outperforming the best IEX configuration (MinMax scaling, 0.6981 mean accuracy) by a substantial margin. This suggests that off-hours trading—despite its increased complexity—contains valuable predictive signals for short-horizon price forecasting.
 
-To further illustrate this performance gap, Figure~\ref{fig:scaler_comparison} presents a direct comparison of mean accuracy and loss for each scaler across both datasets, highlighting that models trained on SIP data consistently benefit from extended hours information. Figure~\ref{fig:accuracy_improvement} specifically shows the percentage improvement in best accuracy from IEX to SIP across all tickers. Notably, NVDA was the only stock for which incorporating extended trading hours led to a slight reduction in accuracy (-5.30\%). This anomaly may be attributed to NVDA’s pronounced volatility, possibly exacerbated during extended trading sessions by events such as earnings announcements and significant news releases, which can obscure predictive signals and introduce additional noise into the forecasting process.
+The SIP dataset captures market dynamics that are often absent during standard trading hours, including early institutional positioning, overnight macroeconomic shock assimilation, and post-close retail activity. These phenomena introduce temporal heterogeneity into the data, increasing both the richness and variance of the observed sequences. As a result, models trained on SIP data benefit from exposure to a broader set of market states, enhancing their ability to learn nuanced representations of regime transitions and anomalous behavior.
+
+Nevertheless, this expanded temporal context also amplifies modeling challenges. Extended sessions exhibit elevated volatility, sparser liquidity, and more frequent structural breaks, which may violate implicit assumptions of local stationarity and smooth feature evolution. These conditions demand more robust preprocessing strategies. In our analysis, the Robust scaler proved particularly effective under these conditions, consistently outperforming alternative scalers in both accuracy and loss metrics. This affirms the utility of robust normalization in mitigating distributional shifts and handling heavy-tailed data typical of extended-hour market environments.
+
+Figures~\ref{fig:scaler_comparison} and~\ref{fig:accuracy_improvement} visually summarize these results. The former compares mean accuracy and loss across both datasets for each scaler, while the latter presents per‐ticker percentage improvement in predictive performance when transitioning from IEX to SIP. Most assets benefited meaningfully from SIP‐based training, affirming the generality of these findings.
+
+A notable exception is NVDA, which exhibited a decline in model accuracy (-5.30\%) when trained on SIP data. This deviation likely reflects NVDA’s elevated exposure to high‐impact, unscheduled information events—such as earnings calls and product launches—which often occur during extended hours and introduce discontinuities in price dynamics. These regime changes disrupt temporal coherence and degrade the effectiveness of autoregressive models that assume locally smooth transitions. This case reinforces the importance of tailoring data inclusion strategies to asset‐specific characteristics such as news sensitivity and volatility clustering.
 
 \begin{figure}[H]
     \centering
@@ -491,39 +502,70 @@ To further illustrate this performance gap, Figure~\ref{fig:scaler_comparison} p
     \label{fig:accuracy_improvement}
 \end{figure}
 
-Overall, these visualizations clearly underscore the beneficial role of extended trading hours data in predictive modeling, despite isolated exceptions such as NVDA, which highlight the complexities introduced by high-volatility trading environments.
+Taken together, these findings suggest that while extended-session data generally enhances predic
+tive accuracy, its benefits are not uniform across assets. The value of this information is contingent
+ upon an asset’s volatility profile, liquidity regime, and sensitivity to exogenous events. As such, fu
+ture implementations would benefit from adaptive, asset-aware data conditioning that dynamically
+ determines which temporal segments to emphasize.
 
-
-
+ 
 \subsection{Effectiveness of Scaling Techniques}
 
 Across both the IEX and SIP datasets, data normalization significantly influenced model accuracy and stability, with the optimal scaling technique varying by dataset and asset type. For the IEX dataset, which covers only regular trading hours, the MinMax scaler proved most effective, achieving a mean test accuracy of 0.6981 and a mean test loss of 0.5935. This scaler normalizes features to a fixed range, making it well-suited to the relatively stable and bounded price movements typical of regular trading hours. By reducing the impact of minor fluctuations, the MinMax scaler enhances the model’s ability to detect consistent patterns in this less volatile environment.
 
 In contrast, for the SIP dataset, the Robust scaler outperformed other methods, yielding a mean test accuracy of 0.8201 and a mean test loss of 0.4454. Extended hours often feature lower liquidity, leading to increased volatility, outliers, and price spikes. The Robust scaler, which relies on the median and interquartile range, mitigates the influence of these anomalies, providing a more stable foundation for model predictions. This explains its advantage over alternatives like the MinMax scaler (0.8119 accuracy, 0.4547 loss) and Standard scaler (0.8143 accuracy, 0.4571 loss) in the SIP dataset.
 
-Interestingly, the NoScaler configuration occasionally matched or exceeded scaled approaches, particularly for exchange-traded funds (ETFs) such as DIA (0.8420 accuracy in SIP), IWM (0.8340 in SIP), and VOO (0.8780 in SIP). A similar trend appeared in the IEX dataset, with NoScaler performing best for DIA (0.6200) and IWM (0.7150). This suggests that ETFs, which track broad indices and aggregate multiple stocks, exhibit smoother temporal dynamics that may reduce the need for normalization. Their inherent stability could allow models to effectively leverage raw feature values without additional scaling.
+An additional insight from this analysis is the strong performance of the NoScaler configuration for
+specific asset classes, particularly ETFs. In both datasets, NoScaler achieved top-tier performance
+for instruments such as DIA, IWM, and VOO, reaching 0.8420, 0.8340, and 0.8780 accuracy in
+the SIP dataset, and 0.6200 and 0.7150 in the IEX dataset. These instruments, by design, ag
+gregate the performance of multiple underlying stocks, producing smoother price trajectories with
+reduced idiosyncratic volatility. The structural stability of ETFs appears to reduce the necessity
+for normalization, as the raw feature values already conform to a relatively low-noise distribution.
+
+In these low-volatility regimes, normalization may in fact attenuate informative signals, particularly
+those embedded in the raw scale or directionality of inputs. By preserving the native feature
+structure, NoScaler can retain subtle dynamics that inform directional shifts, especially in assets
+with mean-reverting behavior. This suggests that the application of normalization should be
+conditioned on asset-specific properties, including volatility clustering, mean-reversion strength,
+and exposure to external news shocks.
+
+These findings collectively argue for a flexible and adaptive approach to preprocessing in financial
+deep learning. While MinMax and Robust scalers are highly effective in regular and extended
+sessions respectively, their blanket application may obscure latent structure in instruments with
+inherently stable dynamics. An ideal system would employ context-aware preprocessing, selecting
+or blending scalers based on real-time diagnostics of data distribution properties.
 
 \subsection{Volatility}
 
-To examine the interplay between market volatility and model performance, we computed the annualized volatility for each ticker over the test period (June 7, 2023, to December 30, 2024). In financial contexts, volatility quantifies the dispersion of returns, serving as a proxy for risk. Higher volatility often manifests as larger, more frequent price fluctuations, which can stem from unpredictable events, thereby complicating the identification of consistent patterns for predictive models like LSTMs.
+To rigorously investigate the role of asset-specific volatility in shaping the predictive performance
+of LSTM models, we computed annualized volatility estimates for each ticker over the test window
+spanning June 7, 2023, to December 30, 2024. In quantitative finance, volatility is convention
+ally defined as the standard deviation of returns and serves as a widely accepted proxy for risk.
+Elevated volatility is associated with amplified uncertainty, reflecting greater dispersion in return
+sequences driven by exogenous market events. From a forecasting perspective, such volatility com
+plicates pattern recognition, introduces structural nonstationarity, and degrades the learnability
+of temporal dependencies—posing significant challenges for recurrent models like LSTMs.
 
-The volatility calculation followed standard financial methodology using daily log returns:
-
+Annualized volatility was calculated using a three-step procedure grounded in standard financial
+ econometrics, specifically leveraging log return statistics:
 
 \begin{enumerate}
-    \item Compute daily log returns:
+    \item \textbf{Compute daily log returns:}
     \begin{equation}
     R_t = \ln\left(\frac{P_t}{P_{t-1}}\right),
     \end{equation}
     where \(P_t\) and \(P_{t-1}\) represent closing prices on days \(t\) and \(t-1\), respectively.
+
+
     
-    \item Calculate daily volatility (\(\sigma_{\text{daily}}\)):
+    \item \textbf{Calculate daily volatility (\(\sigma_{\text{daily}}\)):}
     \begin{equation}
     \sigma_{\text{daily}} = \sqrt{\frac{1}{n-1}\sum_{t=1}^{n}(R_t - \bar{R})^2},
     \end{equation}
     with \(\bar{R}\) as the average daily log return.
 
-    \item Annualize daily volatility assuming 252 trading days per year:
+    \item \textbf{Annualize daily volatility assuming 252 trading days per year:}
     \begin{equation}
     \sigma_{\text{annualized}} = \sigma_{\text{daily}} \times \sqrt{252}.
     \end{equation}
@@ -538,20 +580,31 @@ We then analyzed the correlation between annualized volatility and the best test
     \label{fig:volatility_accuracy}
 \end{figure}
 
-The case of NVDA is particularly illustrative. Its predictive accuracy decreased when extended-hours data were included, likely due to increased volatility from events like quarterly earnings announcements and shifting economic conditions. In contrast, ETFs such as VOO and DIA, which benefit from diversification that reduces risk and stabilizes price movements, consistently showed higher accuracy. This highlights volatility as a pivotal factor in forecasting performance.
+The case of NVDA is particularly illustrative. This asset exhibited the highest annualized volatility within the sample and correspondingly the lowest LSTM-based accuracy. NVDA’s volatility profile is likely attributable to recurrent firm-specific events, such as earnings announcements, product innovations, and macro-sensitive sectoral dynamics—many of which occur during extended trading sessions. These events introduce abrupt discontinuities and fat-tailed return behavior that violate the temporal smoothness assumptions inherent in recurrent models. Furthermore, NVDA’s performance degraded under the SIP data regime, suggesting that extended-hour volatility amplifies noise and reduces forecastability for highly reactive equities.
 
+Conversely, ETFs such as VOO and DIA demonstrated both low volatility and high predictive accuracy. These instruments track broad market indices, inherently reducing exposure to idiosyncratic events and yielding smoother return distributions. This dampening of firm-specific risk translates into more stationary temporal sequences, facilitating the LSTM’s ability to extract and retain predictive structure. The contrast between NVDA and diversified ETFs thus reinforces the conclusion that return volatility acts as a modulating factor in model learnability.
 
-Overall, this volatility analysis underscores the importance of considering asset-specific volatility characteristics when deploying deep learning models in financial forecasting. Models may require volatility-adaptive architectures or input features explicitly capturing volatility to enhance predictive accuracy in highly turbulent market environments.
+We further analyzed how volatility interacts with feature scaling. Preliminary evidence indicates that scaling strategies exhibit volatility sensitivity: the Robust scaler consistently improved model stability in high-volatility environments due to its resistance to outliers and skew, while the NoScaler approach outperformed alternatives in low-volatility contexts by preserving raw price magnitudes that may encode directionally relevant signals. These findings suggest that preprocessing pipelines should be volatility-aware, dynamically adapting scaler selection based on asset-level return distribution diagnostics.
+
+In aggregate, these results underscore that volatility is not a passive attribute but an active determinant of neural model performance. Highly volatile assets introduce representational challenges that necessitate architectural and algorithmic adaptations. Potential solutions include incorporating volatility as an auxiliary input feature, utilizing regime-switching models that adjust learning dynamics based on return variance, or employing attention mechanisms that prioritize temporally stable subsequences. Additionally, custom loss functions that penalize misclassification in volatile regimes more heavily could steer training dynamics toward robustness.
+
+As financial markets become increasingly nonlinear and event-driven, forecasting in high-volatility environments will demand models that are not only statistically expressive but also contextually responsive. Building architectures that condition on asset-specific volatility—whether via exogenous features, adaptive training protocols, or hybrid preprocessing strategies—will be crucial for advancing the frontier of deep learning in quantitative finance.
 
 \section{Conclusion}
 
-This study comprehensively evaluated the performance of LSTM networks in predicting stock price movements, utilizing multiple scaling methods and incorporating both regular and extended trading hours. The findings revealed clear advantages of including pre-market and post-market trading data (SIP dataset), as evidenced by consistently higher predictive accuracies compared to regular trading hours alone (IEX dataset). These results confirm that extended-hours sessions carry meaningful predictive signals, despite introducing greater market volatility.
+This study presented a comprehensive and methodologically rigorous evaluation of LSTM networks for the task of intraday stock price prediction, emphasizing the influence of data normalization techniques, trading session structure, and asset-specific volatility profiles. By systematically analyzing model behavior across datasets representing both regular trading hours (IEX) and full-session trading (SIP), the investigation provides nuanced insights into the design and deployment of deep learning models in high-frequency financial forecasting.
 
-The effectiveness of data normalization methods varied significantly by market condition and asset type. MinMax scaling was optimal during regular trading hours due to its suitability for stable and bounded price patterns, whereas Robust scaling outperformed other methods when handling the volatility and outliers characteristic of extended sessions. Notably, exchange-traded funds (ETFs), given their inherently smoother dynamics, often achieved strong performance even without data normalization, underscoring the importance of tailoring preprocessing strategies to asset-specific volatility profiles.
+Empirical results consistently demonstrated that the inclusion of extended trading sessions significantly improved predictive performance. LSTM models trained on SIP data achieved higher accuracy than their IEX-based counterparts across nearly all assets, affirming that pre-market and post-market activity, despite its elevated noise and reduced liquidity, contributes valuable information to the price discovery process. These findings support the assertion that enhanced temporal resolution and broader market coverage increase the richness of training signals available to deep learning models.
 
-Volatility itself emerged as a pivotal factor influencing predictive accuracy, with higher volatility generally corresponding to lower forecasting reliability. This relationship was especially pronounced in stocks like NVIDIA, which uniquely demonstrated decreased accuracy when models included extended trading data. These observations highlight the complexities of modeling highly volatile assets and suggest the potential benefits of developing volatility-adaptive prediction models or explicitly incorporating volatility measures as inputs. 
+The study further identified a pronounced interaction between normalization strategy and trading regime. MinMax scaling performed best in the context of regular trading hours, where price dynamics are comparatively smooth and bounded. Conversely, Robust scaling excelled in the SIP dataset, where volatility, outlier frequency, and distributional skew are elevated. This performance dichotomy underscores the importance of context-aware preprocessing pipelines that adapt to both market structure and the statistical properties of the input data.
 
-In conclusion, effective stock market prediction using LSTM networks requires careful consideration of trading session selection, asset-specific volatility, and normalization techniques. Future research building upon these findings promises further advances in accuracy, adaptability, and practical utility in financial forecasting.
+Additionally, certain asset classes—particularly ETFs such as DIA, VOO, and IWM—achieved optimal results without any feature scaling. These instruments, by virtue of their diversified exposure and reduced idiosyncratic noise, generate smoother return sequences that appear to benefit from retaining the raw scale of input features. This suggests that preprocessing decisions should be conditioned not only on volatility regime but also on instrument type, as normalization may suppress valuable signal structure in certain contexts.
+
+Volatility emerged as a central determinant of model generalization. A strong inverse correlation was observed between annualized volatility and best test accuracy, with highly volatile stocks such as NVDA displaying notably lower predictive performance. These assets are more susceptible to event-driven shocks and structural breaks, which compromise the temporal coherence upon which LSTM models rely. Such findings highlight the limitations of static model architectures and motivate the development of volatility-aware mechanisms capable of dynamically adjusting to shifts in return distributions.
+
+Several promising avenues for future research emerge from this work. Meta-learning approaches could facilitate joint optimization of model weights and preprocessing parameters, automating the selection of scalers based on data-driven criteria. Additionally, incorporating auxiliary inputs—such as realized or implied volatility estimates, sentiment indices, or macroeconomic event indicators—may further enhance model adaptability. Attention-based architectures and regime-switching frameworks could also be leveraged to improve temporal sensitivity and robustness in the presence of structural market changes.
+
+In summary, this study underscores that high-performing financial forecasting with LSTM models requires a holistic approach—one that integrates flexible architectural design with adaptive preprocessing and asset-specific contextualization. As financial markets grow increasingly complex, fragmented, and sensitive to exogenous stimuli, the capacity to construct forecasting systems that intelligently align with the evolving structure of the data will be essential. Advancements in this area will depend on the synergistic integration of algorithmic expressiveness, domain-specific feature engineering, and real-time adaptivity, enabling the construction of robust, interpretable, and scalable predictive frameworks for dynamic financial environments.
 
 \newpage
 
