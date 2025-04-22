@@ -1,15 +1,25 @@
 import streamlit as st
+import os
 from backend.Overview import main_overview
 from backend.Model_Stats import main_model_stats
 from backend.Academic_References import main_academic_references
 from backend.Predictions import main_predictions
 
 
+def load_css():
+    css_file = os.path.join(os.path.dirname(__file__), "static/css/tailwind.css")
+    if os.path.exists(css_file):
+        with open(css_file) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
 def main():
-    # Set the page configuration
+    # Set the page configuration (must come before any other Streamlit commands)
     st.set_page_config(
         layout="wide", page_title="Prometheus - Quant Research", page_icon="🔥"
     )
+    # Load Tailwind CSS
+    load_css()
 
     # Page Title
     st.title("Prometheus")

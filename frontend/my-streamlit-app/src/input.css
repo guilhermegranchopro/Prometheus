@@ -1,3 +1,8 @@
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+  }
+}
