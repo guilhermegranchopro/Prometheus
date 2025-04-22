@@ -28,7 +28,7 @@ def main_overview():
     with col2:
         try:
             # Corrected path relative to Home.py and used use_container_width
-            st.image("../../../Assets/Images/logo.jpg", use_container_width=True)
+            st.image("../../Assets/Images/logo.jpg", use_container_width=True)
         except Exception as e:
             st.warning(
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
