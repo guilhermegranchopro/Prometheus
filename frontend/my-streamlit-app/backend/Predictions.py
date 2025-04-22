@@ -144,5 +144,5 @@ def main_predictions():
             st.dataframe(pd.DataFrame(X_combined, columns=cols))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
    main_predictions()
