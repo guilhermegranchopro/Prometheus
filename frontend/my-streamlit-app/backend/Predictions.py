@@ -75,7 +75,7 @@ def get_data(stock_ID):
    end_date = (now - timedelta(minutes=15)).isoformat()
    start_date = (now - timedelta(hours=3) - timedelta(minutes=15)).isoformat()
 
-   data = api.get_bars(stock_ID, "5Min", start_date, end_date, "sip").df
+   data = api.get_bars(stock_ID, "5Min", start=start_date, end=end_date, feed="sip").df
 
    return data
 
