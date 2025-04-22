@@ -2,64 +2,97 @@ import streamlit as st
 import os
 
 def get_paths(stock_ID):
-    BASE_DIR_MD = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
-    MODELS_BASE_PATH = os.path.join(BASE_DIR_MD, "Models/SIP")
-    DATA_BASE_PATH = os.path.join(BASE_DIR_MD, "Data/SIP/Scalers")
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
+    IMAGES_BASE_PATH = os.path.join(BASE_DIR, "Simons/Images/SIP")
 
-    model_file_extension = ".keras"
-    scaler_file_extension = ".pkl"
+    images_file_extension = ".png"
 
     if stock_ID == "VOO":
-        model_filename = "ds=sip+s=VOO+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.31953105330467224+ta=0.8718245029449463" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
-        return model_path, None
+        accuracy_curve_filename = "VOO_sip_noscaler_accuracy" + images_file_extension
+        loss_curve_filename = "VOO_sip_noscaler_loss" + images_file_extension
+        confusion_matrix_filename = "VOO_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "VOO", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "VOO", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "VOO", confusion_matrix_filename)
+        test_accuracy = 0.8780
+        test_loss = 0.3060
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "DIA":
-        model_filename = "ds=sip+s=DIA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.36404281854629517+ta=0.8434399366378784" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
-        return model_path, None
+        accuracy_curve_filename = "DIA_sip_noscaler_accuracy" + images_file_extension
+        loss_curve_filename = "DIA_sip_noscaler_loss" + images_file_extension
+        confusion_matrix_filename = "DIA_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "DIA", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "DIA", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "DIA", confusion_matrix_filename)
+        test_accuracy = 0.8420
+        test_loss = 0.3770
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "IWM":
-        model_filename = "ds=sip+s=IWM+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.39144110679626465+ta=0.832350492477417" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
-        return model_path, None
+        accuracy_curve_filename = "IWM_sip_noscaler_accuracy" + images_file_extension
+        loss_curve_filename = "IWM_sip_noscaler_loss" + images_file_extension
+        confusion_matrix_filename = "IWM_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "IWM", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "IWM", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "IWM", confusion_matrix_filename)
+        test_accuracy = 0.8340
+        test_loss = 0.3770
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "NVDA":
-        scaler_name = "Robust"
-        scaler_filename = "robust_ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
-        model_filename = "ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.6547278761863708+ta=0.7020547986030579" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
-        scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
-        return model_path, scaler_path
+        accuracy_curve_filename = "NVDA_sip_robust_accuracy" + images_file_extension
+        loss_curve_filename = "NVDA_sip_robust_loss" + images_file_extension
+        confusion_matrix_filename = "NVDA_sip_robust_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", "NVDA", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", "NVDA", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "Robust", "NVDA", confusion_matrix_filename)
+        test_accuracy = 0.7820
+        test_loss = 0.5880
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "AAPL":
-        scaler_name = "MinMax"
-        scaler_filename = "minmax_ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
-        model_filename = "ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.41606152057647705+ta=0.8365758657455444" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
-        scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
-        return model_path, scaler_path
+        accuracy_curve_filename = "AAPL_sip_minmax_accuracy" + images_file_extension
+        loss_curve_filename = "AAPL_sip_minmax_loss" + images_file_extension
+        confusion_matrix_filename = "AAPL_sip_minmax_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "MinMax", "AAPL", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "MinMax", "AAPL", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "MinMax", "AAPL", confusion_matrix_filename)
+        test_accuracy = 0.8250
+        test_loss = 0.4370
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "MSFT":
-        model_filename = "ds=sip+s=MSFT+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3996354639530182+ta=0.8395842909812927" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
-        return model_path, None
+        accuracy_curve_filename = "MSFT_sip_noscaler_accuracy" + images_file_extension
+        loss_curve_filename = "MSFT_sip_noscaler_loss" + images_file_extension
+        confusion_matrix_filename = "MSFT_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "MSFT", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "MSFT", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "NoScaler", "MSFT", confusion_matrix_filename)
+        test_accuracy = 0.8610
+        test_loss = 0.3770
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "AMZN":
-        scaler_name = "Robust"
-        scaler_filename = "robust_ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
-        model_filename = "ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.475951611995697+ta=0.8117924332618713" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
-        scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
-        return model_path, scaler_path
+        accuracy_curve_filename = "AMZN_sip_robust_accuracy" + images_file_extension
+        loss_curve_filename = "AMZN_sip_robust_loss" + images_file_extension
+        confusion_matrix_filename = "AMZN_sip_robust_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", "AMZN", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", "AMZN", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "Robust", "AMZN", confusion_matrix_filename)
+        test_accuracy = 0.8070
+        test_loss = 0.4600
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     elif stock_ID == "GOOG":
-        scaler_name = "Robust"
-        scaler_filename = "robust_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
-        model_filename = "ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.539172351360321+ta=0.813238799571991" + model_file_extension
-        model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
-        scaler_path = os.path.join(DATA_BASE_PATH, scaler_name, scaler_filename)
-        return model_path, scaler_path
+        accuracy_curve_filename = "GOOG_sip_robust_accuracy" + images_file_extension
+        loss_curve_filename = "GOOG_sip_robust_loss" + images_file_extension
+        confusion_matrix_filename = "GOOG_sip_robust_cm" + images_file_extension
+        accuracy_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", "GOOG", accuracy_curve_filename)
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", "GOOG", loss_curve_filename)
+        confusion_matrix_path = os.path.join(IMAGES_BASE_PATH, "Robust", "GOOG", confusion_matrix_filename)
+        test_accuracy = 0.8160
+        test_loss = 0.5820
+        return accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss
     else:
         raise ValueError(f"Unsupported stock ID: {stock_ID}")
 
-    return None, None
-# import pandas as pd
+    return None, None, None, None, None
 
-
+# Streamlit app for displaying model statistics
 def main_model_stats():
     st.header("Model Stats")
     # Placeholder for data source selection if needed later
