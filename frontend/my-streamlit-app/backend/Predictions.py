@@ -133,8 +133,13 @@ def get_predictions(stock_ID):
 
    model = _load_model(model_path)
    predictions = model.predict(X_Tensor)
+   predictions = predictions.flatten()[0]
 
-   return predictions, data_df, scaler, X_combined
+   decisive_sensibility = 0.5
+   predicted_class = (predictions >= decisive_sensibility).astype(int)
+   predicted_class = predicted_class.flatten()[0]
+
+   return predictions, predicted_class, data_df, scaler, X_combined
 
 
 def main_predictions():
@@ -144,34 +149,28 @@ def main_predictions():
 
    if selected_stock:
       with st.spinner(f"Fetching data and generating prediction for {selected_stock}..."):
-         predictions, data_df, scaler, X_combined = get_predictions(selected_stock)
-         st.success(f"Prediction for {selected_stock} generated successfully!")
+         predictions, predicted_class, data_df, scaler, X_combined = get_predictions(selected_stock)
+         predictions_str = f"{predictions:.2%}"
 
          # Aesthetic and comprehensive display of results
-         preds = predictions.flatten()
-         st.subheader("Model Predictions")
-         # Key metrics in columns
-         latest = preds[-1]
-         mean_pred = preds.mean()
-         count = len(preds)
-         m1, m2, m3 = st.columns(3)
-         m1.metric("Latest Prediction", f"{latest:.4f}")
-         m2.metric("Mean Prediction", f"{mean_pred:.4f}")
-         m3.metric("Total Predictions", f"{count}")
-         # Line chart of predictions
-         st.line_chart(pd.DataFrame({"Prediction": preds}), use_container_width=True)
+         st.subheader("Model Predictions - Next 3 Hours")
+         m1, m2 = st.columns(2)
+         m1.metric("Latest Prediction", f"{predicted_class}")
+         m2.metric("Rate of certainty of the prediction", predictions_str)
 
-         # Summary statistics of predictions
-         st.subheader("Prediction Summary")
-         stats_df = pd.DataFrame(preds, columns=["prediction"]).describe()
-         st.table(stats_df)
-
+         # Interactive Live Market Data Chart
+         st.subheader("Live Market Data")
          # Expanders for raw data and features
-         with st.expander("Raw Data", expanded=False):
-            st.dataframe(data_df)
-         with st.expander("Combined Feature Inputs", expanded=False):
-            cols = ["vwap_scaled", "trade_count"]
-            st.dataframe(pd.DataFrame(X_combined, columns=cols))
+         with st.expander("Raw Live Stock Market Data", expanded=False):
+            with st.spinner("Fetching live data for..."):
+               data_df.index = pd.to_datetime(data_df.index).tz_localize(None)
+               data_df.index.name = "Date & Time"
+               data_df.rename(columns={
+                  "close": "Close", "high": "High", "low": "Low",
+                  "trade_count": "Trade Count", "open": "Open",
+                  "volume": "Volume", "vwap": "VWAP"
+               }, inplace=True)
+               st.dataframe(data_df)
 
 # If running this script directly (optional)
 #if __name__ == '__main__':
