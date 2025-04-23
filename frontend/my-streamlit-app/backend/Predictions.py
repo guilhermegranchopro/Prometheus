@@ -221,7 +221,7 @@ def main_predictions():
     stocks = ["NVIDIA", "APPLE", "MICROSOFT", "AMAZON", "GOOGLE", "VANGUARD S&P 500 ETF", "DOW JONES ETF", "RUSSELL 2000 ETF"]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
-    
+
     # Add a button to refresh predictions
     if st.button("🔄 Refresh Predictions"):
         st.rerun()
@@ -229,6 +229,10 @@ def main_predictions():
     if selected_stock_ID:
         with st.spinner(f"Generating predictions for {selected_stock_ID}..."):
             pred_pct, pred_class, df_live, scaler, X_combined = get_predictions(selected_stock_ID)
+            if pred_class == 1:
+                pred_pct = (pred_pct - 0.5) * 2
+            else:
+                pred_pct = (0.5 - pred_pct) * 2
 
         # Metrics
         col1, col2, col3 = st.columns([1,1,1])
