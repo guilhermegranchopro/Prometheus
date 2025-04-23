@@ -114,14 +114,17 @@ def main_model_stats():
 
         st.divider()
 
-        # Display images side by side
-        st.subheader("Model Training History & Evaluation")
-        cols = st.columns(3)
-        with cols[0]:
-            st.image(accuracy_curve_path, caption=f"{selected_stock} Accuracy Curve", use_container_width=True)
-        with cols[1]:
-            st.image(loss_curve_path, caption=f"{selected_stock} Loss Curve", use_container_width=True)
-        with cols[2]:
+        # Model Training History & Evaluation with tabs
+        tabs = st.tabs(["Curves", "Confusion Matrix"])
+        with tabs[0]:
+            st.subheader("Accuracy & Loss Curves")
+            cols = st.columns(2)
+            with cols[0]:
+                st.image(accuracy_curve_path, caption=f"{selected_stock} Accuracy Curve", use_container_width=True)
+            with cols[1]:
+                st.image(loss_curve_path, caption=f"{selected_stock} Loss Curve", use_container_width=True)
+        with tabs[1]:
+            st.subheader("Confusion Matrix")
             st.image(confusion_matrix_path, caption=f"{selected_stock} Confusion Matrix", use_container_width=True)
 
 # If running this script directly (optional)
