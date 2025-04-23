@@ -207,13 +207,12 @@ def main_model_stats():
             accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss = get_paths(selected_stock_ID)
 
         # Display metrics with styled cards and progress
-        col1, col2, col3 = st.columns([1, 1, 1])
+        col1, col2 = st.columns([1, 1])
         with col1:
-            st.metric(label="Test Accuracy", value=f"{test_accuracy:.4f}", delta=f"{(test_accuracy - 0.5)*100:.1f}%", delta_color="normal")
+            st.metric(label="Test Accuracy", value=f"{test_accuracy:.4f}")
+            st.progress(int(test_accuracy * 100))
         with col2:
             st.metric(label="Test Loss", value=f"{test_loss:.4f}")
-        with col3:
-            st.progress(int(test_accuracy * 100))
 
         st.divider()
 
