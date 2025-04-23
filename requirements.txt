@@ -13,3 +13,7 @@ python-dateutil
 
 # Optionally, for improved performance of fuzzywuzzy:
 python-Levenshtein
+
+#frontend
+streamlit
+npm

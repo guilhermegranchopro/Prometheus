@@ -1,0 +1,20 @@
+{
+  "name": "my-streamlit-app",
+  "version": "1.0.0",
+  "description": "Streamlit app with Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "start": "TF_CPP_MIN_LOG_LEVEL=3 ABSL_CPP_MIN_VLOG_LEVEL=3 ABSL_CPP_MIN_LOG_LEVEL=3 TF_ENABLE_ONEDNN_OPTS=0 streamlit run Home.py 2>/dev/null",
+    "build:css": "postcss src/input.css -o static/css/tailwind.css",
+    "watch:css": "postcss src/input.css -o static/css/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.3"
+  }
+}
