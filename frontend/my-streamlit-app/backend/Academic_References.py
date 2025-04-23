@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def load_css():
     """Loads custom CSS inspired by Tailwind for styling."""
     css = r"""
@@ -81,8 +82,9 @@ def load_css():
     """
     st.markdown(css, unsafe_allow_html=True)
 
+
 def main_academic_references():
-    load_css() # Load the custom CSS
+    load_css()  # Load the custom CSS
 
     st.header("Academic References")
     st.write(
@@ -90,7 +92,8 @@ def main_academic_references():
     )
 
     # Paper 1
-    st.markdown("""
+    st.markdown(
+        """
     <div class="paper-container">
         <h3>1. The Financial Torque Hypotheses</h3>
         <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
@@ -99,10 +102,13 @@ def main_academic_references():
         <p><strong>How to cite:</strong></p>
         <p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Proper citation allows others to locate the work and give credit to the authors. Example: Smith, J., & Doe, A. (2023). The Financial Torque Hypotheses. Journal of Financial Studies, 15(2), 123-145. doi:10.xxxx/jfs.xxxx</em></p>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     # Paper 2
-    st.markdown("""
+    st.markdown(
+        """
     <div class="paper-container">
         <h3>2. High-Frequency Portfolio Algorithmic Portfolio Management</h3>
         <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
@@ -111,7 +117,10 @@ def main_academic_references():
         <p><strong>How to cite:</strong></p>
         <p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Example: Johnson, R., & Williams, L. (2024). High-Frequency Algorithmic Portfolio Management. Proceedings of the International Conference on Quantitative Finance, 78-92.</em></p>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
+
 
 # If running this script directly (optional, for testing)
 # if __name__ == "__main__":

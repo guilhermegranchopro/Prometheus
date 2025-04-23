@@ -140,6 +140,7 @@ cython_debug/
 
 # VS Code settings
 .vscode/
+.vscode
 
 # uv lock file
 uv.lock
