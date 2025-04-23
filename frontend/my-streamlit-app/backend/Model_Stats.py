@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from backend.Predictions import get_stocks_ID
 
 
 def get_paths(stock_ID):
@@ -192,36 +193,53 @@ def get_paths(stock_ID):
 
 # Streamlit app for displaying model statistics
 def main_model_stats():
-    st.header("Model Stats")
+    # Main header
+    st.markdown("## 📊 Model Statistics Dashboard", unsafe_allow_html=True)
 
-    stocks = ["NVDA", "AAPL", "MSFT", "AMZN", "GOOG", "VOO", "DIA", "IWM"]
+    stocks = [
+        "NVIDIA",
+        "APPLE",
+        "MICROSOFT",
+        "AMAZON",
+        "GOOGLE",
+        "VANGUARD S&P 500 ETF",
+        "DOW JONES ETF",
+        "RUSSELL 2000 ETF",
+    ]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
+    selected_stock_ID = get_stocks_ID(selected_stock)
 
-    if selected_stock:
-        st.subheader(f"Performance Metrics for {selected_stock}")
+    if selected_stock_ID:
+        st.subheader(f"Performance Metrics for **{selected_stock}** ✨")
 
-        # Load actual paths and metrics
-        (
-            accuracy_curve_path,
-            loss_curve_path,
-            confusion_matrix_path,
-            test_accuracy,
-            test_loss,
-        ) = get_paths(selected_stock)
+        # Loading spinner
+        with st.spinner(f"Loading data for {selected_stock}..."):
+            (
+                accuracy_curve_path,
+                loss_curve_path,
+                confusion_matrix_path,
+                test_accuracy,
+                test_loss,
+            ) = get_paths(selected_stock_ID)
 
-        # Display metrics
+        # Display metrics with styled cards and progress
         col1, col2 = st.columns(2)
         with col1:
+            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
             st.metric(label="Test Accuracy", value=f"{test_accuracy:.4f}")
+            st.progress(int(test_accuracy * 100))
+            st.markdown("</div>", unsafe_allow_html=True)
         with col2:
+            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
             st.metric(label="Test Loss", value=f"{test_loss:.4f}")
+            st.markdown("</div>", unsafe_allow_html=True)
 
         st.divider()
 
         # Model Training History & Evaluation with tabs
-        tabs = st.tabs(["Curves", "Confusion Matrix"])
+        tabs = st.tabs(["🎨 Curves", "🧮 Confusion Matrix"])
         with tabs[0]:
-            st.subheader("Accuracy & Loss Curves")
+            st.subheader("Accuracy & Loss Curves 📈")
             cols = st.columns(2)
             with cols[0]:
                 st.image(
@@ -236,12 +254,16 @@ def main_model_stats():
                     use_container_width=True,
                 )
         with tabs[1]:
-            st.subheader("Confusion Matrix")
-            st.image(
-                confusion_matrix_path,
-                caption=f"{selected_stock} Confusion Matrix",
-                use_container_width=True,
-            )
+            st.subheader("Confusion Matrix 🧩")
+            col1_cm, col2_cm, col3_cm = st.columns(
+                [1, 2, 1]
+            )  # Adjust columns to center the confusion matrix
+            with col2_cm:
+                st.image(
+                    confusion_matrix_path,
+                    caption=f"{selected_stock} Confusion Matrix",
+                    use_container_width=True,
+                )
 
 
 # If running this script directly (optional)

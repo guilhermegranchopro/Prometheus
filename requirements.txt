@@ -9,6 +9,9 @@ matplotlib
 ruff
 scipy
 python-dateutil
+plotly
+altair
+streamlit-lottie
 # google-colab
 
 # Optionally, for improved performance of fuzzywuzzy:

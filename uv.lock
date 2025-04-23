@@ -1487,41 +1487,60 @@ wheels = [
 ]
 
 [[package]]
+name = "plotly"
+version = "6.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "narwhals" },
+    { name = "packaging" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c7/cc/e41b5f697ae403f0b50e47b7af2e36642a193085f553bf7cc1169362873a/plotly-6.0.1.tar.gz", hash = "sha256:dd8400229872b6e3c964b099be699f8d00c489a974f2cfccfad5e8240873366b", size = 8094643 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/02/65/ad2bc85f7377f5cfba5d4466d5474423a3fb7f6a97fd807c06f92dd3e721/plotly-6.0.1-py3-none-any.whl", hash = "sha256:4714db20fea57a435692c548a4eb4fae454f7daddf15f8d8ba7e1045681d7768", size = 14805757 },
+]
+
+[[package]]
 name = "prometheus"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "alpaca-trade-api" },
+    { name = "altair" },
     { name = "fuzzywuzzy" },
     { name = "joblib" },
     { name = "matplotlib" },
     { name = "npm" },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "plotly" },
     { name = "python-dateutil" },
     { name = "python-levenshtein" },
     { name = "ruff" },
     { name = "scikit-learn" },
     { name = "scipy" },
     { name = "streamlit" },
+    { name = "streamlit-lottie" },
     { name = "tensorflow" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "alpaca-trade-api", specifier = ">=3.2.0" },
+    { name = "altair", specifier = ">=5.5.0" },
     { name = "fuzzywuzzy", specifier = ">=0.18.0" },
     { name = "joblib", specifier = ">=1.4.2" },
     { name = "matplotlib", specifier = ">=3.10.1" },
     { name = "npm", specifier = ">=0.1.1" },
     { name = "numpy", specifier = ">=2.1.3" },
     { name = "pandas", specifier = ">=2.2.3" },
+    { name = "plotly", specifier = ">=6.0.1" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
     { name = "python-levenshtein", specifier = ">=0.27.1" },
     { name = "ruff", specifier = ">=0.11.5" },
     { name = "scikit-learn", specifier = ">=1.6.1" },
     { name = "scipy", specifier = ">=1.15.2" },
     { name = "streamlit", specifier = ">=1.44.1" },
+    { name = "streamlit-lottie", specifier = ">=0.0.5" },
     { name = "tensorflow", specifier = ">=2.19.0" },
 ]
 
@@ -2157,6 +2176,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/3e/c0/7286284567e5045f0c587c426d0c41aee5d10c0a2e360e627a83037e9f0c/streamlit-1.44.1.tar.gz", hash = "sha256:c6914ed6d5b76870b461510476806db370f36425ae0e6654d227c988288198d3", size = 9423685 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/eb/17/fc425e1d4d86e31b2aaf0812a2ef2163763a0670d671720c7c36e8679323/streamlit-1.44.1-py3-none-any.whl", hash = "sha256:9fe355f58b11f4eb71e74f115ce1f38c4c9eaff2733e6bcffb510ac1298a5990", size = 9812242 },
+]
+
+[[package]]
+name = "streamlit-lottie"
+version = "0.0.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "streamlit" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4b/d4/e13ac9bde5b81b308d061092a420008af78c8b08547739423195596452d8/streamlit-lottie-0.0.5.tar.gz", hash = "sha256:c61589fb92bdf1dd5bd0a2ea75315d92e3383f46059b3704515d096a1e953d79", size = 792567 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/52/b5/8ad7fa3101ec5baed712107a4cf304f174261f2ed2bebe063ad1fbedfe88/streamlit_lottie-0.0.5-py3-none-any.whl", hash = "sha256:98656d6f1cc99c5d96fb8329bafbcdbb65709ad0a05176dffdf4755f6fc04cff", size = 802386 },
 ]
 
 [[package]]

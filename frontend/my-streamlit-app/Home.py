@@ -24,15 +24,16 @@ def main():
     )
 
     # Page Title
-    st.title("Prometheus")
+    st.title("🔥 Prometheus")
+    st.markdown("### Quantitative Research & Stock Prediction")  # Added subtitle
 
-    # Create tabs
+    # Create tabs with emojis
     tab1, tab2, tab3, tab4 = st.tabs(
         [
-            "Overview",
-            "Predictions",
-            "Model Stats",
-            "Academic References",
+            "📊 Overview",
+            "📈 Predictions",
+            "⚙️ Model Stats",
+            "📚 Academic References",
         ]
     )
 
