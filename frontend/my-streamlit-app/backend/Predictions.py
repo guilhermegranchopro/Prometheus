@@ -24,9 +24,9 @@ importlib.import_module('absl.logging')._warn_preinit_stderr = False
 
 # Redirect any stderr from TensorFlow import into the void
 def _import_tf():
-    with open(os.devnull, 'w') as _err_file, contextlib.redirect_stderr(_err_file):
-        import tensorflow as tf
-    return tf
+   with open(os.devnull, 'w') as _err_file, contextlib.redirect_stderr(_err_file):
+      import tensorflow as tf
+   return tf
 # Load TensorFlow
 tf = _import_tf()
 
