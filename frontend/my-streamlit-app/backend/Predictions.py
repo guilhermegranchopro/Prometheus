@@ -10,7 +10,6 @@ import pandas as pd
 from datetime import datetime, timezone, timedelta
 import plotly.express as px
 import requests
-from streamlit_lottie import st_lottie
 
 # Redirect all stderr to null to suppress C++ and Absl logs before TF import
 devnull = os.open(os.devnull, os.O_WRONLY)
