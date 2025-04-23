@@ -1,5 +1,12 @@
 import streamlit as st
+import os
 
+def get_logo_path():
+    # Define the base directory relative to this file
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+    LOGO_BASE_PATH = os.path.join(BASE_DIR, "Assets/Images/logo.jpg")
+
+    return LOGO_BASE_PATH
 
 def main_overview():
     # --- Page Content ---
@@ -14,7 +21,7 @@ def main_overview():
     with col2:
         try:
             # Corrected path relative to Home.py and used use_container_width
-            st.image("../../Assets/Images/logo.jpg", use_container_width=True)
+            st.image(get_logo_path(), use_container_width=True)
         except Exception as e:
             st.warning(
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
