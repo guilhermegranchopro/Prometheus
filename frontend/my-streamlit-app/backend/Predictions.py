@@ -1,4 +1,14 @@
-import os, sys
+import os
+import sys
+import importlib
+import streamlit as st
+import contextlib
+import numpy as np
+import joblib
+import alpaca_trade_api as tradeapi
+import pandas as pd
+from datetime import datetime, timezone, timedelta
+
 # Redirect all stderr to null to suppress C++ and Absl logs before TF import
 devnull = os.open(os.devnull, os.O_WRONLY)
 os.dup2(devnull, sys.stderr.fileno())
@@ -9,12 +19,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['TF_CPP_MIN_VLOG_LEVEL'] = '3'
 os.environ['ABSL_CPP_MIN_LOG_LEVEL'] = '3'
 
-import importlib
 # Suppress absl preinit warning before any absl or TF import
 importlib.import_module('absl.logging')._warn_preinit_stderr = False
-
-import streamlit as st
-import contextlib
 
 # Redirect any stderr from TensorFlow import into the void
 def _import_tf():
@@ -23,12 +29,6 @@ def _import_tf():
     return tf
 # Load TensorFlow
 tf = _import_tf()
-
-import numpy as np
-import joblib
-import alpaca_trade_api as tradeapi
-import pandas as pd
-from datetime import datetime, timezone, timedelta
 
 # Cache model loading to prevent repeated retracing
 @st.cache_resource

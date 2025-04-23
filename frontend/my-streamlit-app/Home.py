@@ -1,4 +1,11 @@
-import os, sys
+import os
+import sys
+import streamlit as st
+from backend.Overview import main_overview
+from backend.Model_Stats import main_model_stats
+from backend.Academic_References import main_academic_references
+from backend.Predictions import main_predictions
+
 # Redirect all stderr messages to null
 devnull = os.open(os.devnull, os.O_WRONLY)
 os.dup2(devnull, sys.stderr.fileno())
@@ -8,13 +15,6 @@ os.environ['CUDA_VISIBLE_DEVICES'] = ''
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['TF_CPP_MIN_VLOG_LEVEL'] = '3'
 os.environ['ABSL_CPP_MIN_LOG_LEVEL'] = '3'
-
-import streamlit as st
-import streamlit.components.v1 as components
-from backend.Overview import main_overview
-from backend.Model_Stats import main_model_stats
-from backend.Academic_References import main_academic_references
-from backend.Predictions import main_predictions
 
 def main():
     # Set the page configuration before any UI elements
