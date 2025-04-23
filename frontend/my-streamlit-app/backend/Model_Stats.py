@@ -194,25 +194,51 @@ def get_paths(stock_ID):
 def main_model_stats():
     # Main header
     st.markdown("## 📊 Model Statistics Dashboard", unsafe_allow_html=True)
+    st.markdown(
+        """
+        <style>
+        .metric-card {
+            padding: 0px;
+            border-radius: 10px;
+            border: 1px solid #e1e4e8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #ffffff; /* Or slightly off-white */
+            margin-bottom: 10px; /* Add space between cards */
+        }
+        .metric-card .stMetric {
+            border-bottom: none; /* Remove Streamlit's default border inside metric */
+            padding-bottom: 0;
+        }
+        .metric-card label { /* Target the label specifically if needed */
+            font-weight: bold;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
     stocks = ["NVIDIA", "APPLE", "MICROSOFT", "AMAZON", "GOOGLE", "VANGUARD S&P 500 ETF", "DOW JONES ETF", "RUSSELL 2000 ETF"]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
 
     if selected_stock_ID:
-        st.subheader(f"Performance Metrics for **{selected_stock}**")
+        st.subheader(f"Performance Metrics for **{selected_stock}** ✨")
 
         # Loading spinner
         with st.spinner(f"Loading data for {selected_stock}..."):
             accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss = get_paths(selected_stock_ID)
 
         # Display metrics with styled cards and progress
-        col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns(2)
         with col1:
+            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
             st.metric(label="Test Accuracy", value=f"{test_accuracy:.4f}")
             st.progress(int(test_accuracy * 100))
+            st.markdown("</div>", unsafe_allow_html=True)
         with col2:
+            st.markdown('<div class="metric-card">', unsafe_allow_html=True)
             st.metric(label="Test Loss", value=f"{test_loss:.4f}")
+            st.markdown("</div>", unsafe_allow_html=True)
 
         st.divider()
 
@@ -235,8 +261,8 @@ def main_model_stats():
                 )
         with tabs[1]:
             st.subheader("Confusion Matrix 🧩")
-            cols = st.columns(3)
-            with cols[1]:
+            col1_cm, col2_cm, col3_cm = st.columns([1, 2, 1])  # Adjust columns to center the confusion matrix
+            with col2_cm:
                 st.image(
                     confusion_matrix_path,
                     caption=f"{selected_stock} Confusion Matrix",
