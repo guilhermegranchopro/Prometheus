@@ -103,19 +103,7 @@ def main_model_stats():
         st.subheader(f"Performance Metrics for {selected_stock}")
 
         # Load actual paths and metrics
-        try:
-            accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss = get_paths(selected_stock)
-        except ValueError as e:
-            st.error(f"Error: {e}")
-            return
-
-        # Model summary
-        st.markdown(f"**Model Summary for {selected_stock}**")
-        st.markdown(
-            f"- Test Accuracy: **{test_accuracy:.4f}**  \n"
-            f"- Test Loss: **{test_loss:.4f}**  \n"
-            f"- Scaler Used: **{os.path.basename(os.path.dirname(accuracy_curve_path))}**"
-        )
+        accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss = get_paths(selected_stock)
 
         # Display metrics
         col1, col2 = st.columns(2)
