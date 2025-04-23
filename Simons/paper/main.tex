@@ -93,12 +93,12 @@
     {\Large\bfseries Guilherme Grancho Duarte Fernandes\par}
     \vspace{0.5cm} % Espaço entre o nome e a afiliação
     {\large Department of Earth Science and Engineering, Imperial College London, London, United Kingdom\par}
-    {\large \href{mailto:guilhermegrancho@tecnico.ulisboa.pt}{guilhermegrancho@tecnico.ulisboa.pt}\par}
+    {\large \href{mailto:guilherme.fernandes25@imperial.ac.uk}{guilherme.fernandes25@imperial.ac.uk}\par}
     \vspace{1cm} % Espaço entre os autores
     {\Large\bfseries Vasco Vieira Rosado Serpa Pereira\par}
     \vspace{0.5cm}
     {\large Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon, Portugal\par}
-    {\large \href{mailto:talles@ufop.edu.br}{vasco.serpa.pereira@tecnico.ulisboa.pt}\par}
+    {\large \href{mailto:vasco.serpa.pereira@tecnico.ulisboa.pt}{vasco.serpa.pereira@tecnico.ulisboa.pt}\par}
     \vspace{3cm} % Espaço entre os autores e a data
     {\large March 2025\par}
     \vspace*{\fill} % Final da centralização vertical
@@ -118,9 +118,9 @@
 \noindent\rule{\textwidth}{1pt}
 \vspace{0.1mm}
 
-This paper showcases the effectiveness of Long Short-Term Memory (LSTM) networks in predicting stock price movements with high accuracy, emphasizing the critical role of selecting appropriate training metrics for optimizing such models. We analyze the performance of five stocks and three exchange-traded funds (ETFs) retrieved through the Alpaca API. The data spans from January 1, 2016, to December 30, 2024, offering a diverse perspective that captures a wide range of market conditions, trends, and volatility patterns.
-Our approach is based on the use of two metrics as input to the model: the Volume Weighted Average Price (VWAP) and the Trade Count. The predictions are generated at three-hour intervals, which facilitates a detailed examination of short-term trends.
-In general, this study not only demonstrates the robustness of LSTM networks in financial forecasting, but also offers valuable insights to researchers and investors alike looking to improve their decision making in the stock market.
+This paper showcases the effectiveness of Long Short-Term Memory (LSTM) networks in predicting stock price movements—achieving over 87\% accuracy on the test set—while emphasizing the critical role of selecting appropriate feature-scaling methods for model optimization. We analyze the performance of five stocks and three exchange-traded funds (ETFs) retrieved via the Alpaca API over the period January 1, 2016 to December 30, 2024, capturing a diverse range of market conditions, trends, and volatility patterns.
+Our model ingests two microstructure-derived features—Volume Weighted Average Price (VWAP) and trade count—and generates predictions at three-hour intervals, enabling detailed examination of short-term trends.
+Overall, this study not only demonstrates the robustness of LSTM networks in financial forecasting but also offers valuable insights for researchers and investors seeking to improve intraday decision-making.
 
 \vspace{0.5mm}
 \noindent\rule{\textwidth}{1pt}
@@ -146,7 +146,7 @@ Equally important is our rigorous evaluation of data preprocessing strategies. W
 
 Our empirical investigation covers five leading technology equities and three broad-market ETFs from January 1, 2016, to December 30, 2024. This extensive period encompasses diverse market regimes, including sustained bull markets, sharp corrections, liquidity shocks, and episodes of macroeconomic volatility.
 
-The results demonstrate that LSTM models trained using the comprehensive SIP dataset consistently outperform those limited to IEX data, confirming the predictive value of extended-hours information. Furthermore, we find that Robust scaling significantly improves training stability and resilience, especially during periods of heightened market volatility. This study advances the application of deep learning in finance by (1) integrating microstructure indicators into an LSTM forecasting architecture, (2) quantifying the informational advantage of extended-hours trading data, (3) systematically evaluating the role of feature scaling in model robustness, and (4) providing actionable insights for the design of adaptive, microstructure-aware intraday trading systems.
+The results demonstrate that LSTM models trained using the comprehensive SIP dataset consistently outperform those limited to IEX data, achieving over a 16\% increase in test accuracy and thus confirming the predictive value of extended-hours information.. Furthermore, we find that Robust scaling significantly improves training stability and resilience, especially during periods of heightened market volatility. This study advances the application of deep learning in finance by (1) integrating microstructure indicators into an LSTM forecasting architecture, (2) quantifying the informational advantage of extended-hours trading data, (3) systematically evaluating the role of feature scaling in model robustness, and (4) providing actionable insights for the design of adaptive, microstructure-aware intraday trading systems.
 
 %Papers Relacionados
 
@@ -296,7 +296,7 @@ The structure of an LSTM unit includes:
 
 These mechanisms allow LSTMs to selectively remember or forget information, making them highly effective for modeling temporal relationships in financial data.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{LSTM-chain.png}
 \caption{Internal structure of an LSTM unit, illustrating the flow of data and the gating mechanisms. Inputs  are processed alongside hidden states  and cell states , showcasing how information is selectively retained or discarded. Adapted from \cite{olah2015lstm}.}
@@ -314,7 +314,7 @@ In this study, LSTMs are employed to forecast intraday stock price movements bas
     \item \textbf{Dense Output Layer}: A single-unit layer with a sigmoid activation function, producing the probability that the stock price will increase within the next three hours.
 \end{itemize}
 
-The model comprises 50,241 trainable parameters and is trained using BPTT with the Adam optimizer and binary cross-entropy loss function. To prevent overfitting and ensure efficient training, an EarlyStopping callback is employed to monitor validation accuracy, stopping the training process once improvements plateau and restoring the best weights. The input to the model is a matrix with 36 rows and 2 columns, where each row represents a 5-minute interval containing VWAP and trade count values, spanning a 3-hour look-back window (36 \(\times\) 5 minutes = 180 minutes). The model’s output is a binary label— either 0 or 1 —indicating the predicted directional movement of the stock price in the next time interval, where 0 represents a decrease and 1 an increase. This binary classification approach simplifies the prediction task by focusing solely on the direction of the price movement, rather than attempting to forecast the exact price. % Ultima frase deixo ou nao?
+The model comprises 50,241 trainable parameters and is trained using BPTT with the Adam optimizer and binary cross-entropy loss function. To prevent overfitting and ensure efficient training, an EarlyStopping callback is employed to monitor validation accuracy, stopping the training process once improvements plateau and restoring the best weights. The input to the model is a matrix with 36 rows and 2 columns, where each row represents a 5-minute interval containing VWAP and trade count values, spanning a 3-hour look-back window (36 \(\times\) 5 minutes = 180 minutes). The model’s output is a binary label— either 0 or 1 —indicating the predicted directional movement of the stock price in the next time interval, where 0 represents a decrease and 1 an increase. We adopt this binary classification approach because it reduces the complexity of the model and minimizes the impact of noise in financial data, allowing the model to focus on capturing underlying market trends and improving its predictive accuracy in a highly volatile and dynamic market. Moreover, this simplification is particularly advantageous in high-frequency trading environments, where predicting the direction of price change can be more actionable for traders than forecasting precise price values.
 
 This LSTM architecture leverages its gating mechanisms to retain relevant patterns in the data while discarding noise, enabling accurate predictions of stock price movements. By processing sequences of intraday market data, the model captures the intricate temporal dynamics that drive financial markets, offering a powerful tool for forecasting.
 
@@ -450,20 +450,6 @@ VOO   & \cellcolor{lightblue}0.3050 & 0.3300 & 0.3320 & 0.3060 \\
 
 \textbf{Test Loss:} Robust scaler recorded the lowest mean loss (0.4454), outperforming MinMax (0.4547), Standard (0.4571), and NoScaler (0.4854). Ticker-specific performance indicates Robust scaling achieved the lowest loss for AAPL, AMZN, and GOOG. NoScaler performed best for DIA, IWM, and MSFT, while Standard scaler was optimal for VOO and tied with MinMax for NVDA. This consistency in Robust scaler performance highlights its suitability for stabilizing predictions across stocks when data includes extended trading hours, though exceptions exist for certain ETFs where NoScaler is more effective.
 
-\subsubsection*{Broader Applications}
-These findings affirm the pivotal role of feature scaling in deep learning
- models applied to financial time series. The inclusion of extended-hour trading introduces greater
- distributional variability and elevates the importance of robust normalization strategies. In this
- context, the Robust scaler demonstrates consistent advantages in balancing accuracy and loss,
- positioning it as a default choice for models ingesting full-session equity data. However, the notable
- performance of NoScaler on ETFs and highly liquid instruments suggests that in some scenarios,
- the preservation of raw feature distributions can retain signal characteristics otherwise obscured
- by transformation.
- To enhance generalization across diverse asset classes and volatility regimes, future research should
- explore the integration of adaptive preprocessing strategies. These could involve dynamically select
-ing or parameterizing scaling methods based on real-time diagnostics. Such frameworks would allow for more intelligent, asset-aware pipelines capable
- of maintaining optimal performance in dynamic and multifactorial financial environments.
-
 
 %Tabela e graficos do SP500.
 
@@ -484,7 +470,7 @@ The SIP dataset captures market dynamics that are often absent during standard t
 
 Nevertheless, this expanded temporal context also amplifies modeling challenges. Extended sessions exhibit elevated volatility, sparser liquidity, and more frequent structural breaks, which may violate implicit assumptions of local stationarity and smooth feature evolution. These conditions demand more robust preprocessing strategies. In our analysis, the Robust scaler proved particularly effective under these conditions, consistently outperforming alternative scalers in both accuracy and loss metrics. This affirms the utility of robust normalization in mitigating distributional shifts and handling heavy-tailed data typical of extended-hour market environments.
 
-Figures~\ref{fig:scaler_comparison} and~\ref{fig:accuracy_improvement} visually summarize these results. The former compares mean accuracy and loss across both datasets for each scaler, while the latter presents per‐ticker percentage improvement in predictive performance when transitioning from IEX to SIP. Most assets benefited meaningfully from SIP‐based training, affirming the generality of these findings.
+Figures~\ref{fig:scaler_comparison} and~\ref{fig:accuracy_improvement} visually summarize these results. The former compares mean accuracy across both datasets for each scaler, while the latter presents per‐ticker percentage improvement in predictive performance when transitioning from IEX to SIP. Most assets benefited meaningfully from SIP‐based training, affirming the generality of these findings.
 
 A notable exception is NVDA, which exhibited a decline in model accuracy (-5.30\%) when trained on SIP data. This deviation likely reflects NVDA’s elevated exposure to high‐impact, unscheduled information events—such as earnings calls and product launches—which often occur during extended hours and introduce discontinuities in price dynamics. These regime changes disrupt temporal coherence and degrade the effectiveness of autoregressive models that assume locally smooth transitions. This case reinforces the importance of tailoring data inclusion strategies to asset‐specific characteristics such as news sensitivity and volatility clustering.
 
