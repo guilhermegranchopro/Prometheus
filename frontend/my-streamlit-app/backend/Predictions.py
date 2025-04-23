@@ -42,7 +42,28 @@ def _load_model(path):
     model.make_predict_function()
     return model
 
+def get_stocks_ID(selected_stock):
+    if selected_stock == "NVIDIA":
+        selected_stock_ID = "NVDA"
+    elif selected_stock == "APPLE":
+        selected_stock_ID = "AAPL"
+    elif selected_stock == "MICROSOFT":
+        selected_stock_ID = "MSFT"
+    elif selected_stock == "AMAZON":
+        selected_stock_ID = "AMZN"
+    elif selected_stock == "GOOGLE":
+        selected_stock_ID = "GOOG"
+    elif selected_stock == "VANGUARD S&P 500 ETF":
+        selected_stock_ID = "VOO"
+    elif selected_stock == "DOW JONES ETF":
+        selected_stock_ID = "DIA"
+    elif selected_stock == "RUSSELL 2000 ETF":
+        selected_stock_ID = "IWM"
+    else:
+        selected_stock_ID = None
+    return selected_stock_ID
 
+# Get paths for model and scaler
 def get_paths(stock_ID):
     BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
     MODELS_BASE_PATH = os.path.join(BASE_DIR, "Models/SIP")
@@ -199,24 +220,8 @@ def main_predictions():
 
     stocks = ["NVIDIA", "APPLE", "MICROSOFT", "AMAZON", "GOOGLE", "VANGUARD S&P 500 ETF", "DOW JONES ETF", "RUSSELL 2000 ETF"]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
-    if selected_stock == "NVIDIA":
-        selected_stock_ID = "NVDA"
-    elif selected_stock == "APPLE":
-        selected_stock_ID = "AAPL"
-    elif selected_stock == "MICROSOFT":
-        selected_stock_ID = "MSFT"
-    elif selected_stock == "AMAZON":
-        selected_stock_ID = "AMZN"
-    elif selected_stock == "GOOGLE":
-        selected_stock_ID = "GOOG"
-    elif selected_stock == "VANGUARD S&P 500 ETF":
-        selected_stock_ID = "VOO"
-    elif selected_stock == "DOW JONES ETF":
-        selected_stock_ID = "DIA"
-    elif selected_stock == "RUSSELL 2000 ETF":
-        selected_stock_ID = "IWM"
-    else:
-        selected_stock_ID = None
+    selected_stock_ID = get_stocks_ID(selected_stock)
+    
     # Add a button to refresh predictions
     if st.button("🔄 Refresh Predictions"):
         st.rerun()
