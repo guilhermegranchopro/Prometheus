@@ -2,6 +2,7 @@ import streamlit as st
 import os
 from backend.Predictions import get_stocks_ID
 
+
 def get_paths(stock_ID):
     BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
     IMAGES_BASE_PATH = os.path.join(BASE_DIR, "Simons/Images/SIP")
@@ -195,7 +196,16 @@ def main_model_stats():
     # Main header
     st.markdown("## 📊 Model Statistics Dashboard", unsafe_allow_html=True)
 
-    stocks = ["NVIDIA", "APPLE", "MICROSOFT", "AMAZON", "GOOGLE", "VANGUARD S&P 500 ETF", "DOW JONES ETF", "RUSSELL 2000 ETF"]
+    stocks = [
+        "NVIDIA",
+        "APPLE",
+        "MICROSOFT",
+        "AMAZON",
+        "GOOGLE",
+        "VANGUARD S&P 500 ETF",
+        "DOW JONES ETF",
+        "RUSSELL 2000 ETF",
+    ]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
 
@@ -204,7 +214,13 @@ def main_model_stats():
 
         # Loading spinner
         with st.spinner(f"Loading data for {selected_stock}..."):
-            accuracy_curve_path, loss_curve_path, confusion_matrix_path, test_accuracy, test_loss = get_paths(selected_stock_ID)
+            (
+                accuracy_curve_path,
+                loss_curve_path,
+                confusion_matrix_path,
+                test_accuracy,
+                test_loss,
+            ) = get_paths(selected_stock_ID)
 
         # Display metrics with styled cards and progress
         col1, col2 = st.columns(2)
@@ -239,13 +255,16 @@ def main_model_stats():
                 )
         with tabs[1]:
             st.subheader("Confusion Matrix 🧩")
-            col1_cm, col2_cm, col3_cm = st.columns([1, 2, 1])  # Adjust columns to center the confusion matrix
+            col1_cm, col2_cm, col3_cm = st.columns(
+                [1, 2, 1]
+            )  # Adjust columns to center the confusion matrix
             with col2_cm:
                 st.image(
                     confusion_matrix_path,
                     caption=f"{selected_stock} Confusion Matrix",
                     use_container_width=True,
                 )
+
 
 # If running this script directly (optional)
 # if __name__ == "__main__":

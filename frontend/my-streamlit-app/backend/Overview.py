@@ -1,12 +1,14 @@
 import streamlit as st
 import os
 
+
 def get_logo_path():
     # Define the base directory relative to this file
     BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
     LOGO_BASE_PATH = os.path.join(BASE_DIR, "Assets/Images/logo.jpg")
 
     return LOGO_BASE_PATH
+
 
 def main_overview():
     # --- Page Content ---

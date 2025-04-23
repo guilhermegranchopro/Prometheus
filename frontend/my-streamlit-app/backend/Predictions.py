@@ -32,8 +32,10 @@ def _import_tf():
         import tensorflow as tf
     return tf
 
+
 # Load TensorFlow
 tf = _import_tf()
+
 
 # Cache model loading to prevent repeated retracing
 @st.cache_resource
@@ -41,6 +43,7 @@ def _load_model(path):
     model = tf.keras.models.load_model(path)
     model.make_predict_function()
     return model
+
 
 def get_stocks_ID(selected_stock):
     if selected_stock == "NVIDIA":
@@ -62,6 +65,7 @@ def get_stocks_ID(selected_stock):
     else:
         selected_stock_ID = None
     return selected_stock_ID
+
 
 # Get paths for model and scaler
 def get_paths(stock_ID):
@@ -205,6 +209,7 @@ def get_predictions(stock_ID):
 
     return predictions, predicted_class, data_df, scaler, X_combined
 
+
 @st.cache_data(show_spinner=False)
 def load_lottie_url(url: str):
     r = requests.get(url)
@@ -212,13 +217,26 @@ def load_lottie_url(url: str):
         return r.json()
     return {}
 
+
 # Pre-load Lottie animation for bullish signal
-lottie_success = load_lottie_url("https://assets9.lottiefiles.com/packages/lf20_fp7ak1to.json")
+lottie_success = load_lottie_url(
+    "https://assets9.lottiefiles.com/packages/lf20_fp7ak1to.json"
+)
+
 
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
-    stocks = ["NVIDIA", "APPLE", "MICROSOFT", "AMAZON", "GOOGLE", "VANGUARD S&P 500 ETF", "DOW JONES ETF", "RUSSELL 2000 ETF"]
+    stocks = [
+        "NVIDIA",
+        "APPLE",
+        "MICROSOFT",
+        "AMAZON",
+        "GOOGLE",
+        "VANGUARD S&P 500 ETF",
+        "DOW JONES ETF",
+        "RUSSELL 2000 ETF",
+    ]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
 
@@ -227,8 +245,12 @@ def main_predictions():
         st.rerun()
 
     if selected_stock_ID:
-        with st.spinner(f"🧠 Generating predictions for {selected_stock_ID}..."):  # Added emoji
-            pred_pct, pred_class, df_live, scaler, X_combined = get_predictions(selected_stock_ID)
+        with st.spinner(
+            f"🧠 Generating predictions for {selected_stock_ID}..."
+        ):  # Added emoji
+            pred_pct, pred_class, df_live, scaler, X_combined = get_predictions(
+                selected_stock_ID
+            )
             if pred_class == 1:
                 pred_pct = (pred_pct - 0.5) * 2
                 prediction_text = "Up ⬆️"  # Added emoji
@@ -239,30 +261,58 @@ def main_predictions():
                 delta_color = "off"  # Use 'off' for neutral color
 
         # Metrics and Lottie Animation
-        st.subheader(f"Last Updated: {pd.to_datetime(df_live.index[-1]).strftime('%Y-%m-%d %H:%M')} (UTC)")
+        st.subheader(
+            f"Last Updated: {pd.to_datetime(df_live.index[-1]).strftime('%Y-%m-%d %H:%M')} (UTC)"
+        )
 
         col1, col2 = st.columns([2, 3])  # Adjusted column ratios
 
         with col1:
-            st.metric("Next 3h Movement", prediction_text, delta=" ", delta_color=delta_color)  # Use prediction_text
+            st.metric(
+                "Next 3h Movement", prediction_text, delta=" ", delta_color=delta_color
+            )  # Use prediction_text
             st.metric("Certainty", f"{pred_pct:.2%}")
             st.progress(int(pred_pct * 100))
 
         with col2:
             if pred_class == 1 and lottie_success:
-                st_lottie(lottie_success, speed=1, reverse=False, loop=True, quality="high", height=150, width=150, key="lottie_success")
+                st_lottie(
+                    lottie_success,
+                    speed=1,
+                    reverse=False,
+                    loop=True,
+                    quality="high",
+                    height=150,
+                    width=150,
+                    key="lottie_success",
+                )
             elif pred_class == 0:
                 # Optionally add a bearish Lottie animation here
-                st.markdown("<br/>"*2, unsafe_allow_html=True)  # Add some space if no animation
-                st.markdown("<div style='text-align: center; font-size: 5em;'></div>", unsafe_allow_html=True)  # Simple emoji as placeholder
+                st.markdown(
+                    "<br/>" * 2, unsafe_allow_html=True
+                )  # Add some space if no animation
+                st.markdown(
+                    "<div style='text-align: center; font-size: 5em;'></div>",
+                    unsafe_allow_html=True,
+                )  # Simple emoji as placeholder
 
         st.markdown("---")
         tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
 
         with tabs[0]:
             st.subheader("📊 Live Market Chart")  # Added emoji
-            features = ["VWAP ($)", "Close ($)", "High ($)", "Low ($)", "Trade Count", "Open ($)", "Volume"]  # Changed default
-            selected_feature = st.selectbox("Select Feature:", features, key="selected_feature")
+            features = [
+                "VWAP ($)",
+                "Close ($)",
+                "High ($)",
+                "Low ($)",
+                "Trade Count",
+                "Open ($)",
+                "Volume",
+            ]  # Changed default
+            selected_feature = st.selectbox(
+                "Select Feature:", features, key="selected_feature"
+            )
             # ... existing feature mapping logic ...
             if selected_feature == "Close ($)":
                 feature_y = "close"
@@ -280,29 +330,62 @@ def main_predictions():
                 feature_y = "vwap"
 
             fig = px.line(
-                df_live, x=df_live.index, y=feature_y, title=f"{selected_stock} - {selected_feature}", labels={"index": "Datetime (UTC)", feature_y: selected_feature},
-                template="plotly_dark", markers=True, line_shape="spline"  # Changed line_shape to spline
+                df_live,
+                x=df_live.index,
+                y=feature_y,
+                title=f"{selected_stock} - {selected_feature}",
+                labels={"index": "Datetime (UTC)", feature_y: selected_feature},
+                template="plotly_dark",
+                markers=True,
+                line_shape="spline",  # Changed line_shape to spline
             )
             fig.update_layout(title_x=0.5)  # Center title
             st.plotly_chart(fig, use_container_width=True)
 
         with tabs[1]:
             st.subheader("🗃️ Raw Live Market Data")  # Added emoji
-            with st.expander("Show Data Table", expanded=False):  # Set expanded to False initially
+            with st.expander(
+                "Show Data Table", expanded=False
+            ):  # Set expanded to False initially
                 df_display = df_live.copy()  # Work on a copy
-                df_display.index = pd.to_datetime(df_display.index).tz_localize(None)  # Remove timezone for display
+                df_display.index = pd.to_datetime(df_display.index).tz_localize(
+                    None
+                )  # Remove timezone for display
                 df_display.index.name = "Date & Time"
-                df_display.rename(columns={
-                    "close": "Close ($)", "high": "High ($)", "low": "Low ($)",
-                    "trade_count": "Trade Count", "open": "Open ($)",
-                    "volume": "Volume", "vwap": "VWAP ($)"
-                }, inplace=True)
+                df_display.rename(
+                    columns={
+                        "close": "Close ($)",
+                        "high": "High ($)",
+                        "low": "Low ($)",
+                        "trade_count": "Trade Count",
+                        "open": "Open ($)",
+                        "volume": "Volume",
+                        "vwap": "VWAP ($)",
+                    },
+                    inplace=True,
+                )
                 # Reorder columns for better readability
-                df_display = df_display[["Open ($)", "High ($)", "Low ($)", "Close ($)", "Volume", "Trade Count", "VWAP ($)"]]
+                df_display = df_display[
+                    [
+                        "Open ($)",
+                        "High ($)",
+                        "Low ($)",
+                        "Close ($)",
+                        "Volume",
+                        "Trade Count",
+                        "VWAP ($)",
+                    ]
+                ]
                 st.dataframe(
-                    df_display.style.format({
-                        'Open ($)': '${:,.2f}', 'High ($)': '${:,.2f}', 'Low ($)': '${:,.2f}',
-                        'Close ($)': '${:,.2f}', 'Volume': '{:,.0f}', 'VWAP ($)': '${:,.2f}'
-                    }),
-                    use_container_width=True  # Make dataframe use full width
+                    df_display.style.format(
+                        {
+                            "Open ($)": "${:,.2f}",
+                            "High ($)": "${:,.2f}",
+                            "Low ($)": "${:,.2f}",
+                            "Close ($)": "${:,.2f}",
+                            "Volume": "{:,.0f}",
+                            "VWAP ($)": "${:,.2f}",
+                        }
+                    ),
+                    use_container_width=True,  # Make dataframe use full width
                 )

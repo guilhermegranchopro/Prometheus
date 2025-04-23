@@ -97,7 +97,9 @@ def load_css():
 def main_academic_references():
     load_css()  # Load the custom CSS
 
-    st.header("Academic References") # Changed from h1 to header for semantic correctness if needed, but h1 CSS targets it
+    st.header(
+        "Academic References"
+    )  # Changed from h1 to header for semantic correctness if needed, but h1 CSS targets it
     st.write(
         "Explore the foundational research papers authored by our team that underpin the methodologies used in this application."
     )
