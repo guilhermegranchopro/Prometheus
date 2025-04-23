@@ -9,14 +9,14 @@ def load_css():
             background-color: transparent;
         }
         .stApp {
-            background-color: #f9fafb; /* Tailwind gray-50 */
+            background-color: var(--background-color);
         }
 
         /* Main Title */
         h1 {
-            font-size: 1.875rem; /* text-3xl */
-            font-weight: 700; /* font-bold */
-            color: #111827; /* gray-900 */
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text-color);
             padding-bottom: 0.5rem; /* pb-2 */
             border-bottom: 1px solid #d1d5db; /* border-b border-gray-300 */
             margin-bottom: 1.5rem; /* mb-6 */
@@ -24,18 +24,18 @@ def load_css():
 
         /* Introductory text */
         .stApp > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > p {
-             color: #4b5563; /* gray-600 */
+             color: var(--text-color);
              font-size: 1rem; /* text-base */
              margin-bottom: 2rem; /* mb-8 */
         }
 
         /* Paper Container Card Style */
         .paper-container {
-            border: 1px solid #e5e7eb; /* gray-200 */
+            border: 1px solid var(--secondary-background-color);
             border-radius: 0.5rem; /* rounded-lg */
             padding: 1.5rem; /* p-6 */
             margin-bottom: 1.5rem; /* mb-6 */
-            background-color: #ffffff; /* bg-white */
+            background-color: var(--secondary-background-color);
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); /* shadow-lg */
             transition: box-shadow 0.3s ease-in-out;
         }
@@ -45,32 +45,32 @@ def load_css():
 
         /* Paper Subheader (Title) */
         .paper-container h3 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 600; /* font-semibold */
-            color: #1f2937; /* gray-800 */
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
             margin-bottom: 0.75rem; /* mb-3 */
         }
 
         /* Paper Content Text */
         .paper-container p {
-            color: #374151; /* gray-700 */
+            color: var(--text-color);
             line-height: 1.625; /* leading-relaxed */
             margin-bottom: 0.5rem; /* mb-2 */
         }
         .paper-container p strong {
-            color: #111827; /* gray-900 */
+            color: var(--text-color);
             font-weight: 600;
         }
 
         /* Links */
         .paper-container a {
-            color: #2563eb; /* blue-600 */
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
         }
         .paper-container a:hover {
             text-decoration: underline;
-            color: #1d4ed8; /* blue-700 */
+            color: var(--primary-color);
         }
 
         /* Remove default Streamlit dividers if using containers */

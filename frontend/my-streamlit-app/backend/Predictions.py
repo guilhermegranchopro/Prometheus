@@ -1,17 +1,39 @@
+import os, sys
+# Redirect all stderr to null to suppress C++ and Absl logs before TF import
+devnull = os.open(os.devnull, os.O_WRONLY)
+os.dup2(devnull, sys.stderr.fileno())
+os.close(devnull)
+# Environment to disable GPU and reduce TF logs
+os.environ['CUDA_VISIBLE_DEVICES'] = ''
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['TF_CPP_MIN_VLOG_LEVEL'] = '3'
+os.environ['ABSL_CPP_MIN_LOG_LEVEL'] = '3'
+
+import importlib
+# Suppress absl preinit warning before any absl or TF import
+importlib.import_module('absl.logging')._warn_preinit_stderr = False
+
 import streamlit as st
-import tensorflow as tf
+import contextlib
+
+# Redirect any stderr from TensorFlow import into the void
+def _import_tf():
+    with open(os.devnull, 'w') as _err_file, contextlib.redirect_stderr(_err_file):
+        import tensorflow as tf
+    return tf
+# Load TensorFlow
+tf = _import_tf()
+
 import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
-import os
-from datetime import datetime, timezone, timedelta
 import pandas as pd
+from datetime import datetime, timezone, timedelta
 
 # Cache model loading to prevent repeated retracing
 @st.cache_resource
 def _load_model(path):
    model = tf.keras.models.load_model(path)
-   # Build the TF graph once to avoid retracing on each prediction
    model.make_predict_function()
    return model
 

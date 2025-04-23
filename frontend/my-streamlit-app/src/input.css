@@ -1,8 +1,13 @@
+@tailwind base;
 @tailwind utilities;
+
 
 @layer base {
   body {
-    background-color: var(--background-color);
-    color: var(--foreground-color);
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
   }
+  /* Override common Tailwind whites to match dark theme */
+  .bg-white { background-color: var(--background-color) !important; }
+  .block-container { background-color: var(--background-color) !important; }
 }
