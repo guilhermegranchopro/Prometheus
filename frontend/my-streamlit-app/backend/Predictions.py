@@ -77,21 +77,21 @@ def get_paths(stock_ID):
             "ds=sip+s=VOO+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.31953105330467224+ta=0.8718245029449463"
             + model_file_extension
         )
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+        model_path = os.path.join(MODELS_BASE_PATH, "NoScaler", model_filename)
         return model_path, None
     elif stock_ID == "DIA":
         model_filename = (
             "ds=sip+s=DIA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.36404281854629517+ta=0.8434399366378784"
             + model_file_extension
         )
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+        model_path = os.path.join(MODELS_BASE_PATH, "NoScaler", model_filename)
         return model_path, None
     elif stock_ID == "IWM":
         model_filename = (
             "ds=sip+s=IWM+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.39144110679626465+ta=0.832350492477417"
             + model_file_extension
         )
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+        model_path = os.path.join(MODELS_BASE_PATH, "NoScaler", model_filename)
         return model_path, None
     elif stock_ID == "NVDA":
         scaler_name = "Robust"
@@ -124,7 +124,7 @@ def get_paths(stock_ID):
             "ds=sip+s=MSFT+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3996354639530182+ta=0.8395842909812927"
             + model_file_extension
         )
-        model_path = os.path.join(MODELS_BASE_PATH, model_filename)
+        model_path = os.path.join(MODELS_BASE_PATH, "NoScaler", model_filename)
         return model_path, None
     elif stock_ID == "AMZN":
         scaler_name = "Robust"
