@@ -194,28 +194,6 @@ def get_paths(stock_ID):
 def main_model_stats():
     # Main header
     st.markdown("## 📊 Model Statistics Dashboard", unsafe_allow_html=True)
-    st.markdown(
-        """
-        <style>
-        .metric-card {
-            padding: 0px;
-            border-radius: 10px;
-            border: 1px solid #e1e4e8;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            background-color: #ffffff; /* Or slightly off-white */
-            margin-bottom: 10px; /* Add space between cards */
-        }
-        .metric-card .stMetric {
-            border-bottom: none; /* Remove Streamlit's default border inside metric */
-            padding-bottom: 0;
-        }
-        .metric-card label { /* Target the label specifically if needed */
-            font-weight: bold;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
 
     stocks = ["NVIDIA", "APPLE", "MICROSOFT", "AMAZON", "GOOGLE", "VANGUARD S&P 500 ETF", "DOW JONES ETF", "RUSSELL 2000 ETF"]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
