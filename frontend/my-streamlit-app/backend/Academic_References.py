@@ -7,71 +7,82 @@ def load_css():
     <style>
         /* General Page Style */
         .stApp > header {
-            background-color: transparent;
+            background-color: transparent; /* Keep header background transparent */
         }
         .stApp {
-            background-color: var(--background-color);
+            background-color: var(--background-color); /* Use theme background */
         }
 
         /* Main Title */
         h1 {
-            font-size: 1.875rem;
+            font-size: 2rem; /* Slightly larger title */
             font-weight: 700;
             color: var(--text-color);
-            padding-bottom: 0.5rem; /* pb-2 */
-            border-bottom: 1px solid #d1d5db; /* border-b border-gray-300 */
-            margin-bottom: 1.5rem; /* mb-6 */
+            padding-bottom: 0.75rem; /* Increased padding */
+            border-bottom: 1px solid var(--secondary-background-color); /* Use secondary background for border */
+            margin-bottom: 2rem; /* Increased margin */
         }
 
         /* Introductory text */
+        /* Target the specific paragraph more reliably if possible, otherwise use the existing selector */
         .stApp > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > p {
-             color: var(--text-color);
-             font-size: 1rem; /* text-base */
-             margin-bottom: 2rem; /* mb-8 */
+            color: var(--text-color);
+             font-size: 1.1rem; /* Slightly larger intro text */
+             margin-bottom: 2.5rem; /* Increased margin */
+            line-height: 1.6;
         }
 
         /* Paper Container Card Style */
         .paper-container {
-            border: 1px solid var(--secondary-background-color);
-            border-radius: 0.5rem; /* rounded-lg */
-            padding: 1.5rem; /* p-6 */
-            margin-bottom: 1.5rem; /* mb-6 */
-            background-color: var(--secondary-background-color);
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); /* shadow-lg */
-            transition: box-shadow 0.3s ease-in-out;
+            border: 1px solid var(--secondary-background-color); /* Softer border */
+            border-radius: 0.75rem; /* Slightly more rounded corners */
+            padding: 2rem; /* Increased padding */
+            margin-bottom: 2rem; /* Increased margin */
+            background-color: var(--secondary-background-color); /* Use theme secondary background */
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05); /* Softer shadow */
+            transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out; /* Added transform transition */
         }
         .paper-container:hover {
-             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-xl */
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Enhanced hover shadow */
+             transform: translateY(-3px); /* Subtle lift effect on hover */
         }
 
         /* Paper Subheader (Title) */
         .paper-container h3 {
-            font-size: 1.25rem;
+            font-size: 1.35rem; /* Slightly larger paper title */
             font-weight: 600;
             color: var(--text-color);
-            margin-bottom: 0.75rem; /* mb-3 */
+            margin-bottom: 1rem; /* Increased margin */
         }
 
         /* Paper Content Text */
         .paper-container p {
             color: var(--text-color);
-            line-height: 1.625; /* leading-relaxed */
-            margin-bottom: 0.5rem; /* mb-2 */
+            line-height: 1.7; /* Increased line height for readability */
+            margin-bottom: 0.75rem; /* Adjusted margin */
+            font-size: 1rem; /* Standard text size */
         }
         .paper-container p strong {
-            color: var(--text-color);
+            color: var(--text-color); /* Ensure strong text uses theme color */
             font-weight: 600;
         }
+        .paper-container p em {
+             color: var(--text-color); /* Ensure emphasis text uses theme color */
+             opacity: 0.9; /* Slightly less prominent */
+        }
+
 
         /* Links */
         .paper-container a {
-            color: var(--primary-color);
+            color: var(--primary-color); /* Use theme primary color */
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.2s ease; /* Smooth color transition */
         }
         .paper-container a:hover {
             text-decoration: underline;
-            color: var(--primary-color);
+            color: var(--primary-color); /* Keep color, maybe slightly darken/lighten if needed */
+            opacity: 0.8; /* Slight fade on hover */
         }
 
         /* Remove default Streamlit dividers if using containers */
@@ -86,7 +97,7 @@ def load_css():
 def main_academic_references():
     load_css()  # Load the custom CSS
 
-    st.header("Academic References")
+    st.header("Academic References") # Changed from h1 to header for semantic correctness if needed, but h1 CSS targets it
     st.write(
         "Explore the foundational research papers authored by our team that underpin the methodologies used in this application."
     )

@@ -234,11 +234,11 @@ def main_predictions():
                 pred_pct = (0.5 - pred_pct) * 2
 
         # Metrics
-        col1, col2, col3 = st.columns([1,1,1])
-        col1.metric("Next 3h Movement", "Up" if pred_class==1 else "Down", delta=f"{pred_class-1}", delta_color="normal")
+        st.subheader(f"Last Updated: {pd.to_datetime(df_live.index[-1]).strftime('%Y-%m-%d %H:%M')} (UTC)")
+        col1, col2 = st.columns([1,1])
+        col1.metric("Next 3h Movement", "Up" if pred_class==1 else "Down", delta=" ", delta_color="normal")
         col2.metric("Certainty", f"{pred_pct:.2%}")
         col2.progress(int(pred_pct * 100))
-        col3.metric("Last Updated (UTC)", pd.to_datetime(df_live.index[-1]).strftime('%Y-%m-%d %H:%M'))
 
         st.markdown("---")
         tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
