@@ -454,6 +454,7 @@ VOO   & \cellcolor{lightblue}0.3050 & 0.3300 & 0.3320 & 0.3060 \\
 %Tabela e graficos do SP500.
 
 %Colocar imagem do sp500 durante 2016 ate 2024
+
 \section{Discussion}
 
 The empirical evaluation of LSTM architectures across a diverse array
@@ -576,6 +577,23 @@ In aggregate, these results underscore that volatility is not a passive attribut
 
 As financial markets become increasingly nonlinear and event-driven, forecasting in high-volatility environments will demand models that are not only statistically expressive but also contextually responsive. Building architectures that condition on asset-specific volatility—whether via exogenous features, adaptive training protocols, or hybrid preprocessing strategies—will be crucial for advancing the frontier of deep learning in quantitative finance.
 
+\section{Future Improvements}
+
+While this study demonstrates the potential of LSTM networks in predicting short-term stock price movements, there are several avenues for future improvements and extensions that could further enhance the accuracy and robustness of the model.
+
+\subsection{Incorporating More Advanced Feature Engineering}
+One potential improvement is the inclusion of additional features derived from both financial and non-financial data sources. While this study uses VWAP and trade count as key microstructure features, adding other technical indicators such as the Relative Strength Index (RSI), Moving Averages, Bollinger Bands, and MACD could provide a more complete view of market dynamics. Furthermore, sentiment analysis derived from financial news, earnings reports, or social media could provide critical insights into market psychology and drive further improvements in predictive accuracy. Incorporating external macroeconomic variables such as GDP growth, inflation rates, and interest rates could also help the model better account for broader market movements.
+
+\subsection{Expanding the Model to Hybrid Architectures}
+Although LSTM networks have shown strong performance, there may be room for improvement by exploring hybrid models. Combining LSTM with other neural architectures, such as Convolutional Neural Networks (CNN) for spatial feature extraction or attention mechanisms for focusing on the most important features, could enhance the model’s ability to capture both temporal and spatial dependencies in financial data. For instance, a CNN-LSTM hybrid could first extract key patterns from the raw data and then pass them to the LSTM to capture long-term dependencies.
+
+\subsection{Model Evaluation and Backtesting}
+Another area for improvement is the comprehensive evaluation of the model’s real-world applicability. While the study has conducted extensive testing on historical data, future work should incorporate rigorous backtesting within a simulated trading environment. This would enable an assessment of how well the model performs when used to inform trading decisions, factoring in transaction costs, slippage, and other market frictions. Further real-time testing with paper trading or live trading could provide valuable insights into the model’s performance under actual market conditions, especially during periods of high volatility.
+
+\subsection{Improving Model Interpretability}
+One challenge with deep learning models, including LSTMs, is their inherent lack of interpretability. Understanding the reasons behind a model’s prediction is critical in financial applications, where decisions can have significant financial consequences. Future work could explore techniques for improving the interpretability of the model. One promising direction is to integrate attention mechanisms into the LSTM architecture to highlight which parts of the input data (e.g., specific time intervals or features like VWAP) are most influential in the model’s decision-making process. Additionally, using methods such as SHAP (SHapley Additive exPlanations) or LIME (Local Interpretable Model-Agnostic Explanations) could help explain the model's outputs in a more transparent and actionable way.
+
+
 \section{Conclusion}
 
 This study presented a comprehensive and methodologically rigorous evaluation of LSTM networks for the task of intraday stock price prediction, emphasizing the influence of data normalization techniques, trading session structure, and asset-specific volatility profiles. By systematically analyzing model behavior across datasets representing both regular trading hours (IEX) and full-session trading (SIP), the investigation provides nuanced insights into the design and deployment of deep learning models in high-frequency financial forecasting.
@@ -588,7 +606,7 @@ Additionally, certain asset classes—particularly ETFs such as DIA, VOO, and IW
 
 Volatility emerged as a central determinant of model generalization. A strong inverse correlation was observed between annualized volatility and best test accuracy, with highly volatile stocks such as NVDA displaying notably lower predictive performance. These assets are more susceptible to event-driven shocks and structural breaks, which compromise the temporal coherence upon which LSTM models rely. Such findings highlight the limitations of static model architectures and motivate the development of volatility-aware mechanisms capable of dynamically adjusting to shifts in return distributions.
 
-Several promising avenues for future research emerge from this work. Meta-learning approaches could facilitate joint optimization of model weights and preprocessing parameters, automating the selection of scalers based on data-driven criteria. Additionally, incorporating auxiliary inputs—such as realized or implied volatility estimates, sentiment indices, or macroeconomic event indicators—may further enhance model adaptability. Attention-based architectures and regime-switching frameworks could also be leveraged to improve temporal sensitivity and robustness in the presence of structural market changes.
+%Several promising avenues for future research emerge from this work. Meta-learning approaches could facilitate joint optimization of model weights and preprocessing parameters, automating the selection of scalers based on data-driven criteria. Additionally, incorporating auxiliary inputs—such as realized or implied volatility estimates, sentiment indices, or macroeconomic event indicators—may further enhance model adaptability. Attention-based architectures and regime-switching frameworks could also be leveraged to improve temporal sensitivity and robustness in the presence of structural market changes.
 
 In summary, this study underscores that high-performing financial forecasting with LSTM models requires a holistic approach—one that integrates flexible architectural design with adaptive preprocessing and asset-specific contextualization. As financial markets grow increasingly complex, fragmented, and sensitive to exogenous stimuli, the capacity to construct forecasting systems that intelligently align with the evolving structure of the data will be essential. Advancements in this area will depend on the synergistic integration of algorithmic expressiveness, domain-specific feature engineering, and real-time adaptivity, enabling the construction of robust, interpretable, and scalable predictive frameworks for dynamic financial environments.
 
@@ -614,6 +632,11 @@ In summary, this study underscores that high-performing financial forecasting wi
     \item[NVDA] Nvidia
     \item[EMH] Efficient Market Hypothesis
     \item[BPTT] Backpropagation Through Time
+    \item[RSI] Relative Strength Index
+    \item[MACD] Moving Average Convergence Divergence
+    \item[SHAP] SHapley Additive exPlanations
+    \item[LIME] Local Interpretable Model-Agnostic Explanations
+    \item[CNN] Convolutional Neural Networks
     
 \end{description}
 
