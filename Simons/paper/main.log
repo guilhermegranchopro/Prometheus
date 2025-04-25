@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.18)  25 APR 2025 12:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.18)  25 APR 2025 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -832,284 +832,1005 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [4] [5] [6]
-<LSTM-chain.png, id=204, 806.89455pt x 303.17265pt>
+<LSTM-chain.png, id=305, 806.89455pt x 303.17265pt>
 File: LSTM-chain.png Graphic file (type png)
 <use LSTM-chain.png>
 Package pdftex.def Info: LSTM-chain.png  used on input line 304.
 (pdftex.def)             Requested size: 341.43437pt x 128.2846pt.
  [7 <./LSTM-chain.png>] [8] [9]
-<scaler_comparison.png, id=232, 714.7503pt x 426.393pt>
+<scaler_comparison.png, id=333, 714.7503pt x 426.393pt>
 File: scaler_comparison.png Graphic file (type png)
 <use scaler_comparison.png>
 Package pdftex.def Info: scaler_comparison.png  used on input line 482.
 (pdftex.def)             Requested size: 405.45047pt x 241.88191pt.
-<accuracy_improvement.png, id=233, 859.2903pt x 426.393pt>
+<accuracy_improvement.png, id=334, 859.2903pt x 426.393pt>
 File: accuracy_improvement.png Graphic file (type png)
 <use accuracy_improvement.png>
 Package pdftex.def Info: accuracy_improvement.png  used on input line 489.
 (pdftex.def)             Requested size: 426.79135pt x 211.77762pt.
  [10 <./scaler_comparison.png>] [11 <./accuracy_improvement.png>]
-<volatility_accuracy.png, id=247, 712.5822pt x 426.393pt>
+<volatility_accuracy.png, id=349, 712.5822pt x 426.393pt>
 File: volatility_accuracy.png Graphic file (type png)
 <use volatility_accuracy.png>
 Package pdftex.def Info: volatility_accuracy.png  used on input line 567.
 (pdftex.def)             Requested size: 426.79135pt x 255.38232pt.
  [12] [13 <./volatility_accuracy.png>] [14] [15]
-<Attachments.pdf, id=275, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf>
-Package pdftex.def Info: Attachments.pdf  used on input line 617.
-(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf>
-Package pdftex.def Info: Attachments.pdf  used on input line 617.
-(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-<Attachments.pdf, id=278, page=1, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 617.
-(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 1>
-Package pdftex.def Info: Attachments.pdf , page1 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [16 <./Attachments.pdf>]
-<Attachments.pdf, id=328, page=2, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 2>
-Package pdftex.def Info: Attachments.pdf , page2 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 2>
-Package pdftex.def Info: Attachments.pdf , page2 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 2>
-Package pdftex.def Info: Attachments.pdf , page2 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [17 <./Attachments.pdf>]
-<Attachments.pdf, id=358, page=3, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 3>
-Package pdftex.def Info: Attachments.pdf , page3 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 3>
-Package pdftex.def Info: Attachments.pdf , page3 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 3>
-Package pdftex.def Info: Attachments.pdf , page3 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [18 <./Attachments.pdf>]
-<Attachments.pdf, id=389, page=4, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 4>
-Package pdftex.def Info: Attachments.pdf , page4 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 4>
-Package pdftex.def Info: Attachments.pdf , page4 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 4>
-Package pdftex.def Info: Attachments.pdf , page4 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [19 <./Attachments.pdf>]
-<Attachments.pdf, id=419, page=5, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 5>
-Package pdftex.def Info: Attachments.pdf , page5 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 5>
-Package pdftex.def Info: Attachments.pdf , page5 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 5>
-Package pdftex.def Info: Attachments.pdf , page5 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [20 <./Attachments.pdf>]
-<Attachments.pdf, id=449, page=6, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 6>
-Package pdftex.def Info: Attachments.pdf , page6 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 6>
-Package pdftex.def Info: Attachments.pdf , page6 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 6>
-Package pdftex.def Info: Attachments.pdf , page6 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [21 <./Attachments.pdf>]
-<Attachments.pdf, id=479, page=7, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 7>
-Package pdftex.def Info: Attachments.pdf , page7 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 7>
-Package pdftex.def Info: Attachments.pdf , page7 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 7>
-Package pdftex.def Info: Attachments.pdf , page7 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [22 <./Attachments.pdf>]
-<Attachments.pdf, id=509, page=8, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 8>
-Package pdftex.def Info: Attachments.pdf , page8 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 8>
-Package pdftex.def Info: Attachments.pdf , page8 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 8>
-Package pdftex.def Info: Attachments.pdf , page8 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [23 <./Attachments.pdf>]
-<Attachments.pdf, id=539, page=9, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 9>
-Package pdftex.def Info: Attachments.pdf , page9 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 9>
-Package pdftex.def Info: Attachments.pdf , page9 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 9>
-Package pdftex.def Info: Attachments.pdf , page9 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [24 <./Attachments.pdf>]
-<Attachments.pdf, id=570, page=10, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 10>
-Package pdftex.def Info: Attachments.pdf , page10 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 10>
-Package pdftex.def Info: Attachments.pdf , page10 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 10>
-Package pdftex.def Info: Attachments.pdf , page10 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [25 <./Attachments.pdf>]
-<Attachments.pdf, id=600, page=11, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 11>
-Package pdftex.def Info: Attachments.pdf , page11 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 11>
-Package pdftex.def Info: Attachments.pdf , page11 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 11>
-Package pdftex.def Info: Attachments.pdf , page11 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [26 <./Attachments.pdf>]
-<Attachments.pdf, id=630, page=12, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 12>
-Package pdftex.def Info: Attachments.pdf , page12 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 12>
-Package pdftex.def Info: Attachments.pdf , page12 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 12>
-Package pdftex.def Info: Attachments.pdf , page12 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [27 <./Attachments.pdf>]
-<Attachments.pdf, id=660, page=13, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 13>
-Package pdftex.def Info: Attachments.pdf , page13 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 13>
-Package pdftex.def Info: Attachments.pdf , page13 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 13>
-Package pdftex.def Info: Attachments.pdf , page13 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [28 <./Attachments.pdf>]
-<Attachments.pdf, id=690, page=14, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 14>
-Package pdftex.def Info: Attachments.pdf , page14 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 14>
-Package pdftex.def Info: Attachments.pdf , page14 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 14>
-Package pdftex.def Info: Attachments.pdf , page14 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [29 <./Attachments.pdf>]
-<Attachments.pdf, id=720, page=15, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 15>
-Package pdftex.def Info: Attachments.pdf , page15 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 15>
-Package pdftex.def Info: Attachments.pdf , page15 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 15>
-Package pdftex.def Info: Attachments.pdf , page15 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [30 <./Attachments.pdf>]
-<Attachments.pdf, id=751, page=16, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 16>
-Package pdftex.def Info: Attachments.pdf , page16 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 16>
-Package pdftex.def Info: Attachments.pdf , page16 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 16>
-Package pdftex.def Info: Attachments.pdf , page16 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [31 <./Attachments.pdf>]
-<Attachments.pdf, id=781, page=17, 597.50829pt x 845.0471pt>
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 17>
-Package pdftex.def Info: Attachments.pdf , page17 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 17>
-Package pdftex.def Info: Attachments.pdf , page17 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-File: Attachments.pdf Graphic file (type pdf)
-<use Attachments.pdf, page 17>
-Package pdftex.def Info: Attachments.pdf , page17 used on input line 617.
-(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
- [32 <./Attachments.pdf>] (./main.bbl
+<IEX/Robust/AAPL/aapl_iex_robust_accuracy.png, id=377, 416.2752pt x 327.8649pt>
+File: IEX/Robust/AAPL/aapl_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/AAPL/aapl_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/AAPL/aapl_iex_robust_accuracy.png  used on input line 621.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/AAPL/aapl_iex_robust_loss.png, id=378, 416.2752pt x 327.8649pt>
+File: IEX/Robust/AAPL/aapl_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/AAPL/aapl_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/AAPL/aapl_iex_robust_loss.png  used on input line 622.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/AAPL/aapl_iex_robust_cm.png, id=379, 360.1455pt x 327.8649pt>
+File: IEX/Robust/AAPL/aapl_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/AAPL/aapl_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/AAPL/aapl_iex_robust_cm.png  used on input line 623.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/AAPL/aapl_iex_noscaler_accuracy.png, id=380, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/AAPL/aapl_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/AAPL/aapl_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/AAPL/aapl_iex_noscaler_accuracy.png  used on input line 628.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/AAPL/aapl_iex_noscaler_loss.png, id=381, 410.0118pt x 327.8649pt>
+File: IEX/NoScaler/AAPL/aapl_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/AAPL/aapl_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/AAPL/aapl_iex_noscaler_loss.png  used on input line 629.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/NoScaler/AAPL/aapl_iex_noscaler_cm.png, id=382, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/AAPL/aapl_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/AAPL/aapl_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/AAPL/aapl_iex_noscaler_cm.png  used on input line 630.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/MinMax/AAPL/aapl_iex_minmax_accuracy.png, id=383, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/AAPL/aapl_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/AAPL/aapl_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/AAPL/aapl_iex_minmax_accuracy.png  used on input line 635.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/AAPL/aapl_iex_minmax_loss.png, id=384, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/AAPL/aapl_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/AAPL/aapl_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/AAPL/aapl_iex_minmax_loss.png  used on input line 636.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/AAPL/aapl_iex_minmax_cm.png, id=385, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/AAPL/aapl_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/AAPL/aapl_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/AAPL/aapl_iex_minmax_cm.png  used on input line 637.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/AAPL/aapl_iex_standard_accuracy.png, id=386, 422.2977pt x 327.8649pt>
+File: IEX/Standard/AAPL/aapl_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/AAPL/aapl_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/AAPL/aapl_iex_standard_accuracy.png  used on input line 642.
+(pdftex.def)             Requested size: 136.57635pt x 106.03453pt.
+<IEX/Standard/AAPL/aapl_iex_standard_loss.png, id=387, 416.0343pt x 327.8649pt>
+File: IEX/Standard/AAPL/aapl_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/AAPL/aapl_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/AAPL/aapl_iex_standard_loss.png  used on input line 643.
+(pdftex.def)             Requested size: 136.57635pt x 107.63043pt.
+<IEX/Standard/AAPL/aapl_iex_standard_cm.png, id=388, 360.1455pt x 327.8649pt>
+File: IEX/Standard/AAPL/aapl_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/AAPL/aapl_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/AAPL/aapl_iex_standard_cm.png  used on input line 644.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/AAPL/aapl_sip_robust_accuracy.png, id=389, 416.2752pt x 327.8649pt>
+File: SIP/Robust/AAPL/aapl_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/AAPL/aapl_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/AAPL/aapl_sip_robust_accuracy.png  used on input line 650.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Robust/AAPL/aapl_sip_robust_loss.png, id=390, 416.2752pt x 327.8649pt>
+File: SIP/Robust/AAPL/aapl_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/AAPL/aapl_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/AAPL/aapl_sip_robust_loss.png  used on input line 651.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Robust/AAPL/aapl_sip_robust_cm.png, id=391, 360.1455pt x 327.8649pt>
+File: SIP/Robust/AAPL/aapl_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/AAPL/aapl_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/AAPL/aapl_sip_robust_cm.png  used on input line 652.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/AAPL/aapl_sip_noscaler_accuracy.png, id=392, 417.9615pt x 327.8649pt>
+File: SIP/NoScaler/AAPL/aapl_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/AAPL/aapl_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/AAPL/aapl_sip_noscaler_accuracy.png  used on input line 657.
+(pdftex.def)             Requested size: 136.57635pt x 107.13515pt.
+<SIP/NoScaler/AAPL/aapl_sip_noscaler_loss.png, id=393, 424.2249pt x 327.8649pt>
+File: SIP/NoScaler/AAPL/aapl_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/AAPL/aapl_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/AAPL/aapl_sip_noscaler_loss.png  used on input line 658.
+(pdftex.def)             Requested size: 136.57635pt x 105.55426pt.
+<SIP/NoScaler/AAPL/aapl_sip_noscaler_cm.png, id=394, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/AAPL/aapl_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/AAPL/aapl_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/AAPL/aapl_sip_noscaler_cm.png  used on input line 659.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [16 <./IEX/Robust/AAPL/AAPL_iex_robust_accuracy.png> <./IEX/Robust/AAPL/AAPL_iex_robust_loss.png> <./IEX/Robust/AAPL/AAPL_iex_robust_cm.png> <./IEX/NoScaler/AAPL/AAPL_iex_noscaler_accuracy.png> <./IEX/NoScaler/AAPL/AAPL_iex_noscaler_loss.png> <./IEX/NoScaler/AAPL/AAPL_iex_noscaler_cm.png> <./IEX/MinMax/AAPL/AAPL_iex_minmax_accuracy.png> <./IEX/MinMax/AAPL/AAPL_iex_minmax_loss.png> <./IEX/MinMax/AAPL/AAPL_iex_minmax_cm.png> <./IEX/Standard/AAPL/AAPL_iex_standard_accuracy.png> <./IEX/Standard/AAPL/AAPL_iex_standard_loss.png> <./IEX/Standard/AAPL/AAPL_iex_standard_cm.png>]
+<SIP/MinMax/AAPL/aapl_sip_minmax_accuracy.png, id=415, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/AAPL/aapl_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/AAPL/aapl_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/AAPL/aapl_sip_minmax_accuracy.png  used on input line 664.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/AAPL/aapl_sip_minmax_loss.png, id=416, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/AAPL/aapl_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/AAPL/aapl_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/AAPL/aapl_sip_minmax_loss.png  used on input line 665.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/AAPL/aapl_sip_minmax_cm.png, id=417, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/AAPL/aapl_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/AAPL/aapl_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/AAPL/aapl_sip_minmax_cm.png  used on input line 666.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/AAPL/aapl_sip_standard_accuracy.png, id=418, 416.2752pt x 327.8649pt>
+File: SIP/Standard/AAPL/aapl_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/AAPL/aapl_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/AAPL/aapl_sip_standard_accuracy.png  used on input line 671.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/AAPL/aapl_sip_standard_loss.png, id=419, 416.2752pt x 327.8649pt>
+File: SIP/Standard/AAPL/aapl_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/AAPL/aapl_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/AAPL/aapl_sip_standard_loss.png  used on input line 672.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/AAPL/aapl_sip_standard_cm.png, id=420, 360.1455pt x 327.8649pt>
+File: SIP/Standard/AAPL/aapl_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/AAPL/aapl_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/AAPL/aapl_sip_standard_cm.png  used on input line 673.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/AMZN/amzn_iex_robust_accuracy.png, id=421, 416.2752pt x 327.8649pt>
+File: IEX/Robust/AMZN/amzn_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/AMZN/amzn_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/AMZN/amzn_iex_robust_accuracy.png  used on input line 680.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/AMZN/amzn_iex_robust_loss.png, id=422, 410.0118pt x 327.8649pt>
+File: IEX/Robust/AMZN/amzn_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/AMZN/amzn_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/AMZN/amzn_iex_robust_loss.png  used on input line 681.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Robust/AMZN/amzn_iex_robust_cm.png, id=423, 360.1455pt x 327.8649pt>
+File: IEX/Robust/AMZN/amzn_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/AMZN/amzn_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/AMZN/amzn_iex_robust_cm.png  used on input line 682.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/AMZN/amzn_iex_noscaler_accuracy.png, id=424, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/AMZN/amzn_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/AMZN/amzn_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/AMZN/amzn_iex_noscaler_accuracy.png  used on input line 687.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/AMZN/amzn_iex_noscaler_loss.png, id=425, 410.0118pt x 327.8649pt>
+File: IEX/NoScaler/AMZN/amzn_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/AMZN/amzn_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/AMZN/amzn_iex_noscaler_loss.png  used on input line 688.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/NoScaler/AMZN/amzn_iex_noscaler_cm.png, id=426, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/AMZN/amzn_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/AMZN/amzn_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/AMZN/amzn_iex_noscaler_cm.png  used on input line 689.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [17 <./SIP/Robust/AAPL/AAPL_sip_robust_accuracy.png> <./SIP/Robust/AAPL/AAPL_sip_robust_loss.png> <./SIP/Robust/AAPL/AAPL_sip_robust_cm.png> <./SIP/NoScaler/AAPL/AAPL_sip_noscaler_accuracy.png> <./SIP/NoScaler/AAPL/AAPL_sip_noscaler_loss.png> <./SIP/NoScaler/AAPL/AAPL_sip_noscaler_cm.png> <./SIP/MinMax/AAPL/AAPL_sip_minmax_accuracy.png> <./SIP/MinMax/AAPL/AAPL_sip_minmax_loss.png> <./SIP/MinMax/AAPL/AAPL_sip_minmax_cm.png> <./SIP/Standard/AAPL/AAPL_sip_standard_accuracy.png> <./SIP/Standard/AAPL/AAPL_sip_standard_loss.png> <./SIP/Standard/AAPL/AAPL_sip_standard_cm.png>]
+<IEX/MinMax/AMZN/amzn_iex_minmax_accuracy.png, id=447, 425.1885pt x 327.8649pt>
+File: IEX/MinMax/AMZN/amzn_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/AMZN/amzn_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/AMZN/amzn_iex_minmax_accuracy.png  used on input line 694.
+(pdftex.def)             Requested size: 136.57635pt x 105.31412pt.
+<IEX/MinMax/AMZN/amzn_iex_minmax_loss.png, id=448, 418.9251pt x 327.8649pt>
+File: IEX/MinMax/AMZN/amzn_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/AMZN/amzn_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/AMZN/amzn_iex_minmax_loss.png  used on input line 695.
+(pdftex.def)             Requested size: 136.57635pt x 106.88501pt.
+<IEX/MinMax/AMZN/amzn_iex_minmax_cm.png, id=449, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/AMZN/amzn_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/AMZN/amzn_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/AMZN/amzn_iex_minmax_cm.png  used on input line 696.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/AMZN/amzn_iex_standard_accuracy.png, id=450, 421.575pt x 327.8649pt>
+File: IEX/Standard/AMZN/amzn_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/AMZN/amzn_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/AMZN/amzn_iex_standard_accuracy.png  used on input line 701.
+(pdftex.def)             Requested size: 136.57635pt x 106.21964pt.
+<IEX/Standard/AMZN/amzn_iex_standard_loss.png, id=451, 421.575pt x 327.8649pt>
+File: IEX/Standard/AMZN/amzn_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/AMZN/amzn_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/AMZN/amzn_iex_standard_loss.png  used on input line 702.
+(pdftex.def)             Requested size: 136.57635pt x 106.21964pt.
+<IEX/Standard/AMZN/amzn_iex_standard_cm.png, id=452, 360.1455pt x 327.8649pt>
+File: IEX/Standard/AMZN/amzn_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/AMZN/amzn_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/AMZN/amzn_iex_standard_cm.png  used on input line 703.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/AMZN/amzn_sip_robust_accuracy.png, id=453, 422.7795pt x 327.8649pt>
+File: SIP/Robust/AMZN/amzn_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/AMZN/amzn_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/AMZN/amzn_sip_robust_accuracy.png  used on input line 709.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Robust/AMZN/amzn_sip_robust_loss.png, id=454, 416.2752pt x 327.8649pt>
+File: SIP/Robust/AMZN/amzn_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/AMZN/amzn_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/AMZN/amzn_sip_robust_loss.png  used on input line 710.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Robust/AMZN/amzn_sip_robust_cm.png, id=455, 360.1455pt x 327.8649pt>
+File: SIP/Robust/AMZN/amzn_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/AMZN/amzn_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/AMZN/amzn_sip_robust_cm.png  used on input line 711.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/AMZN/amzn_sip_noscaler_accuracy.png, id=456, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/AMZN/amzn_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/AMZN/amzn_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/AMZN/amzn_sip_noscaler_accuracy.png  used on input line 716.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/AMZN/amzn_sip_noscaler_loss.png, id=457, 410.0118pt x 327.8649pt>
+File: SIP/NoScaler/AMZN/amzn_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/AMZN/amzn_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/AMZN/amzn_sip_noscaler_loss.png  used on input line 717.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/NoScaler/AMZN/amzn_sip_noscaler_cm.png, id=458, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/AMZN/amzn_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/AMZN/amzn_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/AMZN/amzn_sip_noscaler_cm.png  used on input line 718.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [18 <./IEX/Robust/AMZN/AMZN_iex_robust_accuracy.png> <./IEX/Robust/AMZN/AMZN_iex_robust_loss.png> <./IEX/Robust/AMZN/AMZN_iex_robust_cm.png> <./IEX/NoScaler/AMZN/AMZN_iex_noscaler_accuracy.png> <./IEX/NoScaler/AMZN/AMZN_iex_noscaler_loss.png> <./IEX/NoScaler/AMZN/AMZN_iex_noscaler_cm.png> <./IEX/MinMax/AMZN/AMZN_iex_minmax_accuracy.png> <./IEX/MinMax/AMZN/AMZN_iex_minmax_loss.png> <./IEX/MinMax/AMZN/AMZN_iex_minmax_cm.png> <./IEX/Standard/AMZN/AMZN_iex_standard_accuracy.png> <./IEX/Standard/AMZN/AMZN_iex_standard_loss.png> <./IEX/Standard/AMZN/AMZN_iex_standard_cm.png>]
+<SIP/MinMax/AMZN/amzn_sip_minmax_accuracy.png, id=480, 422.7795pt x 327.8649pt>
+File: SIP/MinMax/AMZN/amzn_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/AMZN/amzn_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/AMZN/amzn_sip_minmax_accuracy.png  used on input line 723.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/MinMax/AMZN/amzn_sip_minmax_loss.png, id=481, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/AMZN/amzn_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/AMZN/amzn_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/AMZN/amzn_sip_minmax_loss.png  used on input line 724.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/AMZN/amzn_sip_minmax_cm.png, id=482, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/AMZN/amzn_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/AMZN/amzn_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/AMZN/amzn_sip_minmax_cm.png  used on input line 725.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/AMZN/amzn_sip_standard_accuracy.png, id=483, 422.7795pt x 327.8649pt>
+File: SIP/Standard/AMZN/amzn_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/AMZN/amzn_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/AMZN/amzn_sip_standard_accuracy.png  used on input line 730.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Standard/AMZN/amzn_sip_standard_loss.png, id=484, 416.2752pt x 327.8649pt>
+File: SIP/Standard/AMZN/amzn_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/AMZN/amzn_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/AMZN/amzn_sip_standard_loss.png  used on input line 731.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/AMZN/amzn_sip_standard_cm.png, id=485, 360.1455pt x 327.8649pt>
+File: SIP/Standard/AMZN/amzn_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/AMZN/amzn_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/AMZN/amzn_sip_standard_cm.png  used on input line 732.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/DIA/dia_iex_robust_accuracy.png, id=486, 416.2752pt x 327.8649pt>
+File: IEX/Robust/DIA/dia_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/DIA/dia_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/DIA/dia_iex_robust_accuracy.png  used on input line 739.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/DIA/dia_iex_robust_loss.png, id=487, 410.0118pt x 327.8649pt>
+File: IEX/Robust/DIA/dia_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/DIA/dia_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/DIA/dia_iex_robust_loss.png  used on input line 740.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Robust/DIA/dia_iex_robust_cm.png, id=488, 360.1455pt x 327.8649pt>
+File: IEX/Robust/DIA/dia_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/DIA/dia_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/DIA/dia_iex_robust_cm.png  used on input line 741.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/DIA/dia_iex_noscaler_accuracy.png, id=489, 422.7795pt x 327.8649pt>
+File: IEX/NoScaler/DIA/dia_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/DIA/dia_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/DIA/dia_iex_noscaler_accuracy.png  used on input line 746.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<IEX/NoScaler/DIA/dia_iex_noscaler_loss.png, id=490, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/DIA/dia_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/DIA/dia_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/DIA/dia_iex_noscaler_loss.png  used on input line 747.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/DIA/dia_iex_noscaler_cm.png, id=491, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/DIA/dia_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/DIA/dia_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/DIA/dia_iex_noscaler_cm.png  used on input line 748.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [19 <./SIP/Robust/AMZN/AMZN_sip_robust_accuracy.png> <./SIP/Robust/AMZN/AMZN_sip_robust_loss.png> <./SIP/Robust/AMZN/AMZN_sip_robust_cm.png> <./SIP/NoScaler/AMZN/AMZN_sip_noscaler_accuracy.png> <./SIP/NoScaler/AMZN/AMZN_sip_noscaler_loss.png> <./SIP/NoScaler/AMZN/AMZN_sip_noscaler_cm.png> <./SIP/MinMax/AMZN/AMZN_sip_minmax_accuracy.png> <./SIP/MinMax/AMZN/AMZN_sip_minmax_loss.png> <./SIP/MinMax/AMZN/AMZN_sip_minmax_cm.png> <./SIP/Standard/AMZN/AMZN_sip_standard_accuracy.png> <./SIP/Standard/AMZN/AMZN_sip_standard_loss.png> <./SIP/Standard/AMZN/AMZN_sip_standard_cm.png>]
+<IEX/MinMax/DIA/dia_iex_minmax_accuracy.png, id=512, 410.0118pt x 327.8649pt>
+File: IEX/MinMax/DIA/dia_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/DIA/dia_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/DIA/dia_iex_minmax_accuracy.png  used on input line 753.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/MinMax/DIA/dia_iex_minmax_loss.png, id=513, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/DIA/dia_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/DIA/dia_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/DIA/dia_iex_minmax_loss.png  used on input line 754.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/DIA/dia_iex_minmax_cm.png, id=514, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/DIA/dia_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/DIA/dia_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/DIA/dia_iex_minmax_cm.png  used on input line 755.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/DIA/dia_iex_standard_accuracy.png, id=515, 410.0118pt x 327.8649pt>
+File: IEX/Standard/DIA/dia_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/DIA/dia_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/DIA/dia_iex_standard_accuracy.png  used on input line 760.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Standard/DIA/dia_iex_standard_loss.png, id=516, 410.0118pt x 327.8649pt>
+File: IEX/Standard/DIA/dia_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/DIA/dia_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/DIA/dia_iex_standard_loss.png  used on input line 761.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Standard/DIA/dia_iex_standard_cm.png, id=517, 360.1455pt x 327.8649pt>
+File: IEX/Standard/DIA/dia_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/DIA/dia_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/DIA/dia_iex_standard_cm.png  used on input line 762.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/DIA/dia_sip_robust_accuracy.png, id=518, 416.2752pt x 327.8649pt>
+File: SIP/Robust/DIA/dia_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/DIA/dia_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/DIA/dia_sip_robust_accuracy.png  used on input line 768.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Robust/DIA/dia_sip_robust_loss.png, id=519, 416.2752pt x 327.8649pt>
+File: SIP/Robust/DIA/dia_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/DIA/dia_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/DIA/dia_sip_robust_loss.png  used on input line 769.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Robust/DIA/dia_sip_robust_cm.png, id=520, 360.1455pt x 327.8649pt>
+File: SIP/Robust/DIA/dia_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/DIA/dia_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/DIA/dia_sip_robust_cm.png  used on input line 770.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/DIA/dia_sip_noscaler_accuracy.png, id=521, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/DIA/dia_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/DIA/dia_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/DIA/dia_sip_noscaler_accuracy.png  used on input line 775.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/DIA/dia_sip_noscaler_loss.png, id=522, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/DIA/dia_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/DIA/dia_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/DIA/dia_sip_noscaler_loss.png  used on input line 776.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/DIA/dia_sip_noscaler_cm.png, id=523, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/DIA/dia_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/DIA/dia_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/DIA/dia_sip_noscaler_cm.png  used on input line 777.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [20 <./IEX/Robust/DIA/DIA_iex_robust_accuracy.png> <./IEX/Robust/DIA/DIA_iex_robust_loss.png> <./IEX/Robust/DIA/DIA_iex_robust_cm.png> <./IEX/NoScaler/DIA/DIA_iex_noscaler_accuracy.png> <./IEX/NoScaler/DIA/DIA_iex_noscaler_loss.png> <./IEX/NoScaler/DIA/DIA_iex_noscaler_cm.png> <./IEX/MinMax/DIA/DIA_iex_minmax_accuracy.png> <./IEX/MinMax/DIA/DIA_iex_minmax_loss.png> <./IEX/MinMax/DIA/DIA_iex_minmax_cm.png> <./IEX/Standard/DIA/DIA_iex_standard_accuracy.png> <./IEX/Standard/DIA/DIA_iex_standard_loss.png> <./IEX/Standard/DIA/DIA_iex_standard_cm.png>]
+<SIP/MinMax/DIA/dia_sip_minmax_accuracy.png, id=544, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/DIA/dia_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/DIA/dia_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/DIA/dia_sip_minmax_accuracy.png  used on input line 782.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/DIA/dia_sip_minmax_loss.png, id=545, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/DIA/dia_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/DIA/dia_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/DIA/dia_sip_minmax_loss.png  used on input line 783.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/DIA/dia_sip_minmax_cm.png, id=546, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/DIA/dia_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/DIA/dia_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/DIA/dia_sip_minmax_cm.png  used on input line 784.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/DIA/dia_sip_standard_accuracy.png, id=547, 416.2752pt x 327.8649pt>
+File: SIP/Standard/DIA/dia_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/DIA/dia_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/DIA/dia_sip_standard_accuracy.png  used on input line 789.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/DIA/dia_sip_standard_loss.png, id=548, 416.2752pt x 327.8649pt>
+File: SIP/Standard/DIA/dia_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/DIA/dia_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/DIA/dia_sip_standard_loss.png  used on input line 790.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/DIA/dia_sip_standard_cm.png, id=549, 360.1455pt x 327.8649pt>
+File: SIP/Standard/DIA/dia_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/DIA/dia_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/DIA/dia_sip_standard_cm.png  used on input line 791.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/GOOG/goog_iex_robust_accuracy.png, id=550, 416.2752pt x 327.8649pt>
+File: IEX/Robust/GOOG/goog_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/GOOG/goog_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/GOOG/goog_iex_robust_accuracy.png  used on input line 798.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/GOOG/goog_iex_robust_loss.png, id=551, 410.0118pt x 327.8649pt>
+File: IEX/Robust/GOOG/goog_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/GOOG/goog_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/GOOG/goog_iex_robust_loss.png  used on input line 799.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Robust/GOOG/goog_iex_robust_cm.png, id=552, 360.1455pt x 327.8649pt>
+File: IEX/Robust/GOOG/goog_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/GOOG/goog_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/GOOG/goog_iex_robust_cm.png  used on input line 800.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/GOOG/goog_iex_noscaler_accuracy.png, id=553, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/GOOG/goog_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/GOOG/goog_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/GOOG/goog_iex_noscaler_accuracy.png  used on input line 805.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/GOOG/goog_iex_noscaler_loss.png, id=554, 410.0118pt x 327.8649pt>
+File: IEX/NoScaler/GOOG/goog_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/GOOG/goog_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/GOOG/goog_iex_noscaler_loss.png  used on input line 806.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/NoScaler/GOOG/goog_iex_noscaler_cm.png, id=555, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/GOOG/goog_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/GOOG/goog_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/GOOG/goog_iex_noscaler_cm.png  used on input line 807.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [21 <./SIP/Robust/DIA/DIA_sip_robust_accuracy.png> <./SIP/Robust/DIA/DIA_sip_robust_loss.png> <./SIP/Robust/DIA/DIA_sip_robust_cm.png> <./SIP/NoScaler/DIA/DIA_sip_noscaler_accuracy.png> <./SIP/NoScaler/DIA/DIA_sip_noscaler_loss.png> <./SIP/NoScaler/DIA/DIA_sip_noscaler_cm.png> <./SIP/MinMax/DIA/DIA_sip_minmax_accuracy.png> <./SIP/MinMax/DIA/DIA_sip_minmax_loss.png> <./SIP/MinMax/DIA/DIA_sip_minmax_cm.png> <./SIP/Standard/DIA/DIA_sip_standard_accuracy.png> <./SIP/Standard/DIA/DIA_sip_standard_loss.png> <./SIP/Standard/DIA/DIA_sip_standard_cm.png>]
+<IEX/MinMax/GOOG/goog_iex_minmax_accuracy.png, id=576, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/GOOG/goog_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/GOOG/goog_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/GOOG/goog_iex_minmax_accuracy.png  used on input line 812.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/GOOG/goog_iex_minmax_loss.png, id=577, 410.0118pt x 327.8649pt>
+File: IEX/MinMax/GOOG/goog_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/GOOG/goog_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/GOOG/goog_iex_minmax_loss.png  used on input line 813.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/MinMax/GOOG/goog_iex_minmax_cm.png, id=578, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/GOOG/goog_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/GOOG/goog_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/GOOG/goog_iex_minmax_cm.png  used on input line 814.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/GOOG/goog_iex_standard_accuracy.png, id=579, 417.9615pt x 327.8649pt>
+File: IEX/Standard/GOOG/goog_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/GOOG/goog_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/GOOG/goog_iex_standard_accuracy.png  used on input line 819.
+(pdftex.def)             Requested size: 136.57635pt x 107.13515pt.
+<IEX/Standard/GOOG/goog_iex_standard_loss.png, id=580, 411.6981pt x 327.8649pt>
+File: IEX/Standard/GOOG/goog_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/GOOG/goog_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/GOOG/goog_iex_standard_loss.png  used on input line 820.
+(pdftex.def)             Requested size: 136.57635pt x 108.76607pt.
+<IEX/Standard/GOOG/goog_iex_standard_cm.png, id=581, 360.1455pt x 327.8649pt>
+File: IEX/Standard/GOOG/goog_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/GOOG/goog_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/GOOG/goog_iex_standard_cm.png  used on input line 821.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/GOOG/goog_sip_robust_accuracy.png, id=582, 422.7795pt x 327.8649pt>
+File: SIP/Robust/GOOG/goog_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/GOOG/goog_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/GOOG/goog_sip_robust_accuracy.png  used on input line 827.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Robust/GOOG/goog_sip_robust_loss.png, id=583, 410.0118pt x 327.8649pt>
+File: SIP/Robust/GOOG/goog_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/GOOG/goog_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/GOOG/goog_sip_robust_loss.png  used on input line 828.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/Robust/GOOG/goog_sip_robust_cm.png, id=584, 360.1455pt x 327.8649pt>
+File: SIP/Robust/GOOG/goog_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/GOOG/goog_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/GOOG/goog_sip_robust_cm.png  used on input line 829.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/GOOG/goog_sip_noscaler_accuracy.png, id=585, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/GOOG/goog_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/GOOG/goog_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/GOOG/goog_sip_noscaler_accuracy.png  used on input line 834.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/GOOG/goog_sip_noscaler_loss.png, id=586, 410.0118pt x 327.8649pt>
+File: SIP/NoScaler/GOOG/goog_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/GOOG/goog_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/GOOG/goog_sip_noscaler_loss.png  used on input line 835.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/NoScaler/GOOG/goog_sip_noscaler_cm.png, id=587, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/GOOG/goog_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/GOOG/goog_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/GOOG/goog_sip_noscaler_cm.png  used on input line 836.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [22 <./IEX/Robust/GOOG/GOOG_iex_robust_accuracy.png> <./IEX/Robust/GOOG/GOOG_iex_robust_loss.png> <./IEX/Robust/GOOG/GOOG_iex_robust_cm.png> <./IEX/NoScaler/GOOG/GOOG_iex_noscaler_accuracy.png> <./IEX/NoScaler/GOOG/GOOG_iex_noscaler_loss.png> <./IEX/NoScaler/GOOG/GOOG_iex_noscaler_cm.png> <./IEX/MinMax/GOOG/GOOG_iex_minmax_accuracy.png> <./IEX/MinMax/GOOG/GOOG_iex_minmax_loss.png> <./IEX/MinMax/GOOG/GOOG_iex_minmax_cm.png> <./IEX/Standard/GOOG/GOOG_iex_standard_accuracy.png> <./IEX/Standard/GOOG/GOOG_iex_standard_loss.png> <./IEX/Standard/GOOG/GOOG_iex_standard_cm.png>]
+<SIP/MinMax/GOOG/goog_sip_minmax_accuracy.png, id=608, 422.7795pt x 327.8649pt>
+File: SIP/MinMax/GOOG/goog_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/GOOG/goog_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/GOOG/goog_sip_minmax_accuracy.png  used on input line 841.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/MinMax/GOOG/goog_sip_minmax_loss.png, id=609, 410.0118pt x 327.8649pt>
+File: SIP/MinMax/GOOG/goog_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/GOOG/goog_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/GOOG/goog_sip_minmax_loss.png  used on input line 842.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/MinMax/GOOG/goog_sip_minmax_cm.png, id=610, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/GOOG/goog_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/GOOG/goog_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/GOOG/goog_sip_minmax_cm.png  used on input line 843.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/GOOG/goog_sip_standard_accuracy.png, id=611, 422.7795pt x 327.8649pt>
+File: SIP/Standard/GOOG/goog_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/GOOG/goog_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/GOOG/goog_sip_standard_accuracy.png  used on input line 848.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Standard/GOOG/goog_sip_standard_loss.png, id=612, 410.0118pt x 327.8649pt>
+File: SIP/Standard/GOOG/goog_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/GOOG/goog_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/GOOG/goog_sip_standard_loss.png  used on input line 849.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/Standard/GOOG/goog_sip_standard_cm.png, id=613, 360.1455pt x 327.8649pt>
+File: SIP/Standard/GOOG/goog_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/GOOG/goog_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/GOOG/goog_sip_standard_cm.png  used on input line 850.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/IWM/iwm_iex_robust_accuracy.png, id=614, 422.7795pt x 327.8649pt>
+File: IEX/Robust/IWM/iwm_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/IWM/iwm_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/IWM/iwm_iex_robust_accuracy.png  used on input line 857.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<IEX/Robust/IWM/iwm_iex_robust_loss.png, id=615, 416.2752pt x 327.8649pt>
+File: IEX/Robust/IWM/iwm_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/IWM/iwm_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/IWM/iwm_iex_robust_loss.png  used on input line 858.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/IWM/iwm_iex_robust_cm.png, id=616, 360.1455pt x 327.8649pt>
+File: IEX/Robust/IWM/iwm_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/IWM/iwm_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/IWM/iwm_iex_robust_cm.png  used on input line 859.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/IWM/iwm_iex_noscaler_accuracy.png, id=617, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/IWM/iwm_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/IWM/iwm_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/IWM/iwm_iex_noscaler_accuracy.png  used on input line 864.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/IWM/iwm_iex_noscaler_loss.png, id=618, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/IWM/iwm_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/IWM/iwm_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/IWM/iwm_iex_noscaler_loss.png  used on input line 865.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/IWM/iwm_iex_noscaler_cm.png, id=619, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/IWM/iwm_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/IWM/iwm_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/IWM/iwm_iex_noscaler_cm.png  used on input line 866.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [23 <./SIP/Robust/GOOG/GOOG_sip_robust_accuracy.png> <./SIP/Robust/GOOG/GOOG_sip_robust_loss.png> <./SIP/Robust/GOOG/GOOG_sip_robust_cm.png> <./SIP/NoScaler/GOOG/GOOG_sip_noscaler_accuracy.png> <./SIP/NoScaler/GOOG/GOOG_sip_noscaler_loss.png> <./SIP/NoScaler/GOOG/GOOG_sip_noscaler_cm.png> <./SIP/MinMax/GOOG/GOOG_sip_minmax_accuracy.png> <./SIP/MinMax/GOOG/GOOG_sip_minmax_loss.png> <./SIP/MinMax/GOOG/GOOG_sip_minmax_cm.png> <./SIP/Standard/GOOG/GOOG_sip_standard_accuracy.png> <./SIP/Standard/GOOG/GOOG_sip_standard_loss.png> <./SIP/Standard/GOOG/GOOG_sip_standard_cm.png>]
+<IEX/MinMax/IWM/iwm_iex_minmax_accuracy.png, id=641, 422.7795pt x 327.8649pt>
+File: IEX/MinMax/IWM/iwm_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/IWM/iwm_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/IWM/iwm_iex_minmax_accuracy.png  used on input line 871.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<IEX/MinMax/IWM/iwm_iex_minmax_loss.png, id=642, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/IWM/iwm_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/IWM/iwm_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/IWM/iwm_iex_minmax_loss.png  used on input line 872.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/IWM/iwm_iex_minmax_cm.png, id=643, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/IWM/iwm_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/IWM/iwm_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/IWM/iwm_iex_minmax_cm.png  used on input line 873.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/IWM/iwm_iex_standard_accuracy.png, id=644, 422.7795pt x 327.8649pt>
+File: IEX/Standard/IWM/iwm_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/IWM/iwm_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/IWM/iwm_iex_standard_accuracy.png  used on input line 878.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<IEX/Standard/IWM/iwm_iex_standard_loss.png, id=645, 416.2752pt x 327.8649pt>
+File: IEX/Standard/IWM/iwm_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/IWM/iwm_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/IWM/iwm_iex_standard_loss.png  used on input line 879.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Standard/IWM/iwm_iex_standard_cm.png, id=646, 360.1455pt x 327.8649pt>
+File: IEX/Standard/IWM/iwm_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/IWM/iwm_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/IWM/iwm_iex_standard_cm.png  used on input line 880.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/IWM/iwm_sip_robust_accuracy.png, id=647, 419.6478pt x 327.8649pt>
+File: SIP/Robust/IWM/iwm_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/IWM/iwm_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/IWM/iwm_sip_robust_accuracy.png  used on input line 886.
+(pdftex.def)             Requested size: 136.57635pt x 106.70491pt.
+<SIP/Robust/IWM/iwm_sip_robust_loss.png, id=648, 413.3844pt x 327.8649pt>
+File: SIP/Robust/IWM/iwm_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/IWM/iwm_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/IWM/iwm_sip_robust_loss.png  used on input line 887.
+(pdftex.def)             Requested size: 136.57635pt x 108.32082pt.
+<SIP/Robust/IWM/iwm_sip_robust_cm.png, id=649, 360.1455pt x 327.8649pt>
+File: SIP/Robust/IWM/iwm_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/IWM/iwm_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/IWM/iwm_sip_robust_cm.png  used on input line 888.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/IWM/iwm_sip_noscaler_accuracy.png, id=650, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/IWM/iwm_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/IWM/iwm_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/IWM/iwm_sip_noscaler_accuracy.png  used on input line 893.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/IWM/iwm_sip_noscaler_loss.png, id=651, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/IWM/iwm_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/IWM/iwm_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/IWM/iwm_sip_noscaler_loss.png  used on input line 894.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/IWM/iwm_sip_noscaler_cm.png, id=652, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/IWM/iwm_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/IWM/iwm_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/IWM/iwm_sip_noscaler_cm.png  used on input line 895.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [24 <./IEX/Robust/IWM/IWM_iex_robust_accuracy.png> <./IEX/Robust/IWM/IWM_iex_robust_loss.png> <./IEX/Robust/IWM/IWM_iex_robust_cm.png> <./IEX/NoScaler/IWM/IWM_iex_noscaler_accuracy.png> <./IEX/NoScaler/IWM/IWM_iex_noscaler_loss.png> <./IEX/NoScaler/IWM/IWM_iex_noscaler_cm.png> <./IEX/MinMax/IWM/IWM_iex_minmax_accuracy.png> <./IEX/MinMax/IWM/IWM_iex_minmax_loss.png> <./IEX/MinMax/IWM/IWM_iex_minmax_cm.png> <./IEX/Standard/IWM/IWM_iex_standard_accuracy.png> <./IEX/Standard/IWM/IWM_iex_standard_loss.png> <./IEX/Standard/IWM/IWM_iex_standard_cm.png>]
+<SIP/MinMax/IWM/iwm_sip_minmax_accuracy.png, id=674, 419.166pt x 327.8649pt>
+File: SIP/MinMax/IWM/iwm_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/IWM/iwm_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/IWM/iwm_sip_minmax_accuracy.png  used on input line 900.
+(pdftex.def)             Requested size: 136.57635pt x 106.82997pt.
+<SIP/MinMax/IWM/iwm_sip_minmax_loss.png, id=675, 412.9026pt x 327.8649pt>
+File: SIP/MinMax/IWM/iwm_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/IWM/iwm_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/IWM/iwm_sip_minmax_loss.png  used on input line 901.
+(pdftex.def)             Requested size: 136.57635pt x 108.45088pt.
+<SIP/MinMax/IWM/iwm_sip_minmax_cm.png, id=676, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/IWM/iwm_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/IWM/iwm_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/IWM/iwm_sip_minmax_cm.png  used on input line 902.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/IWM/iwm_sip_standard_accuracy.png, id=677, 416.2752pt x 327.8649pt>
+File: SIP/Standard/IWM/iwm_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/IWM/iwm_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/IWM/iwm_sip_standard_accuracy.png  used on input line 907.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/IWM/iwm_sip_standard_loss.png, id=678, 410.0118pt x 327.8649pt>
+File: SIP/Standard/IWM/iwm_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/IWM/iwm_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/IWM/iwm_sip_standard_loss.png  used on input line 908.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/Standard/IWM/iwm_sip_standard_cm.png, id=679, 360.1455pt x 327.8649pt>
+File: SIP/Standard/IWM/iwm_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/IWM/iwm_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/IWM/iwm_sip_standard_cm.png  used on input line 909.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/MSFT/msft_iex_robust_accuracy.png, id=680, 416.2752pt x 327.8649pt>
+File: IEX/Robust/MSFT/msft_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/MSFT/msft_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/MSFT/msft_iex_robust_accuracy.png  used on input line 916.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/MSFT/msft_iex_robust_loss.png, id=681, 410.0118pt x 327.8649pt>
+File: IEX/Robust/MSFT/msft_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/MSFT/msft_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/MSFT/msft_iex_robust_loss.png  used on input line 917.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Robust/MSFT/msft_iex_robust_cm.png, id=682, 360.1455pt x 327.8649pt>
+File: IEX/Robust/MSFT/msft_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/MSFT/msft_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/MSFT/msft_iex_robust_cm.png  used on input line 918.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/MSFT/msft_iex_noscaler_accuracy.png, id=683, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/MSFT/msft_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/MSFT/msft_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/MSFT/msft_iex_noscaler_accuracy.png  used on input line 923.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/MSFT/msft_iex_noscaler_loss.png, id=684, 410.0118pt x 327.8649pt>
+File: IEX/NoScaler/MSFT/msft_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/MSFT/msft_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/MSFT/msft_iex_noscaler_loss.png  used on input line 924.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/NoScaler/MSFT/msft_iex_noscaler_cm.png, id=685, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/MSFT/msft_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/MSFT/msft_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/MSFT/msft_iex_noscaler_cm.png  used on input line 925.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [25 <./SIP/Robust/IWM/IWM_sip_robust_accuracy.png> <./SIP/Robust/IWM/IWM_sip_robust_loss.png> <./SIP/Robust/IWM/IWM_sip_robust_cm.png> <./SIP/NoScaler/IWM/IWM_sip_noscaler_accuracy.png> <./SIP/NoScaler/IWM/IWM_sip_noscaler_loss.png> <./SIP/NoScaler/IWM/IWM_sip_noscaler_cm.png> <./SIP/MinMax/IWM/IWM_sip_minmax_accuracy.png> <./SIP/MinMax/IWM/IWM_sip_minmax_loss.png> <./SIP/MinMax/IWM/IWM_sip_minmax_cm.png> <./SIP/Standard/IWM/IWM_sip_standard_accuracy.png> <./SIP/Standard/IWM/IWM_sip_standard_loss.png> <./SIP/Standard/IWM/IWM_sip_standard_cm.png>]
+<IEX/MinMax/MSFT/msft_iex_minmax_accuracy.png, id=706, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/MSFT/msft_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/MSFT/msft_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/MSFT/msft_iex_minmax_accuracy.png  used on input line 930.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/MSFT/msft_iex_minmax_loss.png, id=707, 410.0118pt x 327.8649pt>
+File: IEX/MinMax/MSFT/msft_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/MSFT/msft_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/MSFT/msft_iex_minmax_loss.png  used on input line 931.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/MinMax/MSFT/msft_iex_minmax_cm.png, id=708, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/MSFT/msft_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/MSFT/msft_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/MSFT/msft_iex_minmax_cm.png  used on input line 932.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/MSFT/msft_iex_standard_accuracy.png, id=709, 416.2752pt x 327.8649pt>
+File: IEX/Standard/MSFT/msft_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/MSFT/msft_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/MSFT/msft_iex_standard_accuracy.png  used on input line 937.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Standard/MSFT/msft_iex_standard_loss.png, id=710, 410.0118pt x 327.8649pt>
+File: IEX/Standard/MSFT/msft_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/MSFT/msft_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/MSFT/msft_iex_standard_loss.png  used on input line 938.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Standard/MSFT/msft_iex_standard_cm.png, id=711, 360.1455pt x 327.8649pt>
+File: IEX/Standard/MSFT/msft_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/MSFT/msft_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/MSFT/msft_iex_standard_cm.png  used on input line 939.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/MSFT/msft_sip_robust_accuracy.png, id=712, 416.2752pt x 327.8649pt>
+File: SIP/Robust/MSFT/msft_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/MSFT/msft_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/MSFT/msft_sip_robust_accuracy.png  used on input line 945.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Robust/MSFT/msft_sip_robust_loss.png, id=713, 422.7795pt x 327.8649pt>
+File: SIP/Robust/MSFT/msft_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/MSFT/msft_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/MSFT/msft_sip_robust_loss.png  used on input line 946.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Robust/MSFT/msft_sip_robust_cm.png, id=714, 360.1455pt x 327.8649pt>
+File: SIP/Robust/MSFT/msft_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/MSFT/msft_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/MSFT/msft_sip_robust_cm.png  used on input line 947.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/MSFT/msft_sip_noscaler_accuracy.png, id=715, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/MSFT/msft_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/MSFT/msft_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/MSFT/msft_sip_noscaler_accuracy.png  used on input line 952.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/MSFT/msft_sip_noscaler_loss.png, id=716, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/MSFT/msft_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/MSFT/msft_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/MSFT/msft_sip_noscaler_loss.png  used on input line 953.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/MSFT/msft_sip_noscaler_cm.png, id=717, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/MSFT/msft_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/MSFT/msft_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/MSFT/msft_sip_noscaler_cm.png  used on input line 954.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [26 <./IEX/Robust/MSFT/MSFT_iex_robust_accuracy.png> <./IEX/Robust/MSFT/MSFT_iex_robust_loss.png> <./IEX/Robust/MSFT/MSFT_iex_robust_cm.png> <./IEX/NoScaler/MSFT/MSFT_iex_noscaler_accuracy.png> <./IEX/NoScaler/MSFT/MSFT_iex_noscaler_loss.png> <./IEX/NoScaler/MSFT/MSFT_iex_noscaler_cm.png> <./IEX/MinMax/MSFT/MSFT_iex_minmax_accuracy.png> <./IEX/MinMax/MSFT/MSFT_iex_minmax_loss.png> <./IEX/MinMax/MSFT/MSFT_iex_minmax_cm.png> <./IEX/Standard/MSFT/MSFT_iex_standard_accuracy.png> <./IEX/Standard/MSFT/MSFT_iex_standard_loss.png> <./IEX/Standard/MSFT/MSFT_iex_standard_cm.png>]
+<SIP/MinMax/MSFT/msft_sip_minmax_accuracy.png, id=738, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/MSFT/msft_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/MSFT/msft_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/MSFT/msft_sip_minmax_accuracy.png  used on input line 959.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/MSFT/msft_sip_minmax_loss.png, id=739, 422.7795pt x 327.8649pt>
+File: SIP/MinMax/MSFT/msft_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/MSFT/msft_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/MSFT/msft_sip_minmax_loss.png  used on input line 960.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/MinMax/MSFT/msft_sip_minmax_cm.png, id=740, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/MSFT/msft_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/MSFT/msft_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/MSFT/msft_sip_minmax_cm.png  used on input line 961.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/MSFT/msft_sip_standard_accuracy.png, id=741, 416.2752pt x 327.8649pt>
+File: SIP/Standard/MSFT/msft_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/MSFT/msft_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/MSFT/msft_sip_standard_accuracy.png  used on input line 966.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/MSFT/msft_sip_standard_loss.png, id=742, 422.7795pt x 327.8649pt>
+File: SIP/Standard/MSFT/msft_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/MSFT/msft_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/MSFT/msft_sip_standard_loss.png  used on input line 967.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Standard/MSFT/msft_sip_standard_cm.png, id=743, 360.1455pt x 327.8649pt>
+File: SIP/Standard/MSFT/msft_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/MSFT/msft_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/MSFT/msft_sip_standard_cm.png  used on input line 968.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/NVDA/nvda_iex_robust_accuracy.png, id=744, 416.2752pt x 327.8649pt>
+File: IEX/Robust/NVDA/nvda_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/NVDA/nvda_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/NVDA/nvda_iex_robust_accuracy.png  used on input line 975.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/NVDA/nvda_iex_robust_loss.png, id=745, 416.2752pt x 327.8649pt>
+File: IEX/Robust/NVDA/nvda_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/NVDA/nvda_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/NVDA/nvda_iex_robust_loss.png  used on input line 976.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Robust/NVDA/nvda_iex_robust_cm.png, id=746, 360.1455pt x 327.8649pt>
+File: IEX/Robust/NVDA/nvda_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/NVDA/nvda_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/NVDA/nvda_iex_robust_cm.png  used on input line 977.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/NVDA/nvda_iex_noscaler_accuracy.png, id=747, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/NVDA/nvda_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/NVDA/nvda_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/NVDA/nvda_iex_noscaler_accuracy.png  used on input line 982.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/NVDA/nvda_iex_noscaler_loss.png, id=748, 416.2752pt x 327.8649pt>
+File: IEX/NoScaler/NVDA/nvda_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/NVDA/nvda_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/NVDA/nvda_iex_noscaler_loss.png  used on input line 983.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/NoScaler/NVDA/nvda_iex_noscaler_cm.png, id=749, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/NVDA/nvda_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/NVDA/nvda_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/NVDA/nvda_iex_noscaler_cm.png  used on input line 984.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [27 <./SIP/Robust/MSFT/MSFT_sip_robust_accuracy.png> <./SIP/Robust/MSFT/MSFT_sip_robust_loss.png> <./SIP/Robust/MSFT/MSFT_sip_robust_cm.png> <./SIP/NoScaler/MSFT/MSFT_sip_noscaler_accuracy.png> <./SIP/NoScaler/MSFT/MSFT_sip_noscaler_loss.png> <./SIP/NoScaler/MSFT/MSFT_sip_noscaler_cm.png> <./SIP/MinMax/MSFT/MSFT_sip_minmax_accuracy.png> <./SIP/MinMax/MSFT/MSFT_sip_minmax_loss.png> <./SIP/MinMax/MSFT/MSFT_sip_minmax_cm.png> <./SIP/Standard/MSFT/MSFT_sip_standard_accuracy.png> <./SIP/Standard/MSFT/MSFT_sip_standard_loss.png> <./SIP/Standard/MSFT/MSFT_sip_standard_cm.png>]
+<IEX/MinMax/NVDA/nvda_iex_minmax_accuracy.png, id=770, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/NVDA/nvda_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/NVDA/nvda_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/NVDA/nvda_iex_minmax_accuracy.png  used on input line 989.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/NVDA/nvda_iex_minmax_loss.png, id=771, 410.0118pt x 327.8649pt>
+File: IEX/MinMax/NVDA/nvda_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/NVDA/nvda_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/NVDA/nvda_iex_minmax_loss.png  used on input line 990.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/MinMax/NVDA/nvda_iex_minmax_cm.png, id=772, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/NVDA/nvda_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/NVDA/nvda_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/NVDA/nvda_iex_minmax_cm.png  used on input line 991.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/NVDA/nvda_iex_standard_accuracy.png, id=773, 416.2752pt x 327.8649pt>
+File: IEX/Standard/NVDA/nvda_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/NVDA/nvda_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/NVDA/nvda_iex_standard_accuracy.png  used on input line 996.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/Standard/NVDA/nvda_iex_standard_loss.png, id=774, 410.0118pt x 327.8649pt>
+File: IEX/Standard/NVDA/nvda_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/NVDA/nvda_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/NVDA/nvda_iex_standard_loss.png  used on input line 997.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Standard/NVDA/nvda_iex_standard_cm.png, id=775, 360.1455pt x 327.8649pt>
+File: IEX/Standard/NVDA/nvda_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/NVDA/nvda_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/NVDA/nvda_iex_standard_cm.png  used on input line 998.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/NVDA/nvda_sip_robust_accuracy.png, id=776, 425.6703pt x 327.8649pt>
+File: SIP/Robust/NVDA/nvda_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/NVDA/nvda_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/NVDA/nvda_sip_robust_accuracy.png  used on input line 1004.
+(pdftex.def)             Requested size: 136.57635pt x 105.19406pt.
+<SIP/Robust/NVDA/nvda_sip_robust_loss.png, id=777, 419.166pt x 327.8649pt>
+File: SIP/Robust/NVDA/nvda_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/NVDA/nvda_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/NVDA/nvda_sip_robust_loss.png  used on input line 1005.
+(pdftex.def)             Requested size: 136.57635pt x 106.82997pt.
+<SIP/Robust/NVDA/nvda_sip_robust_cm.png, id=778, 360.1455pt x 327.8649pt>
+File: SIP/Robust/NVDA/nvda_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/NVDA/nvda_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/NVDA/nvda_sip_robust_cm.png  used on input line 1006.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/NVDA/nvda_sip_noscaler_accuracy.png, id=779, 422.7795pt x 327.8649pt>
+File: SIP/NoScaler/NVDA/nvda_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/NVDA/nvda_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/NVDA/nvda_sip_noscaler_accuracy.png  used on input line 1011.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/NoScaler/NVDA/nvda_sip_noscaler_loss.png, id=780, 410.0118pt x 327.8649pt>
+File: SIP/NoScaler/NVDA/nvda_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/NVDA/nvda_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/NVDA/nvda_sip_noscaler_loss.png  used on input line 1012.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<SIP/NoScaler/NVDA/nvda_sip_noscaler_cm.png, id=781, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/NVDA/nvda_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/NVDA/nvda_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/NVDA/nvda_sip_noscaler_cm.png  used on input line 1013.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [28 <./IEX/Robust/NVDA/NVDA_iex_robust_accuracy.png> <./IEX/Robust/NVDA/NVDA_iex_robust_loss.png> <./IEX/Robust/NVDA/NVDA_iex_robust_cm.png> <./IEX/NoScaler/NVDA/NVDA_iex_noscaler_accuracy.png> <./IEX/NoScaler/NVDA/NVDA_iex_noscaler_loss.png> <./IEX/NoScaler/NVDA/NVDA_iex_noscaler_cm.png> <./IEX/MinMax/NVDA/NVDA_iex_minmax_accuracy.png> <./IEX/MinMax/NVDA/NVDA_iex_minmax_loss.png> <./IEX/MinMax/NVDA/NVDA_iex_minmax_cm.png> <./IEX/Standard/NVDA/NVDA_iex_standard_accuracy.png> <./IEX/Standard/NVDA/NVDA_iex_standard_loss.png> <./IEX/Standard/NVDA/NVDA_iex_standard_cm.png>]
+<SIP/MinMax/NVDA/nvda_sip_minmax_accuracy.png, id=802, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/NVDA/nvda_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/NVDA/nvda_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/NVDA/nvda_sip_minmax_accuracy.png  used on input line 1018.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/NVDA/nvda_sip_minmax_loss.png, id=803, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/NVDA/nvda_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/NVDA/nvda_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/NVDA/nvda_sip_minmax_loss.png  used on input line 1019.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/NVDA/nvda_sip_minmax_cm.png, id=804, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/NVDA/nvda_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/NVDA/nvda_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/NVDA/nvda_sip_minmax_cm.png  used on input line 1020.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/NVDA/nvda_sip_standard_accuracy.png, id=805, 422.7795pt x 327.8649pt>
+File: SIP/Standard/NVDA/nvda_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/NVDA/nvda_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/NVDA/nvda_sip_standard_accuracy.png  used on input line 1025.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Standard/NVDA/nvda_sip_standard_loss.png, id=806, 416.2752pt x 327.8649pt>
+File: SIP/Standard/NVDA/nvda_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/NVDA/nvda_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/NVDA/nvda_sip_standard_loss.png  used on input line 1026.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/NVDA/nvda_sip_standard_cm.png, id=807, 360.1455pt x 327.8649pt>
+File: SIP/Standard/NVDA/nvda_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/NVDA/nvda_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/NVDA/nvda_sip_standard_cm.png  used on input line 1027.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Robust/VOO/voo_iex_robust_accuracy.png, id=808, 410.0118pt x 327.8649pt>
+File: IEX/Robust/VOO/voo_iex_robust_accuracy.png Graphic file (type png)
+<use IEX/Robust/VOO/voo_iex_robust_accuracy.png>
+Package pdftex.def Info: IEX/Robust/VOO/voo_iex_robust_accuracy.png  used on input line 1034.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Robust/VOO/voo_iex_robust_loss.png, id=809, 410.0118pt x 327.8649pt>
+File: IEX/Robust/VOO/voo_iex_robust_loss.png Graphic file (type png)
+<use IEX/Robust/VOO/voo_iex_robust_loss.png>
+Package pdftex.def Info: IEX/Robust/VOO/voo_iex_robust_loss.png  used on input line 1035.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Robust/VOO/voo_iex_robust_cm.png, id=810, 360.1455pt x 327.8649pt>
+File: IEX/Robust/VOO/voo_iex_robust_cm.png Graphic file (type png)
+<use IEX/Robust/VOO/voo_iex_robust_cm.png>
+Package pdftex.def Info: IEX/Robust/VOO/voo_iex_robust_cm.png  used on input line 1036.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/NoScaler/VOO/voo_iex_noscaler_accuracy.png, id=811, 425.1885pt x 327.8649pt>
+File: IEX/NoScaler/VOO/voo_iex_noscaler_accuracy.png Graphic file (type png)
+<use IEX/NoScaler/VOO/voo_iex_noscaler_accuracy.png>
+Package pdftex.def Info: IEX/NoScaler/VOO/voo_iex_noscaler_accuracy.png  used on input line 1041.
+(pdftex.def)             Requested size: 136.57635pt x 105.31412pt.
+<IEX/NoScaler/VOO/voo_iex_noscaler_loss.png, id=812, 425.1885pt x 327.8649pt>
+File: IEX/NoScaler/VOO/voo_iex_noscaler_loss.png Graphic file (type png)
+<use IEX/NoScaler/VOO/voo_iex_noscaler_loss.png>
+Package pdftex.def Info: IEX/NoScaler/VOO/voo_iex_noscaler_loss.png  used on input line 1042.
+(pdftex.def)             Requested size: 136.57635pt x 105.31412pt.
+<IEX/NoScaler/VOO/voo_iex_noscaler_cm.png, id=813, 360.1455pt x 327.8649pt>
+File: IEX/NoScaler/VOO/voo_iex_noscaler_cm.png Graphic file (type png)
+<use IEX/NoScaler/VOO/voo_iex_noscaler_cm.png>
+Package pdftex.def Info: IEX/NoScaler/VOO/voo_iex_noscaler_cm.png  used on input line 1043.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [29 <./SIP/Robust/NVDA/NVDA_sip_robust_accuracy.png> <./SIP/Robust/NVDA/NVDA_sip_robust_loss.png> <./SIP/Robust/NVDA/NVDA_sip_robust_cm.png> <./SIP/NoScaler/NVDA/NVDA_sip_noscaler_accuracy.png> <./SIP/NoScaler/NVDA/NVDA_sip_noscaler_loss.png> <./SIP/NoScaler/NVDA/NVDA_sip_noscaler_cm.png> <./SIP/MinMax/NVDA/NVDA_sip_minmax_accuracy.png> <./SIP/MinMax/NVDA/NVDA_sip_minmax_loss.png> <./SIP/MinMax/NVDA/NVDA_sip_minmax_cm.png> <./SIP/Standard/NVDA/NVDA_sip_standard_accuracy.png> <./SIP/Standard/NVDA/NVDA_sip_standard_loss.png> <./SIP/Standard/NVDA/NVDA_sip_standard_cm.png>]
+<IEX/MinMax/VOO/voo_iex_minmax_accuracy.png, id=834, 416.2752pt x 327.8649pt>
+File: IEX/MinMax/VOO/voo_iex_minmax_accuracy.png Graphic file (type png)
+<use IEX/MinMax/VOO/voo_iex_minmax_accuracy.png>
+Package pdftex.def Info: IEX/MinMax/VOO/voo_iex_minmax_accuracy.png  used on input line 1048.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<IEX/MinMax/VOO/voo_iex_minmax_loss.png, id=835, 410.0118pt x 327.8649pt>
+File: IEX/MinMax/VOO/voo_iex_minmax_loss.png Graphic file (type png)
+<use IEX/MinMax/VOO/voo_iex_minmax_loss.png>
+Package pdftex.def Info: IEX/MinMax/VOO/voo_iex_minmax_loss.png  used on input line 1049.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/MinMax/VOO/voo_iex_minmax_cm.png, id=836, 360.1455pt x 327.8649pt>
+File: IEX/MinMax/VOO/voo_iex_minmax_cm.png Graphic file (type png)
+<use IEX/MinMax/VOO/voo_iex_minmax_cm.png>
+Package pdftex.def Info: IEX/MinMax/VOO/voo_iex_minmax_cm.png  used on input line 1050.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<IEX/Standard/VOO/voo_iex_standard_accuracy.png, id=837, 410.0118pt x 327.8649pt>
+File: IEX/Standard/VOO/voo_iex_standard_accuracy.png Graphic file (type png)
+<use IEX/Standard/VOO/voo_iex_standard_accuracy.png>
+Package pdftex.def Info: IEX/Standard/VOO/voo_iex_standard_accuracy.png  used on input line 1055.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Standard/VOO/voo_iex_standard_loss.png, id=838, 410.0118pt x 327.8649pt>
+File: IEX/Standard/VOO/voo_iex_standard_loss.png Graphic file (type png)
+<use IEX/Standard/VOO/voo_iex_standard_loss.png>
+Package pdftex.def Info: IEX/Standard/VOO/voo_iex_standard_loss.png  used on input line 1056.
+(pdftex.def)             Requested size: 136.57635pt x 109.21132pt.
+<IEX/Standard/VOO/voo_iex_standard_cm.png, id=839, 360.1455pt x 327.8649pt>
+File: IEX/Standard/VOO/voo_iex_standard_cm.png Graphic file (type png)
+<use IEX/Standard/VOO/voo_iex_standard_cm.png>
+Package pdftex.def Info: IEX/Standard/VOO/voo_iex_standard_cm.png  used on input line 1057.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Robust/VOO/voo_sip_robust_accuracy.png, id=840, 431.6928pt x 327.8649pt>
+File: SIP/Robust/VOO/voo_sip_robust_accuracy.png Graphic file (type png)
+<use SIP/Robust/VOO/voo_sip_robust_accuracy.png>
+Package pdftex.def Info: SIP/Robust/VOO/voo_sip_robust_accuracy.png  used on input line 1063.
+(pdftex.def)             Requested size: 136.57635pt x 103.72824pt.
+<SIP/Robust/VOO/voo_sip_robust_loss.png, id=841, 425.1885pt x 327.8649pt>
+File: SIP/Robust/VOO/voo_sip_robust_loss.png Graphic file (type png)
+<use SIP/Robust/VOO/voo_sip_robust_loss.png>
+Package pdftex.def Info: SIP/Robust/VOO/voo_sip_robust_loss.png  used on input line 1064.
+(pdftex.def)             Requested size: 136.57635pt x 105.31412pt.
+<SIP/Robust/VOO/voo_sip_robust_cm.png, id=842, 360.1455pt x 327.8649pt>
+File: SIP/Robust/VOO/voo_sip_robust_cm.png Graphic file (type png)
+<use SIP/Robust/VOO/voo_sip_robust_cm.png>
+Package pdftex.def Info: SIP/Robust/VOO/voo_sip_robust_cm.png  used on input line 1065.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/NoScaler/VOO/voo_sip_noscaler_accuracy.png, id=843, 422.7795pt x 327.8649pt>
+File: SIP/NoScaler/VOO/voo_sip_noscaler_accuracy.png Graphic file (type png)
+<use SIP/NoScaler/VOO/voo_sip_noscaler_accuracy.png>
+Package pdftex.def Info: SIP/NoScaler/VOO/voo_sip_noscaler_accuracy.png  used on input line 1070.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/NoScaler/VOO/voo_sip_noscaler_loss.png, id=844, 416.2752pt x 327.8649pt>
+File: SIP/NoScaler/VOO/voo_sip_noscaler_loss.png Graphic file (type png)
+<use SIP/NoScaler/VOO/voo_sip_noscaler_loss.png>
+Package pdftex.def Info: SIP/NoScaler/VOO/voo_sip_noscaler_loss.png  used on input line 1071.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/NoScaler/VOO/voo_sip_noscaler_cm.png, id=845, 360.1455pt x 327.8649pt>
+File: SIP/NoScaler/VOO/voo_sip_noscaler_cm.png Graphic file (type png)
+<use SIP/NoScaler/VOO/voo_sip_noscaler_cm.png>
+Package pdftex.def Info: SIP/NoScaler/VOO/voo_sip_noscaler_cm.png  used on input line 1072.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [30 <./IEX/Robust/VOO/VOO_iex_robust_accuracy.png> <./IEX/Robust/VOO/VOO_iex_robust_loss.png> <./IEX/Robust/VOO/VOO_iex_robust_cm.png> <./IEX/NoScaler/VOO/VOO_iex_noscaler_accuracy.png> <./IEX/NoScaler/VOO/VOO_iex_noscaler_loss.png> <./IEX/NoScaler/VOO/VOO_iex_noscaler_cm.png> <./IEX/MinMax/VOO/VOO_iex_minmax_accuracy.png> <./IEX/MinMax/VOO/VOO_iex_minmax_loss.png> <./IEX/MinMax/VOO/VOO_iex_minmax_cm.png> <./IEX/Standard/VOO/VOO_iex_standard_accuracy.png> <./IEX/Standard/VOO/VOO_iex_standard_loss.png> <./IEX/Standard/VOO/VOO_iex_standard_cm.png>]
+<SIP/MinMax/VOO/voo_sip_minmax_accuracy.png, id=867, 422.7795pt x 327.8649pt>
+File: SIP/MinMax/VOO/voo_sip_minmax_accuracy.png Graphic file (type png)
+<use SIP/MinMax/VOO/voo_sip_minmax_accuracy.png>
+Package pdftex.def Info: SIP/MinMax/VOO/voo_sip_minmax_accuracy.png  used on input line 1077.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/MinMax/VOO/voo_sip_minmax_loss.png, id=868, 416.2752pt x 327.8649pt>
+File: SIP/MinMax/VOO/voo_sip_minmax_loss.png Graphic file (type png)
+<use SIP/MinMax/VOO/voo_sip_minmax_loss.png>
+Package pdftex.def Info: SIP/MinMax/VOO/voo_sip_minmax_loss.png  used on input line 1078.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/MinMax/VOO/voo_sip_minmax_cm.png, id=869, 360.1455pt x 327.8649pt>
+File: SIP/MinMax/VOO/voo_sip_minmax_cm.png Graphic file (type png)
+<use SIP/MinMax/VOO/voo_sip_minmax_cm.png>
+Package pdftex.def Info: SIP/MinMax/VOO/voo_sip_minmax_cm.png  used on input line 1079.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+<SIP/Standard/VOO/voo_sip_standard_accuracy.png, id=870, 422.7795pt x 327.8649pt>
+File: SIP/Standard/VOO/voo_sip_standard_accuracy.png Graphic file (type png)
+<use SIP/Standard/VOO/voo_sip_standard_accuracy.png>
+Package pdftex.def Info: SIP/Standard/VOO/voo_sip_standard_accuracy.png  used on input line 1084.
+(pdftex.def)             Requested size: 136.57635pt x 105.91446pt.
+<SIP/Standard/VOO/voo_sip_standard_loss.png, id=871, 416.2752pt x 327.8649pt>
+File: SIP/Standard/VOO/voo_sip_standard_loss.png Graphic file (type png)
+<use SIP/Standard/VOO/voo_sip_standard_loss.png>
+Package pdftex.def Info: SIP/Standard/VOO/voo_sip_standard_loss.png  used on input line 1085.
+(pdftex.def)             Requested size: 136.57635pt x 107.57039pt.
+<SIP/Standard/VOO/voo_sip_standard_cm.png, id=872, 360.1455pt x 327.8649pt>
+File: SIP/Standard/VOO/voo_sip_standard_cm.png Graphic file (type png)
+<use SIP/Standard/VOO/voo_sip_standard_cm.png>
+Package pdftex.def Info: SIP/Standard/VOO/voo_sip_standard_cm.png  used on input line 1086.
+(pdftex.def)             Requested size: 136.57635pt x 124.33481pt.
+ [31 <./SIP/Robust/VOO/VOO_sip_robust_accuracy.png> <./SIP/Robust/VOO/VOO_sip_robust_loss.png> <./SIP/Robust/VOO/VOO_sip_robust_cm.png> <./SIP/NoScaler/VOO/VOO_sip_noscaler_accuracy.png> <./SIP/NoScaler/VOO/VOO_sip_noscaler_loss.png> <./SIP/NoScaler/VOO/VOO_sip_noscaler_cm.png> <./SIP/MinMax/VOO/VOO_sip_minmax_accuracy.png> <./SIP/MinMax/VOO/VOO_sip_minmax_loss.png> <./SIP/MinMax/VOO/VOO_sip_minmax_cm.png> <./SIP/Standard/VOO/VOO_sip_standard_accuracy.png> <./SIP/Standard/VOO/VOO_sip_standard_loss.png> <./SIP/Standard/VOO/VOO_sip_standard_cm.png>] (./main.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 17.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -1123,23 +1844,23 @@ Underfull \hbox (badness 3492) in paragraph at lines 16--18
 []\T1/cmr/m/n/10 (+20) Olah, C.: Un-der-stand-ing lstm net-works (2015), []$\T1/cmtt/m/n/10 https : / / colah . github . io / posts /
  []
 
-) [33] (./main.aux)
+) [32] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2659A35E90D087124FFB9F679C4060CE;5962.
+(rerunfilecheck)             Checksum: 3F3FBA0E98B2387B950E13F17C7D2F09;8350.
  ) 
 Here is how much of TeX's memory you used:
- 30445 strings out of 478287
- 599953 string characters out of 5849289
- 968260 words of memory out of 5000000
- 47907 multiletter control sequences out of 15000+600000
+ 31906 strings out of 478287
+ 660214 string characters out of 5849289
+ 968288 words of memory out of 5000000
+ 49026 multiletter control sequences out of 15000+600000
  485676 words of font info for 129 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,17n,104p,1352b,895s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,9n,104p,1352b,896s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (34 pages, 24524094 bytes).
+Output written on main.pdf (33 pages, 23026051 bytes).
 PDF statistics:
- 891 PDF objects out of 1000 (max. 8388607)
- 401 compressed objects within 5 object streams
- 90 named destinations out of 1000 (max. 500000)
- 33693 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1011 PDF objects out of 1200 (max. 8388607)
+ 545 compressed objects within 6 object streams
+ 178 named destinations out of 1000 (max. 500000)
+ 34753 words of extra memory for PDF output out of 35830 (max. 10000000)
 

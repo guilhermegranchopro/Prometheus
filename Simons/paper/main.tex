@@ -595,7 +595,6 @@ Another area for improvement is the comprehensive evaluation of the model’s re
 \subsection{Improving Model Interpretability}
 One challenge with deep learning models, including LSTMs, is their inherent lack of interpretability. Understanding the reasons behind a model’s prediction is critical in financial applications, where decisions can have significant financial consequences. Future work could explore techniques for improving the interpretability of the model. One promising direction is to integrate attention mechanisms into the LSTM architecture to highlight which parts of the input data (e.g., specific time intervals or features like VWAP) are most influential in the model’s decision-making process. Additionally, using methods such as SHAP (SHapley Additive exPlanations) or LIME (Local Interpretable Model-Agnostic Explanations) could help explain the model's outputs in a more transparent and actionable way.
 
-
 \section{Conclusion}
 
 This study presented a comprehensive and methodologically rigorous evaluation of LSTM networks for the task of intraday stock price prediction, emphasizing the influence of data normalization techniques, trading session structure, and asset-specific volatility profiles. By systematically analyzing model behavior across datasets representing both regular trading hours (IEX) and full-session trading (SIP), the investigation provides nuanced insights into the design and deployment of deep learning models in high-frequency financial forecasting.
@@ -614,7 +613,479 @@ In summary, this study underscores that high-performing financial forecasting wi
 
 \newpage
 
-\includepdf[pages=-]{Attachments.pdf}
+\section{Attachments}
+\subsection{Ticker: AAPL}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/AAPL/aapl_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/AAPL/aapl_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/AAPL/aapl_iex_robust_cm.png}
+\caption{AAPL - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/AAPL/aapl_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/AAPL/aapl_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/AAPL/aapl_iex_noscaler_cm.png}
+\caption{AAPL - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/AAPL/aapl_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/AAPL/aapl_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/AAPL/aapl_iex_minmax_cm.png}
+\caption{AAPL - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/AAPL/aapl_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/AAPL/aapl_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/AAPL/aapl_iex_standard_cm.png}
+\caption{AAPL - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/AAPL/aapl_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/AAPL/aapl_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/AAPL/aapl_sip_robust_cm.png}
+\caption{AAPL - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/AAPL/aapl_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/AAPL/aapl_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/AAPL/aapl_sip_noscaler_cm.png}
+\caption{AAPL - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/AAPL/aapl_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/AAPL/aapl_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/AAPL/aapl_sip_minmax_cm.png}
+\caption{AAPL - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/AAPL/aapl_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/AAPL/aapl_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/AAPL/aapl_sip_standard_cm.png}
+\caption{AAPL - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: AMZN}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/AMZN/amzn_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/AMZN/amzn_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/AMZN/amzn_iex_robust_cm.png}
+\caption{AMZN - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/AMZN/amzn_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/AMZN/amzn_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/AMZN/amzn_iex_noscaler_cm.png}
+\caption{AMZN - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/AMZN/amzn_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/AMZN/amzn_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/AMZN/amzn_iex_minmax_cm.png}
+\caption{AMZN - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/AMZN/amzn_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/AMZN/amzn_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/AMZN/amzn_iex_standard_cm.png}
+\caption{AMZN - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/AMZN/amzn_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/AMZN/amzn_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/AMZN/amzn_sip_robust_cm.png}
+\caption{AMZN - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/AMZN/amzn_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/AMZN/amzn_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/AMZN/amzn_sip_noscaler_cm.png}
+\caption{AMZN - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/AMZN/amzn_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/AMZN/amzn_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/AMZN/amzn_sip_minmax_cm.png}
+\caption{AMZN - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/AMZN/amzn_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/AMZN/amzn_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/AMZN/amzn_sip_standard_cm.png}
+\caption{AMZN - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: DIA}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/DIA/dia_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/DIA/dia_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/DIA/dia_iex_robust_cm.png}
+\caption{DIA - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/DIA/dia_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/DIA/dia_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/DIA/dia_iex_noscaler_cm.png}
+\caption{DIA - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/DIA/dia_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/DIA/dia_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/DIA/dia_iex_minmax_cm.png}
+\caption{DIA - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/DIA/dia_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/DIA/dia_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/DIA/dia_iex_standard_cm.png}
+\caption{DIA - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/DIA/dia_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/DIA/dia_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/DIA/dia_sip_robust_cm.png}
+\caption{DIA - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/DIA/dia_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/DIA/dia_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/DIA/dia_sip_noscaler_cm.png}
+\caption{DIA - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/DIA/dia_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/DIA/dia_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/DIA/dia_sip_minmax_cm.png}
+\caption{DIA - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/DIA/dia_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/DIA/dia_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/DIA/dia_sip_standard_cm.png}
+\caption{DIA - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: GOOG}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/GOOG/goog_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/GOOG/goog_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/GOOG/goog_iex_robust_cm.png}
+\caption{GOOG - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/GOOG/goog_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/GOOG/goog_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/GOOG/goog_iex_noscaler_cm.png}
+\caption{GOOG - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/GOOG/goog_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/GOOG/goog_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/GOOG/goog_iex_minmax_cm.png}
+\caption{GOOG - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/GOOG/goog_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/GOOG/goog_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/GOOG/goog_iex_standard_cm.png}
+\caption{GOOG - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/GOOG/goog_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/GOOG/goog_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/GOOG/goog_sip_robust_cm.png}
+\caption{GOOG - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/GOOG/goog_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/GOOG/goog_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/GOOG/goog_sip_noscaler_cm.png}
+\caption{GOOG - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/GOOG/goog_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/GOOG/goog_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/GOOG/goog_sip_minmax_cm.png}
+\caption{GOOG - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/GOOG/goog_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/GOOG/goog_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/GOOG/goog_sip_standard_cm.png}
+\caption{GOOG - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: IWM}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/IWM/iwm_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/IWM/iwm_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/IWM/iwm_iex_robust_cm.png}
+\caption{IWM - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/IWM/iwm_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/IWM/iwm_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/IWM/iwm_iex_noscaler_cm.png}
+\caption{IWM - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/IWM/iwm_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/IWM/iwm_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/IWM/iwm_iex_minmax_cm.png}
+\caption{IWM - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/IWM/iwm_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/IWM/iwm_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/IWM/iwm_iex_standard_cm.png}
+\caption{IWM - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/IWM/iwm_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/IWM/iwm_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/IWM/iwm_sip_robust_cm.png}
+\caption{IWM - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/IWM/iwm_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/IWM/iwm_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/IWM/iwm_sip_noscaler_cm.png}
+\caption{IWM - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/IWM/iwm_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/IWM/iwm_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/IWM/iwm_sip_minmax_cm.png}
+\caption{IWM - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/IWM/iwm_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/IWM/iwm_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/IWM/iwm_sip_standard_cm.png}
+\caption{IWM - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: MSFT}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/MSFT/msft_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/MSFT/msft_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/MSFT/msft_iex_robust_cm.png}
+\caption{MSFT - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/MSFT/msft_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/MSFT/msft_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/MSFT/msft_iex_noscaler_cm.png}
+\caption{MSFT - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/MSFT/msft_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/MSFT/msft_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/MSFT/msft_iex_minmax_cm.png}
+\caption{MSFT - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/MSFT/msft_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/MSFT/msft_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/MSFT/msft_iex_standard_cm.png}
+\caption{MSFT - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/MSFT/msft_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/MSFT/msft_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/MSFT/msft_sip_robust_cm.png}
+\caption{MSFT - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/MSFT/msft_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/MSFT/msft_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/MSFT/msft_sip_noscaler_cm.png}
+\caption{MSFT - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/MSFT/msft_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/MSFT/msft_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/MSFT/msft_sip_minmax_cm.png}
+\caption{MSFT - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/MSFT/msft_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/MSFT/msft_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/MSFT/msft_sip_standard_cm.png}
+\caption{MSFT - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: NVDA}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/NVDA/nvda_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/NVDA/nvda_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/NVDA/nvda_iex_robust_cm.png}
+\caption{NVDA - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/NVDA/nvda_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/NVDA/nvda_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/NVDA/nvda_iex_noscaler_cm.png}
+\caption{NVDA - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/NVDA/nvda_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/NVDA/nvda_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/NVDA/nvda_iex_minmax_cm.png}
+\caption{NVDA - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/NVDA/nvda_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/NVDA/nvda_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/NVDA/nvda_iex_standard_cm.png}
+\caption{NVDA - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/NVDA/nvda_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/NVDA/nvda_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/NVDA/nvda_sip_robust_cm.png}
+\caption{NVDA - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/NVDA/nvda_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/NVDA/nvda_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/NVDA/nvda_sip_noscaler_cm.png}
+\caption{NVDA - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/NVDA/nvda_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/NVDA/nvda_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/NVDA/nvda_sip_minmax_cm.png}
+\caption{NVDA - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/NVDA/nvda_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/NVDA/nvda_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/NVDA/nvda_sip_standard_cm.png}
+\caption{NVDA - SIP - Standard Scaling}
+\end{figure}
+\subsection{Ticker: VOO}
+\subsubsection{IEX}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Robust/VOO/voo_iex_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/VOO/voo_iex_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Robust/VOO/voo_iex_robust_cm.png}
+\caption{VOO - IEX - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/VOO/voo_iex_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/VOO/voo_iex_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/NoScaler/VOO/voo_iex_noscaler_cm.png}
+\caption{VOO - IEX - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/VOO/voo_iex_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/VOO/voo_iex_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/MinMax/VOO/voo_iex_minmax_cm.png}
+\caption{VOO - IEX - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{IEX/Standard/VOO/voo_iex_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/VOO/voo_iex_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{IEX/Standard/VOO/voo_iex_standard_cm.png}
+\caption{VOO - IEX - Standard Scaling}
+\end{figure}
+\subsubsection{SIP}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Robust/VOO/voo_sip_robust_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/VOO/voo_sip_robust_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Robust/VOO/voo_sip_robust_cm.png}
+\caption{VOO - SIP - Robust Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/VOO/voo_sip_noscaler_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/VOO/voo_sip_noscaler_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/NoScaler/VOO/voo_sip_noscaler_cm.png}
+\caption{VOO - SIP - NoScaler}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/VOO/voo_sip_minmax_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/VOO/voo_sip_minmax_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/MinMax/VOO/voo_sip_minmax_cm.png}
+\caption{VOO - SIP - MinMax Scaling}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.32\linewidth]{SIP/Standard/VOO/voo_sip_standard_accuracy.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/VOO/voo_sip_standard_loss.png}
+\includegraphics[width=0.32\linewidth]{SIP/Standard/VOO/voo_sip_standard_cm.png}
+\caption{VOO - SIP - Standard Scaling}
+\end{figure}
 
 \section*{Abbreviations}
 \begin{description}[noitemsep,style=multiline,leftmargin=3cm,labelwidth=2.5cm]
