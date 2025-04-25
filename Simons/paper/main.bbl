@@ -7,10 +7,6 @@
 Hochreiter, S., Schmidhuber, J.: Long short-term memory. Neural Computation
   \textbf{9}(8),  1735--1780 (1997)
 
-\bibitem{alpaca_api}
-Markets, A.: Alpaca trading api documentation.
-  \url{https://docs.alpaca.markets/docs/trading-api} (2024)
-
 \bibitem{moghar2020stock}
 Moghar, A., Hamiche, M.: Stock market prediction using lstm recurrent neural
   network. Procedia Computer Science  \textbf{170},  1168--1173 (2020).
