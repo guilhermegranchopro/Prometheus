@@ -1276,12 +1276,12 @@ INPUT ./volatility_accuracy.png
 INPUT volatility_accuracy.png
 INPUT ./volatility_accuracy.png
 INPUT ./volatility_accuracy.png
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
 INPUT ./IEX/Robust/AAPL/AAPL_iex_robust_accuracy.png
 INPUT ./IEX/Robust/AAPL/AAPL_iex_robust_accuracy.png
 INPUT IEX/Robust/AAPL/AAPL_iex_robust_accuracy.png

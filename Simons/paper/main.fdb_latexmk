@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1745718540 "main.aux" "main.bbl" "main" 1745718912
+["bibtex main"] 1745795368 "main.aux" "main.bbl" "main" 1745795405
   "/usr/share/texlive/texmf-dist/bibtex/bst/llncs/splncs04.bst" 1642453212 32146 ee21ae2a29028dc8ad842a97200982c7 ""
-  "main.aux" 1745718912 22178 64914ea68fccad23caa633262b8650ea "pdflatex"
+  "main.aux" 1745795405 20728 2d2fee87a308d283d3bf52a2415886dc "pdflatex"
   "referencias.bib" 1745229822 2391 9743b4eb08e5b78eeacdfe192303dc8d ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1745718875 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745718912
+["pdflatex"] 1745795368 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745795405
   "/etc/texmf/web2c/texmf.cnf" 1744990280 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745718874 84943 c072d05386c0cb372aad56c2a3127a5c ""
+  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745795328 89708 d24ea6b5662b121fe10eeeb78d5447ab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0500.tfm" 1136768653 3584 0913860e6fa2bdf78ecaf460b391112b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0700.tfm" 1136768653 3584 ca0c423beaacd28d53ddce5a826cd558 ""
@@ -410,10 +410,10 @@
   "SIP/Standard/VOO/VOO_sip_standard_cm.png" 1745229822 71803 e9b3edca3bf3c5bfc97108183ae6f3e5 ""
   "SIP/Standard/VOO/VOO_sip_standard_loss.png" 1745229822 159154 ab7ad0ab412b611aff3fcd5be5aa8e74 ""
   "accuracy_improvement.png" 1745229822 36105 589bc52bafa6216dc61e6fde7277b3bd ""
-  "main.aux" 1745718912 22178 64914ea68fccad23caa633262b8650ea "pdflatex"
-  "main.bbl" 1745718540 1434 1f2bb4d3f66d7821da79a94afe6e3fb1 "bibtex main"
-  "main.out" 1745718912 8453 7646c97bb3d59d16a4fc1ff6e473ad89 "pdflatex"
-  "main.tex" 1745718874 84943 c072d05386c0cb372aad56c2a3127a5c ""
+  "main.aux" 1745795405 20728 2d2fee87a308d283d3bf52a2415886dc "pdflatex"
+  "main.bbl" 1745795368 1434 1f2bb4d3f66d7821da79a94afe6e3fb1 "bibtex main"
+  "main.out" 1745795405 7032 1bff5b7f714e40503833d040348408e0 "pdflatex"
+  "main.tex" 1745795328 89708 d24ea6b5662b121fe10eeeb78d5447ab ""
   "scaler_comparison.png" 1745229824 41085 211ec29a707edc302786bd89edc1a107 ""
   "volatility_accuracy.png" 1745229822 46648 fc245889e84b7982059e011d6fdfe652 ""
   (generated)
