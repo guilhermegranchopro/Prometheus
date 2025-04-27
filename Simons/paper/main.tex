@@ -459,13 +459,6 @@ VOO   & \cellcolor{lightblue}0.3050 & 0.3300 & 0.3320 & 0.3060 \\
 
 \section{Discussion}
 
-The empirical evaluation of LSTM architectures across a diverse array
-of normalization strategies, asset classes, and market session intervals yields a multidimensional
-understanding of how data preprocessing, model design, and market microstructure jointly influ
-ence forecasting efficacy. These findings provide actionable insights for financial machine learning
-practitioners, while also informing the development of adaptive, asset-aware predictive systems
-suitable for deployment in dynamic, high-frequency trading environments.
-
 \subsection{Performance Across Data Feeds}  
 A central outcome of this investigation is the clear performance advantage achieved by incorporating extended trading sessions through the use of SIP data. Models trained on SIP data consistently outperformed their counterparts trained on IEX data across both mean test accuracy and loss. The top-performing configuration—Robust scaling applied to SIP—achieved a mean accuracy of 0.8201, outperforming the best IEX configuration (MinMax scaling, 0.6981 mean accuracy) by a substantial margin. This suggests that off-hours trading—despite its increased complexity—contains valuable predictive signals for short-horizon price forecasting.
 
