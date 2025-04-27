@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1745595058 "main.aux" "main.bbl" "main" 1745595097
+["bibtex main"] 1745718540 "main.aux" "main.bbl" "main" 1745718912
   "/usr/share/texlive/texmf-dist/bibtex/bst/llncs/splncs04.bst" 1642453212 32146 ee21ae2a29028dc8ad842a97200982c7 ""
-  "main.aux" 1745595097 21724 d1062947cdc1c71f7a38ea73bfc1310d "pdflatex"
+  "main.aux" 1745718912 22178 64914ea68fccad23caa633262b8650ea "pdflatex"
   "referencias.bib" 1745229822 2391 9743b4eb08e5b78eeacdfe192303dc8d ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1745595058 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745595097
+["pdflatex"] 1745718875 "/home/rantas/Prometheus/Simons/paper/main.tex" "main.pdf" "main" 1745718912
   "/etc/texmf/web2c/texmf.cnf" 1744990280 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745595018 82181 c24a1589ce6ab7d3b6bd8471184c4cca ""
+  "/home/rantas/Prometheus/Simons/paper/main.tex" 1745718874 84943 c072d05386c0cb372aad56c2a3127a5c ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0500.tfm" 1136768653 3584 0913860e6fa2bdf78ecaf460b391112b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0700.tfm" 1136768653 3584 ca0c423beaacd28d53ddce5a826cd558 ""
@@ -18,6 +18,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1728.tfm" 1136768653 3584 ad49a18d8515beef6d92d4d3f197d0fd ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm" 1136768653 3584 178baad7ffca7f5d3428a83bd7cc64c3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm" 1136768653 3584 cf973739aac7ab6247f9150296af7954 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm" 1136768653 3584 49064b465390a8e316a3c8417a050403 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm" 1136768653 3584 3169d30142b88a27d4ab0e3468e963a2 ""
@@ -208,6 +209,7 @@
   "/usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb" 1744990903 135942 859a90cad7494a1e79c94baf546d7de5 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb" 1744990903 139826 9213617a7cb78635fc326b859c0b2273 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb" 1744990903 154599 ded6d7c21788a8930eadc7fef7518942 ""
+  "/usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb" 1744990903 164227 3df942b4ff2124425d8fb1b6d3e01c7a ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb" 1636152094 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb" 1744990903 136101 f533469f523533d38317ab5729d00c8a ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb" 1636152094 169201 9ebf99020dde51a5086e186761a34e8f ""
@@ -408,10 +410,10 @@
   "SIP/Standard/VOO/VOO_sip_standard_cm.png" 1745229822 71803 e9b3edca3bf3c5bfc97108183ae6f3e5 ""
   "SIP/Standard/VOO/VOO_sip_standard_loss.png" 1745229822 159154 ab7ad0ab412b611aff3fcd5be5aa8e74 ""
   "accuracy_improvement.png" 1745229822 36105 589bc52bafa6216dc61e6fde7277b3bd ""
-  "main.aux" 1745595097 21724 d1062947cdc1c71f7a38ea73bfc1310d "pdflatex"
-  "main.bbl" 1745595058 1434 1f2bb4d3f66d7821da79a94afe6e3fb1 "bibtex main"
-  "main.out" 1745595097 8350 3f3fba0e98b2387b950e13f17c7d2f09 "pdflatex"
-  "main.tex" 1745595018 82181 c24a1589ce6ab7d3b6bd8471184c4cca ""
+  "main.aux" 1745718912 22178 64914ea68fccad23caa633262b8650ea "pdflatex"
+  "main.bbl" 1745718540 1434 1f2bb4d3f66d7821da79a94afe6e3fb1 "bibtex main"
+  "main.out" 1745718912 8453 7646c97bb3d59d16a4fc1ff6e473ad89 "pdflatex"
+  "main.tex" 1745718874 84943 c072d05386c0cb372aad56c2a3127a5c ""
   "scaler_comparison.png" 1745229824 41085 211ec29a707edc302786bd89edc1a107 ""
   "volatility_accuracy.png" 1745229822 46648 fc245889e84b7982059e011d6fdfe652 ""
   (generated)

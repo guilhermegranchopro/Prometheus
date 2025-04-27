@@ -614,6 +614,63 @@ In summary, this study underscores that high-performing financial forecasting wi
 \newpage
 
 \section{Attachments}
+
+\subsection{Algorithm}\label{subsec:lstm_pipeline}
+\begin{algorithm}[H]
+\caption{LSTM Model Training and Saving Pipeline}
+\label{alg:lstm_pipeline}
+\begin{algorithmic}[1]
+    \State \textbf{Step 1: Set Up Directory Paths}
+    \State \hspace{1em} Initialize path variables
+
+    \State \textbf{Step 2: Set Up Configuration}
+    \State \hspace{1em} Initialize configuration variables:
+    \Statex \hspace{2em}\texttt{data\_source}, \texttt{symbol}, \texttt{max\_period}, \texttt{start\_date}, \texttt{end\_date}, \texttt{timeframe}
+    \Statex \hspace{2em}\texttt{fisrt\_marker}, \texttt{second\_marker}, \texttt{third\_marker}
+    \Statex \hspace{2em}\texttt{n\_rows}, \texttt{sort}
+    \Statex \hspace{2em}\texttt{relative\_first\_marker}, \texttt{relative\_second\_marker}, \texttt{relative\_third\_marker}
+    \Statex \hspace{2em}\texttt{decimals}
+    \Statex \hspace{2em}\texttt{scaler\_type}, \texttt{cols\_to\_scale}
+    \Statex \hspace{2em}\texttt{LSTM\_boolean}, \texttt{epochs}, \texttt{early\_stopping}, \texttt{call\_back}, \texttt{patience}, \texttt{batch\_size}
+
+    \State \textbf{Step 3: Load or Fetch Data}
+    \If{\texttt{dataset.csv} exists}
+        \State Read raw data from CSV at \texttt{dataset.csv}
+    \Else
+        \State Fetch data from Alpaca API using \texttt{data\_source}, \texttt{symbol}, \texttt{start\_date}, \texttt{end\_date}, \texttt{timeframe}, \texttt{max\_period}
+        \State Save raw data to \texttt{dataset.csv}
+    \EndIf
+
+    \State \textbf{Step 4: Scale Selected Features}
+    \State \hspace{1em} Initialize scaler of type \texttt{scaler\_type} on columns \texttt{cols\_to\_scale}
+    \State \hspace{1em} Fit and transform the data (respecting \texttt{relative\_*} flags and \texttt{decimals})
+    \State \hspace{1em} Save fitted scaler
+
+    \State \textbf{Step 5: Build and Compile LSTM Model}
+    \State \hspace{1em} Define LSTM architecture if \texttt{LSTM\_boolean} is \texttt{True}
+    \State \hspace{1em} Compile model with chosen loss and optimizer
+
+    \State \textbf{Step 6: Train Model}
+    \State \hspace{1em} Train for \texttt{epochs} epochs with:
+    \Statex \hspace{2em}\texttt{batch\_size}, early stopping on \texttt{call\_back} with \texttt{patience}
+    \State \hspace{1em} Record training history (loss, accuracy)
+
+    \State \textbf{Step 7: Generate Evaluation Artifacts}
+    \State \hspace{1em} Plot loss and accuracy curves
+    \State \hspace{1em} Compute confusion matrix
+    \State \hspace{1em} Save all plots
+
+    \State \textbf{Step 8: Save Outputs}
+    \State \hspace{1em} Save trained model
+    \State \hspace{1em} Save \texttt{config}
+    \State \hspace{1em} Generate and save HTML report (including paths, \texttt{config}, plots, confusion matrix)
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
 \subsection{Ticker: AAPL}
 \subsubsection{IEX}
 \begin{figure}[H]
@@ -1116,7 +1173,7 @@ In summary, this study underscores that high-performing financial forecasting wi
 \section*{Acknowledgements}
 The authors would like to express their sincere gratitude to Imperial College London and Instituto Superior Técnico for their support and resources which were invaluable to this research.
 
-Additionally, we acknowledge the use of Alpaca Trading API, tensorflow and scikit-learn which were essential for conducting this study.
+Additionally, we acknowledge the use of Alpaca Trading API, TensorFlow and scikit-learn which were essential for conducting this study.
 
 Finally, the authors wish to express their gratitude to their family, friends, and colleagues for the consistent encouragement and understanding provided throughout this research endeavour.
 
