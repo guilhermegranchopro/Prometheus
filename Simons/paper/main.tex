@@ -48,11 +48,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{pdfpages}
-\usepackage{microtype}       % improves justification and allows margin protrusion
-\sloppy
- 
-
-
+\usepackage{microtype}
 \usepackage[top=2cm, bottom=2cm, left=3cm, right=3cm]{geometry}
 \usepackage{setspace}
 \usepackage{parskip}
@@ -155,7 +151,9 @@ The results demonstrate that LSTM models trained using the comprehensive SIP dat
 This section discusses related work, particularly highlighting studies that utilize LSTM networks and VWAP as an indicator.
 
 \subsection{Empirical Validation of LSTM Models}
-Moghar and Hamiche (2020) \cite{moghar2020stock}, who trained LSTM models on two years of one‑minute equity data across multiple sectors, demonstrated early on that LSTM‑based predictors yield superior out‑of‑sample performance compared to classical benchmarks. Their rigorous backtesting revealed that LSTMs adapt dynamically to regime changes and internalize path‑dependent features that static models overlook. Building on this, Shen and Shafiq (2020) \cite{shen2020shortterm} highlighted the importance of domain‑informed feature engineering: by integrating technical indicators such as MACD, RSI, and volatility bands into a multi‑layer LSTM framework, they reported a 15\% uplift in directional accuracy on high‑frequency Chinese equity data, illustrating how thoughtful feature design amplifies network efficacy.
+Moghar and Hamiche (2020) [2], who trained LSTM models on two years of one-minute equity data across multiple sectors, demonstrated early on that LSTM-based predictors yield superior out-of-sample performance compared to classical benchmarks. Their rigorous backtesting revealed that LSTMs adapt dynamically to regime changes and internalize path-dependent features that static models overlook.
+
+Building on this, Shen and Shafiq (2020) [5] integrated technical indicators such as MACD, RSI, and volatility bands into a multi-layer LSTM framework applied to two years of one-minute Chinese equity data. Their comprehensive feature engineering pipeline—combining feature extension (polarize, min–max scale, fluctuation percentage), recursive feature elimination, and PCA—yielded a bi-weekly trend prediction binary accuracy of 93.25\% (F1 = 0.9323), with a true positive rate of 96\% and true negative rate of 90\%, but this performance was reported on a very short (three-month) test period (Q1 2019) that was also used for validation during model selection, risking information leakage and optimistic results.
 
 \subsection{VWAP‑Driven Day Trading Strategies}
 Regarding the application of the VWAP, Zarattini and Aziz (2023) \cite{zarattini2023vwap} explored its efficacy as a day trading indicator for detecting market imbalances and making trading decisions. Using VWAP, they developed a straightforward day trading strategy that initiated long positions when the price was above VWAP and short positions when below it. Their study, involving trading instruments like QQQ and TQQQ over several volatile market periods from 2018 to 2023, showed substantial profitability and superior risk-adjusted returns compared to traditional buy-and-hold strategies. Notably, the VWAP-based strategy significantly reduced the maximum drawdown and provided robust returns across diverse market conditions.
@@ -611,8 +609,9 @@ In summary, this study underscores that high-performing financial forecasting wi
 \subsection{Parameter Exploration}\label{subsec:parameter_exploration}
 
 The pipeline constitutes a fully automated, end-to-end framework that ingests market data, applies user-defined preprocessing and feature-engineering steps, constructs sequential tensors, configures and trains an LSTM network (or alternative model), and produces all evaluation artifacts and reports—entirely driven by a single \texttt{config} dictionary.  By exposing every critical choice (data source, symbols, date range, feature markers, scaling strategy, model hyperparameters, etc.) as configurable parameters, users can rapidly iterate on their hypotheses without modifying any core code.
+
 \begin{itemize}[left=0pt]
-       \item \texttt{data\_source} (\texttt{'sip'}, \texttt{'iex'}): choice of data provider; SIP tends to be more complete but IEX may have lower latency.
+       \item \texttt{data\_source} (\texttt{'sip'}, \texttt{'iex'}): choice of data provider.
        \item \texttt{symbol} (e.g.\ \texttt{'AAPL'}): ticker symbol to fetch, or read from an Excel file.
        \item \texttt{max\_period} (\texttt{True}, \texttt{False}): whether to request the entire available history (be mindful of API rate limits).
        \item \texttt{start\_date}, \texttt{end\_date} (e.g.\ \texttt{'2022-10-31'}–\texttt{'2023-10-31'}): date range for the backtest; one year is a good default for experimentation.
@@ -633,11 +632,11 @@ The pipeline constitutes a fully automated, end-to-end framework that ingests ma
    
 \end{itemize}
 
-This flexibility allows you to tailor data sourcing, feature construction, normalization, and training dynamics to your experimental needs.
+This flexibility allows to tailor data sourcing, feature construction, normalization, and training dynamics to experimental needs.
 
 \subsection{Algorithm}\label{subsec:lstm_pipeline}
 
-Below is a high-level algorithmic representation of the LSTM model training and saving pipeline. This algorithm outlines the key steps involved in the process, from data fetching to model evaluation and saving.
+Below is a high-level algorithmic representation of the LSTM model training and saving pipeline, along with the corresponding diagram. The algorithm outlines the key steps involved in the process, from data fetching to model evaluation and saving, while the diagram visually represents the workflow, providing a clearer understanding of the sequence of actions.
 \begin{algorithm}[H]
 \caption{LSTM Model Training and Saving Pipeline}
 \label{alg:lstm_pipeline}
@@ -690,7 +689,16 @@ Below is a high-level algorithmic representation of the LSTM model training and 
 \end{algorithmic}
 \end{algorithm}
 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.50\textwidth]{diagram.png}
+  \caption{Diagram of the LSTM pipeline.}
+  \label{fig:lstm_pipeline}
+\end{figure}
+
 \subsection{Tickers}
+
 The following figures illustrate the performance of the LSTM model across different tickers and scaling methods. Each figure includes three subplots: accuracy, loss, and confusion matrix (CM).
 \subsubsection{AAPL}
 \begin{figure}[H]
@@ -1156,6 +1164,7 @@ The following figures illustrate the performance of the LSTM model across differ
   \caption{VOO – SIP – Standard Scaling}
 \end{figure}
 
+\newpage
 
 \section*{Abbreviations}
 \begin{description}[noitemsep,style=multiline,leftmargin=3cm,labelwidth=2.5cm]
