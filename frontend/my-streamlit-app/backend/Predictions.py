@@ -11,7 +11,6 @@ import pandas as pd
 from datetime import datetime, timezone, timedelta
 import plotly.express as px
 import requests
-from streamlit_lottie import st_lottie  # Import streamlit_lottie
 
 # Redirect all stderr to null to suppress C++ and Absl logs before TF import
 devnull = os.open(os.devnull, os.O_WRONLY)
@@ -286,6 +285,9 @@ def main_predictions():
             f"Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
+        # Add vertical space using HTML line breaks instead of horizontal rules
+        st.markdown("<br>" * 1, unsafe_allow_html=True)
+
         col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
 
         with col2:
@@ -325,7 +327,9 @@ def main_predictions():
             st.markdown(bar_html, unsafe_allow_html=True)
             # Removed st.progress bar as certainty is now on the custom bar
 
-        st.markdown("---")
+        # Add vertical space using HTML line breaks instead of horizontal rules
+        st.markdown("<br>" * 3, unsafe_allow_html=True) 
+        
         tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
 
         with tabs[0]:
