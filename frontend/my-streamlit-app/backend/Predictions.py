@@ -247,6 +247,15 @@ lottie_success = load_lottie_url(
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
+    # Get and display market status
+    market_status = get_trading_hours()
+    if "open regular hours" in market_status:
+        st.success(f"📊 Market Status: {market_status}")
+    elif "pre hours" in market_status or "after hours" in market_status:
+        st.info(f"⏳ Market Status: {market_status}")
+    else:
+        st.error(f"⛔ Market Status: {market_status}")
+
     stocks = [
         "NVIDIA",
         "APPLE",
