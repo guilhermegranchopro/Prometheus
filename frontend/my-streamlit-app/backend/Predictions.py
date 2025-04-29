@@ -308,7 +308,7 @@ def main_predictions():
             <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 5px; text-align: center; font-weight: bold; font-size: 1.1em;">
                 Next 3h Movement Prediction
             </div>
-            <div style="position: relative; height: 45px; width: 100%; border-radius: 5px; background: linear-gradient(to right, #ff4b4b 0%, #ff4b4b 50%, #26a69a 50%, #26a69a 100%); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; box-sizing: border-box; margin-bottom: 5px;">
+            <div style="position: relative; height: 45px; width: 100%; border-radius: 5px; background: linear-gradient(to right, #ff4b4b, #26a69a); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; box-sizing: border-box; margin-bottom: 5px;">
                 <span style="color: white; font-weight: bold; font-size: 0.9em;">Down</span>
                 <span style="color: white; font-weight: bold; font-size: 0.9em;">Up</span>
                 <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
