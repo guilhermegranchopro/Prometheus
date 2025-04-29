@@ -6,11 +6,11 @@ import contextlib
 import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
+from polygon import RESTClient
 import pandas as pd
 from datetime import datetime, timezone, timedelta
 import plotly.express as px
 import requests
-from streamlit_lottie import st_lottie  # Import streamlit_lottie
 
 # Redirect all stderr to null to suppress C++ and Absl logs before TF import
 devnull = os.open(os.devnull, os.O_WRONLY)
@@ -161,21 +161,40 @@ def get_paths(stock_ID):
 
     return None, None
 
-
 def get_data(stock_ID):
     API_KEY = os.getenv("ALPACA_API_KEY")
     SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
     BASE_URL = "https://api.alpaca.markets"
 
+    delay_safe_df = 5
+    df_size = 36
+
     api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
     now = datetime.now(timezone.utc)
-    end_date = (now - timedelta(minutes=15)).isoformat()
-    start_date = (now - timedelta(hours=3) - timedelta(minutes=15)).isoformat()
+    start_date = (now - timedelta(days=delay_safe_df)).isoformat()
 
-    data = api.get_bars(stock_ID, "5Min", start=start_date, end=end_date, feed="sip").df
+    data = api.get_bars(stock_ID, "5Min", start=start_date, feed="sip").df.tail(df_size)
 
     return data
+
+def get_trading_hours():
+    API_KEY = os.getenv("POLYGON_API_KEY")
+
+    client = RESTClient(API_KEY)
+
+    status = client.get_market_status()
+
+    if status.market == "open":
+        trading_hours_status = "The market is open regular hours."
+    elif status.pearly_hours:
+        trading_hours_status = "The market is open pre hours."
+    elif status.after_hours:
+        trading_hours_status = "The market is open after hours."
+    else:
+        trading_hours_status = "The market is closed."
+
+    return trading_hours_status
 
 
 def get_predictions(stock_ID):
@@ -200,14 +219,14 @@ def get_predictions(stock_ID):
     X_Tensor = np.expand_dims(X_combined, axis=0)
 
     model = _load_model(model_path)
-    predictions = model.predict(X_Tensor)
-    predictions = predictions.flatten()[0]
+    raw_prediction = model.predict(X_Tensor)
+    raw_prediction = raw_prediction.flatten()[0] # Keep the raw value (0.0 to 1.0)
 
     decisive_sensibility = 0.5
-    predicted_class = (predictions >= decisive_sensibility).astype(int)
-    predicted_class = predicted_class.flatten()[0]
+    predicted_class = (raw_prediction >= decisive_sensibility).astype(int)
+    # predicted_class = predicted_class.flatten()[0] # Already flattened
 
-    return predictions, predicted_class, data_df, scaler, X_combined
+    return raw_prediction, raw_prediction, predicted_class, data_df, scaler, X_combined # Return raw_prediction and certainty_pct
 
 
 @st.cache_data(show_spinner=False)
@@ -226,6 +245,15 @@ lottie_success = load_lottie_url(
 
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
+
+    # Get and display market status
+    market_status = get_trading_hours()
+    if "open regular hours" in market_status:
+        st.success(f"📊 Market Status: {market_status}")
+    elif "pre hours" in market_status or "after hours" in market_status:
+        st.warning(f"⏳ Market Status: {market_status}")
+    else:
+        st.error(f"⛔ Market Status: {market_status}")
 
     stocks = [
         "NVIDIA",
@@ -248,55 +276,60 @@ def main_predictions():
         with st.spinner(
             f"🧠 Generating predictions for {selected_stock_ID}..."
         ):  # Added emoji
-            pred_pct, pred_class, df_live, scaler, X_combined = get_predictions(
-                selected_stock_ID
-            )
-            if pred_class == 1:
-                pred_pct = (pred_pct - 0.5) * 2
-                prediction_text = "Up ⬆️"  # Added emoji
-                delta_color = "off"  # Use 'off' for neutral color, or 'inverse' if you want red for down
-            else:
-                pred_pct = (0.5 - pred_pct) * 2
-                prediction_text = "Down ⬇️"  # Added emoji
-                delta_color = "off"  # Use 'off' for neutral color
+            # Get raw prediction, certainty percentage, and class
+            raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = get_predictions(
+                selected_stock_ID)
 
         # Metrics and Lottie Animation
         st.subheader(
-            f"Last Updated: {pd.to_datetime(df_live.index[-1]).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
-        col1, col2 = st.columns([2, 3])  # Adjusted column ratios
+        # Add vertical space using HTML line breaks instead of horizontal rules
+        st.markdown("<br>" * 1, unsafe_allow_html=True)
 
-        with col1:
-            st.metric(
-                "Next 3h Movement", prediction_text, delta=" ", delta_color=delta_color
-            )  # Use prediction_text
-            st.metric("Certainty", f"{pred_pct:.2%}")
-            st.progress(int(pred_pct * 100))
+        col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
 
         with col2:
-            if pred_class == 1 and lottie_success:
-                st_lottie(
-                    lottie_success,
-                    speed=1,
-                    reverse=False,
-                    loop=True,
-                    quality="high",
-                    height=150,
-                    width=150,
-                    key="lottie_success",
-                )
-            elif pred_class == 0:
-                # Optionally add a bearish Lottie animation here
-                st.markdown(
-                    "<br/>" * 2, unsafe_allow_html=True
-                )  # Add some space if no animation
-                st.markdown(
-                    "<div style='text-align: center; font-size: 5em;'></div>",
-                    unsafe_allow_html=True,
-                )  # Simple emoji as placeholder
+            # --- Reverted marker position calculation ---
+            # Calculate marker position based on certainty and class
+            if pred_class == 1: # Up
+                tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+            else: # Down
+                tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
 
-        st.markdown("---")
+            # Format the certainty percentage for display
+            marker_position_pct = pred_certainty*100
+            certainty_display = f"{pred_certainty:.1%}"
+
+            # Ensure position is within bounds (0-100)
+            marker_position_pct = max(0, min(100, marker_position_pct))
+
+            # Custom HTML/CSS for the prediction bar
+            bar_html = f"""
+            <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
+                Next 3h Movement Prediction
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
+                <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
+                <div style="position: relative; height: 45px; flex-grow: 1; border-radius: 5px; background: linear-gradient(to right, #b71c1c, #1b5e20); box-sizing: border-box;">
+                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
+                        {certainty_display} Certainty
+                    </div>
+                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
+                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
+                        {'⬆️' if pred_class == 1 else '⬇️'}
+                    </div>
+                </div>
+                <span style="color: white; font-weight: bold; font-size: 1.1em; margin-left: 5px;">Up ⬆️</span>
+            </div>
+            """
+            st.markdown(bar_html, unsafe_allow_html=True)
+            # Removed st.progress bar as certainty is now on the custom bar
+
+        # Add vertical space using HTML line breaks instead of horizontal rules
+        st.markdown("<br>" * 3, unsafe_allow_html=True) 
+        
         tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
 
         with tabs[0]:
