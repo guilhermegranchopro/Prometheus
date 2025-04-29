@@ -251,7 +251,7 @@ def main_predictions():
     if "open regular hours" in market_status:
         st.success(f"📊 Market Status: {market_status}")
     elif "pre hours" in market_status or "after hours" in market_status:
-        st.info(f"⏳ Market Status: {market_status}")
+        st.warning(f"⏳ Market Status: {market_status}")
     else:
         st.error(f"⛔ Market Status: {market_status}")
 
