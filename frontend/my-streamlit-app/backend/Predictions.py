@@ -303,21 +303,23 @@ def main_predictions():
             # Ensure position is within bounds (0-100)
             marker_position_pct = max(0, min(100, marker_position_pct))
 
-            # Custom HTML/CSS for the prediction bar (uses marker_position_pct for position, certainty_display for text)
+            # Custom HTML/CSS for the prediction bar
             bar_html = f"""
-            <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 5px; text-align: center; font-weight: bold; font-size: 1.1em;">
+            <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
                 Next 3h Movement Prediction
             </div>
-            <div style="position: relative; height: 45px; width: 100%; border-radius: 5px; background: linear-gradient(to right, #ff4b4b, #26a69a); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; box-sizing: border-box; margin-bottom: 5px;">
-                <span style="color: white; font-weight: bold; font-size: 0.9em;">Down</span>
-                <span style="color: white; font-weight: bold; font-size: 0.9em;">Up</span>
-                <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
-                    {certainty_display} Certainty
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
+                <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
+                <div style="position: relative; height: 45px; flex-grow: 1; border-radius: 5px; background: linear-gradient(to right, #b71c1c, #1b5e20); box-sizing: border-box;">
+                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
+                        {certainty_display} Certainty
+                    </div>
+                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
+                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
+                        {'⬆️' if pred_class == 1 else '⬇️'}
+                    </div>
                 </div>
-                <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
-                <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
-                    {'⬆️' if pred_class == 1 else '⬇️'}
-                </div>
+                <span style="color: white; font-weight: bold; font-size: 1.1em; margin-left: 5px;">Up ⬆️</span>
             </div>
             """
             st.markdown(bar_html, unsafe_allow_html=True)
