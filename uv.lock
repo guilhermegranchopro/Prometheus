@@ -1500,6 +1500,20 @@ wheels = [
 ]
 
 [[package]]
+name = "polygon-api-client"
+version = "1.14.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "certifi" },
+    { name = "urllib3" },
+    { name = "websockets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/57/05/e6e9cbe7160b619448684811a6abd25e2fe1d21650dff9fb52a25b96107e/polygon_api_client-1.14.5.tar.gz", hash = "sha256:073ad4b418672cd25e81660c670c902969bf8d07d259cfc23a35c7a8a7dc70fd", size = 30846 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fb/16/ee8a361c40432408684113e90fba6fe6a862ffd8a7c518be1167479e8cad/polygon_api_client-1.14.5-py3-none-any.whl", hash = "sha256:e12605ea63bb475c75fb1655f1005348f6521d212c65441477f687a71f1191ba", size = 44116 },
+]
+
+[[package]]
 name = "prometheus"
 version = "0.1.0"
 source = { virtual = "." }
@@ -1513,6 +1527,7 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "plotly" },
+    { name = "polygon-api-client" },
     { name = "python-dateutil" },
     { name = "python-levenshtein" },
     { name = "ruff" },
@@ -1534,6 +1549,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.1.3" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "plotly", specifier = ">=6.0.1" },
+    { name = "polygon-api-client", specifier = ">=1.14.5" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
     { name = "python-levenshtein", specifier = ">=0.27.1" },
     { name = "ruff", specifier = ">=0.11.5" },
