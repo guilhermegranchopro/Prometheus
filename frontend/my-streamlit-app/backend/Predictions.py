@@ -6,6 +6,7 @@ import contextlib
 import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
+from polygon import RESTClient
 import pandas as pd
 from datetime import datetime, timezone, timedelta
 import plotly.express as px
@@ -161,21 +162,40 @@ def get_paths(stock_ID):
 
     return None, None
 
-
 def get_data(stock_ID):
     API_KEY = os.getenv("ALPACA_API_KEY")
     SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
     BASE_URL = "https://api.alpaca.markets"
 
+    delay_safe_df = 5
+    df_size = 36
+
     api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
     now = datetime.now(timezone.utc)
-    end_date = (now - timedelta(minutes=15)).isoformat()
-    start_date = (now - timedelta(hours=3) - timedelta(minutes=15)).isoformat()
+    start_date = (now - timedelta(days=delay_safe_df)).isoformat()
 
-    data = api.get_bars(stock_ID, "5Min", start=start_date, end=end_date, feed="sip").df
+    data = api.get_bars(stock_ID, "5Min", start=start_date, feed="sip").df.tail(df_size)
 
     return data
+
+def get_trading_hours():
+    API_KEY = os.getenv("POLYGON_API_KEY")
+
+    client = RESTClient(API_KEY)
+
+    status = client.get_market_status()
+
+    if status.market == "open":
+        trading_hours_status = "The market is open regular hours."
+    elif status.pearly_hours:
+        trading_hours_status = "The market is open pre hours."
+    elif status.after_hours:
+        trading_hours_status = "The market is open after hours."
+    else:
+        trading_hours_status = "The market is closed."
+
+    return trading_hours_status
 
 
 def get_predictions(stock_ID):
