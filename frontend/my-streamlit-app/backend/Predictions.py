@@ -282,7 +282,7 @@ def main_predictions():
 
         # Metrics and Lottie Animation
         st.subheader(
-            f"Last Updated: {pd.to_datetime(df_live.index[-1]).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
         col1, col2 = st.columns([2, 3])  # Adjusted column ratios
