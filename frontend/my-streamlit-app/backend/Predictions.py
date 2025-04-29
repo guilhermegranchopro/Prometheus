@@ -220,14 +220,14 @@ def get_predictions(stock_ID):
     X_Tensor = np.expand_dims(X_combined, axis=0)
 
     model = _load_model(model_path)
-    predictions = model.predict(X_Tensor)
-    predictions = predictions.flatten()[0]
+    raw_prediction = model.predict(X_Tensor)
+    raw_prediction = raw_prediction.flatten()[0] # Keep the raw value (0.0 to 1.0)
 
     decisive_sensibility = 0.5
-    predicted_class = (predictions >= decisive_sensibility).astype(int)
-    predicted_class = predicted_class.flatten()[0]
+    predicted_class = (raw_prediction >= decisive_sensibility).astype(int)
+    # predicted_class = predicted_class.flatten()[0] # Already flattened
 
-    return predictions, predicted_class, data_df, scaler, X_combined
+    return raw_prediction, raw_prediction, predicted_class, data_df, scaler, X_combined # Return raw_prediction and certainty_pct
 
 
 @st.cache_data(show_spinner=False)
@@ -277,53 +277,55 @@ def main_predictions():
         with st.spinner(
             f"🧠 Generating predictions for {selected_stock_ID}..."
         ):  # Added emoji
-            pred_pct, pred_class, df_live, scaler, X_combined = get_predictions(
-                selected_stock_ID
-            )
-            if pred_class == 1:
-                pred_pct = (pred_pct - 0.5) * 2
-                prediction_text = "Up ⬆️"  # Added emoji
-                delta_color = "off"  # Use 'off' for neutral color, or 'inverse' if you want red for down
-            else:
-                pred_pct = (0.5 - pred_pct) * 2
-                prediction_text = "Down ⬇️"  # Added emoji
-                delta_color = "off"  # Use 'off' for neutral color
+            # Get raw prediction, certainty percentage, and class
+            raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = get_predictions(
+                selected_stock_ID)
 
         # Metrics and Lottie Animation
         st.subheader(
             f"Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
-        col1, col2 = st.columns([2, 3])  # Adjusted column ratios
-
-        with col1:
-            st.metric(
-                "Next 3h Movement", prediction_text, delta=" ", delta_color=delta_color
-            )  # Use prediction_text
-            st.metric("Certainty", f"{pred_pct:.2%}")
-            st.progress(int(pred_pct * 100))
+        col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
 
         with col2:
-            if pred_class == 1 and lottie_success:
-                st_lottie(
-                    lottie_success,
-                    speed=1,
-                    reverse=False,
-                    loop=True,
-                    quality="high",
-                    height=150,
-                    width=150,
-                    key="lottie_success",
-                )
-            elif pred_class == 0:
-                # Optionally add a bearish Lottie animation here
-                st.markdown(
-                    "<br/>" * 2, unsafe_allow_html=True
-                )  # Add some space if no animation
-                st.markdown(
-                    "<div style='text-align: center; font-size: 5em;'></div>",
-                    unsafe_allow_html=True,
-                )  # Simple emoji as placeholder
+            # --- Reverted marker position calculation ---
+            # Calculate marker position based on certainty and class
+            # 50% position = 0% certainty
+            # 0% position = 100% Down certainty
+            # 100% position = 100% Up certainty
+            if pred_class == 1: # Up
+                marker_position_pct = pred_certainty
+                tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+            else: # Down
+                marker_position_pct = pred_certainty
+                tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+
+            # Format the certainty percentage for display
+            certainty_display = f"{pred_certainty:.1%}"
+
+            # Ensure position is within bounds (0-100)
+            marker_position_pct = max(0, min(100, marker_position_pct))
+
+            # Custom HTML/CSS for the prediction bar (uses marker_position_pct for position, certainty_display for text)
+            bar_html = f"""
+            <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 5px; text-align: center; font-weight: bold; font-size: 1.1em;">
+                Next 3h Movement Prediction
+            </div>
+            <div style="position: relative; height: 45px; width: 100%; border-radius: 5px; background: linear-gradient(to right, #ff4b4b 0%, #ff4b4b 50%, #26a69a 50%, #26a69a 100%); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; box-sizing: border-box; margin-bottom: 5px;">
+                <span style="color: white; font-weight: bold; font-size: 0.9em;">Down</span>
+                <span style="color: white; font-weight: bold; font-size: 0.9em;">Up</span>
+                <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
+                    {certainty_display} Certainty
+                </div>
+                <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
+                <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
+                    {'⬆️' if pred_class == 1 else '⬇️'}
+                </div>
+            </div>
+            """
+            st.markdown(bar_html, unsafe_allow_html=True)
+            # Removed st.progress bar as certainty is now on the custom bar
 
         st.markdown("---")
         tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
