@@ -291,17 +291,13 @@ def main_predictions():
         with col2:
             # --- Reverted marker position calculation ---
             # Calculate marker position based on certainty and class
-            # 50% position = 0% certainty
-            # 0% position = 100% Down certainty
-            # 100% position = 100% Up certainty
             if pred_class == 1: # Up
-                marker_position_pct = pred_certainty
                 tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
             else: # Down
-                marker_position_pct = pred_certainty
                 tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
 
             # Format the certainty percentage for display
+            marker_position_pct = pred_certainty*100
             certainty_display = f"{pred_certainty:.1%}"
 
             # Ensure position is within bounds (0-100)
