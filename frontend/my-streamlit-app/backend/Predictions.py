@@ -374,37 +374,37 @@ def main_predictions():
                 df_display.index.name = "Date & Time"
                 df_display.rename(
                     columns={
-                        "close": "Close ($)",
-                        "high": "High ($)",
-                        "low": "Low ($)",
+                        "close": "Close (USD)",
+                        "high": "High (USD)",
+                        "low": "Low (USD)",
                         "trade_count": "Trade Count",
-                        "open": "Open ($)",
+                        "open": "Open (USD)",
                         "volume": "Volume",
-                        "vwap": "VWAP ($)",
+                        "vwap": "VWAP (USD)",
                     },
                     inplace=True,
                 )
                 # Reorder columns for better readability
                 df_display = df_display[
                     [
-                        "Open ($)",
-                        "High ($)",
-                        "Low ($)",
-                        "Close ($)",
+                        "Open (USD)",
+                        "High (USD)",
+                        "Low (USD)",
+                        "Close (USD)",
                         "Volume",
                         "Trade Count",
-                        "VWAP ($)",
+                        "VWAP (USD)",
                     ]
                 ]
                 st.dataframe(
                     df_display.style.format(
                         {
-                            "Open ($)": "${:,.2f}",
-                            "High ($)": "${:,.2f}",
-                            "Low ($)": "${:,.2f}",
-                            "Close ($)": "${:,.2f}",
+                            "Open (USD)": "${:,.2f}",
+                            "High (USD)": "${:,.2f}",
+                            "Low (USD)": "${:,.2f}",
+                            "Close (USD)": "${:,.2f}",
                             "Volume": "{:,.0f}",
-                            "VWAP ($)": "${:,.2f}",
+                            "VWAP (USD)": "${:,.2f}",
                         }
                     ),
                     use_container_width=True,  # Make dataframe use full width
