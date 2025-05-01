@@ -25,7 +25,9 @@ def main():
 
     # Page Title
     st.title("🔥 Prometheus")
-    st.markdown("### The Financial Torque Hypothesis: Quantitative Research")  # Added subtitle
+    st.markdown(
+        "### The Financial Torque Hypothesis: Quantitative Research"
+    )  # Added subtitle
 
     # Create tabs with emojis
     tab1, tab2, tab3, tab4 = st.tabs(

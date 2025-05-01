@@ -139,7 +139,8 @@ def get_paths(stock_ID):
     elif stock_ID == "GOOG":
         scaler_name = "MinMax"
         scaler_filename = (
-            "minmax_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min" + scaler_file_extension
+            "minmax_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min"
+            + scaler_file_extension
         )
         model_filename = (
             "ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816"
@@ -173,12 +174,10 @@ def get_data(stock_ID):
 
 
 def get_trading_hours(POLYGON_API):
-
     try:
-
         POLYGON_API += 1
         # Correct variable name construction
-        env_var_name = f'POLYGON_API_KEY_{POLYGON_API}'
+        env_var_name = f"POLYGON_API_KEY_{POLYGON_API}"
 
         API_KEY = os.getenv(env_var_name)
 
@@ -189,7 +188,7 @@ def get_trading_hours(POLYGON_API):
                 return f"Error: Polygon API Key {env_var_name} not found in environment variables or all keys failed."
             # Otherwise, try the next key
             else:
-                return get_trading_hours(POLYGON_API) # Recurse to try next key index
+                return get_trading_hours(POLYGON_API)  # Recurse to try next key index
 
         client = RESTClient(API_KEY)
 
@@ -203,7 +202,9 @@ def get_trading_hours(POLYGON_API):
         else:
             # Return error if it's not 429 or if all keys have been tried
             return None
-    except Exception: # Catch other potential errors during client initialization or request
+    except (
+        Exception
+    ):  # Catch other potential errors during client initialization or request
         return None
 
     if status.market == "open":
@@ -409,7 +410,7 @@ def main_predictions():
                 fig.update_layout(
                     title_x=0.5,
                     xaxis_title="Datetime (UTC)",
-                    yaxis_title=selected_feature
+                    yaxis_title=selected_feature,
                 )
                 st.plotly_chart(fig, use_container_width=True)
 
