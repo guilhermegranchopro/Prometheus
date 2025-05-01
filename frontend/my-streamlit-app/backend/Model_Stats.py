@@ -164,17 +164,17 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "GOOG":
-        accuracy_curve_filename = "a_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.577+ta=0.8156" + images_file_extension
-        loss_curve_filename = "l_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.577+ta=0.8156" + images_file_extension
-        confusion_matrix_filename = "cm_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.577+ta=0.8156" + images_file_extension
+        accuracy_curve_filename = "a_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816" + images_file_extension
+        loss_curve_filename = "l_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816" + images_file_extension
+        confusion_matrix_filename = "cm_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816" + images_file_extension
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "GOOG", accuracy_curve_filename
+            IMAGES_BASE_PATH, "MinMax", "GOOG", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "GOOG", loss_curve_filename
+            IMAGES_BASE_PATH, "MinMax", "GOOG", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "GOOG", confusion_matrix_filename
+            IMAGES_BASE_PATH, "MinMax", "GOOG", confusion_matrix_filename
         )
         test_accuracy = 0.8160
         test_loss = 0.6090
