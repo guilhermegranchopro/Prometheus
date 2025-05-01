@@ -132,13 +132,12 @@ def get_paths(stock_ID):
         model_path = os.path.join(MODELS_BASE_PATH, "NoScaler", model_filename)
         return model_path, None
     elif stock_ID == "GOOG":
-        scaler_name = "Robust"
+        scaler_name = "MinMax"
         scaler_filename = (
-            "robust_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min"
-            + scaler_file_extension
+            "minmax_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min"
         )
         model_filename = (
-            "ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.577+ta=0.8156"
+            "ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816"
             + model_file_extension
         )
         model_path = os.path.join(MODELS_BASE_PATH, scaler_name, model_filename)
