@@ -294,7 +294,7 @@ def main_model_stats():
         col1, col2 = st.columns(2)
         with col1:
             st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-            st.metric(label="Test Accuracy", value=f"{test_accuracy:.4f}")
+            st.metric(label="Test Accuracy", value=f"{test_accuracy*100:.2f}%")
             st.progress(int(test_accuracy * 100))
             st.markdown("</div>", unsafe_allow_html=True)
         with col2:
