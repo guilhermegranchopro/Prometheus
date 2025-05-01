@@ -10,4 +10,9 @@
   /* Override common Tailwind whites to match dark theme */
   .bg-white { background-color: var(--background-color) !important; }
   .block-container { background-color: var(--background-color) !important; }
+
+  /* Hide Streamlit's theme selection menu */
+  div[data-testid="stTheme"] {
+    display: none !important;
+  }
 }
