@@ -22,8 +22,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "Robust", "VOO", confusion_matrix_filename
         )
-        test_accuracy = 0.8780
-        test_loss = 0.3060
+        test_accuracy = 0.8741
+        test_loss = 0.3559
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -44,8 +44,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "NoScaler", "DIA", confusion_matrix_filename
         )
-        test_accuracy = 0.8420
-        test_loss = 0.3770
+        test_accuracy = 0.8390
+        test_loss = 0.3716
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -66,8 +66,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "NoScaler", "IWM", confusion_matrix_filename
         )
-        test_accuracy = 0.8340
-        test_loss = 0.3770
+        test_accuracy = 0.8239
+        test_loss = 0.3888
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -88,8 +88,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "NoScaler", "NVDA", confusion_matrix_filename
         )
-        test_accuracy = 0.7820
-        test_loss = 0.5880
+        test_accuracy = 0.8445
+        test_loss = 0.3756
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -110,8 +110,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "NoScaler", "AAPL", confusion_matrix_filename
         )
-        test_accuracy = 0.8250
-        test_loss = 0.4370
+        test_accuracy = 0.8440
+        test_loss = 0.4137
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -132,8 +132,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "NoScaler", "MSFT", confusion_matrix_filename
         )
-        test_accuracy = 0.8610
-        test_loss = 0.3770
+        test_accuracy = 0.8599
+        test_loss = 0.3464
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -154,8 +154,8 @@ def get_paths(stock_ID):
         confusion_matrix_path = os.path.join(
             IMAGES_BASE_PATH, "NoScaler", "AMZN", confusion_matrix_filename
         )
-        test_accuracy = 0.8070
-        test_loss = 0.4600
+        test_accuracy = 0.8000
+        test_loss = 0.6051
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -177,7 +177,7 @@ def get_paths(stock_ID):
             IMAGES_BASE_PATH, "Robust", "GOOG", confusion_matrix_filename
         )
         test_accuracy = 0.8160
-        test_loss = 0.5820
+        test_loss = 0.6090
         return (
             accuracy_curve_path,
             loss_curve_path,
