@@ -278,7 +278,7 @@ def main_model_stats():
     selected_stock_ID = get_stocks_ID(selected_stock)
 
     if selected_stock_ID:
-        st.subheader(f"Performance Metrics for **{selected_stock}** ✨")
+        st.subheader(f"✨ Performance Metrics for **{selected_stock}**")
 
         # Loading spinner
         with st.spinner(f"Loading data for {selected_stock}..."):
