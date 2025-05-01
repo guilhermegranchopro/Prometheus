@@ -365,12 +365,17 @@ def main_predictions():
                 x=df_live.index,
                 y=feature_y,
                 title=f"{selected_stock} - {selected_feature}",
-                labels={"index": "Datetime (UTC)", feature_y: selected_feature},
+                labels={"index": "Datetime (UTC)", feature_y: selected_feature}, # Keep this for hover labels
                 template="plotly_dark",
                 markers=True,
-                line_shape="spline",  # Changed line_shape to spline
+                line_shape="spline",
             )
-            fig.update_layout(title_x=0.5)  # Center title
+            # Explicitly set axis titles and center the main title
+            fig.update_layout(
+                title_x=0.5,
+                xaxis_title="Datetime (UTC)", # Explicitly set x-axis title
+                yaxis_title=selected_feature  # Explicitly set y-axis title based on selection
+            )
             st.plotly_chart(fig, use_container_width=True)
 
         with tabs[1]:
