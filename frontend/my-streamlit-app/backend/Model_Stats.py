@@ -265,14 +265,14 @@ def main_model_stats():
     st.markdown("## 📊 Model Statistics Dashboard", unsafe_allow_html=True)
 
     stocks = [
-        "NVIDIA",
-        "APPLE",
-        "MICROSOFT",
-        "AMAZON",
-        "GOOGLE",
-        "VANGUARD S&P 500 ETF",
-        "DOW JONES ETF",
-        "RUSSELL 2000 ETF",
+        "NVIDIA (NVDA)",
+        "APPLE (AAPL)",
+        "MICROSOFT (MSFT)",
+        "AMAZON (AMZN)",
+        "GOOGLE (GOOGL)",
+        "VANGUARD S&P 500 ETF (VOO)",
+        "DOW JONES ETF (DIA)",
+        "RUSSELL 2000 ETF (IWM)",
     ]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)

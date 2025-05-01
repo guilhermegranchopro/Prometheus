@@ -46,21 +46,21 @@ def _load_model(path):
 
 
 def get_stocks_ID(selected_stock):
-    if selected_stock == "NVIDIA":
+    if selected_stock == "NVIDIA (NVDA)":
         selected_stock_ID = "NVDA"
-    elif selected_stock == "APPLE":
+    elif selected_stock == "APPLE (AAPL)":
         selected_stock_ID = "AAPL"
-    elif selected_stock == "MICROSOFT":
+    elif selected_stock == "MICROSOFT (MSFT)":
         selected_stock_ID = "MSFT"
-    elif selected_stock == "AMAZON":
+    elif selected_stock == "AMAZON (AMZN)":
         selected_stock_ID = "AMZN"
-    elif selected_stock == "GOOGLE":
+    elif selected_stock == "GOOGLE (GOOGL)":
         selected_stock_ID = "GOOG"
-    elif selected_stock == "VANGUARD S&P 500 ETF":
+    elif selected_stock == "VANGUARD S&P 500 ETF (VOO)":
         selected_stock_ID = "VOO"
-    elif selected_stock == "DOW JONES ETF":
+    elif selected_stock == "DOW JONES ETF (DIA)":
         selected_stock_ID = "DIA"
-    elif selected_stock == "RUSSELL 2000 ETF":
+    elif selected_stock == "RUSSELL 2000 ETF (IWM)":
         selected_stock_ID = "IWM"
     else:
         selected_stock_ID = None
@@ -243,14 +243,14 @@ def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
     stocks = [
-        "NVIDIA",
-        "APPLE",
-        "MICROSOFT",
-        "AMAZON",
-        "GOOGLE",
-        "VANGUARD S&P 500 ETF",
-        "DOW JONES ETF",
-        "RUSSELL 2000 ETF",
+        "NVIDIA (NVDA)",
+        "APPLE (AAPL)",
+        "MICROSOFT (MSFT)",
+        "AMAZON (AMZN)",
+        "GOOGLE (GOOGL)",
+        "VANGUARD S&P 500 ETF (VOO)",
+        "DOW JONES ETF (DIA)",
+        "RUSSELL 2000 ETF (IWM)",
     ]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
