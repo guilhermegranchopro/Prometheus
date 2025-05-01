@@ -233,15 +233,6 @@ lottie_success = load_lottie_url(
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
-    # Get and display market status
-    market_status = get_trading_hours()
-    if "open regular hours" in market_status:
-        st.success(f"📊 Market Status: {market_status}")
-    elif "pre hours" in market_status or "after hours" in market_status:
-        st.warning(f"⏳ Market Status: {market_status}")
-    else:
-        st.error(f"⛔ Market Status: {market_status}")
-
     stocks = [
         "NVIDIA",
         "APPLE",
@@ -266,11 +257,21 @@ def main_predictions():
             # Get raw prediction, certainty percentage, and class
             raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = get_predictions(
                 selected_stock_ID)
+            
+            # Get and display market status
+            market_status = get_trading_hours()
 
         # Metrics and Lottie Animation
         st.subheader(
             f"Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
+
+        if "open regular hours" in market_status:
+            st.success(f"📊 Market Status: {market_status}")
+        elif "pre hours" in market_status or "after hours" in market_status:
+            st.warning(f"⏳ Market Status: {market_status}")
+        else:
+            st.error(f"⛔ Market Status: {market_status}")
 
         # Add vertical space using HTML line breaks instead of horizontal rules
         st.markdown("<br>" * 1, unsafe_allow_html=True)
