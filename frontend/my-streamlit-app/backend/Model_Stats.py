@@ -10,20 +10,27 @@ def get_paths(stock_ID):
     images_file_extension = ".png"
 
     if stock_ID == "VOO":
-        accuracy_curve_filename = "VOO_sip_noscaler_accuracy" + images_file_extension
-        loss_curve_filename = "VOO_sip_noscaler_loss" + images_file_extension
-        confusion_matrix_filename = "VOO_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=VOO+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3559+ta=0.8741"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=VOO+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3559+ta=0.8741"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=VOO+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=robust+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3559+ta=0.8741"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "VOO", accuracy_curve_filename
+            IMAGES_BASE_PATH, "Robust", accuracy_curve_filename
         )
-        loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "VOO", loss_curve_filename
-        )
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "Robust", loss_curve_filename)
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "VOO", confusion_matrix_filename
+            IMAGES_BASE_PATH, "Robust", confusion_matrix_filename
         )
-        test_accuracy = 0.8780
-        test_loss = 0.3060
+        test_accuracy = 0.8741
+        test_loss = 0.3559
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -32,20 +39,29 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "DIA":
-        accuracy_curve_filename = "DIA_sip_noscaler_accuracy" + images_file_extension
-        loss_curve_filename = "DIA_sip_noscaler_loss" + images_file_extension
-        confusion_matrix_filename = "DIA_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=DIA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3716+ta=0.8385"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=DIA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3716+ta=0.8385"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=DIA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3716+ta=0.8385"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "DIA", accuracy_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "DIA", loss_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "DIA", confusion_matrix_filename
+            IMAGES_BASE_PATH, "NoScaler", confusion_matrix_filename
         )
-        test_accuracy = 0.8420
-        test_loss = 0.3770
+        test_accuracy = 0.8390
+        test_loss = 0.3716
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -54,20 +70,29 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "IWM":
-        accuracy_curve_filename = "IWM_sip_noscaler_accuracy" + images_file_extension
-        loss_curve_filename = "IWM_sip_noscaler_loss" + images_file_extension
-        confusion_matrix_filename = "IWM_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=IWM+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3888+ta=0.8239"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=IWM+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3888+ta=0.8239"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=IWM+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3888+ta=0.8239"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "IWM", accuracy_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "IWM", loss_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "IWM", confusion_matrix_filename
+            IMAGES_BASE_PATH, "NoScaler", confusion_matrix_filename
         )
-        test_accuracy = 0.8340
-        test_loss = 0.3770
+        test_accuracy = 0.8239
+        test_loss = 0.3888
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -76,20 +101,29 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "NVDA":
-        accuracy_curve_filename = "NVDA_sip_robust_accuracy" + images_file_extension
-        loss_curve_filename = "NVDA_sip_robust_loss" + images_file_extension
-        confusion_matrix_filename = "NVDA_sip_robust_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3756+ta=0.8445"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3756+ta=0.8445"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=NVDA+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3756+ta=0.8445"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "NVDA", accuracy_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "NVDA", loss_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "NVDA", confusion_matrix_filename
+            IMAGES_BASE_PATH, "NoScaler", confusion_matrix_filename
         )
-        test_accuracy = 0.7820
-        test_loss = 0.5880
+        test_accuracy = 0.8445
+        test_loss = 0.3756
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -98,20 +132,29 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "AAPL":
-        accuracy_curve_filename = "AAPL_sip_minmax_accuracy" + images_file_extension
-        loss_curve_filename = "AAPL_sip_minmax_loss" + images_file_extension
-        confusion_matrix_filename = "AAPL_sip_minmax_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.4137+ta=0.844"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.4137+ta=0.844"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=AAPL+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.4137+ta=0.844"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "MinMax", "AAPL", accuracy_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "MinMax", "AAPL", loss_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "MinMax", "AAPL", confusion_matrix_filename
+            IMAGES_BASE_PATH, "NoScaler", confusion_matrix_filename
         )
-        test_accuracy = 0.8250
-        test_loss = 0.4370
+        test_accuracy = 0.8440
+        test_loss = 0.4137
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -120,20 +163,29 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "MSFT":
-        accuracy_curve_filename = "MSFT_sip_noscaler_accuracy" + images_file_extension
-        loss_curve_filename = "MSFT_sip_noscaler_loss" + images_file_extension
-        confusion_matrix_filename = "MSFT_sip_noscaler_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=MSFT+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3464+ta=0.8599"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=MSFT+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3464+ta=0.8599"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=MSFT+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.3464+ta=0.8599"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "MSFT", accuracy_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "MSFT", loss_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "NoScaler", "MSFT", confusion_matrix_filename
+            IMAGES_BASE_PATH, "NoScaler", confusion_matrix_filename
         )
-        test_accuracy = 0.8610
-        test_loss = 0.3770
+        test_accuracy = 0.8599
+        test_loss = 0.3464
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -142,20 +194,29 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "AMZN":
-        accuracy_curve_filename = "AMZN_sip_robust_accuracy" + images_file_extension
-        loss_curve_filename = "AMZN_sip_robust_loss" + images_file_extension
-        confusion_matrix_filename = "AMZN_sip_robust_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.6051+ta=0.8"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.6051+ta=0.8"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=AMZN+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=none+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.6051+ta=0.8"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "AMZN", accuracy_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", accuracy_curve_filename
         )
         loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "AMZN", loss_curve_filename
+            IMAGES_BASE_PATH, "NoScaler", loss_curve_filename
         )
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "AMZN", confusion_matrix_filename
+            IMAGES_BASE_PATH, "NoScaler", confusion_matrix_filename
         )
-        test_accuracy = 0.8070
-        test_loss = 0.4600
+        test_accuracy = 0.8000
+        test_loss = 0.6051
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -164,20 +225,27 @@ def get_paths(stock_ID):
             test_loss,
         )
     elif stock_ID == "GOOG":
-        accuracy_curve_filename = "GOOG_sip_robust_accuracy" + images_file_extension
-        loss_curve_filename = "GOOG_sip_robust_loss" + images_file_extension
-        confusion_matrix_filename = "GOOG_sip_robust_cm" + images_file_extension
+        accuracy_curve_filename = (
+            "a_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816"
+            + images_file_extension
+        )
+        loss_curve_filename = (
+            "l_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816"
+            + images_file_extension
+        )
+        confusion_matrix_filename = (
+            "cm_ds=sip+s=GOOG+mp=False+sd=2016-01-1+ed=2024-12-30+tf=5Min+fm=vwap+sm=trade_count+tm=+r=36+sort=False+adjustment=all+rfm=False+rsm=False+rtm=False+d=+st=minmax+cts=[0]+Lb=True+e=500+es=True+cb=val_accuracy+p=100+bs=128+tl=0.609+ta=0.816"
+            + images_file_extension
+        )
         accuracy_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "GOOG", accuracy_curve_filename
+            IMAGES_BASE_PATH, "MinMax", accuracy_curve_filename
         )
-        loss_curve_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "GOOG", loss_curve_filename
-        )
+        loss_curve_path = os.path.join(IMAGES_BASE_PATH, "MinMax", loss_curve_filename)
         confusion_matrix_path = os.path.join(
-            IMAGES_BASE_PATH, "Robust", "GOOG", confusion_matrix_filename
+            IMAGES_BASE_PATH, "MinMax", confusion_matrix_filename
         )
         test_accuracy = 0.8160
-        test_loss = 0.5820
+        test_loss = 0.6090
         return (
             accuracy_curve_path,
             loss_curve_path,
@@ -197,20 +265,20 @@ def main_model_stats():
     st.markdown("## 📊 Model Statistics Dashboard", unsafe_allow_html=True)
 
     stocks = [
-        "NVIDIA",
-        "APPLE",
-        "MICROSOFT",
-        "AMAZON",
-        "GOOGLE",
-        "VANGUARD S&P 500 ETF",
-        "DOW JONES ETF",
-        "RUSSELL 2000 ETF",
+        "NVIDIA (NVDA)",
+        "APPLE (AAPL)",
+        "MICROSOFT (MSFT)",
+        "AMAZON (AMZN)",
+        "GOOGLE (GOOG)",
+        "VANGUARD S&P 500 ETF (VOO)",
+        "DOW JONES ETF (DIA)",
+        "RUSSELL 2000 ETF (IWM)",
     ]
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="model_stats_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
 
     if selected_stock_ID:
-        st.subheader(f"Performance Metrics for **{selected_stock}** ✨")
+        st.subheader(f"✨ Performance Metrics for **{selected_stock}**")
 
         # Loading spinner
         with st.spinner(f"Loading data for {selected_stock}..."):
@@ -226,7 +294,7 @@ def main_model_stats():
         col1, col2 = st.columns(2)
         with col1:
             st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-            st.metric(label="Test Accuracy", value=f"{test_accuracy:.4f}")
+            st.metric(label="Test Accuracy", value=f"{test_accuracy * 100:.2f}%")
             st.progress(int(test_accuracy * 100))
             st.markdown("</div>", unsafe_allow_html=True)
         with col2:
