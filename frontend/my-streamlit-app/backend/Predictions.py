@@ -323,27 +323,27 @@ def main_predictions():
         with tabs[0]:
             st.subheader("📊 Live Market Chart")  # Added emoji
             features = [
-                "VWAP ($)",
-                "Close ($)",
-                "High ($)",
-                "Low ($)",
+                "VWAP (USD)",
+                "Close (USD)",
+                "High (USD)",
+                "Low (USD)",
                 "Trade Count",
-                "Open ($)",
+                "Open (USD)",
                 "Volume",
             ]  # Changed default
             selected_feature = st.selectbox(
                 "Select Feature:", features, key="selected_feature"
             )
             # ... existing feature mapping logic ...
-            if selected_feature == "Close ($)":
+            if selected_feature == "Close (USD)":
                 feature_y = "close"
-            elif selected_feature == "High ($)":
+            elif selected_feature == "High (USD)":
                 feature_y = "high"
-            elif selected_feature == "Low ($)":
+            elif selected_feature == "Low (USD)":
                 feature_y = "low"
             elif selected_feature == "Trade Count":
                 feature_y = "trade_count"
-            elif selected_feature == "Open ($)":
+            elif selected_feature == "Open (USD)":
                 feature_y = "open"
             elif selected_feature == "Volume":
                 feature_y = "volume"
