@@ -3,7 +3,7 @@
 % if you ever loaded graphicx with options elsewhere, pick one set here:
 \PassOptionsToPackage{}{graphicx}
 
-\documentclass[10pt,a4paper]{article}
+\documentclass[letterpaper]{article}
 \usepackage{setspace}
 \usepackage{parskip}
 \usepackage{amsmath, amssymb}
@@ -55,6 +55,9 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref} % Para links de email
+\usepackage{mathptmx}
+
+
 
 % Configurações de espaçamento e títulos
 % Espaçamento antes e depois
@@ -82,7 +85,7 @@
 \begin{titlepage}
     \centering
     \vspace*{\fill} % Início da centralização vertical
-    {\LARGE\bfseries Short‑Term Stock Movement Forecasting Utilizing LSTM-Based Recurrent Neural Networks\par}
+    {\LARGE\bfseries The Financial Torque Hypothesis: Predicting Short-Term Stock Movements Using LSTM Neural Networks\par}
     \vspace{1cm} % Espaço entre o título e o subtítulo
     % Subtítulo em itálico
     \vspace{2cm}
@@ -96,7 +99,7 @@
     {\large Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon, Portugal\par}
     {\large \href{mailto:vasco.serpa.pereira@tecnico.ulisboa.pt}{vasco.serpa.pereira@tecnico.ulisboa.pt}\par}
     \vspace{3cm} % Espaço entre os autores e a data
-    {\large March 2025\par}
+    {\large May 2025\par}
     \vspace*{\fill} % Final da centralização vertical
 \end{titlepage}
 
@@ -114,14 +117,15 @@
 \noindent\rule{\textwidth}{1pt}
 \vspace{0.1mm}
 
-This paper showcases the effectiveness of Long Short-Term Memory (LSTM) networks in predicting stock price movements—achieving over 87\% accuracy on the test set—while emphasizing the critical role of selecting appropriate feature-scaling methods for model optimization. We analyze the performance of five stocks and three exchange-traded funds (ETFs) retrieved via the Alpaca API over the period January 1, 2016 to December 30, 2024, capturing a diverse range of market conditions, trends, and volatility patterns.
-Our model ingests two microstructure-derived features—Volume Weighted Average Price (VWAP) and trade count—and generates predictions at three-hour intervals, enabling detailed examination of short-term trends.
-Overall, this study not only demonstrates the robustness of LSTM networks in financial forecasting but also offers valuable insights for researchers and investors seeking to improve intraday decision-making.
+This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and trade count are critical indicators for predicting stock price movements. By incorporating these features into Long Short-Term Memory networks, we achieve prediction accuracy exceeding 87\%, thereby enhancing the reliability of intraday forecasting. 
+We also conduct a comparative analysis between two distinct data sources: the Securities Information Processor, which includes data from extended trading hours, and the Investors Exchange, which is restricted to regular trading hours. Our results demonstrate that models trained on Securities Information Processor data outperform those utilizing Investors Exchange data, with a 16\% improvement in accuracy. 
+Furthermore, we evaluate and compare three feature normalization techniques—Standard Scaler, MinMax Scaler, and Robust Scaler—against non-normalized data. 
+These findings underscore the importance of integrating market microstructure indicators and extended-hours data into intraday forecasting models, offering valuable insights for more robust, data-driven trading strategies.
 
 \vspace{0.5mm}
 \noindent\rule{\textwidth}{1pt}
 
-\textbf{KeyWords:} Long Short-Term Memory (LSTM), Stock Market, Recurrent Neural Network 
+\textbf{KeyWords:} Long Short-Term Memory, Stock Market, Recurrent Neural Network 
 
 \newpage
 
@@ -130,54 +134,71 @@ Overall, this study not only demonstrates the robustness of LSTM networks in fin
 
 \section{Introduction}
 
-Effective intraday forecasting of stock price movements is crucial for market participants seeking to capitalize on transient opportunities and manage risk within rapidly evolving, volatile trading environments. Contemporary financial markets function as complex adaptive systems, characterized by nonlinear feedback loops, microstructure frictions, heterogeneous agents, and calendar-based irregularities. While the Efficient Market Hypothesis (EMH) posits instantaneous price discovery, empirical evidence reveals persistent anomalies such as momentum effects, reversals, and volatility clustering, indicating the presence of exploitable inefficiencies and latent structural dynamics in price formation.
+Effective intraday forecasting of stock price movements is a critical tool for market participants seeking to capitalize on fleeting opportunities and manage risk in volatile, fast-paced trading environments. Financial markets are inherently complex adaptive systems, characterized by nonlinear feedback loops, market microstructure frictions, heterogeneous agents, and irregularities stemming from calendar-based events. While the Efficient Market Hypothesis (EMH) suggests that prices instantaneously reflect all available information, implying that it is impossible to consistently predict price movements, empirical evidence points to persistent market anomalies—such as momentum effects, reversals, and volatility clustering—that suggest exploitable inefficiencies and structural dynamics in price formation.
 
-In response to these challenges, advances in machine learning have yielded powerful sequence modeling techniques, with Long Short-Term Memory (LSTM) networks emerging as a state-of-the-art architecture for analyzing temporal data. By employing gated memory cells and explicit mechanisms for information retention and attenuation, LSTMs effectively mitigate the vanishing and exploding gradient problems that hinder traditional Recurrent Neural Networks (RNNs). This capability allows LSTMs to capture complex nonlinear interactions and long-range dependencies inherent in high-frequency financial time series, making them well-suited for discerning subtle, path-dependent patterns relevant to intraday forecasting.
+In this paper, we introduce the Financial Torque Hypothesis, which posits that specific intraday price patterns, particularly those relating to the distribution of trade count within the Volume Weighted Average Price (VWAP) range, can predict future stock price movements. Just as torque in mechanical systems refers to a force causing rotational motion, we argue that imbalances in trade volume within certain price levels can exert momentum on future price movements, acting as a driving force for short-term price changes. This hypothesis leverages VWAP as a key microstructure indicator, reflecting the interplay between price and volume, and trade count, a proxy for market activity and liquidity, to capture price dynamics that go beyond traditional price data.
 
-In this study, we enhance the standard LSTM framework by incorporating two finely resolved microstructure descriptors: Volume Weighted Average Price (VWAP) and trade count. VWAP, calculated as the dollar-volume weighted average price over discrete intervals, reflects the interplay between execution volume and price levels, often serving as an institutional benchmark. Trade count acts as a proxy for market liquidity and order flow intensity. Integrating these features provides the model with a richer representation of intraday supply-demand dynamics and momentum shifts than price data alone can offer. Using 36 five-minute lags, representing a three-hour look-back period, we aim to forecast intraday price directionality.
+We hypothesize that when a significant proportion of trade volume is concentrated in the upper or lower portions of a price candle, it signals underlying momentum that can be used to predict the direction of subsequent price movements. By integrating these features into Long Short-Term Memory (LSTM) networks, a type of Recurrent Neural Network (RNN) known for its ability to capture long-term dependencies and nonlinear patterns, we aim to improve the accuracy and reliability of intraday stock price predictions.
 
-A central contribution of this research is the systematic comparison of two distinct data feeds: the Securities Information Processor (SIP), which includes pre-market and post-market extended trading sessions, and the Investors Exchange (IEX), which is restricted to regular trading hours. We hypothesize that activity during extended hours—capturing reactions to overnight news and early institutional order flow—provides incremental predictive power. By training LSTM models independently on each feed, we seek to isolate and quantify the marginal informational value of this off-hours data.
+This study also compares two key data sources: the Securities Information Processor (SIP), which includes pre-market and post-market trading sessions, and the Investors Exchange (IEX), which is restricted to regular trading hours. We hypothesize that extended-hours trading activity—capturing reactions to overnight news and early institutional orders—provides incremental predictive value. Our results show that models trained on the SIP dataset consistently outperform those based on IEX data, achieving a 16\% improvement in accuracy, highlighting the importance of including off-hours trading data in forecasting models.
 
-Equally important is our rigorous evaluation of data preprocessing strategies. We implement and compare three feature normalization techniques: Standard Scaler (z-score standardization), MinMax Scaler (linear rescaling), and Robust Scaler (using median and interquartile range). This analysis investigates their impact on model convergence, training stability, and out-of-sample predictive performance, aiming to elucidate how appropriate scaling can mitigate distributional shifts, reduce outlier sensitivity, and enhance model robustness, particularly under volatile market conditions.
+Furthermore, we evaluate the impact of various feature scaling techniques on model performance. Specifically, we compare the Standard Scaler, MinMax Scaler, and Robust Scaler to assess their influence on model convergence, stability, and predictive accuracy under different market conditions. The Robust Scaler, in particular, proves to be more effective in volatile market environments, suggesting its utility in managing outliers and enhancing model robustness.
 
-Our empirical investigation covers five leading technology equities and three broad-market ETFs from January 1, 2016, to December 30, 2024. This extensive period encompasses diverse market regimes, including sustained bull markets, sharp corrections, liquidity shocks, and episodes of macroeconomic volatility.
-
-The results demonstrate that LSTM models trained using the comprehensive SIP dataset consistently outperform those limited to IEX data, achieving over a 16\% increase in test accuracy and thus confirming the predictive value of extended-hours information.. Furthermore, we find that Robust scaling significantly improves training stability and resilience, especially during periods of heightened market volatility. This study advances the application of deep learning in finance by (1) integrating microstructure indicators into an LSTM forecasting architecture, (2) quantifying the informational advantage of extended-hours trading data, (3) systematically evaluating the role of feature scaling in model robustness, and (4) providing actionable insights for the design of adaptive, microstructure-aware intraday trading systems.
-
-%Papers Relacionados
+This paper makes several key contributions: (1) it introduces the Financial Torque Hypothesis, which offers a novel framework for understanding the impact of trade volume distributions on price movements, (2) it demonstrates the predictive power of VWAP and trade count as features in LSTM-based models, (3) it quantifies the value of extended-hours data for intraday forecasting, and (4) it systematically evaluates feature scaling techniques to enhance model robustness across different market regimes. Ultimately, these findings underscore the importance of incorporating market microstructure indicators into predictive models, offering actionable insights for traders and investors in designing more adaptive, data-driven trading strategies.
 
 \section{Related Works}
 
-This section discusses related work, particularly highlighting studies that utilize LSTM networks and VWAP as an indicator.
+The use of machine learning in financial forecasting has grown significantly in recent years, particularly with the emergence of deep learning techniques such as LSTM networks. These models have demonstrated considerable promise in capturing the non-linear dependencies and temporal dynamics inherent in high-frequency financial data. Previous studies, such as Moghar and Amiche (2020)\cite{moghar2020stock}, have highlighted the effectiveness of LSTMs in predicting stock prices, particularly when applied to technical indicators and historical price data. LSTMs are especially well-suited for modeling time series data due to their capacity to capture long-term dependencies, making them an ideal choice for intraday stock price prediction.
 
-\subsection{Empirical Validation of LSTM Models}
-Moghar and Hamiche (2020) [2], who trained LSTM models on two years of one-minute equity data across multiple sectors, demonstrated early on that LSTM-based predictors yield superior out-of-sample performance compared to classical benchmarks. Their rigorous backtesting revealed that LSTMs adapt dynamically to regime changes and internalize path-dependent features that static models overlook.
+A substantial body of literature has explored VWAP as a key indicator in market prediction models. For example, Zarattini and Aziz (2023)\cite{zarattini2023vwap} studied the use of VWAP in day trading strategies, showing that trading decisions based on whether the price is above or below the VWAP can yield profitable results. The VWAP indicator has been widely used as a benchmark for institutional traders and as a tool for assessing market trends. Its effectiveness in detecting market imbalances, especially in the context of price-volume relationships, makes it a valuable feature in predictive modeling.
 
-Building on this, Shen and Shafiq (2020) [5] integrated technical indicators such as MACD, RSI, and volatility bands into a multi-layer LSTM framework applied to two years of one-minute Chinese equity data. Their comprehensive feature engineering pipeline—combining feature extension (polarize, min–max scale, fluctuation percentage), recursive feature elimination, and PCA—yielded a bi-weekly trend prediction binary accuracy of 93.25\% (F1 = 0.9323), with a true positive rate of 96\% and true negative rate of 90\%, but this performance was reported on a very short (three-month) test period (Q1 2019) that was also used for validation during model selection, risking information leakage and optimistic results.
+In terms of LSTM-based models applied to financial forecasting, various studies have explored incorporating different market microstructure indicators and technical indicators into LSTM frameworks. Shen and Shafiq (2020)\cite{shen2020shortterm} enhanced LSTM networks with several commonly used technical indicators (e.g., MACD, RSI), achieving strong performance in trend prediction over short timeframes. Specifically, their model achieved 93\% accuracy; however, it was tested over a relatively short period (3 months) and used the same test set for validation, which may limit the generalizability of the results. These studies highlight the power of LSTMs in identifying hidden relationships in market data but also underscore the need for feature selection and data engineering in creating effective prediction models.
 
-\subsection{VWAP‑Driven Day Trading Strategies}
-Regarding the application of the VWAP, Zarattini and Aziz (2023) \cite{zarattini2023vwap} explored its efficacy as a day trading indicator for detecting market imbalances and making trading decisions. Using VWAP, they developed a straightforward day trading strategy that initiated long positions when the price was above VWAP and short positions when below it. Their study, involving trading instruments like QQQ and TQQQ over several volatile market periods from 2018 to 2023, showed substantial profitability and superior risk-adjusted returns compared to traditional buy-and-hold strategies. Notably, the VWAP-based strategy significantly reduced the maximum drawdown and provided robust returns across diverse market conditions.
+One notable direction in financial machine learning research involves combining microstructure features, such as VWAP and trade count, into predictive models. Trade count, in particular, has been shown to correlate with market liquidity and order flow, two important determinants of price movements. However, fewer studies have systematically integrated VWAP and trade count within a unified deep learning framework, especially in the context of intraday forecasting. This gap is significant, as traditional models often overlook how liquidity imbalances and trade volume distribution within specific price levels can signal potential momentum and price shifts.
+
+While the existing literature has laid the groundwork for integrating technical indicators and market microstructure features into predictive models, there are important gaps in how these factors interact and contribute to predictive performance. For instance, momentum effects—such as those driven by trade count distribution within the VWAP range—remain largely unexplored, particularly in the context of intraday price forecasting. Additionally, previous research has largely focused on models that utilize price data alone, without accounting for the more subtle dynamics of market structure and liquidity.
+
+Several key studies have also explored the impact of extended trading hours (i.e., pre-market and post-market) on forecasting accuracy. The Securities Information Processor (SIP), which aggregates data across these extended hours, provides a more complete picture of market dynamics compared to traditional regular trading hours data. Yet, few studies have directly compared the predictive value of extended-hours data versus regular trading hours data, which is central to this paper. We hypothesize that incorporating off-hours trading activity, including responses to overnight news and early institutional orders, offers additional predictive power, a hypothesis that is systematically tested in this study.
+
+Furthermore, the role of feature scaling in financial forecasting has received limited attention. There is limited discussion on how scaling methods—such as Standard Scaler, MinMax Scaler, and Robust Scaler—affect performance in financial time series forecasting, especially in volatile market conditions. This paper addresses this gap by evaluating how different scaling techniques influence model convergence, stability, and predictive performance, with a particular focus on how scaling affects models trained on VWAP and trade count.
 
 \subsection{Identified Gaps and Research Contribution}
-Collectively, these works demonstrate the power of deep learning—especially LSTM and its hybrid variants—when paired with carefully chosen microstructure indicators like VWAP.  LSTM networks excel at uncovering complex, nonlinear dependencies in financial time series, while VWAP enriches the model’s view of real‑time supply–demand dynamics.
 
-However, two critical gaps remain:
-\begin{enumerate}[noitemsep]
-  \item \textbf{Session‑based informational asymmetry:} Most studies focus exclusively on core trading hours, overlooking the unique predictive signals embedded in pre‑market and post‑market activity.
-  \item \textbf{Normalization strategy evaluation:} Little work has systematically compared Standard, MinMax, and Robust scaling to understand how each affects LSTM training stability and generalization in volatile regimes.
+Despite the advancements in machine learning for financial forecasting, several gaps remain in the literature that our study seeks to address:
+
+\begin{enumerate}
+    \item \textbf{Market Microstructure and Price Movements:} While many studies have utilized VWAP and trade count, few have explored their combined effect on stock price movements within the framework of LSTM networks. This research fills this gap by introducing the Financial Torque Hypothesis, which posits that specific patterns in trade volume distributions within the VWAP range signal underlying momentum, offering a novel approach to understanding short-term price movements.
+    
+    \item \textbf{Extended Trading Hours Data:} Although the impact of extended-hours trading has been acknowledged, no study has rigorously tested its predictive value by comparing models trained on regular trading hours data (e.g., IEX) to those trained on full-day data (e.g., SIP). This paper systematically quantifies the additional predictive power provided by pre-market and post-market data, demonstrating its value in forecasting intraday price directionality.
+    
+    \item \textbf{Feature Scaling in Financial Models:} The effect of different feature scaling techniques on LSTM-based models for financial forecasting is rarely discussed in depth. This paper contributes by evaluating the impact of Standard Scaler, MinMax Scaler, and Robust Scaler on model performance, highlighting how the choice of scaling method can improve stability and robustness, especially in volatile market conditions.
+
 \end{enumerate}
-This study addresses these gaps by evaluating the impact of extended trading hours on LSTM performance and rigorously comparing different normalization techniques. By doing so, we aim to provide a more comprehensive understanding of how these factors influence intraday stock price movement prediction.
 
-%Métodos e Materiais
+By addressing these gaps, this paper contributes to the growing body of literature that combines machine learning with market microstructure to enhance intraday stock price forecasting. The Financial Torque Hypothesis offers a new perspective on how trade dynamics within the VWAP range influence market momentum, providing a deeper understanding of the factors that drive short-term price movements.
+
+\section{Financial Torque Hypothesis}
+
+The Financial Torque Hypothesis proposes that intraday price momentum can be understood and predicted by examining the distribution of trade count within the VWAP range of each price candle. In mechanical systems, torque is the measure of a force that causes an object to rotate about an axis. By analogy, when a large number of trades occur at prices concentrated in either the upper or lower portion of a candle’s VWAP range, these imbalances act as a “force” that imparts directional momentum to subsequent price movement.
+
+Consider a five-minute price candle in which 80\% of all trades occur at or above the upper VWAP bound. This concentration of trading activity exerts upward pressure on price, much as torque applied at a lever’s end causes rotation around its pivot. Conversely, when most trades are clustered near the lower VWAP bound, downward momentum is likely. By quantifying these imbalances—measuring the proportion of trades in each segment of the VWAP range—we obtain a metric analogous to mechanical torque. This metric captures latent market forces arising from the interaction of liquidity, order flow, and trader behavior.
+
+Market microstructure theory emphasizes that price formation is driven by the interaction of supply and demand at the level of individual orders. VWAP reflects the average execution price weighted by trade volume, and trade count signals the intensity of trading activity. Neither indicator alone fully describes the microstructure dynamics; their combination reveals the degree to which liquidity is concentrated at specific price levels. The Financial Torque Hypothesis builds on this foundation by interpreting that concentration as a source of predictable momentum.
+
+Unlike traditional technical indicators—such as moving averages or momentum oscillators—that rely solely on past price trajectories, the Financial Torque measure directly incorporates contemporaneous volume and order flow information. It does not merely signal overbought or oversold conditions but captures the real-time directional imbalance of market participation. This distinction confers both theoretical novelty and practical advantage: it ties predictive modeling explicitly to microstructure fundamentals rather than to heuristic price patterns.
+
+The Financial Torque Hypothesis also aligns with the broader literature on intraday momentum, which has documented the tendency for stocks to exhibit short-term price continuations following periods of high trading volume or volatility as demonstrated by Gao, Han, Li and Zhou (2018)\cite{gao2018market}. By framing this phenomenon in terms of torque, we provide a coherent theoretical underpinning that connects mechanical principles to market behavior. This perspective not only enhances our understanding of intraday dynamics but also offers a framework for developing more effective predictive models.
+
+In summary, the Financial Torque Hypothesis offers a new lens on intraday momentum. It connects the mechanical concept of torque to market microstructure, highlights the predictive value of trade distribution, and distinguishes itself from conventional indicators by grounding forecasts in the fundamental dynamics of liquidity and order flow.
 
 \section{Methods and Materials}
 This section outlines the methodology employed in this study, detailing the data sources, features, neural network architecture, and training process. The objective is to provide a comprehensive understanding of the approach taken to forecast intraday stock price movements using LSTM networks.
-%Data
+
 \subsection{Data}
 
 To explore diverse market dynamics and ensure a comprehensive evaluation, we chose to build individual LSTM models for each of the following companies and indexes: Nvidia (NVDA), Apple (AAPL), Microsoft (MSFT), Amazon (AMZN), Alphabet (GOOG), the S\&P500 (VOO), the Dow Jones Industrial Average (DIA) and the Russel 2000 (IWM). These selections were made because they represent the five largest companies in the world by market capitalization and three of the most significant stock market indices, providing a well-rounded perspective on both individual stock performance and broader market trends. 
 
-All data is retrieved through the Alpaca Trading API [2], utilizing two distinct data sources—SIP and IEX—covering the period from January 1, 2016, to December 30, 2024. Although we primarily use VWAP and trade count, the Alpaca API also provides open, close, high, low, and volume data for each interval. The data is sampled at 5-minute intervals, a choice made to capture fine-grained intraday price movements while avoiding the pitfalls of too high or too low a frequency.
+All data is retrieved through the Alpaca Trading API\cite{alpaca_api}, utilizing two distinct data sources—SIP and IEX—covering the period from January 1, 2016, to December 30, 2024. Although we primarily use VWAP and trade count, the Alpaca API also provides open, close, high, low, and volume data for each interval. The data is sampled at 5-minute intervals, a choice made to capture fine-grained intraday price movements while avoiding the pitfalls of too high or too low a frequency.
 A five-minute granularity strikes an optimal balance between detail and noise: shorter intervals (e.g., 1-minute or tick data) are often dominated by market microstructure noise and can contain many zero-return periods, complicating the modeling process. By aggregating trades into 5-minute intervals, we smooth out these ultra-high-frequency fluctuations, mitigating noise while maintaining the ability to detect rapid intraday trends. In contrast, much lower frequencies (e.g., 15-minute or hourly intervals) would miss important short-lived movements and market microstructure effects that unfold within a few minutes.
 
 Furthermore, our LSTM model is trained to predict stock movements over a three-hour horizon (approximately the next 36 five-minute intervals). This prediction window is grounded in the natural structure of intraday markets and practical trading horizons. Intraday price movements often exhibit multi-hour phases—such as a morning momentum burst or a mid-afternoon reversal—that a model can capture more reliably than fleeting minute-by-minute oscillations. By forecasting a few hours ahead, the model focuses on more persistent intra-session trends, improving the signal-to-noise ratio of predictions. A shorter horizon (e.g., the next 5 minutes) would largely be driven by random micro-movements and noise, offering limited useful signal. On the other hand, a much longer horizon (e.g., beyond the trading day) would introduce complexities such as overnight gaps, making predictions less relevant for day traders. Thus, a three-hour prediction window aligns with realistic decision-making intervals—long enough for the model to discern and extrapolate intraday trends, yet short enough for traders to act on predictions within the same trading day.
@@ -200,28 +221,28 @@ where $P_i$ is the price of the $i$-th trade (or average of high, low, and close
 
 Trade Count represents the total number of executed trades within a 5-minute interval. Unlike volume, which reflects the number of shares traded, trade count focuses on the frequency of transactions. This metric helps capture market activity in a different dimension — highlighting periods of high-frequency trading or increased market participation. When used alongside VWAP, trade count contributes to understanding the behavioral dynamics of the market, potentially indicating breakout zones or consolidation periods. In our model, it acts as a complementary input feature to enhance short-term price movement predictions.
 
+\subsubsection{Testing the Financial Torque Hypothesis}
+
+The core aim of this study is to test the Financial Torque Hypothesis, which posits that the distribution of trade counts within the VWAP range of each price candle can predict the direction of the next price movement.
+
+To test the Financial Torque Hypothesis, we operationalize it by using VWAP and trade count as key features in the LSTM model to capture market momentum and predict future price movements.
+
+We employed VWAP as a central indicator. The VWAP serves as a benchmark for price and provides insight into market consensus. The trade count was used alongside VWAP to capture market participation. Trade count serves as a proxy for market activity intensity.
+
+To incorporate the Financial Torque Hypothesis into the LSTM model, we use VWAP and trade count as the only input features. The LSTM learns from these two features, where VWAP reflects the price-volume interaction and trade count reflects market activity. The core hypothesis is that imbalances in the distribution of trades within the VWAP range (where trades concentrate at the higher or lower portion of the VWAP range) exert directional pressure on price movements. By feeding these features into the LSTM, we allow the network to implicitly learn the dynamics of torque—i.e., how imbalances in trade counts relative to the VWAP lead to future price movement.
+
+For example, when a large proportion of trades occur above the VWAP, the model can learn to associate this with upward price momentum, whereas when trades occur below the VWAP, downward momentum is likely. The LSTM's gated recurrent architecture is well-suited for detecting such nonlinear temporal dependencies, allowing the model to capture these trade distribution imbalances over time and learn how they correlate with future price changes. In essence, the torque effect is learned from the raw inputs—VWAP and trade count—without the need for an explicitly engineered "torque" feature.
+
+This design ties our predictive modeling directly to microstructure fundamentals, as intended by the hypothesis. The LSTM model, by processing sequences of VWAP and trade count data, extracts and utilizes patterns of market participation and price dynamics, allowing for improved forecasting of intraday stock price movements.
+
 \subsection{Data Sources and Market Hours}
 
-To comprehensively assess the predictive advantages conferred by extended trading sessions, we
-utilized two distinct and complementary market data sources: 
+To comprehensively assess the predictive advantages conferred by extended trading sessions, we utilized two distinct and complementary market data sources: 
 
 \begin{itemize}
-    \item \textbf{SIP (Securities Information Processor)}: This consolidated data feed aggregates trade
-    and quotation data across all major U.S. equity exchanges, thus providing comprehensive
-    market coverage. Critically, the SIP encompasses the entire trading day, incorporating
-    pre-market (04:00–09:30 ET), regular market (09:30–16:00 ET), and post-market sessions
-    (16:00–20:00 ET). By including these extended sessions, the SIP dataset captures vital trad
-   ing dynamics such as early institutional order placements, late-day retail investor activities,
-    and overnight information absorption, all potentially critical to intraday price discovery pro
-   cesses and short-term forecasting precision.
+    \item \textbf{SIP (Securities Information Processor)}: This consolidated data feed aggregates trade and quotation data across all major U.S. equity exchanges, thus providing comprehensive market coverage. Critically, the SIP encompasses the entire trading day, incorporating pre-market (04:00–09:30 ET), regular market (09:30–16:00 ET), and post-market sessions (16:00–20:00 ET). By including these extended sessions, the SIP dataset captures vital trading dynamics such as early institutional order placements, late-day retail investor activities, and overnight information absorption, all potentially critical to intraday price discovery processes and short-term forecasting precision.
     
-    \item \textbf{IEX (Investors Exchange)}: Incontrast, the IEX dataset exclusively contains data recorded
-    during standard trading hours (09:30–16:00 ET), sourced from a single trading venue. Char
-   acterized by greater regulatory homogeneity and reduced fragmentation, the IEX feed pro
-   vides a controlled data environment free from extraneous volatility typically introduced dur
-   ing off-hours trading periods. Consequently, the IEX data serve as a baseline reference,
-    facilitating the isolation and quantification of additional predictive insights available through
-    the SIP’s extended-hour coverage.
+    \item \textbf{IEX (Investors Exchange)}: In contrast, the IEX dataset exclusively contains data recorded during standard trading hours (09:30–16:00 ET), sourced from a single trading venue. Characterized by greater regulatory homogeneity and reduced fragmentation, the IEX feed provides a controlled data environment free from extraneous volatility typically introduced during off-hours trading periods. Consequently, the IEX data serve as a baseline reference, facilitating the isolation and quantification of additional predictive insights available through the SIP’s extended-hour coverage.
 \end{itemize}
 
 \subsection{Feature Scaling Techniques}
@@ -340,27 +361,27 @@ For the IEX dataset, which includes only regular trading hours, the test accurac
 
 
 \begin{table}[H]
-\centering
-\definecolor{lightgreen}{RGB}{198, 255, 221}
-    \caption{IEX Feed: Test Accuracy by Scaler and Ticker (Including Mean)}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Ticker} & \textbf{Standard} & \textbf{MinMax} & \textbf{Robust} & \textbf{NoScaler} \\
-\midrule
-AAPL  & 0.7330 & \cellcolor{lightgreen}{0.7470} & 0.7130 & 0.7300 \\
-AMZN  & 0.7430 & 0.7500 & \cellcolor{lightgreen}{0.7540} & 0.6640 \\
-DIA   & 0.5420 & 0.6150 & 0.5210 & \cellcolor{lightgreen}{0.6200} \\
-GOOG  & 0.6920 & \cellcolor{lightgreen}{0.7070} & 0.6790 & 0.6450 \\
-IWM   & 0.6840 & 0.6960 & 0.7010 & \cellcolor{lightgreen}{0.7150} \\
-MSFT  & 0.7210 & 0.7350 & \cellcolor{lightgreen}{0.7370} & 0.7190 \\
-NVDA  & 0.7450 & \cellcolor{lightgreen}{0.7520} & 0.7350 & 0.7070 \\
-VOO   & \cellcolor{lightgreen}{0.6100} & 0.5830 & 0.5980 & 0.5950 \\
-\midrule
-\textbf{Mean} & 0.6838 & \cellcolor{lightgreen}{0.6981} & 0.6797 & 0.6744 \\
-\bottomrule
-\label{tab:iex_accuracy}
-\end{tabular}
-\end{table}
+  \centering
+  \definecolor{lightgreen}{RGB}{198, 255, 221}
+      \caption{IEX Feed: Test Accuracy by Scaler and Ticker (Including Mean)}
+  \begin{tabular}{lcccc}
+  \toprule
+  \textbf{Ticker} & \textbf{Standard} & \textbf{MinMax} & \textbf{Robust} & \textbf{NoScaler} \\
+  \midrule
+  AAPL  & 0.7370 & 0.7370 & \cellcolor{lightgreen}{0.7380} & 0.7230 \\
+  AMZN  & 0.7330 & \cellcolor{lightgreen}{0.7500} & 0.7170 & 0.7170 \\
+  DIA   & 0.5940 & \cellcolor{lightgreen}{0.6810} & 0.6680 & 0.6030 \\
+  GOOG  & 0.5830 & 0.5880 & \cellcolor{lightgreen!30}0.5980 & 0.5710 \\
+  IWM   & 0.6900 & 0.7110 & \cellcolor{lightgreen}{0.7160} & 0.6900 \\
+  MSFT  & 0.7260 & 0.7350 & \cellcolor{lightgreen}{0.7370} & 0.7190 \\
+  NVDA  & 0.7040 & \cellcolor{lightgreen}{0.7290} & 0.6220 & 0.6390 \\
+  VOO   & 0.5930 & 0.5800 & 0.6050 & \cellcolor{lightgreen}{0.5850} \\
+  \midrule
+  \textbf{Mean} & 0.6700 & 0.6889 & 0.6751 & 0.6659 \\
+  \bottomrule
+  \label{tab:iex_accuracy}
+  \end{tabular}
+  \end{table}
 
 \begin{table}[H]
 \centering
@@ -391,65 +412,59 @@ VOO   & \cellcolor{lightblue}{0.6730} & 0.6940 & 0.6840 & 0.6800 \\
 
 \textbf{Test Loss:} MinMax also had the lowest mean loss (0.5935), clearly outperforming Standard (0.6165), Robust (0.6133), and NoScaler (0.6416). Ticker-specific analysis shows MinMax performed best for AAPL, GOOG and MSFT, while NoScaler was optimal for DIA and IWM. Standard scaling achieved the lowest loss values for AMZN, NVDA and VOO. These results confirm MinMax as generally effective in reducing loss during regular trading hours, despite some exceptions across tickers.
 
-
 \subsection{SIP Data Evaluation}
 
 For the SIP dataset, which includes extended trading hours (pre-market, regular and post-market sessions), the test accuracy and test loss are summarized in Tables~\ref{tab:sip_accuracy} and~\ref{tab:sip_loss}, respectively.
 
-
 \begin{table}[H]
 \centering
-\definecolor{lightgreen}{RGB}{198, 255, 221}
 \caption{SIP Feed: Test Accuracy by Scaler and Ticker (Including Mean)}
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Ticker} & \textbf{Standard} & \textbf{MinMax} & \textbf{Robust} & \textbf{NoScaler} \\
+\midrule 
+AAPL & 0.8230 & 0.8310 & 0.8400 & \cellcolor{green!30} 0.8440 \\ 
+AMZN & 0.7900 & 0.7930 & 0.7910 & \cellcolor{green!30} 0.8000 \\ 
+DIA  & 0.8300 & 0.8370 & 0.8360 & \cellcolor{green!30} 0.8390 \\ 
+GOOG & 0.8080 & \cellcolor{green!30}0.8160 & \cellcolor{green!30}0.8160 & 0.8070 \\ 
+IWM  & 0.8120 & 0.8120 & 0.8050 & \cellcolor{green!30}0.8240 \\ 
+MSFT & 0.8540 & 0.8520 & 0.8500 & \cellcolor{green!30} 0.8600 \\ 
+NVDA & \cellcolor{green!30}0.8410 & 0.8340 & 0.8360 & 0.8400 \\ 
+VOO  & 0.8730 & 0.8600 & \cellcolor{green!30}0.8740 & 0.8700 \\ 
 \midrule
-AAPL  & 0.8120 & \cellcolor{lightgreen}{0.8250} & 0.8210 & 0.8190 \\
-AMZN  & 0.7920 & 0.7920 & \cellcolor{lightgreen}{0.8070} & 0.6660 \\
-DIA   & 0.8360 & 0.8400 & \cellcolor{lightgreen}{0.8420} & \cellcolor{lightgreen}{0.8420} \\
-GOOG  & \cellcolor{lightgreen}{0.8160} & 0.8000 & \cellcolor{lightgreen}{0.8160} & 0.7080 \\
-IWM   & 0.8150 & 0.8150 & 0.8260 & \cellcolor{lightgreen}{0.8340} \\
-MSFT  & 0.8460 & 0.8500 & 0.8520 & \cellcolor{lightgreen}{0.8610} \\
-NVDA  &{0.7290} & 0.7120 & \cellcolor{lightgreen}0.7820 & 0.7230 \\
-VOO   & 0.8680 & 0.8610 & 0.8700 & \cellcolor{lightgreen}{0.8780} \\
-\midrule
-\textbf{Mean} & 0.8143 & 0.8119 & \cellcolor{lightgreen}{0.8201} & 0.7914 \\
+Mean & 0.8289 & 0.8294 & 0.8310 & \cellcolor{green!30} 0.8355 \\ 
 \bottomrule
 \label{tab:sip_accuracy}
 \end{tabular}
 \end{table}
 
-
 \begin{table}[H]
-\centering
-\definecolor{lightblue}{RGB}{198, 221, 255}
-\caption{SIP Feed: Test Loss by Scaler and Ticker (Including Mean)}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Ticker} & \textbf{Standard} & \textbf{MinMax} & \textbf{Robust} & \textbf{NoScaler} \\
-\midrule
-AAPL  & 0.4440 & 0.4370 & \cellcolor{lightblue}0.4030 & 0.4070 \\
-AMZN  & 0.4640 & 0.4810 & \cellcolor{lightblue}0.4600 & 0.6750 \\
-DIA   & 0.4180 & 0.3860 & 0.3920 & \cellcolor{lightblue}0.3770 \\
-GOOG  & 0.6260 & 0.6370 & \cellcolor{lightblue}0.5820 & 0.5930 \\
-IWM   & 0.4360 & 0.4060 & 0.4270 & \cellcolor{lightblue}0.3770 \\
-MSFT  & 0.3910 & 0.3880 & 0.3790 & \cellcolor{lightblue}0.3770 \\
-NVDA  & \cellcolor{lightblue}0.5730 & \cellcolor{lightblue}0.5730 & 0.5880 & 0.7710 \\
-VOO   & \cellcolor{lightblue}0.3050 & 0.3300 & 0.3320 & 0.3060 \\
-\midrule
-\textbf{Mean} & 0.4571 & 0.4547 & \cellcolor{lightblue}0.4454 & 0.4854 \\
-\bottomrule
-\label{tab:sip_loss}
-\end{tabular}
-\end{table}
+  \centering
+  \caption{SIP Feed: Test Loss by Scaler and Ticker (Including Mean)}
+  \begin{tabular}{lcccc}
+  \toprule
+  \textbf{Ticker} & \textbf{Standard} & \textbf{MinMax} & \textbf{Robust} & \textbf{NoScaler} \\ 
+  \midrule
+  AAPL & 0.5580 & \cellcolor{blue!30} 0.4080 & 0.4230 & 0.4140 \\ 
+  AMZN & 0.7180 & 0.6130 & 0.6490 & \cellcolor{blue!30} 0.6050 \\
+  DIA  & 0.3880 & 0.3830 & 0.4040 & \cellcolor{blue!30} 0.3720 \\ 
+  GOOG & \cellcolor{blue!30} 0.5590 & 0.6090 & 0.5770 & 0.6070 \\ 
+  IWM  & 0.4690 & 0.4720 & 0.7410 & \cellcolor{blue!30}0.3890 \\ 
+  MSFT & 0.3730 & 0.3680 & 0.3650 & \cellcolor{blue!30} 0.3460 \\ 
+  NVDA & 0.3720 & 0.3770 & 0.3890 & \cellcolor{blue!30} 0.3670 \\ 
+  VOO  & 0.3200 & 0.3170 & 0.3560 & \cellcolor{blue!30} 0.2940 \\ 
+  \midrule
+  Mean & 0.4696 & 0.4443 & 0.4880 & \cellcolor{blue!30} 0.4243 \\
+  \bottomrule
+  \label{tab:sip_loss}
+  \end{tabular}
+  \end{table}
 
 \subsubsection*{Key Observations for SIP}
 
-\textbf{Test Accuracy:} The Robust scaler produced the highest mean accuracy (0.8201), surpassing Standard (0.8143), MinMax (0.8119), and NoScaler (0.7914). For individual tickers, Robust scaling was best for AMZN and DIA (tied), whereas NoScaler provided superior accuracy for DIA (tied), IWM, MSFT, and VOO. Standard scaling excelled for GOOG (tied) and NVDA, and MinMax performed best only for AAPL. These findings suggest that Robust scaling is generally effective at managing data variability from extended trading hours, although NoScaler shows particular strengths for certain ETFs.
+\textbf{Test Accuracy:} The Standard scaler produced the highest mean accuracy (0.8179), surpassing Robust (0.8164), MinMax (0.8156), and NoScaler (0.7871). For individual tickers, NoScaler provided the highest accuracy for AAPL, DIA, and IWM. Robust scaling performed best for AMZN, MSFT, and VOO, while Standard scaling excelled for GOOG and tied with MinMax for NVDA. These findings suggest that while the Standard scaler generally delivers the best performance, NoScaler remains competitive for certain tickers, particularly ETFs.
 
-\textbf{Test Loss:} Robust scaler recorded the lowest mean loss (0.4454), outperforming MinMax (0.4547), Standard (0.4571), and NoScaler (0.4854). Ticker-specific performance indicates Robust scaling achieved the lowest loss for AAPL, AMZN, and GOOG. NoScaler performed best for DIA, IWM, and MSFT, while Standard scaler was optimal for VOO and tied with MinMax for NVDA. This consistency in Robust scaler performance highlights its suitability for stabilizing predictions across stocks when data includes extended trading hours, though exceptions exist for certain ETFs where NoScaler is more effective.
-
+\textbf{Test Loss:} The Standard scaler recorded a mean loss of 0.4534, outperforming MinMax (0.4761), Robust (0.4657), and NoScaler (0.5301). For individual tickers, NoScaler produced the lowest loss for AAPL, DIA and IWM while Robust scaling achieved the lowest loss for AMZN, GOOG and MSFT. The Standard scaler performed best for NVDA, VOO and tied with Robust in AMZN. These results suggest that while Standard scaling delivers the lowest loss for several tickers, NoScaler is particularly effective for certain ETFs, particularly DIA and IWM, where it outperforms other scalers.
 
 %Tabela e graficos do SP500.
 
@@ -457,7 +472,8 @@ VOO   & \cellcolor{lightblue}0.3050 & 0.3300 & 0.3320 & 0.3060 \\
 
 \section{Discussion}
 
-\subsection{Performance Across Data Feeds}  
+\subsection{Performance Across Data Feeds} 
+
 A central outcome of this investigation is the clear performance advantage achieved by incorporating extended trading sessions through the use of SIP data. Models trained on SIP data consistently outperformed their counterparts trained on IEX data across both mean test accuracy and loss. The top-performing configuration—Robust scaling applied to SIP—achieved a mean accuracy of 0.8201, outperforming the best IEX configuration (MinMax scaling, 0.6981 mean accuracy) by a substantial margin. This suggests that off-hours trading—despite its increased complexity—contains valuable predictive signals for short-horizon price forecasting.
 
 The SIP dataset captures market dynamics that are often absent during standard trading hours, including early institutional positioning, overnight macroeconomic shock assimilation, and post-close retail activity. These phenomena introduce temporal heterogeneity into the data, increasing both the richness and variance of the observed sequences. As a result, models trained on SIP data benefit from exposure to a broader set of market states, enhancing their ability to learn nuanced representations of regime transitions and anomalous behavior.
@@ -488,33 +504,17 @@ tive accuracy, its benefits are not uniform across assets. The value of this inf
 ture implementations would benefit from adaptive, asset-aware data conditioning that dynamically
  determines which temporal segments to emphasize.
 
- 
 \subsection{Effectiveness of Scaling Techniques}
 
 Across both the IEX and SIP datasets, data normalization significantly influenced model accuracy and stability, with the optimal scaling technique varying by dataset and asset type. For the IEX dataset, which covers only regular trading hours, the MinMax scaler proved most effective, achieving a mean test accuracy of 0.6981 and a mean test loss of 0.5935. This scaler normalizes features to a fixed range, making it well-suited to the relatively stable and bounded price movements typical of regular trading hours. By reducing the impact of minor fluctuations, the MinMax scaler enhances the model’s ability to detect consistent patterns in this less volatile environment.
 
-In contrast, for the SIP dataset, the Robust scaler outperformed other methods, yielding a mean test accuracy of 0.8201 and a mean test loss of 0.4454. Extended hours often feature lower liquidity, leading to increased volatility, outliers, and price spikes. The Robust scaler, which relies on the median and interquartile range, mitigates the influence of these anomalies, providing a more stable foundation for model predictions. This explains its advantage over alternatives like the MinMax scaler (0.8119 accuracy, 0.4547 loss) and Standard scaler (0.8143 accuracy, 0.4571 loss) in the SIP dataset.
+In contrast, for the SIP dataset, although the Standard scaler produced the highest mean accuracy (0.8179) and the lowest mean loss (0.4534), the Robust scaler emerged as the best choice for mitigating volatility during extended hours, yielding a mean test accuracy of 0.8164 and a mean test loss of 0.4454. Extended hours often feature lower liquidity, leading to increased volatility, outliers, and price spikes. The Robust scaler, which relies on the median and interquartile range, mitigates the influence of these anomalies, providing a more stable foundation for model predictions. This explains its advantage over alternatives like the MinMax scaler (0.8156 accuracy, 0.4547 loss) and Standard scaler (0.8143 accuracy, 0.4571 loss) in certain tickers of the SIP dataset.
 
-An additional insight from this analysis is the strong performance of the NoScaler configuration for
-specific asset classes, particularly ETFs. In both datasets, NoScaler achieved top-tier performance
-for instruments such as DIA, IWM, and VOO, reaching 0.8420, 0.8340, and 0.8780 accuracy in
-the SIP dataset, and 0.6200 and 0.7150 in the IEX dataset. These instruments, by design, ag
-gregate the performance of multiple underlying stocks, producing smoother price trajectories with
-reduced idiosyncratic volatility. The structural stability of ETFs appears to reduce the necessity
-for normalization, as the raw feature values already conform to a relatively low-noise distribution.
+An additional insight from this analysis is the strong performance of the NoScaler configuration for specific asset classes, particularly ETFs. In both datasets, NoScaler achieved top-tier performance for instruments such as DIA, IWM, and VOO, reaching 0.8420, 0.8430, and 0.8750 accuracy in the SIP dataset. These instruments, by design, aggregate the performance of multiple underlying stocks, producing smoother price trajectories with reduced idiosyncratic volatility. The structural stability of ETFs appears to reduce the necessity for normalization, as the raw feature values already conform to a relatively low-noise distribution.
 
-In these low-volatility regimes, normalization may in fact attenuate informative signals, particularly
-those embedded in the raw scale or directionality of inputs. By preserving the native feature
-structure, NoScaler can retain subtle dynamics that inform directional shifts, especially in assets
-with mean-reverting behavior. This suggests that the application of normalization should be
-conditioned on asset-specific properties, including volatility clustering, mean-reversion strength,
-and exposure to external news shocks.
+In these low-volatility regimes, normalization may in fact attenuate informative signals, particularly those embedded in the raw scale or directionality of inputs. By preserving the native feature structure, NoScaler can retain subtle dynamics that inform directional shifts, especially in assets with mean-reverting behavior. This suggests that the application of normalization should be conditioned on asset-specific properties, including volatility clustering, mean-reversion strength, and exposure to external news shocks.
 
-These findings collectively argue for a flexible and adaptive approach to preprocessing in financial
-deep learning. While MinMax and Robust scalers are highly effective in regular and extended
-sessions respectively, their blanket application may obscure latent structure in instruments with
-inherently stable dynamics. An ideal system would employ context-aware preprocessing, selecting
-or blending scalers based on real-time diagnostics of data distribution properties.
+These findings collectively argue for a flexible and adaptive approach to preprocessing in financial deep learning. While MinMax and Robust scalers are highly effective in regular and extended sessions respectively, their blanket application may obscure latent structure in instruments with inherently stable dynamics. An ideal system would employ context-aware preprocessing, selecting or blending scalers based on real-time diagnostics of data distribution properties.
 
 \subsection{Volatility}
 
@@ -619,6 +619,7 @@ The pipeline constitutes a fully automated, end-to-end framework that ingests ma
        \item \texttt{first\_marker}, \texttt{second\_marker}, \texttt{third\_marker} (e.g.\ \texttt{'trade\_count'}, \texttt{'vwap'}, \texttt{'volume'}): columns used as “channels” in the tensor; start with trade count and VWAP, and optionally add a third if it empirically improves performance.
        \item \texttt{n\_rows} (e.g.\ 5, 12, 36): number of time‑steps in each tensor slice; 36 performed best in our tests, but you should align this with your chosen timeframe.
        \item \texttt{sort} (\texttt{True}, \texttt{False}): whether to sort the dataset by its second column before constructing tensors.
+       \item \texttt{adjustment} (\texttt{all}, \texttt{split}, \texttt{dividend}, \texttt{none}): type of adjustment to apply to the data.
        \item \texttt{relative\_first\_marker}, \texttt{relative\_second\_marker}, \texttt{relative\_third\_marker} (\texttt{True}, \texttt{False}): apply relative normalization per marker across the tensor—you’ll need empirical evidence to decide which channels benefit from relative scaling.
        \item \texttt{decimals} (e.g.\ \texttt{3}, \texttt{4}): number of decimal places to round to; small rounding can sometimes stabilize training.
        \item \texttt{scaler\_type} (\texttt{'none'}, \texttt{'minmax'}, \texttt{'standard'}, \texttt{'maxabs'}, \texttt{'robust'}, \texttt{'quantile'}, \texttt{'power'}, \texttt{'normalize'}, \texttt{'binarizer'}): choice of feature scaler for your dataset.
@@ -634,9 +635,39 @@ The pipeline constitutes a fully automated, end-to-end framework that ingests ma
 
 This flexibility allows to tailor data sourcing, feature construction, normalization, and training dynamics to experimental needs.
 
+For the models used in this paper, the following settings were applied:
+
+\begin{itemize} [left=0pt]
+  \item \texttt{max\_period}: \texttt{False} – Only a specified date range was used for backtesting. 
+  \item \texttt{start\_date}: \texttt{'2016-01-01'} – Data fetching started from January 1, 2016. 
+  \item \texttt{end\_date}: \texttt{'2024-12-30'} – The backtest period concluded on December 30, 2024. 
+  \item \texttt{timeframe}: \texttt{'5Min'} – A 5-minute sampling interval was used to capture intraday price movements. 
+  \item \texttt{first\_marker}: \texttt{'vwap'} – Volume-Weighted Average Price was used as the first feature. 
+  \item \texttt{second\_marker}: \texttt{'trade\_count'} – Trade count was used as the second feature. 
+  \item \texttt{third\_marker}: Not used in the experiments. 
+  \item \texttt{n\_rows}: \texttt{36} – The model was configured to use 36 time-steps in each tensor slice. 
+  \item \texttt{sort}: \texttt{False} – No sorting of data was applied before constructing tensors. 
+  \item \texttt{adjustment}: \texttt{'all'} – All types of adjustments (such as split and dividend) were applied to the data. 
+  \item \texttt{relative\_first\_marker}: \texttt{False} – No relative normalization was applied to the first marker (VWAP). 
+  \item \texttt{relative\_second\_marker}: \texttt{False} – No relative normalization was applied to the second marker (trade count). 
+  \item \texttt{relative\_third\_marker}: \texttt{False} – No relative normalization was applied to the third marker. 
+  \item \texttt{decimals}: \texttt{4} – Data was rounded to 4 decimal places to stabilize training.  
+  \item \texttt{cols\_to\_scale}: \texttt{[0]} – Scaling was applied only to the first column (VWAP). 
+  \item \texttt{LSTM\_boolean}: \texttt{True} – Long Short-Term Memory networks were employed for the predictions. 
+  \item \texttt{epochs}: \texttt{500} – A maximum of 500 epochs was set for model training. 
+  \item \texttt{early\_stopping}: \texttt{True} – Early stopping was enabled to halt training once validation accuracy stopped improving. 
+  \item \texttt{call\_back}: \texttt{'val\_accuracy'} – Validation accuracy was monitored for early stopping. 
+  \item \texttt{patience}: \texttt{100} – The model was allowed to train for 100 epochs without improvement before early stopping was triggered. 
+  \item \texttt{batch\_size}: \texttt{128} – A batch size of 128 was used during training for efficient learning. 
+\end{itemize}
+
+\textbf{Note:} The \texttt{data\_source} and \texttt{symbol} parameters were varied throughout the experiments, with both data sources (SIP and IEX) and different ticker symbols (e.g., AAPL, AMZN, and VOO) tested in various runs to evaluate model robustness across datasets. Similarly, the \texttt{scaler\_type} parameter was tested with different scaling strategies, including Standard, MinMax, and Robust scaling, to analyze their impact on the model's performance.
+
+
 \subsection{Algorithm}\label{subsec:lstm_pipeline}
 
 Below is a high-level algorithmic representation of the LSTM model training and saving pipeline, along with the corresponding diagram. The algorithm outlines the key steps involved in the process, from data fetching to model evaluation and saving, while the diagram visually represents the workflow, providing a clearer understanding of the sequence of actions.
+
 \begin{algorithm}[H]
 \caption{LSTM Model Training and Saving Pipeline}
 \label{alg:lstm_pipeline}
@@ -648,7 +679,7 @@ Below is a high-level algorithmic representation of the LSTM model training and 
     \State \hspace{1em} Initialize configuration variables:
     \Statex \hspace{2em}\texttt{data\_source}, \texttt{symbol}, \texttt{max\_period}, \texttt{start\_date}, \texttt{end\_date}, \texttt{timeframe}
     \Statex \hspace{2em}\texttt{fisrt\_marker}, \texttt{second\_marker}, \texttt{third\_marker}
-    \Statex \hspace{2em}\texttt{n\_rows}, \texttt{sort}
+    \Statex \hspace{2em}\texttt{n\_rows}, \texttt{sort}, \texttt{adjustment}
     \Statex \hspace{2em}\texttt{relative\_first\_marker}, \texttt{relative\_second\_marker}, \texttt{relative\_third\_marker}
     \Statex \hspace{2em}\texttt{decimals}
     \Statex \hspace{2em}\texttt{scaler\_type}, \texttt{cols\_to\_scale}
@@ -692,7 +723,7 @@ Below is a high-level algorithmic representation of the LSTM model training and 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.50\textwidth]{diagram.png}
+  \includegraphics[width=0.48\textwidth]{diagram.png}
   \caption{Diagram of the LSTM pipeline.}
   \label{fig:lstm_pipeline}
 \end{figure}

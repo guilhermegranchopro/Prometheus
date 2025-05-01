@@ -17,147 +17,155 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \@writefile{toc}{\contentsline {section}{Abstract}{1}{Doc-Start}\protected@file@percent }
+\citation{moghar2020stock}
+\citation{zarattini2023vwap}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Works}{2}{section.2}\protected@file@percent }
-\citation{zarattini2023vwap}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Empirical Validation of LSTM Models}{3}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}VWAP‑Driven Day Trading Strategies}{3}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Identified Gaps and Research Contribution}{3}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Methods and Materials}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data}{3}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Features}{4}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Volume Weighted Average Price}{4}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Trade Count}{4}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Data Sources and Market Hours}{4}{subsection.3.3}\protected@file@percent }
+\citation{shen2020shortterm}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Identified Gaps and Research Contribution}{3}{subsection.2.1}\protected@file@percent }
+\citation{gao2018market}
+\citation{alpaca_api}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Financial Torque Hypothesis}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Methods and Materials}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Features}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Volume Weighted Average Price}{5}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Trade Count}{5}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Testing the Financial Torque Hypothesis}{5}{subsubsection.4.2.3}\protected@file@percent }
 \citation{scikit-learn}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Feature Scaling Techniques}{5}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Standard Scaler}{5}{subsubsection.3.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}MinMax Scaler}{5}{subsubsection.3.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Robust Scaler}{5}{subsubsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Data Sources and Market Hours}{6}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Feature Scaling Techniques}{6}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Standard Scaler}{7}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}MinMax Scaler}{7}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Robust Scaler}{7}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Neural Networks}{7}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Recurrent Neural Networks}{7}{subsubsection.4.5.1}\protected@file@percent }
 \citation{hochreiter1997}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Neural Networks}{6}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Recurrent Neural Networks}{6}{subsubsection.3.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}The Exploding and Vanishing Gradients Problem}{6}{subsubsection.3.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.3}Long Short-Term Memory}{6}{subsubsection.3.5.3}\protected@file@percent }
 \citation{olah2015lstm}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Internal structure of an LSTM unit, illustrating the flow of data and the gating mechanisms. Inputs are processed alongside hidden states and cell states , showcasing how information is selectively retained or discarded. Adapted from \cite  {olah2015lstm}.\relax }}{7}{figure.caption.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Internal structure of an LSTM unit, illustrating the flow of data and the gating mechanisms. Inputs are processed alongside hidden states and cell states , showcasing how information is selectively retained or discarded. Adapted from \cite  {olah2015lstm}.\relax }}{8}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:lstm_structure}{{1}{7}{Internal structure of an LSTM unit, illustrating the flow of data and the gating mechanisms. Inputs are processed alongside hidden states and cell states , showcasing how information is selectively retained or discarded. Adapted from \cite {olah2015lstm}.\relax }{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Evaluation Metrics}{8}{subsection.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{8}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}IEX Data Evaluation}{8}{subsection.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces IEX Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }}{8}{table.caption.2}\protected@file@percent }
-\newlabel{tab:iex_accuracy}{{1}{8}{IEX Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }{table.caption.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces IEX Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }}{8}{table.caption.3}\protected@file@percent }
-\newlabel{tab:iex_loss}{{2}{8}{IEX Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }{table.caption.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SIP Data Evaluation}{9}{subsection.4.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces SIP Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }}{9}{table.caption.4}\protected@file@percent }
-\newlabel{tab:sip_accuracy}{{3}{9}{SIP Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }{table.caption.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces SIP Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }}{9}{table.caption.5}\protected@file@percent }
-\newlabel{tab:sip_loss}{{4}{9}{SIP Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }{table.caption.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{10}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Performance Across Data Feeds}{10}{subsection.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparison of mean accuracy and loss by scaler between IEX and SIP datasets.\relax }}{10}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:scaler_comparison}{{2}{10}{Comparison of mean accuracy and loss by scaler between IEX and SIP datasets.\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Percentage improvement in best accuracy per ticker from IEX to SIP. Positive values indicate improved accuracy with SIP data.\relax }}{11}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:accuracy_improvement}{{3}{11}{Percentage improvement in best accuracy per ticker from IEX to SIP. Positive values indicate improved accuracy with SIP data.\relax }{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Effectiveness of Scaling Techniques}{11}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Volatility}{12}{subsection.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Correlation between annualized volatility and best test accuracy across tickers. Higher volatility typically corresponds to reduced predictive accuracy.\relax }}{13}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:volatility_accuracy}{{4}{13}{Correlation between annualized volatility and best test accuracy across tickers. Higher volatility typically corresponds to reduced predictive accuracy.\relax }{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Future Improvements}{14}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Incorporating More Advanced Feature Engineering}{14}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Expanding the Model to Hybrid Architectures}{14}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Model Evaluation and Backtesting}{14}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Improving Model Interpretability}{14}{subsection.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{14}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Attachments}{16}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Parameter Exploration}{16}{subsection.8.1}\protected@file@percent }
-\newlabel{subsec:parameter_exploration}{{8.1}{16}{Parameter Exploration}{subsection.8.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Algorithm}{16}{subsection.8.2}\protected@file@percent }
-\newlabel{subsec:lstm_pipeline}{{8.2}{16}{Algorithm}{subsection.8.2}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces LSTM Model Training and Saving Pipeline\relax }}{17}{algorithm.1}\protected@file@percent }
-\newlabel{alg:lstm_pipeline}{{1}{17}{LSTM Model Training and Saving Pipeline\relax }{algorithm.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Diagram of the LSTM pipeline.\relax }}{18}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:lstm_pipeline}{{5}{18}{Diagram of the LSTM pipeline.\relax }{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Tickers}{19}{subsection.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.1}AAPL}{19}{subsubsection.8.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces AAPL – IEX – Robust Scaling\relax }}{19}{figure.caption.10}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces AAPL – IEX – NoScaler\relax }}{19}{figure.caption.11}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces AAPL – IEX – MinMax Scaling\relax }}{19}{figure.caption.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces AAPL – IEX – Standard Scaling\relax }}{19}{figure.caption.13}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces AAPL – SIP – Robust Scaling\relax }}{20}{figure.caption.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces AAPL – SIP – NoScaler\relax }}{20}{figure.caption.15}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces AAPL – SIP – MinMax Scaling\relax }}{20}{figure.caption.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces AAPL – SIP – Standard Scaling\relax }}{20}{figure.caption.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.2}AMZN}{21}{subsubsection.8.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces AMZN – IEX – Robust Scaling\relax }}{21}{figure.caption.18}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces AMZN – IEX – NoScaler\relax }}{21}{figure.caption.19}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces AMZN – IEX – MinMax Scaling\relax }}{21}{figure.caption.20}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces AMZN – IEX – Standard Scaling\relax }}{21}{figure.caption.21}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces AMZN – SIP – Robust Scaling\relax }}{22}{figure.caption.22}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces AMZN – SIP – NoScaler\relax }}{22}{figure.caption.23}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces AMZN – SIP – MinMax Scaling\relax }}{22}{figure.caption.24}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces AMZN – SIP – Standard Scaling\relax }}{22}{figure.caption.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.3}DIA}{23}{subsubsection.8.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces DIA – IEX – Robust Scaling\relax }}{23}{figure.caption.26}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces DIA – IEX – NoScaler\relax }}{23}{figure.caption.27}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces DIA – IEX – MinMax Scaling\relax }}{23}{figure.caption.28}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces DIA – IEX – Standard Scaling\relax }}{23}{figure.caption.29}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces DIA – SIP – Robust Scaling\relax }}{24}{figure.caption.30}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces DIA – SIP – NoScaler\relax }}{24}{figure.caption.31}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces DIA – SIP – MinMax Scaling\relax }}{24}{figure.caption.32}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces DIA – SIP – Standard Scaling\relax }}{24}{figure.caption.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.4}GOOG}{25}{subsubsection.8.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces GOOG – IEX – Robust Scaling\relax }}{25}{figure.caption.34}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces GOOG – IEX – NoScaler\relax }}{25}{figure.caption.35}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces GOOG – IEX – MinMax Scaling\relax }}{25}{figure.caption.36}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces GOOG – IEX – Standard Scaling\relax }}{25}{figure.caption.37}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces GOOG – SIP – Robust Scaling\relax }}{26}{figure.caption.38}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces GOOG – SIP – NoScaler\relax }}{26}{figure.caption.39}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces GOOG – SIP – MinMax Scaling\relax }}{26}{figure.caption.40}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces GOOG – SIP – Standard Scaling\relax }}{26}{figure.caption.41}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.5}IWM}{27}{subsubsection.8.3.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces IWM – IEX – Robust Scaling\relax }}{27}{figure.caption.42}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces IWM – IEX – NoScaler\relax }}{27}{figure.caption.43}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces IWM – IEX – MinMax Scaling\relax }}{27}{figure.caption.44}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces IWM – IEX – Standard Scaling\relax }}{27}{figure.caption.45}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces IWM – SIP – Robust Scaling\relax }}{28}{figure.caption.46}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces IWM – SIP – NoScaler\relax }}{28}{figure.caption.47}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces IWM – SIP – MinMax Scaling\relax }}{28}{figure.caption.48}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces IWM – SIP – Standard Scaling\relax }}{28}{figure.caption.49}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.6}MSFT}{29}{subsubsection.8.3.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces MSFT – IEX – Robust Scaling\relax }}{29}{figure.caption.50}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces MSFT – IEX – NoScaler\relax }}{29}{figure.caption.51}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces MSFT – IEX – MinMax Scaling\relax }}{29}{figure.caption.52}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces MSFT – IEX – Standard Scaling\relax }}{29}{figure.caption.53}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces MSFT – SIP – Robust Scaling\relax }}{30}{figure.caption.54}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces MSFT – SIP – NoScaler\relax }}{30}{figure.caption.55}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces MSFT – SIP – MinMax Scaling\relax }}{30}{figure.caption.56}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces MSFT – SIP – Standard Scaling\relax }}{30}{figure.caption.57}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.7}NVDA}{31}{subsubsection.8.3.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces NVDA – IEX – Robust Scaling\relax }}{31}{figure.caption.58}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces NVDA – IEX – NoScaler\relax }}{31}{figure.caption.59}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces NVDA – IEX – MinMax Scaling\relax }}{31}{figure.caption.60}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces NVDA – IEX – Standard Scaling\relax }}{31}{figure.caption.61}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {58}{\ignorespaces NVDA – SIP – Robust Scaling\relax }}{32}{figure.caption.62}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {59}{\ignorespaces NVDA – SIP – NoScaler\relax }}{32}{figure.caption.63}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {60}{\ignorespaces NVDA – SIP – MinMax Scaling\relax }}{32}{figure.caption.64}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {61}{\ignorespaces NVDA – SIP – Standard Scaling\relax }}{32}{figure.caption.65}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.8}VOO}{33}{subsubsection.8.3.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {62}{\ignorespaces VOO – IEX – Robust Scaling\relax }}{33}{figure.caption.66}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {63}{\ignorespaces VOO – IEX – NoScaler\relax }}{33}{figure.caption.67}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {64}{\ignorespaces VOO – IEX – MinMax Scaling\relax }}{33}{figure.caption.68}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {65}{\ignorespaces VOO – IEX – Standard Scaling\relax }}{33}{figure.caption.69}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {66}{\ignorespaces VOO – SIP – Robust Scaling\relax }}{34}{figure.caption.70}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {67}{\ignorespaces VOO – SIP – NoScaler\relax }}{34}{figure.caption.71}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {68}{\ignorespaces VOO – SIP – MinMax Scaling\relax }}{34}{figure.caption.72}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {69}{\ignorespaces VOO – SIP – Standard Scaling\relax }}{34}{figure.caption.73}\protected@file@percent }
+\newlabel{fig:lstm_structure}{{1}{8}{Internal structure of an LSTM unit, illustrating the flow of data and the gating mechanisms. Inputs are processed alongside hidden states and cell states , showcasing how information is selectively retained or discarded. Adapted from \cite {olah2015lstm}.\relax }{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}The Exploding and Vanishing Gradients Problem}{8}{subsubsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}Long Short-Term Memory}{8}{subsubsection.4.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Evaluation Metrics}{9}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}IEX Data Evaluation}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces IEX Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }}{10}{table.caption.2}\protected@file@percent }
+\newlabel{tab:iex_accuracy}{{1}{10}{IEX Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }{table.caption.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces IEX Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }}{10}{table.caption.3}\protected@file@percent }
+\newlabel{tab:iex_loss}{{2}{10}{IEX Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }{table.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}SIP Data Evaluation}{10}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces SIP Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }}{11}{table.caption.4}\protected@file@percent }
+\newlabel{tab:sip_accuracy}{{3}{11}{SIP Feed: Test Accuracy by Scaler and Ticker (Including Mean)\relax }{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces SIP Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }}{11}{table.caption.5}\protected@file@percent }
+\newlabel{tab:sip_loss}{{4}{11}{SIP Feed: Test Loss by Scaler and Ticker (Including Mean)\relax }{table.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{11}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Performance Across Data Feeds}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparison of mean accuracy and loss by scaler between IEX and SIP datasets.\relax }}{12}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:scaler_comparison}{{2}{12}{Comparison of mean accuracy and loss by scaler between IEX and SIP datasets.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Percentage improvement in best accuracy per ticker from IEX to SIP. Positive values indicate improved accuracy with SIP data.\relax }}{13}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:accuracy_improvement}{{3}{13}{Percentage improvement in best accuracy per ticker from IEX to SIP. Positive values indicate improved accuracy with SIP data.\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Effectiveness of Scaling Techniques}{13}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Volatility}{14}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Correlation between annualized volatility and best test accuracy across tickers. Higher volatility typically corresponds to reduced predictive accuracy.\relax }}{15}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:volatility_accuracy}{{4}{15}{Correlation between annualized volatility and best test accuracy across tickers. Higher volatility typically corresponds to reduced predictive accuracy.\relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Future Improvements}{16}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Incorporating More Advanced Feature Engineering}{16}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Expanding the Model to Hybrid Architectures}{16}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Model Evaluation and Backtesting}{16}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Improving Model Interpretability}{16}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{16}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Attachments}{18}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Parameter Exploration}{18}{subsection.9.1}\protected@file@percent }
+\newlabel{subsec:parameter_exploration}{{9.1}{18}{Parameter Exploration}{subsection.9.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Algorithm}{19}{subsection.9.2}\protected@file@percent }
+\newlabel{subsec:lstm_pipeline}{{9.2}{19}{Algorithm}{subsection.9.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces LSTM Model Training and Saving Pipeline\relax }}{20}{algorithm.1}\protected@file@percent }
+\newlabel{alg:lstm_pipeline}{{1}{20}{LSTM Model Training and Saving Pipeline\relax }{algorithm.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Diagram of the LSTM pipeline.\relax }}{21}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:lstm_pipeline}{{5}{21}{Diagram of the LSTM pipeline.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Tickers}{22}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.1}AAPL}{22}{subsubsection.9.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces AAPL – IEX – Robust Scaling\relax }}{22}{figure.caption.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces AAPL – IEX – NoScaler\relax }}{22}{figure.caption.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces AAPL – IEX – MinMax Scaling\relax }}{22}{figure.caption.12}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces AAPL – IEX – Standard Scaling\relax }}{23}{figure.caption.13}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces AAPL – SIP – Robust Scaling\relax }}{23}{figure.caption.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces AAPL – SIP – NoScaler\relax }}{23}{figure.caption.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces AAPL – SIP – MinMax Scaling\relax }}{23}{figure.caption.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces AAPL – SIP – Standard Scaling\relax }}{24}{figure.caption.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.2}AMZN}{24}{subsubsection.9.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces AMZN – IEX – Robust Scaling\relax }}{24}{figure.caption.18}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces AMZN – IEX – NoScaler\relax }}{24}{figure.caption.19}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces AMZN – IEX – MinMax Scaling\relax }}{25}{figure.caption.20}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces AMZN – IEX – Standard Scaling\relax }}{25}{figure.caption.21}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces AMZN – SIP – Robust Scaling\relax }}{25}{figure.caption.22}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces AMZN – SIP – NoScaler\relax }}{25}{figure.caption.23}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces AMZN – SIP – MinMax Scaling\relax }}{26}{figure.caption.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces AMZN – SIP – Standard Scaling\relax }}{26}{figure.caption.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.3}DIA}{26}{subsubsection.9.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces DIA – IEX – Robust Scaling\relax }}{26}{figure.caption.26}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces DIA – IEX – NoScaler\relax }}{27}{figure.caption.27}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces DIA – IEX – MinMax Scaling\relax }}{27}{figure.caption.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces DIA – IEX – Standard Scaling\relax }}{27}{figure.caption.29}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces DIA – SIP – Robust Scaling\relax }}{27}{figure.caption.30}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces DIA – SIP – NoScaler\relax }}{28}{figure.caption.31}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces DIA – SIP – MinMax Scaling\relax }}{28}{figure.caption.32}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces DIA – SIP – Standard Scaling\relax }}{28}{figure.caption.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.4}GOOG}{29}{subsubsection.9.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces GOOG – IEX – Robust Scaling\relax }}{29}{figure.caption.34}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces GOOG – IEX – NoScaler\relax }}{29}{figure.caption.35}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces GOOG – IEX – MinMax Scaling\relax }}{29}{figure.caption.36}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces GOOG – IEX – Standard Scaling\relax }}{30}{figure.caption.37}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces GOOG – SIP – Robust Scaling\relax }}{30}{figure.caption.38}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces GOOG – SIP – NoScaler\relax }}{30}{figure.caption.39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces GOOG – SIP – MinMax Scaling\relax }}{30}{figure.caption.40}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces GOOG – SIP – Standard Scaling\relax }}{31}{figure.caption.41}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.5}IWM}{31}{subsubsection.9.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces IWM – IEX – Robust Scaling\relax }}{31}{figure.caption.42}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces IWM – IEX – NoScaler\relax }}{31}{figure.caption.43}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces IWM – IEX – MinMax Scaling\relax }}{32}{figure.caption.44}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces IWM – IEX – Standard Scaling\relax }}{32}{figure.caption.45}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces IWM – SIP – Robust Scaling\relax }}{32}{figure.caption.46}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces IWM – SIP – NoScaler\relax }}{32}{figure.caption.47}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces IWM – SIP – MinMax Scaling\relax }}{33}{figure.caption.48}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces IWM – SIP – Standard Scaling\relax }}{33}{figure.caption.49}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.6}MSFT}{33}{subsubsection.9.3.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces MSFT – IEX – Robust Scaling\relax }}{33}{figure.caption.50}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces MSFT – IEX – NoScaler\relax }}{34}{figure.caption.51}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces MSFT – IEX – MinMax Scaling\relax }}{34}{figure.caption.52}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces MSFT – IEX – Standard Scaling\relax }}{34}{figure.caption.53}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces MSFT – SIP – Robust Scaling\relax }}{34}{figure.caption.54}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces MSFT – SIP – NoScaler\relax }}{35}{figure.caption.55}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces MSFT – SIP – MinMax Scaling\relax }}{35}{figure.caption.56}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces MSFT – SIP – Standard Scaling\relax }}{35}{figure.caption.57}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.7}NVDA}{36}{subsubsection.9.3.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces NVDA – IEX – Robust Scaling\relax }}{36}{figure.caption.58}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces NVDA – IEX – NoScaler\relax }}{36}{figure.caption.59}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces NVDA – IEX – MinMax Scaling\relax }}{36}{figure.caption.60}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces NVDA – IEX – Standard Scaling\relax }}{37}{figure.caption.61}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {58}{\ignorespaces NVDA – SIP – Robust Scaling\relax }}{37}{figure.caption.62}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {59}{\ignorespaces NVDA – SIP – NoScaler\relax }}{37}{figure.caption.63}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {60}{\ignorespaces NVDA – SIP – MinMax Scaling\relax }}{37}{figure.caption.64}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {61}{\ignorespaces NVDA – SIP – Standard Scaling\relax }}{38}{figure.caption.65}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.8}VOO}{38}{subsubsection.9.3.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {62}{\ignorespaces VOO – IEX – Robust Scaling\relax }}{38}{figure.caption.66}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {63}{\ignorespaces VOO – IEX – NoScaler\relax }}{38}{figure.caption.67}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {64}{\ignorespaces VOO – IEX – MinMax Scaling\relax }}{39}{figure.caption.68}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {65}{\ignorespaces VOO – IEX – Standard Scaling\relax }}{39}{figure.caption.69}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {66}{\ignorespaces VOO – SIP – Robust Scaling\relax }}{39}{figure.caption.70}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {67}{\ignorespaces VOO – SIP – NoScaler\relax }}{39}{figure.caption.71}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {68}{\ignorespaces VOO – SIP – MinMax Scaling\relax }}{40}{figure.caption.72}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {69}{\ignorespaces VOO – SIP – Standard Scaling\relax }}{40}{figure.caption.73}\protected@file@percent }
 \bibstyle{splncs04}
 \bibdata{referencias}
-\bibcite{hochreiter1997}{1}
-\bibcite{olah2015lstm}{2}
-\bibcite{scikit-learn}{3}
-\bibcite{zarattini2023vwap}{4}
-\@writefile{toc}{\contentsline {section}{References}{35}{figure.caption.73}\protected@file@percent }
-\gdef \@abspage@last{36}
+\bibcite{gao2018market}{1}
+\bibcite{hochreiter1997}{2}
+\bibcite{alpaca_api}{3}
+\bibcite{moghar2020stock}{4}
+\bibcite{olah2015lstm}{5}
+\bibcite{scikit-learn}{6}
+\@writefile{toc}{\contentsline {section}{References}{41}{figure.caption.73}\protected@file@percent }
+\bibcite{shen2020shortterm}{7}
+\bibcite{zarattini2023vwap}{8}
+\gdef \@abspage@last{43}
