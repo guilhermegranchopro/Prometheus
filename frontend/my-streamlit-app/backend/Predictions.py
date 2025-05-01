@@ -174,7 +174,7 @@ def get_trading_hours():
 
     if status.market == "open":
         trading_hours_status = "The market is open regular hours."
-    elif status.pearly_hours:
+    elif status.early_hours:
         trading_hours_status = "The market is open pre hours."
     elif status.after_hours:
         trading_hours_status = "The market is open after hours."
