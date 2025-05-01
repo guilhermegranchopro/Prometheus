@@ -365,7 +365,7 @@ def main_predictions():
         with tabs[1]:
             st.subheader("🗃️ Raw Live Market Data")  # Added emoji
             with st.expander(
-                "Show Data Table", expanded=False
+                "Show Data Table", expanded=True
             ):  # Set expanded to False initially
                 df_display = df_live.copy()  # Work on a copy
                 df_display.index = pd.to_datetime(df_display.index).tz_localize(
