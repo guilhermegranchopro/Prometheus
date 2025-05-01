@@ -54,7 +54,7 @@ def get_stocks_ID(selected_stock):
         selected_stock_ID = "MSFT"
     elif selected_stock == "AMAZON (AMZN)":
         selected_stock_ID = "AMZN"
-    elif selected_stock == "GOOGLE (GOOGL)":
+    elif selected_stock == "GOOGLE (GOOG)":
         selected_stock_ID = "GOOG"
     elif selected_stock == "VANGUARD S&P 500 ETF (VOO)":
         selected_stock_ID = "VOO"
@@ -247,7 +247,7 @@ def main_predictions():
         "APPLE (AAPL)",
         "MICROSOFT (MSFT)",
         "AMAZON (AMZN)",
-        "GOOGLE (GOOGL)",
+        "GOOGLE (GOOG)",
         "VANGUARD S&P 500 ETF (VOO)",
         "DOW JONES ETF (DIA)",
         "RUSSELL 2000 ETF (IWM)",

@@ -269,7 +269,7 @@ def main_model_stats():
         "APPLE (AAPL)",
         "MICROSOFT (MSFT)",
         "AMAZON (AMZN)",
-        "GOOGLE (GOOGL)",
+        "GOOGLE (GOOG)",
         "VANGUARD S&P 500 ETF (VOO)",
         "DOW JONES ETF (DIA)",
         "RUSSELL 2000 ETF (IWM)",
