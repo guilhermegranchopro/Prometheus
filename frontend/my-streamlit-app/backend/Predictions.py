@@ -148,6 +148,7 @@ def get_paths(stock_ID):
 
     return None, None
 
+
 def get_data(stock_ID):
     API_KEY = os.getenv("ALPACA_API_KEY")
     SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
@@ -164,6 +165,7 @@ def get_data(stock_ID):
     data = api.get_bars(stock_ID, "5Min", start=start_date, feed="sip").df.tail(df_size)
 
     return data
+
 
 def get_trading_hours():
     API_KEY = os.getenv("POLYGON_API_KEY")
@@ -207,13 +209,20 @@ def get_predictions(stock_ID):
 
     model = _load_model(model_path)
     raw_prediction = model.predict(X_Tensor)
-    raw_prediction = raw_prediction.flatten()[0] # Keep the raw value (0.0 to 1.0)
+    raw_prediction = raw_prediction.flatten()[0]  # Keep the raw value (0.0 to 1.0)
 
     decisive_sensibility = 0.5
     predicted_class = (raw_prediction >= decisive_sensibility).astype(int)
     # predicted_class = predicted_class.flatten()[0] # Already flattened
 
-    return raw_prediction, raw_prediction, predicted_class, data_df, scaler, X_combined # Return raw_prediction and certainty_pct
+    return (
+        raw_prediction,
+        raw_prediction,
+        predicted_class,
+        data_df,
+        scaler,
+        X_combined,
+    )  # Return raw_prediction and certainty_pct
 
 
 @st.cache_data(show_spinner=False)
@@ -255,9 +264,10 @@ def main_predictions():
             f"🧠 Generating predictions for {selected_stock_ID}..."
         ):  # Added emoji
             # Get raw prediction, certainty percentage, and class
-            raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = get_predictions(
-                selected_stock_ID)
-            
+            raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = (
+                get_predictions(selected_stock_ID)
+            )
+
             # Get and display market status
             market_status = get_trading_hours()
 
@@ -281,13 +291,13 @@ def main_predictions():
         with col2:
             # --- Reverted marker position calculation ---
             # Calculate marker position based on certainty and class
-            if pred_class == 1: # Up
+            if pred_class == 1:  # Up
                 tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
-            else: # Down
+            else:  # Down
                 tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
 
             # Format the certainty percentage for display
-            marker_position_pct = pred_certainty*100
+            marker_position_pct = pred_certainty * 100
             certainty_display = f"{pred_certainty:.1%}"
 
             # Ensure position is within bounds (0-100)
@@ -306,7 +316,7 @@ def main_predictions():
                     </div>
                     <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
                     <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
-                        {'⬆️' if pred_class == 1 else '⬇️'}
+                        {"⬆️" if pred_class == 1 else "⬇️"}
                     </div>
                 </div>
                 <span style="color: white; font-weight: bold; font-size: 1.1em; margin-left: 5px;">Up ⬆️</span>
@@ -316,8 +326,8 @@ def main_predictions():
             # Removed st.progress bar as certainty is now on the custom bar
 
         # Add vertical space using HTML line breaks instead of horizontal rules
-        st.markdown("<br>" * 3, unsafe_allow_html=True) 
-        
+        st.markdown("<br>" * 3, unsafe_allow_html=True)
+
         tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
 
         with tabs[0]:
