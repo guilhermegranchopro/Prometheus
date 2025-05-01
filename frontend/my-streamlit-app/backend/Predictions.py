@@ -273,7 +273,7 @@ def main_predictions():
 
         # Metrics and Lottie Animation
         st.subheader(
-            f"Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"🕗 Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
         if "open regular hours" in market_status:
