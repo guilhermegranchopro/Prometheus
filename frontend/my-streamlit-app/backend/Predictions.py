@@ -11,6 +11,11 @@ import pandas as pd
 from datetime import datetime, timezone, timedelta
 import plotly.express as px
 import requests
+from urllib3.exceptions import MaxRetryError
+from dotenv import load_dotenv  # Import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Redirect all stderr to null to suppress C++ and Absl logs before TF import
 devnull = os.open(os.devnull, os.O_WRONLY)
@@ -167,12 +172,39 @@ def get_data(stock_ID):
     return data
 
 
-def get_trading_hours():
-    API_KEY = os.getenv("POLYGON_API_KEY")
+def get_trading_hours(POLYGON_API):
 
-    client = RESTClient(API_KEY)
+    try:
 
-    status = client.get_market_status()
+        POLYGON_API += 1
+        # Correct variable name construction
+        env_var_name = f'POLYGON_API_KEY_{POLYGON_API}'
+
+        API_KEY = os.getenv(env_var_name)
+
+        # Check if the API key was loaded
+        if API_KEY is None:
+            # If we've tried all keys or the first key is missing, raise error
+            if POLYGON_API >= 4:
+                return f"Error: Polygon API Key {env_var_name} not found in environment variables or all keys failed."
+            # Otherwise, try the next key
+            else:
+                return get_trading_hours(POLYGON_API) # Recurse to try next key index
+
+        client = RESTClient(API_KEY)
+
+        status = client.get_market_status()
+
+    except MaxRetryError as e:
+        # Check if it's a rate limit error and if there are more keys to try
+        if "429" in str(e) and POLYGON_API < 4:
+            # Recursively call with the current index (it will be incremented at the start of the next call)
+            return get_trading_hours(POLYGON_API)
+        else:
+            # Return error if it's not 429 or if all keys have been tried
+            return None
+    except Exception: # Catch other potential errors during client initialization or request
+        return None
 
     if status.market == "open":
         trading_hours_status = "The market is open regular hours."
@@ -213,7 +245,6 @@ def get_predictions(stock_ID):
 
     decisive_sensibility = 0.5
     predicted_class = (raw_prediction >= decisive_sensibility).astype(int)
-    # predicted_class = predicted_class.flatten()[0] # Already flattened
 
     return (
         raw_prediction,
@@ -222,7 +253,7 @@ def get_predictions(stock_ID):
         data_df,
         scaler,
         X_combined,
-    )  # Return raw_prediction and certainty_pct
+    )
 
 
 @st.cache_data(show_spinner=False)
@@ -260,170 +291,169 @@ def main_predictions():
         st.rerun()
 
     if selected_stock_ID:
-        with st.spinner(
-            f"🧠 Generating predictions for {selected_stock_ID}..."
-        ):  # Added emoji
-            # Get raw prediction, certainty percentage, and class
-            raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = (
-                get_predictions(selected_stock_ID)
-            )
+        # Fetch market status first and handle potential errors
+        # Start with index 0, the function will increment it to 1 for the first key
+        market_status = get_trading_hours(0)
 
-            # Get and display market status
-            market_status = get_trading_hours()
-
-        # Metrics and Lottie Animation
+        # Display market status or error message
         st.subheader(
             f"🕗 Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
-        if "open regular hours" in market_status:
+        if market_status is None:
+            pass
+        elif "open regular hours" in market_status:
             st.success(f"📊 Market Status: {market_status}")
         elif "pre hours" in market_status:
             st.info("⏳ Market Status: The market is open for pre-market trading.")
         elif "after hours" in market_status:
             st.warning("⏳ Market Status: The market is open for after-hours trading.")
         else:
-            st.error(f"⛔ Market Status: {market_status}")
+            st.error(f"⛔ Market Status: The market is {market_status}")
 
-        # Add vertical space using HTML line breaks instead of horizontal rules
-        st.markdown("<br>" * 1, unsafe_allow_html=True)
+        # Only proceed with predictions if market status was fetched successfully
+        if not market_status.startswith("Error:"):
+            with st.spinner(
+                f"🧠 Generating predictions for {selected_stock_ID}..."
+            ):  # Added emoji
+                # Get raw prediction, certainty percentage, and class
+                raw_pred, pred_certainty, pred_class, df_live, scaler, X_combined = (
+                    get_predictions(selected_stock_ID)
+                )
 
-        col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
+            # Add vertical space using HTML line breaks instead of horizontal rules
+            st.markdown("<br>" * 1, unsafe_allow_html=True)
 
-        with col2:
-            # --- Reverted marker position calculation ---
-            # Calculate marker position based on certainty and class
-            if pred_class == 1:  # Up
-                tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
-            else:  # Down
-                tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+            col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
 
-            # Format the certainty percentage for display
-            marker_position_pct = pred_certainty * 100
-            certainty_display = f"{pred_certainty:.1%}"
+            with col2:
+                # --- Reverted marker position calculation ---
+                # Calculate marker position based on certainty and class
+                if pred_class == 1:  # Up
+                    tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+                else:  # Down
+                    tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
 
-            # Ensure position is within bounds (0-100)
-            marker_position_pct = max(0, min(100, marker_position_pct))
+                # Format the certainty percentage for display
+                marker_position_pct = pred_certainty * 100
+                certainty_display = f"{pred_certainty:.1%}"
 
-            # Custom HTML/CSS for the prediction bar
-            bar_html = f"""
-            <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
-                Next 3h Movement Prediction
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
-                <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
-                <div style="position: relative; height: 45px; flex-grow: 1; border-radius: 5px; background: linear-gradient(to right, #b71c1c, #1b5e20); box-sizing: border-box;">
-                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
-                        {certainty_display} Certainty
-                    </div>
-                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
-                    <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
-                        {"⬆️" if pred_class == 1 else "⬇️"}
-                    </div>
+                # Ensure position is within bounds (0-100)
+                marker_position_pct = max(0, min(100, marker_position_pct))
+
+                # Custom HTML/CSS for the prediction bar
+                bar_html = f"""
+                <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
+                    Next 3h Movement Prediction
                 </div>
-                <span style="color: white; font-weight: bold; font-size: 1.1em; margin-left: 5px;">Up ⬆️</span>
-            </div>
-            """
-            st.markdown(bar_html, unsafe_allow_html=True)
-            # Removed st.progress bar as certainty is now on the custom bar
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
+                    <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
+                    <div style="position: relative; height: 45px; flex-grow: 1; border-radius: 5px; background: linear-gradient(to right, #b71c1c, #1b5e20); box-sizing: border-box;">
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
+                            {certainty_display} Certainty
+                        </div>
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
+                            {"⬆️" if pred_class == 1 else "⬇️"}
+                        </div>
+                    </div>
+                    <span style="color: white; font-weight: bold; font-size: 1.1em; margin-left: 5px;">Up ⬆️</span>
+                </div>
+                """
+                st.markdown(bar_html, unsafe_allow_html=True)
 
-        # Add vertical space using HTML line breaks instead of horizontal rules
-        st.markdown("<br>" * 3, unsafe_allow_html=True)
+            # Add vertical space using HTML line breaks instead of horizontal rules
+            st.markdown("<br>" * 3, unsafe_allow_html=True)
 
-        tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
+            tabs = st.tabs(["📊 Live Chart", "🗃️ Raw Data"])
 
-        with tabs[0]:
-            st.subheader("📊 Live Market Chart")  # Added emoji
-            features = [
-                "VWAP (USD)",
-                "Close (USD)",
-                "High (USD)",
-                "Low (USD)",
-                "Trade Count",
-                "Open (USD)",
-                "Volume",
-            ]  # Changed default
-            selected_feature = st.selectbox(
-                "Select Feature:", features, key="selected_feature"
-            )
-            # ... existing feature mapping logic ...
-            if selected_feature == "Close (USD)":
-                feature_y = "close"
-            elif selected_feature == "High (USD)":
-                feature_y = "high"
-            elif selected_feature == "Low (USD)":
-                feature_y = "low"
-            elif selected_feature == "Trade Count":
-                feature_y = "trade_count"
-            elif selected_feature == "Open (USD)":
-                feature_y = "open"
-            elif selected_feature == "Volume":
-                feature_y = "volume"
-            else:  # Default to VWAP
-                feature_y = "vwap"
-
-            fig = px.line(
-                df_live,
-                x=df_live.index,
-                y=feature_y,
-                title=f"{selected_stock} - {selected_feature}",
-                labels={"index": "Datetime (UTC)", feature_y: selected_feature}, # Keep this for hover labels
-                template="plotly_dark",
-                markers=True,
-                line_shape="spline",
-            )
-            # Explicitly set axis titles and center the main title
-            fig.update_layout(
-                title_x=0.5,
-                xaxis_title="Datetime (UTC)", # Explicitly set x-axis title
-                yaxis_title=selected_feature  # Explicitly set y-axis title based on selection
-            )
-            st.plotly_chart(fig, use_container_width=True)
-
-        with tabs[1]:
-            st.subheader("🗃️ Raw Live Market Data")  # Added emoji
-            with st.expander(
-                "Show Data Table", expanded=True
-            ):  # Set expanded to False initially
-                df_display = df_live.copy()  # Work on a copy
-                df_display.index = pd.to_datetime(df_display.index).tz_localize(
-                    None
-                )  # Remove timezone for display
-                df_display.index.name = "Date & Time"
-                df_display.rename(
-                    columns={
-                        "close": "Close (USD)",
-                        "high": "High (USD)",
-                        "low": "Low (USD)",
-                        "trade_count": "Trade Count",
-                        "open": "Open (USD)",
-                        "volume": "Volume",
-                        "vwap": "VWAP (USD)",
-                    },
-                    inplace=True,
-                )
-                # Reorder columns for better readability
-                df_display = df_display[
-                    [
-                        "Open (USD)",
-                        "High (USD)",
-                        "Low (USD)",
-                        "Close (USD)",
-                        "Volume",
-                        "Trade Count",
-                        "VWAP (USD)",
-                    ]
+            with tabs[0]:
+                st.subheader("📊 Live Market Chart")  # Added emoji
+                features = [
+                    "VWAP (USD)",
+                    "Close (USD)",
+                    "High (USD)",
+                    "Low (USD)",
+                    "Trade Count",
+                    "Open (USD)",
+                    "Volume",
                 ]
-                st.dataframe(
-                    df_display.style.format(
-                        {
-                            "Open (USD)": "${:,.2f}",
-                            "High (USD)": "${:,.2f}",
-                            "Low (USD)": "${:,.2f}",
-                            "Close (USD)": "${:,.2f}",
-                            "Volume": "{:,.0f}",
-                            "VWAP (USD)": "${:,.2f}",
-                        }
-                    ),
-                    use_container_width=True,  # Make dataframe use full width
+                selected_feature = st.selectbox(
+                    "Select Feature:", features, key="selected_feature"
                 )
+                if selected_feature == "Close (USD)":
+                    feature_y = "close"
+                elif selected_feature == "High (USD)":
+                    feature_y = "high"
+                elif selected_feature == "Low (USD)":
+                    feature_y = "low"
+                elif selected_feature == "Trade Count":
+                    feature_y = "trade_count"
+                elif selected_feature == "Open (USD)":
+                    feature_y = "open"
+                elif selected_feature == "Volume":
+                    feature_y = "volume"
+                else:
+                    feature_y = "vwap"
+
+                fig = px.line(
+                    df_live,
+                    x=df_live.index,
+                    y=feature_y,
+                    title=f"{selected_stock} - {selected_feature}",
+                    labels={"index": "Datetime (UTC)", feature_y: selected_feature},
+                    template="plotly_dark",
+                    markers=True,
+                    line_shape="spline",
+                )
+                fig.update_layout(
+                    title_x=0.5,
+                    xaxis_title="Datetime (UTC)",
+                    yaxis_title=selected_feature
+                )
+                st.plotly_chart(fig, use_container_width=True)
+
+            with tabs[1]:
+                st.subheader("🗃️ Raw Live Market Data")  # Added emoji
+                with st.expander("Show Data Table", expanded=True):
+                    df_display = df_live.copy()
+                    df_display.index = pd.to_datetime(df_display.index).tz_localize(
+                        None
+                    )
+                    df_display.index.name = "Date & Time"
+                    df_display.rename(
+                        columns={
+                            "close": "Close (USD)",
+                            "high": "High (USD)",
+                            "low": "Low (USD)",
+                            "trade_count": "Trade Count",
+                            "open": "Open (USD)",
+                            "volume": "Volume",
+                            "vwap": "VWAP (USD)",
+                        },
+                        inplace=True,
+                    )
+                    df_display = df_display[
+                        [
+                            "Open (USD)",
+                            "High (USD)",
+                            "Low (USD)",
+                            "Close (USD)",
+                            "Volume",
+                            "Trade Count",
+                            "VWAP (USD)",
+                        ]
+                    ]
+                    st.dataframe(
+                        df_display.style.format(
+                            {
+                                "Open (USD)": "${:,.2f}",
+                                "High (USD)": "${:,.2f}",
+                                "Low (USD)": "${:,.2f}",
+                                "Close (USD)": "${:,.2f}",
+                                "Volume": "{:,.0f}",
+                                "VWAP (USD)": "${:,.2f}",
+                            }
+                        ),
+                        use_container_width=True,
+                    )
