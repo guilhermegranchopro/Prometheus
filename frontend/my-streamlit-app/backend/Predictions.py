@@ -174,7 +174,6 @@ def get_data(stock_ID):
 
 
 def get_trading_hours(POLYGON_API):
-
     num_of_keys = 5
 
     try:
