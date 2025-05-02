@@ -174,6 +174,9 @@ def get_data(stock_ID):
 
 
 def get_trading_hours(POLYGON_API):
+
+    num_of_keys = 5
+
     try:
         POLYGON_API += 1
         # Correct variable name construction
@@ -184,7 +187,7 @@ def get_trading_hours(POLYGON_API):
         # Check if the API key was loaded
         if API_KEY is None:
             # If we've tried all keys or the first key is missing, raise error
-            if POLYGON_API >= 4:
+            if POLYGON_API >= num_of_keys:
                 return f"Error: Polygon API Key {env_var_name} not found in environment variables or all keys failed."
             # Otherwise, try the next key
             else:
@@ -196,7 +199,7 @@ def get_trading_hours(POLYGON_API):
 
     except MaxRetryError as e:
         # Check if it's a rate limit error and if there are more keys to try
-        if "429" in str(e) and POLYGON_API < 4:
+        if "429" in str(e) and POLYGON_API < num_of_keys:
             # Recursively call with the current index (it will be incremented at the start of the next call)
             return get_trading_hours(POLYGON_API)
         else:
