@@ -111,6 +111,15 @@ def main_academic_references():
     <div class="paper-container">
         <h3>1. The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks</h3>
         <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
+        <p><strong>Authors:</strong></p>
+        <p><em>Guilherme Grancho D. Fernandes</em><br>
+        Department of Earth Science and Engineering, Imperial College London, London, United Kingdom<br>
+        <a href="mailto:guilherme.fernandes25@imperial.ac.uk">guilherme.fernandes25@imperial.ac.uk</a><br>
+        Department of Physics, Instituto Superior Técnico, Lisbon, Portugal<br>
+        <a href="mailto:guilhermegrancho@tecnico.ulisboa.pt">guilhermegrancho@tecnico.ulisboa.pt</a></p>
+        <p><em>Vasco V. R. Serpa Pereira</em><br>
+        Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon, Portugal<br>
+        <a href="mailto:vasco.serpa.pereira@tecnico.ulisboa.pt">vasco.serpa.pereira@tecnico.ulisboa.pt</a></p>
         <p><strong>Abstract:</strong></p>
         <p><em>This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price
         and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long
@@ -137,6 +146,15 @@ def main_academic_references():
     <div class="paper-container">
         <h3>2. Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portefolio Management</h3>
         <p><strong>Set to be published in just a few months...</strong></p>
+        <p><strong>Authors:</strong></p>
+        <p><em>Guilherme Grancho D. Fernandes</em><br>
+        Department of Earth Science and Engineering, Imperial College London, London, United Kingdom<br>
+        <a href="mailto:guilherme.fernandes25@imperial.ac.uk">guilherme.fernandes25@imperial.ac.uk</a><br>
+        Department of Physics, Instituto Superior Técnico, Lisbon, Portugal<br>
+        <a href="mailto:guilhermegrancho@tecnico.ulisboa.pt">guilhermegrancho@tecnico.ulisboa.pt</a></p>
+        <p><em>Vasco V. R. Serpa Pereira</em><br>
+        Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon, Portugal<br>
+        <a href="mailto:vasco.serpa.pereira@tecnico.ulisboa.pt">vasco.serpa.pereira@tecnico.ulisboa.pt</a></p>
         <!--<p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>-->
         <!--<p><strong>Abstract:</strong></p>-->
         <!--<p><em>*Please add the abstract here.* This section provides a concise summary of the paper's key findings, methodologies, and conclusions. Understanding the abstract gives a quick overview of the research's scope and significance.</em></p>
