@@ -278,7 +278,20 @@ def get_clock_emoji(dt_object):
     hour = dt_object.hour
     # Emojis for 12, 1, 2, ..., 11 o'clock
     # 🕛 (12), 🕐 (1), 🕑 (2), 🕒 (3), 🕓 (4), 🕔 (5), 🕕 (6), 🕖 (7), 🕗 (8), 🕘 (9), 🕙 (10), 🕚 (11)
-    clock_emojis = ["🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"]
+    clock_emojis = [
+        "🕛",
+        "🕐",
+        "🕑",
+        "🕒",
+        "🕓",
+        "🕔",
+        "🕕",
+        "🕖",
+        "🕗",
+        "🕘",
+        "🕙",
+        "🕚",
+    ]
     # Map 24-hour format to 12-hour emoji index
     # Hour 0 (midnight) and 12 (noon) should use 🕛 (index 0)
     # Hour 1 and 13 should use 🕐 (index 1)
@@ -353,15 +366,19 @@ def main_predictions():
             col1, col2, col3 = st.columns([0.5, 3, 0.5])  # Adjusted column ratios
 
             with col3:
-                if st.button("Help", help="Click to toggle help.", use_container_width=False):
-                    st.session_state.show_help_message = not st.session_state.show_help_message
-            
+                if st.button(
+                    "Help", help="Click to toggle help.", use_container_width=False
+                ):
+                    st.session_state.show_help_message = (
+                        not st.session_state.show_help_message
+                    )
+
             # Display help message below columns if toggled
             if st.session_state.show_help_message:
                 # Add vertical space using HTML line breaks instead of horizontal rules
                 st.markdown("<br>" * 3, unsafe_allow_html=True)
                 st.info(
-                        """
+                    """
                 **How to Read the Prediction Bar**
 
                 - **Next 3-Hour Forecast**  
@@ -388,7 +405,7 @@ def main_predictions():
 
                 Click **Help** again to hide this message.
                         """
-                    )
+                )
 
             with col2:
                 # --- Reverted marker position calculation ---
@@ -408,7 +425,7 @@ def main_predictions():
                 # Custom HTML/CSS for the prediction bar
                 bar_html = f"""
                 <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
-                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{pd.to_datetime(current_utc_time - timedelta(minutes=15)).strftime('%H:%M')} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime('%H:%M')} (UTC)
+                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{pd.to_datetime(current_utc_time - timedelta(minutes=15)).strftime("%H:%M")} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime("%H:%M")} (UTC)
                 </div>
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
                     <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
