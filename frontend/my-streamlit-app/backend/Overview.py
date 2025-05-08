@@ -152,6 +152,43 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
+    # Streamlit App Navigation Section
+    st.markdown(
+        """
+        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>🧭 Navigating the Dashboard</h2>
+            <p class='text-gray-700 mb-4'>
+                This Streamlit application serves as the main interface for interacting with the Prometheus trading platform. Here's a brief guide on its structure and how to use it:
+            </p>
+            <ul class='list-disc list-inside space-y-3 text-gray-700'>
+                <li><strong>Overview (This Page):</strong> You are currently on the Overview page, which provides a general introduction to the project, its features, setup instructions, and how to use different components.</li>
+                <li><strong>Top Bar Navigation:</strong> At the top of the application, you'll find a navigation bar. This top bar is the primary way to navigate between different sections or pages of the dashboard. Each page will focus on a specific aspect of the platform, such as:
+                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600'>
+                        <li>Detailed views of trading strategy performance.</li>
+                        <li>Market data visualization and analysis tools.</li>
+                        <li>Configuration settings for trading parameters.</li>
+                        <li>Live trading monitoring (if applicable and enabled).</li>
+                    </ul>
+                </li>
+                <li><strong>Interactive Elements:</strong> Throughout the application, you will encounter various interactive elements like charts, tables, input fields, and buttons. These are designed to allow you to:
+                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600'>
+                        <li>Explore data dynamically.</li>
+                        <li>Adjust parameters for analysis or trading models.</li>
+                        <li>View real-time updates and logs.</li>
+                    </ul>
+                </li>
+                <li><strong>Data Display:</strong> Key information, such as market data, model predictions, portfolio status, and performance metrics, will be displayed in a clear and organized manner using tables, charts, and text summaries.</li>
+                <li><strong>Launching the App:</strong> As mentioned in the 'Usage' section, you can run the Streamlit app using the command:
+            </ul>
+            <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-2 border border-gray-200'><code>streamlit run frontend/my-streamlit-app/Home.py</code></pre>
+            <p class='text-gray-700 mt-3'>
+                Explore the different pages using the top navigation bar to get a comprehensive understanding of the platform's capabilities. Each section is designed to be intuitive, but specific instructions or tooltips may be provided within those pages for more complex functionalities.
+            </p>
+        </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
     # Implemented Strategies Section - Increased padding, margin, shadow, refined heading border
     st.markdown(
         """
