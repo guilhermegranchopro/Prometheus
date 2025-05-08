@@ -364,7 +364,7 @@ def main_predictions():
                 # Custom HTML/CSS for the prediction bar
                 bar_html = f"""
                 <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
-                    Next 3h {selected_stock_ID} Price Movement Prediction {pd.to_datetime(current_utc_time).strftime('%H:%M')} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime('%H:%M')} (UTC)
+                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{pd.to_datetime(current_utc_time - timedelta(minutes=15)).strftime('%H:%M')} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime('%H:%M')} (UTC)
                 </div>
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
                     <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
