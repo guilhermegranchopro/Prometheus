@@ -17,18 +17,19 @@ Prometheus is a sophisticated algorithmic trading platform that leverages the Al
 - **Real-time Market Data Integration**
   - Seamless integration with Alpaca Markets API
   - High-frequency data collection with rate limit management
-  - Support for multiple timeframes and market data types
+  - Support for multiple timeframes and market data types (IEX, SIP)
 
 - **Advanced Trading Models**
   - Machine learning model integration with TensorFlow
-  - Custom trading strategies implementation
+  - Custom trading strategies implementation (Simons, Sun Tzu)
   - Research-based approach with separate modules for different strategies
+  - Structured model management and evaluation (see `Models/` directory)
 
 - **Data Analysis & Visualization**
   - Comprehensive market data analysis using pandas and numpy
   - Interactive data visualization with matplotlib
   - Performance metrics and reporting
-  - Historical data analysis
+  - Historical data analysis and storage for various sources (see `Data/` directory)
 
 - **Risk Management**
   - Position sizing algorithms
@@ -36,73 +37,123 @@ Prometheus is a sophisticated algorithmic trading platform that leverages the Al
   - Portfolio diversification strategies
   - Risk assessment tools
 
+- **Interactive Frontend Dashboard**
+  - Streamlit application for monitoring and interaction (see `frontend/` directory)
+
+- **Live Trading Capabilities**
+  - Jupyter notebook for live trading execution and monitoring (see `Live_Trading/` directory)
+
 ## 🛠️ Installation
 
 1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/Prometheus.git
-cd Prometheus
-```
+
+    ```bash
+    git clone https://github.com/yourusername/Prometheus.git
+    cd Prometheus
+    ```
 
 2. Create and activate a virtual environment:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
+
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+    ```
 
 3. Install required dependencies:
-```bash
-pip install -r requirements.txt
-```
+
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 4. Set up your Alpaca API credentials:
-   - Create an account at [Alpaca Markets](https://alpaca.markets/)
-   - Generate your API keys
-   - Configure your credentials in the appropriate configuration files
+    - Create an account at [Alpaca Markets](https://alpaca.markets/)
+    - Generate your API keys
+    - Configure your credentials in the appropriate configuration files (e.g., within `Simons/Settings/` or as environment variables)
 
 ## 📊 Project Structure
 
-```
+```text
 Prometheus/
-├── Assets/             # Project assets including images
-├── Simons/             # Simons trading strategy implementation
-│   ├── backend/        # Backend logic and API integration
-│   ├── frontend/       # Frontend interface
-│   └── research/       # Research and analysis modules
-├── Sun_Tzu/            # Sun Tzu trading strategy implementation
-│   ├── backend/        # Backend logic and API integration
-│   └── research/       # Research and analysis modules
-├── .venv/              # Python virtual environment
-└── Settings/           # Configuration files and API keys
+├── Assets/                     # Project assets (e.g., logo)
+│   └── Images/
+├── Data/                       # Processed and raw market data
+│   ├── IEX/                    # Data from IEX feed
+│   ├── Regular Hours/          # Data filtered for regular trading hours
+│   └── SIP/                    # Data from SIP feed
+├── frontend/                   # Streamlit frontend application
+│   └── my-streamlit-app/
+│       └── Home.py             # Main Streamlit app file
+├── Live_Trading/               # Notebooks and scripts for live trading
+│   └── Live_Trading.ipynb
+├── Models/                     # Trained models, evaluation, and related notebooks
+│   ├── IEX/
+│   ├── Regular Hours/
+│   ├── SIP/
+│   └── Table.ipynb
+├── Simons/                     # Simons trading strategy
+│   ├── backend/                # Backend logic for Simons strategy
+│   ├── Images/                 # Images related to Simons strategy
+│   ├── Paper/                  # Research paper/documentation for Simons
+│   ├── Report/                 # Reports and results for Simons
+│   └── Settings/               # Configuration for Simons strategy
+├── Sun_Tzu/                    # Sun Tzu trading strategy
+│   ├── backend/                # Backend logic for Sun Tzu strategy
+│   └── research/               # Research for Sun Tzu strategy
+├── .venv/                      # Python virtual environment
+├── .git/                       # Git version control files
+├── .gitignore                  # Specifies intentionally untracked files that Git should ignore
+├── CITATION.cff                # Citation file for the project
+├── LICENSE                     # Project license (MIT)
+├── pyproject.toml              # Project build configuration (PEP 518)
+├── README.md                   # This file
+├── requirements.txt            # Project dependencies
+└── uv.lock                     # Lock file for uv package manager
 ```
 
 ## 🚀 Usage
 
 1. **Data Collection and Analysis**
-```python
-import alpaca_trade_api as tradeapi
 
-# Initialize API connection
-api = tradeapi.REST(
-    key_id='YOUR_API_KEY',
-    secret_key='YOUR_SECRET_KEY',
-    base_url='https://paper-api.alpaca.markets'
-)
+    (Refer to notebooks within `Data/` subdirectories or specific strategy research)
 
-# Fetch market data
-data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df
-```
+    ```python
+    # Example: Initialize API connection (ensure credentials are set)
+    import alpaca_trade_api as tradeapi
+
+    api = tradeapi.REST(
+        key_id='YOUR_API_KEY',          # Preferably set via environment variables
+        secret_key='YOUR_SECRET_KEY',  # Preferably set via environment variables
+        base_url='https://paper-api.alpaca.markets'
+    )
+
+    # Example: Fetch market data
+    # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df # Original example
+    # For more detailed data handling, see scripts/notebooks in Data/ or strategy research folders.
+    ```
 
 2. **Running Trading Strategies**
-```python
-# Import your preferred strategy module
-from Simons.backend import strategy as simons_strategy
-# or
-from Sun_Tzu.backend import strategy as sun_tzu_strategy
 
-# Execute the strategy
-results = strategy.execute()
-```
+    ```python
+    # Import your preferred strategy module
+    from Simons.backend import strategy as simons_strategy
+    # or
+    from Sun_Tzu.backend import strategy as sun_tzu_strategy
+
+    # Execute the strategy (ensure strategy-specific configurations are set)
+    # results = strategy.execute() # Placeholder, actual execution might vary
+    ```
+
+3. **Launching the Frontend Dashboard**
+
+    Ensure Streamlit is installed (`pip install streamlit`).
+
+    ```bash
+    streamlit run frontend/my-streamlit-app/Home.py
+    ```
+
+4. **Live Trading**
+
+    Open and run cells in `Live_Trading/Live_Trading.ipynb` after appropriate setup and risk assessment.
 
 ## 📈 Performance
 
@@ -135,6 +186,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Guilherme Grancho - guilhermegrancho@tecnico.ulisboa.pt
+Guilherme Grancho - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt)
 
-Vasco Pereira - vasco.serpa.pereira@tecnico.ulisboa.pt
+Vasco Pereira - [vasco.serpa.pereira@tecnico.ulisboa.pt](mailto:vasco.serpa.pereira@tecnico.ulisboa.pt)
