@@ -123,9 +123,20 @@ def main_academic_references():
     st.markdown(
         """
     <div class="paper-container">
-        <h3>2. High-Frequency Portfolio Algorithmic Portfolio Management</h3>
+        <h3>2. The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks</h3>
         <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
-        <p><strong>Abstract:</strong></p>
+        <p><strong>Abstract: This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price
+        and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long
+        Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a
+        three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative
+        analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market
+        and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data
+        consistently outperform those built on regular-hours-only data, delivering a 15% improvement in predictive accuracy.
+        Furthermore, we evaluate and compare three feature normalization techniques—Standard, MinMax, and Robust—against
+        non-normalized data. The paper highlights the value of incorporating raw extended-hours data into intraday forecasting
+        models and market microstructure indicators to inform more robust, data-driven trading strategies. The results also help
+        corroborate the Financial Torque Hypothesis, advancing our understanding of how the distribution of market activity
+        across price levels influences subsequent price trends.</strong></p>
         <p><em>*Please add the abstract here.* This abstract details the approaches and results related to managing portfolios algorithmically using high-frequency data, highlighting the techniques and performance metrics discussed in the paper.</em></p>
         <p><strong>How to cite:</strong></p>
         <p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Example: Johnson, R., & Williams, L. (2024). High-Frequency Algorithmic Portfolio Management. Proceedings of the International Conference on Quantitative Finance, 78-92.</em></p>
