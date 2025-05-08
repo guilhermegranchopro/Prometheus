@@ -14,6 +14,14 @@
   [![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white)](https://matplotlib.org/)
   [![Plotly](https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white)](https://plotly.com/)
   [![Altair](https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white)](https://altair-viz.github.io/)
+  [![Joblib](https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white)](https://joblib.readthedocs.io/)
+  [![FuzzyWuzzy](https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white)](https://github.com/seatgeek/fuzzywuzzy)
+  [![Ruff](https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white)](https://github.com/astral-sh/ruff)
+  [![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white)](https://scipy.org/)
+  [![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white)](https://www.npmjs.com/)
+  [![Python-Dotenv](https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black)](https://github.com/theskumar/python-dotenv)
+  [![Polygon API Client](https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white)](https://polygon.io/)
+  [![Python-Levenshtein](https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white)](https://github.com/maxbachmann/python-Levenshtein)
 </div>
 
 ## 🚀 Overview
