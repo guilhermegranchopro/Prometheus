@@ -93,7 +93,7 @@ Prometheus/
 ├── Simons/                     # Simons trading strategy
 │   ├── backend/                # Backend logic for Simons strategy
 │   ├── Images/                 # Images related to Simons strategy
-│   ├── Paper/                  # Research paper/documentation for Simons
+│   ├── Paper/                  # Research Paper Published on Arxiv based on the quantitative software develop for Simons
 │   ├── Report/                 # Reports and results for Simons
 │   └── Settings/               # Configuration for Simons strategy
 ├── Sun_Tzu/                    # Sun Tzu trading strategy
@@ -186,6 +186,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Guilherme Grancho - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt)
+Guilherme Grancho - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt) / [guilherme.fernandes25@imperial.ac.uk](mailto:guilherme.fernandes25@imperial.ac.uk)
 
 Vasco Pereira - [vasco.serpa.pereira@tecnico.ulisboa.pt](mailto:vasco.serpa.pereira@tecnico.ulisboa.pt)
