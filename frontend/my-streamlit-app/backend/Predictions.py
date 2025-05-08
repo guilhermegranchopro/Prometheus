@@ -273,6 +273,21 @@ lottie_success = load_lottie_url(
 )
 
 
+def get_clock_emoji(dt_object):
+    """Returns a clock emoji based on the hour of the datetime object."""
+    hour = dt_object.hour
+    # Emojis for 12, 1, 2, ..., 11 o'clock
+    # 🕛 (12), 🕐 (1), 🕑 (2), 🕒 (3), 🕓 (4), 🕔 (5), 🕕 (6), 🕖 (7), 🕗 (8), 🕘 (9), 🕙 (10), 🕚 (11)
+    clock_emojis = ["🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"]
+    # Map 24-hour format to 12-hour emoji index
+    # Hour 0 (midnight) and 12 (noon) should use 🕛 (index 0)
+    # Hour 1 and 13 should use 🕐 (index 1)
+    # ...
+    # Hour 11 and 23 should use 🕚 (index 11)
+    emoji_index = hour % 12
+    return clock_emojis[emoji_index]
+
+
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
@@ -299,8 +314,10 @@ def main_predictions():
         market_status = get_trading_hours(0)
 
         # Display market status or error message
+        current_utc_time = datetime.now(timezone.utc)
+        clock_emoji = get_clock_emoji(current_utc_time)
         st.subheader(
-            f"🕗 Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"{clock_emoji} Last Updated: {pd.to_datetime(current_utc_time).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
         if market_status is None:
