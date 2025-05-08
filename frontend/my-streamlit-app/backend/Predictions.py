@@ -273,6 +273,21 @@ lottie_success = load_lottie_url(
 )
 
 
+def get_clock_emoji(dt_object):
+    """Returns a clock emoji based on the hour of the datetime object."""
+    hour = dt_object.hour
+    # Emojis for 12, 1, 2, ..., 11 o'clock
+    # 🕛 (12), 🕐 (1), 🕑 (2), 🕒 (3), 🕓 (4), 🕔 (5), 🕕 (6), 🕖 (7), 🕗 (8), 🕘 (9), 🕙 (10), 🕚 (11)
+    clock_emojis = ["🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"]
+    # Map 24-hour format to 12-hour emoji index
+    # Hour 0 (midnight) and 12 (noon) should use 🕛 (index 0)
+    # Hour 1 and 13 should use 🕐 (index 1)
+    # ...
+    # Hour 11 and 23 should use 🕚 (index 11)
+    emoji_index = hour % 12
+    return clock_emojis[emoji_index]
+
+
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
@@ -289,8 +304,14 @@ def main_predictions():
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
 
+    # Initialize session state for help message visibility
+    if "show_help_message" not in st.session_state:
+        st.session_state.show_help_message = False
+
     # Add a button to refresh predictions
     if st.button("🔄 Refresh Predictions"):
+        # Reset help message visibility on refresh
+        st.session_state.show_help_message = False
         st.rerun()
 
     if selected_stock_ID:
@@ -299,8 +320,10 @@ def main_predictions():
         market_status = get_trading_hours(0)
 
         # Display market status or error message
+        current_utc_time = datetime.now(timezone.utc)
+        clock_emoji = get_clock_emoji(current_utc_time)
         st.subheader(
-            f"🕗 Last Updated: {pd.to_datetime(datetime.now(timezone.utc)).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"{clock_emoji} Last Updated: {pd.to_datetime(current_utc_time).strftime('%Y-%m-%d %H:%M')} (UTC)"
         )
 
         if market_status is None:
@@ -327,7 +350,45 @@ def main_predictions():
             # Add vertical space using HTML line breaks instead of horizontal rules
             st.markdown("<br>" * 1, unsafe_allow_html=True)
 
-            col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
+            col1, col2, col3 = st.columns([0.5, 3, 0.5])  # Adjusted column ratios
+
+            with col3:
+                if st.button("Help", help="Click to toggle help.", use_container_width=False):
+                    st.session_state.show_help_message = not st.session_state.show_help_message
+            
+            # Display help message below columns if toggled
+            if st.session_state.show_help_message:
+                # Add vertical space using HTML line breaks instead of horizontal rules
+                st.markdown("<br>" * 3, unsafe_allow_html=True)
+                st.info(
+                        """
+                **How to Read the Prediction Bar**
+
+                - **Next 3-Hour Forecast**  
+                Shows whether our LSTM model expects the stock/ETF to go **Up ⬆️** or **Down ⬇️** over the next ~3 hours.
+
+                - **Confidence (%)**  
+                The model’s predicted probability (0–100%) that the price will move **Up**. A higher percentage means more certainty.
+
+                - **Raw Score**  
+                Under the hood, the model outputs a value between **0.0** and **1.0** via a sigmoid:  
+                    - **> 0.5** → “Up”  
+                    - **< 0.5** → “Down”  
+                    - **0.5** → Neutral
+
+                - **White Marker**  
+                Pinpoints the raw score on the gradient bar.
+
+                - **Color Gradient:**  
+                    - **Red:** at 0.0 = very strong “Down” signal  
+                    - **Green:** at 1.0 = very strong “Up” signal
+
+                - **Model Inputs**  
+                We train our LSTM on two microstructure features—**VWAP** (volume-weighted average price) and **Trade Count**—sampled every 5 minutes over a 3-hour look-back window, using both regular and extended-hours data.
+
+                Click **Help** again to hide this message.
+                        """
+                    )
 
             with col2:
                 # --- Reverted marker position calculation ---
@@ -347,7 +408,7 @@ def main_predictions():
                 # Custom HTML/CSS for the prediction bar
                 bar_html = f"""
                 <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
-                    Next 3h Movement Prediction
+                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{pd.to_datetime(current_utc_time - timedelta(minutes=15)).strftime('%H:%M')} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime('%H:%M')} (UTC)
                 </div>
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
                     <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
