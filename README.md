@@ -93,7 +93,7 @@ Prometheus/
 ├── Simons/                     # Simons trading strategy
 │   ├── backend/                # Backend logic for Simons strategy
 │   ├── Images/                 # Images related to Simons strategy
-│   ├── Paper/                  # Research Paper Published on Arxiv based on the quantitative software develop for Simons
+│   ├── Paper/                  # Research paper published on Arxiv based on the quantitative software develop for Simons
 │   ├── Report/                 # Reports and results for Simons
 │   └── Settings/               # Configuration for Simons strategy
 ├── Sun_Tzu/                    # Sun Tzu trading strategy
