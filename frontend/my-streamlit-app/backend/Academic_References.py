@@ -61,6 +61,7 @@ def load_css():
             line-height: 1.7; /* Increased line height for readability */
             margin-bottom: 0.75rem; /* Adjusted margin */
             font-size: 1rem; /* Standard text size */
+            text-align: justify; /* Added text justification */
         }
         .paper-container p strong {
             color: var(--text-color); /* Ensure strong text uses theme color */
@@ -108,24 +109,10 @@ def main_academic_references():
     st.markdown(
         """
     <div class="paper-container">
-        <h3>1. The Financial Torque Hypotheses</h3>
+        <h3>1. The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks</h3>
         <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
         <p><strong>Abstract:</strong></p>
-        <p><em>*Please add the abstract here.* This section provides a concise summary of the paper's key findings, methodologies, and conclusions. Understanding the abstract gives a quick overview of the research's scope and significance.</em></p>
-        <p><strong>How to cite:</strong></p>
-        <p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Proper citation allows others to locate the work and give credit to the authors. Example: Smith, J., & Doe, A. (2023). The Financial Torque Hypotheses. Journal of Financial Studies, 15(2), 123-145. doi:10.xxxx/jfs.xxxx</em></p>
-    </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # Paper 2
-    st.markdown(
-        """
-    <div class="paper-container">
-        <h3>2. The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks</h3>
-        <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
-        <p><strong>Abstract: This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price
+        <p><em>This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price
         and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long
         Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a
         three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative
@@ -136,10 +123,25 @@ def main_academic_references():
         non-normalized data. The paper highlights the value of incorporating raw extended-hours data into intraday forecasting
         models and market microstructure indicators to inform more robust, data-driven trading strategies. The results also help
         corroborate the Financial Torque Hypothesis, advancing our understanding of how the distribution of market activity
-        across price levels influences subsequent price trends.</strong></p>
-        <p><em>*Please add the abstract here.* This abstract details the approaches and results related to managing portfolios algorithmically using high-frequency data, highlighting the techniques and performance metrics discussed in the paper.</em></p>
+        across price levels influences subsequent price trends.</em></p>
         <p><strong>How to cite:</strong></p>
         <p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Example: Johnson, R., & Williams, L. (2024). High-Frequency Algorithmic Portfolio Management. Proceedings of the International Conference on Quantitative Finance, 78-92.</em></p>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
+    # Paper 2
+    st.markdown(
+        """
+    <div class="paper-container">
+        <h3>2. Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portefolio Management</h3>
+        <p><strong>Set to be published in just a few months...</strong></p>
+        <!--<p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>-->
+        <!--<p><strong>Abstract:</strong></p>-->
+        <!--<p><em>*Please add the abstract here.* This section provides a concise summary of the paper's key findings, methodologies, and conclusions. Understanding the abstract gives a quick overview of the research's scope and significance.</em></p>
+        <!--<p><strong>How to cite:</strong></p>-->
+        <!--<p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Proper citation allows others to locate the work and give credit to the authors. Example: Smith, J., & Doe, A. (2023). The Financial Torque Hypotheses. Journal of Financial Studies, 15(2), 123-145. doi:10.xxxx/jfs.xxxx</em></p>-->
     </div>
     """,
         unsafe_allow_html=True,
