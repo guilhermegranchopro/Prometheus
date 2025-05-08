@@ -304,8 +304,14 @@ def main_predictions():
     selected_stock = st.selectbox("Select Stock/ETF:", stocks, key="predictions_stock")
     selected_stock_ID = get_stocks_ID(selected_stock)
 
+    # Initialize session state for help message visibility
+    if "show_help_message" not in st.session_state:
+        st.session_state.show_help_message = False
+
     # Add a button to refresh predictions
     if st.button("🔄 Refresh Predictions"):
+        # Reset help message visibility on refresh
+        st.session_state.show_help_message = False
         st.rerun()
 
     if selected_stock_ID:
@@ -344,7 +350,29 @@ def main_predictions():
             # Add vertical space using HTML line breaks instead of horizontal rules
             st.markdown("<br>" * 1, unsafe_allow_html=True)
 
-            col1, col2, col3 = st.columns([1, 3, 1])  # Adjusted column ratios
+            col1, col2, col3 = st.columns([0.5, 3, 0.5])  # Adjusted column ratios
+
+            with col3:
+                if st.button("Help", help="Click to toggle help.", use_container_width=False):
+                    st.session_state.show_help_message = not st.session_state.show_help_message
+            
+            # Display help message below columns if toggled
+            if st.session_state.show_help_message:
+                # Add vertical space using HTML line breaks instead of horizontal rules
+                st.markdown("<br>" * 3, unsafe_allow_html=True)
+                st.info(
+                    """
+                    **Understanding the Prediction Bar:**
+
+                    - **Next 3h Prediction:** Indicates the anticipated price movement (Up ⬆️ or Down ⬇️) for the selected stock/ETF over the next approximately 3 hours.
+                    - **Certainty:** The model's confidence in this prediction, shown as a percentage. A higher percentage means greater confidence.
+                    - **Marker Position:** The white marker on the gradient bar visually represents this certainty. It moves from left (Down) to right (Up).
+                    - **Gradient Bar:** Ranges from red (strong Down prediction) to green (strong Up prediction).
+                    - **Raw Value:** The direct output from the prediction model (a value between 0.0 and 1.0). Values closer to 1.0 suggest an 'Up' movement, while values closer to 0.0 suggest a 'Down' movement. 0.5 is the neutral point.
+                    - **Help Button:** Click the Help button to toggle this message on or off.
+
+                    """
+                )
 
             with col2:
                 # --- Reverted marker position calculation ---
