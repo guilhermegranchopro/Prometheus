@@ -499,7 +499,7 @@ def main_predictions():
 
                 # Format the certainty percentage for display
                 marker_position_pct = pred_certainty * 100
-                certainty_display_text = f"{pred_certainty:.1%} Confidence in 'Up'"
+                certainty_display_text = f"{pred_certainty:.2%} Confidence in 'Up'"
 
                 # Ensure position is within bounds (0-100)
                 marker_position_pct = max(0, min(100, marker_position_pct))
