@@ -430,59 +430,59 @@ def main_predictions():
                 st.markdown("<br>" * 3, unsafe_allow_html=True)
                 
                 help_html = """
-                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border: 1px solid #2ECC71; border-radius: 8px; padding: 20px; background-color: #1A202C; color: #E2E8F0;">
-                    <h5 style="color: #2ECC71; margin-top: 0; margin-bottom: 15px; font-size: 1.2em;">
-                        <strong style="font-weight: 600;">How to Read the Prediction Bar</strong>
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border: 1px solid #3498DB; border-radius: 10px; padding: 25px; background-color: #1C2533; color: #EAEAEA; line-height: 1.6;">
+                    <h5 style="color: #3498DB; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; font-weight: 600; text-align: center; border-bottom: 1px solid #2C3E50; padding-bottom: 10px;">
+                        Understanding the Prediction Bar
                     </h5>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">Next ~3-Hour Forecast:</strong><br>
-                            Indicates whether our LSTM model predicts the stock/ETF price will be 
-                            <strong style="color: #48BB78;">Higher (Up ⬆️)</strong> or 
-                            <strong style="color: #F56565;">Lower (Down ⬇️)</strong> at the end of the ~3-hour prediction window, compared to its price at the start of the window.
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Next ~3-Hour Forecast:</strong><br>
+                            Indicates whether our <em>LSTM model</em> predicts the stock/ETF price will be 
+                            <strong style="color: #58D68D;">Higher (Up ⬆️)</strong> or 
+                            <strong style="color: #EC7063;">Lower (Down ⬇️)</strong> at the end of the ~3-hour prediction window, compared to its price at the start of the window.
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">Confidence in 'Up' (%):</strong><br>
-                            This is the model’s predicted probability (0–100%) that the price at the <strong style="color: #CBD5E0;">end of the ~3-hour window</strong> will be 
-                            <strong style="color: #48BB78;">higher</strong> than the price at the <strong style="color: #CBD5E0;">start of the window</strong>. A higher percentage signifies greater model confidence in this "Up" outcome.
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Confidence in 'Up' (%):</strong><br>
+                            This is the model’s predicted probability (0–100%) that the price at the <strong style="color: #D2B4DE;">end of the ~3-hour window</strong> will be 
+                            <strong style="color: #58D68D;">higher</strong> than the price at the <strong style="color: #D2B4DE;">start of the window</strong>. A higher percentage signifies greater model confidence in this "Up" outcome.
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">Raw Score:</strong><br>
-                            The model's direct output (a value between <strong style="color: #CBD5E0;">0.0</strong> and <strong style="color: #CBD5E0;">1.0</strong> via a sigmoid function), representing the confidence in an "Up" outcome:
-                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
-                                <li><strong style="color: #CBD5E0;">&gt; 0.5:</strong> Interpreted as a prediction that the price will be "Up" (higher at end of window).</li>
-                                <li><strong style="color: #CBD5E0;">&lt; 0.5:</strong> Interpreted as a prediction that the price will be "Down" (lower at end of window).</li>
-                                <li><strong style="color: #CBD5E0;">0.5:</strong> Neutral (equal chance of price being higher or lower).</li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Raw Score:</strong><br>
+                            The model's direct output (a value between <em style="color: #FAD7A0;">0.0</em> and <em style="color: #FAD7A0;">1.0</em> via a sigmoid function), representing the confidence in an "Up" outcome:
+                            <ul style="list-style-type: '→ '; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">&gt; 0.5:</strong> Interpreted as a prediction that the price will be "Up" (higher at end of window).</li>
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">&lt; 0.5:</strong> Interpreted as a prediction that the price will be "Down" (lower at end of window).</li>
+                                <li><strong style="color: #EAEAEA;">0.5:</strong> Neutral (equal chance of price being higher or lower).</li>
                             </ul>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">White Marker:</strong><br>
-                            Visually pinpoints the <strong style="color: #CBD5E0;">Raw Score</strong> on the color gradient bar. Its position reflects the model's confidence that the price will be higher at the end of the prediction window.
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">White Marker:</strong><br>
+                            Visually pinpoints the <em style="color: #FAD7A0;">Raw Score</em> on the color gradient bar. Its position reflects the model's confidence that the price will be higher at the end of the prediction window.
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">Color Gradient:</strong>
-                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
-                                <li><strong style="color: #F56565;">Deep Red (left):</strong> Corresponds to a Raw Score near 0.0, indicating very low confidence that the price will be "Up" (i.e., strong prediction for "Down").</li>
-                                <li><strong style="color: #48BB78;">Deep Green (right):</strong> Corresponds to a Raw Score near 1.0, indicating very high confidence that the price will be "Up".</li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Color Gradient:</strong>
+                            <ul style="list-style-type: '■ '; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EC7063;">Deep Red (left):</strong> Corresponds to a <em>Raw Score</em> near 0.0, indicating very low confidence that the price will be "Up" (i.e., strong prediction for "Down").</li>
+                                <li><strong style="color: #58D68D;">Deep Green (right):</strong> Corresponds to a <em>Raw Score</em> near 1.0, indicating very high confidence that the price will be "Up".</li>
                             </ul>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">Model Inputs:</strong><br>
-                            Our LSTM model is trained on two key microstructure features: 
-                            <strong style="color: #CBD5E0;">VWAP</strong> (Volume-Weighted Average Price) and 
-                            <strong style="color: #CBD5E0;">Trade Count</strong>. Data is sampled every 5 minutes over a 3-hour look-back window, incorporating both regular and extended trading hours.
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Model Inputs:</strong><br>
+                            Our <em>LSTM model</em> is trained on two key microstructure features: 
+                            <em style="color: #FAD7A0;">VWAP</em> (Volume-Weighted Average Price) and 
+                            <em style="color: #FAD7A0;">Trade Count</em>. Data is sampled every <em>5 minutes</em> over a 3-hour look-back window, incorporating both regular and extended trading hours.
                         </li>
-                        <li style="margin-bottom: 15px;">
-                            <strong style="color: #A0AEC0; font-weight: 600;">Prediction Validity & Timing:</strong><br>
-                            Prometheus's models use live market data aggregated into 5-minute intervals to generate real-time predictions for the next ~3 hours of market activity (skipping overnight closures from 00:00 to 08:00 UTC). You might notice a slight delay between the "Last Updated" time and the start of the prediction's validity window. This is due to two main factors:
-                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
-                                <li><strong style="color: #CBD5E0;">Data Feed Delay (Free Version):</strong> As you are using the free version of Prometheus, all live market data, including that used for predictions, has an inherent 15-minute delay. We still provide access to after-hours and pre-market data predictions, but this delay is standard for free-tier data feeds.</li>
-                                <li><strong style="color: #CBD5E0;">Data Aggregation Window:</strong> The model processes data in 5-minute chunks. It must wait for the current 5-minute interval to complete and its data to be aggregated before making a prediction based on that latest information.</li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Prediction Validity & Timing:</strong><br>
+                            Prometheus's models use live market data aggregated into <em>5-minute intervals</em> to generate real-time predictions for the next ~3 hours of market activity (skipping overnight closures from 00:00 to 08:00 UTC). You might notice a slight delay between the "Last Updated" time and the start of the prediction's validity window. This is due to two main factors:
+                            <ul style="list-style-type: '• '; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">Data Feed Delay (<em>Free Version</em>):</strong> As you are using the <em>Free Version</em> of Prometheus, all live market data, including that used for predictions, has an inherent <em>15-minute delay</em>. We still provide access to after-hours and pre-market data predictions, but this delay is standard for free-tier data feeds.</li>
+                                <li><strong style="color: #EAEAEA;">Data Aggregation Window:</strong> The model processes data in <em>5-minute chunks</em>. It must wait for the current <em>5-minute interval</em> to complete and its data to be aggregated before making a prediction based on that latest information.</li>
                             </ul>
                             This ensures that predictions are based on the most recently completed dataset.
                         </li>
                     </ul>
-                    <p style="font-size: 0.9em; color: #718096; margin-bottom: 0; text-align: center;">
+                    <p style="font-size: 0.95em; color: #ABB2B9; margin-top: 20px; margin-bottom: 0; text-align: center; border-top: 1px solid #2C3E50; paddingTop: 15px;">
                         Click <strong>Help</strong> again to hide this message.
                     </p>
                 </div>
