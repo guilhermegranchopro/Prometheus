@@ -160,6 +160,11 @@ def get_alpaca_api():
     BASE_URL = "https://api.alpaca.markets"
     return tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
+def get_alpaca_clock():
+    api = get_alpaca_api()
+    clock = api.get_clock()
+    return clock
+
 def get_data(stock_ID):
     api = get_alpaca_api()
 
@@ -300,56 +305,90 @@ def get_clock_emoji(dt_object):
     emoji_index = hour % 12
     return clock_emojis[emoji_index]
 
-def add_hours_skipping_night(start: pd.Timestamp, hours: float) -> pd.Timestamp:
+def add_hours_skipping_dynamic(
+    start_ts: pd.Timestamp,
+    hours: float,
+    dynamic_blackout: tuple[pd.Timestamp, pd.Timestamp] | None = None
+) -> pd.Timestamp:
     """
-    Add `hours` to `start`, but never count any time between 00:00 and 08:00.
+    Add `hours` to start_ts, skipping exactly one dynamic blackout:
+    1) If start_ts is inside the blackout, warp to its end.
+    2) If start_ts is before the blackout start, consume up to it,
+        subtracting that from `hours`.
+    3) Jump to blackout end, then add whatever remains.
     """
-    current = start
+    current = start_ts
     remaining = hours
-    while remaining > 0:
-        # 1) If we're in the blackout (00:00–08:00), jump to 08:00 that same day
-        if current.hour < 8:
-            current = current.normalize() + timedelta(hours=8)
 
-        # 2) Otherwise, we have until midnight to work with
-        end_of_day = current.normalize() + timedelta(days=1)
-        available = (end_of_day - current).total_seconds() / 3600.0
+    if dynamic_blackout:
+        db_start, db_end = dynamic_blackout
 
-        # 3) Consume whichever is smaller: what's left today, or what you still need
-        to_add = min(available, remaining)
-        current += timedelta(hours=to_add)
-        remaining -= to_add
+        # 1) If we begin inside the blackout, warp to its end
+        if db_start <= current < db_end:
+            current = db_end
 
-        # 4) If you still have time to add, skip the next 00:00–08:00 and loop
-        if remaining > 0:
-            current = current.normalize() + timedelta(days=1, hours=8)
+        # 2) If we begin before the blackout, consume up to its start
+        if current < db_start:
+            # hours available before blackout
+            avail = (db_start - current).total_seconds() / 3600.0
+            if remaining <= avail:
+                # we can finish entirely before blackout
+                return current + timedelta(hours=remaining)
+            # else consume up to the blackout start...
+            remaining -= avail
+            # ...and warp to the blackout end
+            current = db_end
 
-    return current
+    # 3) No blackout (or we've just jumped past it): finish adding
+    return current + timedelta(hours=remaining)
 
-def get_prediction_timewindow(data, hours=3):
+
+def get_prediction_timewindow_utc(
+    data: pd.DataFrame,
+    status,
+    clock,
+    hours_to_add: float = 3,
+    pre_open_offset: float = 5.5
+) -> str:
     """
-    Return a human-friendly prediction window string, skipping 00:00–08:00.
-    Shows the date only once if start/end are on the same day.
+    Returns a UTC‐based prediction window string, applying only:
+    • one dynamic blackout [next-midnight UTC, next_open–offset)
+        if in after‐hours/closed.
+    Prints the date only once when start & end share the same day.
     """
-    start_ts = data.index[-1]
-    end_ts   = add_hours_skipping_night(start_ts, hours)
+    def ensure_utc(ts):
+        ts = pd.to_datetime(ts)
+        return ts.tz_localize('UTC') if ts.tzinfo is None else ts.tz_convert('UTC')
 
-    # Formats
-    date_fmt = "%b %-d"            # e.g. “May 9”
-    time_fmt = "%-I:%M %p"     # e.g. “ at 10:30 PM”
+    # 1) Normalize inputs to UTC
+    last_ts    = ensure_utc(data.index[-1])
 
-    start_date = start_ts.strftime(date_fmt)
-    start_time = start_ts.strftime(time_fmt)
-    end_date   = end_ts.strftime(date_fmt)
-    end_time   = end_ts.strftime(time_fmt)
+    next_open  = ensure_utc(clock.next_open)
 
-    if start_date == end_date:
-        # Same day → show date once
-        return (f"Prediction valid from {start_date} at {start_time} until {end_time} (UTC)")
+    # 2) Build dynamic blackout when in after-hours:
+    #    from the NEXT UTC midnight after 'now'
+    #    until (next_open – pre_open_offset)
+    if "after hours" in status or "closed" in status:
+        db_start = (last_ts + timedelta(days=1)).normalize()
+        db_end   = next_open - timedelta(hours=pre_open_offset)
+        dynamic_blackout = (db_start, db_end)
     else:
-        # Different days → show full date+time for each
-        return (f"Prediction valid from {start_date} at {start_time}"
-                f" until {end_date} at {end_time} (UTC)")
+        dynamic_blackout = None
+
+    # 3) Compute end timestamp, skipping that blackout
+    end_ts = add_hours_skipping_dynamic(last_ts, hours_to_add, dynamic_blackout)
+
+    # 4) Format in UTC, date only once if same day
+    date_fmt = "%b %-d"             # e.g. "May 9"
+    time_fmt = "%-I:%M %p"  # e.g. " at 02:20 PM UTC"
+
+    s_date, s_time = last_ts.strftime(date_fmt), last_ts.strftime(time_fmt)
+    e_date, e_time = end_ts.strftime(date_fmt),   end_ts.strftime(time_fmt)
+
+    if s_date == e_date:
+        return f"Prediction valid from {s_date}, {s_time} until {e_time} (UTC)"
+    else:
+        return f"Prediction valid from {s_date}, {s_time} until {e_date}, {e_time} (UTC)"
 
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
@@ -511,7 +550,7 @@ def main_predictions():
                         {selected_stock_ID} Price Movement Forecast
                     </div>
                     <div style="font-size: 0.9em; color: #B0B0B0;">
-                        Next ~3 Hours: {get_prediction_timewindow(df_live)}
+                        {get_prediction_timewindow_utc(df_live, market_status, get_alpaca_clock())}
                     </div>
                 </div>
 
