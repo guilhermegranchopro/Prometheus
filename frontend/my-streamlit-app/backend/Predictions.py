@@ -437,40 +437,49 @@ def main_predictions():
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 12px;">
                             <strong style="color: #A0AEC0; font-weight: 600;">Next ~3-Hour Forecast:</strong><br>
-                            Indicates whether our LSTM model predicts the stock/ETF price to move 
-                            <strong style="color: #48BB78;">Up ⬆️</strong> or 
-                            <strong style="color: #F56565;">Down ⬇️</strong> within the next approximately 3 hours of market activity.
+                            Indicates whether our LSTM model predicts the stock/ETF price will be 
+                            <strong style="color: #48BB78;">Higher (Up ⬆️)</strong> or 
+                            <strong style="color: #F56565;">Lower (Down ⬇️)</strong> at the end of the ~3-hour prediction window, compared to its price at the start of the window.
                         </li>
                         <li style="margin-bottom: 12px;">
                             <strong style="color: #A0AEC0; font-weight: 600;">Confidence in 'Up' (%):</strong><br>
-                            This is the model’s predicted probability (0–100%) that the price will move 
-                            <strong style="color: #48BB78;">Up</strong>. A higher percentage signifies greater model confidence in an upward trend.
+                            This is the model’s predicted probability (0–100%) that the price at the <strong style="color: #CBD5E0;">end of the ~3-hour window</strong> will be 
+                            <strong style="color: #48BB78;">higher</strong> than the price at the <strong style="color: #CBD5E0;">start of the window</strong>. A higher percentage signifies greater model confidence in this "Up" outcome.
                         </li>
                         <li style="margin-bottom: 12px;">
                             <strong style="color: #A0AEC0; font-weight: 600;">Raw Score:</strong><br>
-                            The model's direct output, a value between <strong style="color: #CBD5E0;">0.0</strong> and <strong style="color: #CBD5E0;">1.0</strong> (from a sigmoid function):
+                            The model's direct output (a value between <strong style="color: #CBD5E0;">0.0</strong> and <strong style="color: #CBD5E0;">1.0</strong> via a sigmoid function), representing the confidence in an "Up" outcome:
                             <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
-                                <li><strong style="color: #CBD5E0;">&gt; 0.5:</strong> Interpreted as an "Up" signal.</li>
-                                <li><strong style="color: #CBD5E0;">&lt; 0.5:</strong> Interpreted as a "Down" signal.</li>
-                                <li><strong style="color: #CBD5E0;">0.5:</strong> Neutral.</li>
+                                <li><strong style="color: #CBD5E0;">&gt; 0.5:</strong> Interpreted as a prediction that the price will be "Up" (higher at end of window).</li>
+                                <li><strong style="color: #CBD5E0;">&lt; 0.5:</strong> Interpreted as a prediction that the price will be "Down" (lower at end of window).</li>
+                                <li><strong style="color: #CBD5E0;">0.5:</strong> Neutral (equal chance of price being higher or lower).</li>
                             </ul>
                         </li>
                         <li style="margin-bottom: 12px;">
                             <strong style="color: #A0AEC0; font-weight: 600;">White Marker:</strong><br>
-                            Visually pinpoints the <strong style="color: #CBD5E0;">Raw Score</strong> on the color gradient bar, representing the model's confidence in an "Up" movement.
+                            Visually pinpoints the <strong style="color: #CBD5E0;">Raw Score</strong> on the color gradient bar. Its position reflects the model's confidence that the price will be higher at the end of the prediction window.
                         </li>
                         <li style="margin-bottom: 12px;">
                             <strong style="color: #A0AEC0; font-weight: 600;">Color Gradient:</strong>
                             <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
-                                <li><strong style="color: #F56565;">Deep Red (left):</strong> Corresponds to a Raw Score near 0.0, indicating a very strong "Down" signal (low confidence in "Up").</li>
-                                <li><strong style="color: #48BB78;">Deep Green (right):</strong> Corresponds to a Raw Score near 1.0, indicating a very strong "Up" signal (high confidence in "Up").</li>
+                                <li><strong style="color: #F56565;">Deep Red (left):</strong> Corresponds to a Raw Score near 0.0, indicating very low confidence that the price will be "Up" (i.e., strong prediction for "Down").</li>
+                                <li><strong style="color: #48BB78;">Deep Green (right):</strong> Corresponds to a Raw Score near 1.0, indicating very high confidence that the price will be "Up".</li>
                             </ul>
                         </li>
-                        <li style="margin-bottom: 15px;">
+                        <li style="margin-bottom: 12px;">
                             <strong style="color: #A0AEC0; font-weight: 600;">Model Inputs:</strong><br>
                             Our LSTM model is trained on two key microstructure features: 
                             <strong style="color: #CBD5E0;">VWAP</strong> (Volume-Weighted Average Price) and 
                             <strong style="color: #CBD5E0;">Trade Count</strong>. Data is sampled every 5 minutes over a 3-hour look-back window, incorporating both regular and extended trading hours.
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">Prediction Validity & Timing:</strong><br>
+                            Prometheus's models use live market data aggregated into 5-minute intervals to generate real-time predictions for the next ~3 hours of market activity (skipping overnight closures from 00:00 to 08:00 UTC). You might notice a slight delay between the "Last Updated" time and the start of the prediction's validity window. This is due to two main factors:
+                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
+                                <li><strong style="color: #CBD5E0;">Data Feed Delay (Free Version):</strong> As you are using the free version of Prometheus, all live market data, including that used for predictions, has an inherent 15-minute delay. We still provide access to after-hours and pre-market data predictions, but this delay is standard for free-tier data feeds.</li>
+                                <li><strong style="color: #CBD5E0;">Data Aggregation Window:</strong> The model processes data in 5-minute chunks. It must wait for the current 5-minute interval to complete and its data to be aggregated before making a prediction based on that latest information.</li>
+                            </ul>
+                            This ensures that predictions are based on the most recently completed dataset.
                         </li>
                     </ul>
                     <p style="font-size: 0.9em; color: #718096; margin-bottom: 0; text-align: center;">
