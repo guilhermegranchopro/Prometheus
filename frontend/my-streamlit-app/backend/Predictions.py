@@ -475,7 +475,7 @@ def main_predictions():
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 18px;">
                             <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Next 3 Hours of Market Activity Forecast:</strong><br>
-                            Indicates whether our <em>Prometheus Models</em> predicts the stock/ETF price will be 
+                            Indicates whether our <em>Prometheus</em> Models predicts the stock/ETF price will be 
                             <strong style="color: #58D68D;">Higher (Up ⬆️)</strong> or 
                             <strong style="color: #EC7063;">Lower (Down ⬇️)</strong> at the end of the 3 hours of market activity prediction window, compared to its price at the start of the window.
                         </li>
@@ -506,18 +506,21 @@ def main_predictions():
                         </li>
                         <li style="margin-bottom: 18px;">
                             <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Model Inputs:</strong><br>
-                            Our <em>Prometheus Models</em> is trained on two key microstructure features: 
+                            Our <em>Prometheus</em> Models is trained on two key microstructure features: 
                             <em style="color: #FAD7A0;">VWAP</em> (Volume-Weighted Average Price) and 
                             <em style="color: #FAD7A0;">Trade Count</em>. Data is sampled every <em>5 minutes</em> over a 3-hour look-back window, incorporating both regular and extended trading hours.
                         </li>
                         <li style="margin-bottom: 18px;">
                             <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Prediction Validity & Timing:</strong><br>
-                            Prometheus's models use live market data aggregated into <em>5-minute intervals</em> to generate real-time predictions for the next ~3 hours of market activity (skipping overnight closures from 00:00 to 08:00 UTC). You might notice a slight delay between the "Last Updated" time and the start of the prediction's validity window. This is due to two main factors:
-                            <ul style="list-style-type: '• '; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
-                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">Data Feed Delay (<em>Free Version</em>):</strong> As you are using the <em>Free Version</em> of Prometheus, all live market data, including that used for predictions, has an inherent <em>15-minute delay</em>. We still provide access to after-hours and pre-market data predictions, but this delay is standard for free-tier data feeds.</li>
-                                <li><strong style="color: #EAEAEA;">Data Aggregation Window:</strong> The model processes data in <em>5-minute chunks</em>. It must wait for the current <em>5-minute interval</em> to complete and its data to be aggregated before making a prediction based on that latest information.</li>
+                            <em>Prometheus</em>\\\'s models use live market data aggregated into <em>5-minute intervals</em> to generate real-time predictions for the next ~3 hours of market activity. You might notice a slight delay between the "Last Updated" time and the start of the prediction\\\'s validity window. This is due to two main factors:
+                            <ul style="list-style-type: \\\'• \\\'; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">Data Feed Delay (<em>Free Version</em>):</strong> As you are using the <em>Free Version</em> of <em>Prometheus</em>, all live market data, including that used for predictions, has an inherent <em>15-minute delay</em>. We still provide access to after-hours and pre-market data predictions, but this delay is standard for free-tier data feeds.</li>
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">Data Aggregation Window:</strong> The model processes data in <em>5-minute chunks</em>. It must wait for the current <em>5-minute interval</em> to complete and its data to be aggregated before making a prediction based on that latest information.</li>
+                                <li style="margin-bottom: 5px;">
+                                    <strong style="color: #EAEAEA;">Market Activity Window:</strong> The ~3-hour prediction window specifically refers to <strong style="color: #FAD7A0;"><em>market activity hours</em></strong>. This means that <em>Prometheus</em> models intelligently leap over periods when the market is fully closed (e.g., overnight, weekends, and holidays). For instance, a prediction might state: <code style="background-color: #2C3E50; color: #EAEAEA; padding: 2px 5px; border-radius: 3px;">Prediction valid from May 9, 11:20 PM until May 12, 10:20 AM (UTC)</code>. In this scenario, the model has skipped the weekend closure (e.g., after-hours ending Friday night and pre-market opening Monday morning), ensuring the 3-hour forecast only considers time when trading is possible.
+                                </li>
                             </ul>
-                            This ensures that predictions are based on the most recently completed dataset.
+                            This ensures that predictions are based on the most recently completed dataset and reflect the next period of actual market operation.
                         </li>
                     </ul>
                     <p style="font-size: 0.95em; color: #ABB2B9; margin-top: 20px; margin-bottom: 0; text-align: center; border-top: 1px solid #2C3E50; paddingTop: 15px;">
