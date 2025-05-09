@@ -154,16 +154,19 @@ def get_paths(stock_ID):
 
     return None, None
 
+
 def get_alpaca_api():
     API_KEY = os.getenv("ALPACA_API_KEY")
     SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
     BASE_URL = "https://api.alpaca.markets"
     return tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
+
 def get_alpaca_clock():
     api = get_alpaca_api()
     clock = api.get_clock()
     return clock
+
 
 def get_data(stock_ID):
     api = get_alpaca_api()
@@ -177,6 +180,7 @@ def get_data(stock_ID):
     data = api.get_bars(stock_ID, "5Min", start=start_date, feed="sip").df.tail(df_size)
 
     return data
+
 
 def get_trading_hours(POLYGON_API):
     num_of_keys = 5
@@ -305,10 +309,11 @@ def get_clock_emoji(dt_object):
     emoji_index = hour % 12
     return clock_emojis[emoji_index]
 
+
 def add_hours_skipping_dynamic(
     start_ts: pd.Timestamp,
     hours: float,
-    dynamic_blackout: tuple[pd.Timestamp, pd.Timestamp] | None = None
+    dynamic_blackout: tuple[pd.Timestamp, pd.Timestamp] | None = None,
 ) -> pd.Timestamp:
     """
     Add `hours` to start_ts, skipping exactly one dynamic blackout:
@@ -348,7 +353,7 @@ def get_prediction_timewindow_utc(
     status,
     clock,
     hours_to_add: float = 3,
-    pre_open_offset: float = 5.5
+    pre_open_offset: float = 5.5,
 ) -> str:
     """
     Returns a UTC‐based prediction window string, applying only:
@@ -356,21 +361,22 @@ def get_prediction_timewindow_utc(
         if in after‐hours/closed.
     Prints the date only once when start & end share the same day.
     """
+
     def ensure_utc(ts):
         ts = pd.to_datetime(ts)
-        return ts.tz_localize('UTC') if ts.tzinfo is None else ts.tz_convert('UTC')
+        return ts.tz_localize("UTC") if ts.tzinfo is None else ts.tz_convert("UTC")
 
     # 1) Normalize inputs to UTC
-    last_ts    = ensure_utc(data.index[-1])
+    last_ts = ensure_utc(data.index[-1])
 
-    next_open  = ensure_utc(clock.next_open)
+    next_open = ensure_utc(clock.next_open)
 
     # 2) Build dynamic blackout when in after-hours:
     #    from the NEXT UTC midnight after 'now'
     #    until (next_open – pre_open_offset)
     if "after hours" in status or "closed" in status:
         db_start = (last_ts + timedelta(days=1)).normalize()
-        db_end   = next_open - timedelta(hours=pre_open_offset)
+        db_end = next_open - timedelta(hours=pre_open_offset)
         dynamic_blackout = (db_start, db_end)
     else:
         dynamic_blackout = None
@@ -379,16 +385,19 @@ def get_prediction_timewindow_utc(
     end_ts = add_hours_skipping_dynamic(last_ts, hours_to_add, dynamic_blackout)
 
     # 4) Format in UTC, date only once if same day
-    date_fmt = "%b %-d"             # e.g. "May 9"
+    date_fmt = "%b %-d"  # e.g. "May 9"
     time_fmt = "%-I:%M %p"  # e.g. " at 02:20 PM UTC"
 
     s_date, s_time = last_ts.strftime(date_fmt), last_ts.strftime(time_fmt)
-    e_date, e_time = end_ts.strftime(date_fmt),   end_ts.strftime(time_fmt)
+    e_date, e_time = end_ts.strftime(date_fmt), end_ts.strftime(time_fmt)
 
     if s_date == e_date:
         return f"Prediction valid from {s_date}, {s_time} until {e_time} (UTC)"
     else:
-        return f"Prediction valid from {s_date}, {s_time} until {e_date}, {e_time} (UTC)"
+        return (
+            f"Prediction valid from {s_date}, {s_time} until {e_date}, {e_time} (UTC)"
+        )
+
 
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
@@ -466,7 +475,7 @@ def main_predictions():
             if st.session_state.show_help_message:
                 # Add vertical space using HTML line breaks instead of horizontal rules
                 st.markdown("<br>" * 3, unsafe_allow_html=True)
-                
+
                 help_html = """
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border: 1px solid #3498DB; border-radius: 10px; padding: 25px; background-color: #1C2533; color: #EAEAEA; line-height: 1.6;">
                     <h5 style="color: #3498DB; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; font-weight: 600; text-align: center; border-bottom: 1px solid #2C3E50; padding-bottom: 10px;">
@@ -531,7 +540,6 @@ def main_predictions():
                 st.markdown(help_html, unsafe_allow_html=True)
 
             with col2:
-
                 # --- Reverted marker position calculation ---
                 # Calculate marker position based on certainty and class
                 if pred_class == 1:  # Up
@@ -566,7 +574,7 @@ def main_predictions():
                             {certainty_display_text}
                         </div>
                         <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 5px; height: 45px; background-color: #FFFFFF; border-radius: 3px; box-shadow: 0 0 8px rgba(0,0,0,0.5); z-index: 10;"></div>
-                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -35px; transform: translateX(-50%); font-size: 2em; color: {'#4CAF50' if pred_class == 1 else '#F44336'};">
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -35px; transform: translateX(-50%); font-size: 2em; color: {"#4CAF50" if pred_class == 1 else "#F44336"};">
                             {"▲" if pred_class == 1 else "▼"}
                         </div>
                     </div>
