@@ -1,6 +1,7 @@
 pandas
 joblib
 alpaca-trade-api
+polygon-api-client
 fuzzywuzzy
 numpy
 scikit-learn

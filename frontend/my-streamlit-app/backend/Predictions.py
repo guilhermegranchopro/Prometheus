@@ -6,7 +6,7 @@ import contextlib
 import numpy as np
 import joblib
 import alpaca_trade_api as tradeapi
-from polygon import RESTClient
+from polygon.rest import RESTClient  # Corrected import for polygon-api-client
 import pandas as pd
 from datetime import datetime, timezone, timedelta
 import plotly.express as px
