@@ -336,7 +336,7 @@ def get_prediction_timewindow(data, hours=3):
 
     # Formats
     date_fmt = "%b %-d"            # e.g. “May 9”
-    time_fmt = " at %-I:%M %p"     # e.g. “ at 10:30 PM”
+    time_fmt = "%-I:%M %p"     # e.g. “ at 10:30 PM”
 
     start_date = start_ts.strftime(date_fmt)
     start_time = start_ts.strftime(time_fmt)
@@ -345,12 +345,11 @@ def get_prediction_timewindow(data, hours=3):
 
     if start_date == end_date:
         # Same day → show date once
-        return (f"Prediction valid from {start_date}"
-                f"{start_time} until{end_time} (UTC)")
+        return (f"Prediction valid from {start_date} at {start_time} until {end_time} (UTC)")
     else:
         # Different days → show full date+time for each
-        return (f"Prediction valid from {start_date}{start_time}"
-                f" until {end_date}{end_time} (UTC)")
+        return (f"Prediction valid from {start_date} at {start_time}"
+                f" until {end_date} at {end_time} (UTC)")
 
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
