@@ -154,16 +154,17 @@ def get_paths(stock_ID):
 
     return None, None
 
-
-def get_data(stock_ID):
+def get_alpaca_api():
     API_KEY = os.getenv("ALPACA_API_KEY")
     SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
     BASE_URL = "https://api.alpaca.markets"
+    return tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
+
+def get_data(stock_ID):
+    api = get_alpaca_api()
 
     delay_safe_df = 5
     df_size = 36
-
-    api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
     now = datetime.now(timezone.utc)
     start_date = (now - timedelta(days=delay_safe_df)).isoformat()
@@ -171,7 +172,6 @@ def get_data(stock_ID):
     data = api.get_bars(stock_ID, "5Min", start=start_date, feed="sip").df.tail(df_size)
 
     return data
-
 
 def get_trading_hours(POLYGON_API):
     num_of_keys = 5
@@ -299,7 +299,6 @@ def get_clock_emoji(dt_object):
     # Hour 11 and 23 should use 🕚 (index 11)
     emoji_index = hour % 12
     return clock_emojis[emoji_index]
-
 
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
