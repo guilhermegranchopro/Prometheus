@@ -300,6 +300,58 @@ def get_clock_emoji(dt_object):
     emoji_index = hour % 12
     return clock_emojis[emoji_index]
 
+def add_hours_skipping_night(start: pd.Timestamp, hours: float) -> pd.Timestamp:
+    """
+    Add `hours` to `start`, but never count any time between 00:00 and 08:00.
+    """
+    current = start
+    remaining = hours
+    while remaining > 0:
+        # 1) If we're in the blackout (00:00–08:00), jump to 08:00 that same day
+        if current.hour < 8:
+            current = current.normalize() + timedelta(hours=8)
+
+        # 2) Otherwise, we have until midnight to work with
+        end_of_day = current.normalize() + timedelta(days=1)
+        available = (end_of_day - current).total_seconds() / 3600.0
+
+        # 3) Consume whichever is smaller: what's left today, or what you still need
+        to_add = min(available, remaining)
+        current += timedelta(hours=to_add)
+        remaining -= to_add
+
+        # 4) If you still have time to add, skip the next 00:00–08:00 and loop
+        if remaining > 0:
+            current = current.normalize() + timedelta(days=1, hours=8)
+
+    return current
+
+def get_prediction_timewindow(data, hours=3):
+    """
+    Return a human-friendly prediction window string, skipping 00:00–08:00.
+    Shows the date only once if start/end are on the same day.
+    """
+    start_ts = data.index[-1]
+    end_ts   = add_hours_skipping_night(start_ts, hours)
+
+    # Formats
+    date_fmt = "%b %-d"            # e.g. “May 9”
+    time_fmt = " at %-I:%M %p"     # e.g. “ at 10:30 PM”
+
+    start_date = start_ts.strftime(date_fmt)
+    start_time = start_ts.strftime(time_fmt)
+    end_date   = end_ts.strftime(date_fmt)
+    end_time   = end_ts.strftime(time_fmt)
+
+    if start_date == end_date:
+        # Same day → show date once
+        return (f"Prediction valid from {start_date}"
+                f"{start_time} until{end_time} (UTC)")
+    else:
+        # Different days → show full date+time for each
+        return (f"Prediction valid from {start_date}{start_time}"
+                f" until {end_date}{end_time} (UTC)")
+
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
@@ -407,6 +459,7 @@ def main_predictions():
                 )
 
             with col2:
+
                 # --- Reverted marker position calculation ---
                 # Calculate marker position based on certainty and class
                 if pred_class == 1:  # Up
@@ -424,7 +477,7 @@ def main_predictions():
                 # Custom HTML/CSS for the prediction bar
                 bar_html = f"""
                 <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
-                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{pd.to_datetime(current_utc_time - timedelta(minutes=15)).strftime("%H:%M")} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime("%H:%M")} (UTC)
+                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{get_prediction_timewindow(df_live)}
                 </div>
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
                     <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
