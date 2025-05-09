@@ -474,10 +474,10 @@ def main_predictions():
                     </h5>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 18px;">
-                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Next ~3-Hour Forecast:</strong><br>
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Next 3 Hours of Market Activity Forecast:</strong><br>
                             Indicates whether our <em>LSTM model</em> predicts the stock/ETF price will be 
                             <strong style="color: #58D68D;">Higher (Up ⬆️)</strong> or 
-                            <strong style="color: #EC7063;">Lower (Down ⬇️)</strong> at the end of the ~3-hour prediction window, compared to its price at the start of the window.
+                            <strong style="color: #EC7063;">Lower (Down ⬇️)</strong> at the end of the 3 hours of market activity prediction window, compared to its price at the start of the window.
                         </li>
                         <li style="margin-bottom: 18px;">
                             <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Confidence in 'Up' (%):</strong><br>
