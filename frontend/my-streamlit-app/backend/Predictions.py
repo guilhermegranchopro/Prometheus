@@ -484,6 +484,8 @@ def main_predictions():
                         Next ~3 Hours: {get_prediction_timewindow(df_live)}
                     </div>
                 </div>
+
+                <br>
                 
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 40px; margin-top: 20px;">
                     <span style="color: #FF7F7F; font-weight: bold; font-size: 1.2em; margin-right: 10px;">⬇️ Down</span>
