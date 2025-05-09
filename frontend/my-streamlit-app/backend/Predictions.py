@@ -479,6 +479,7 @@ def main_predictions():
                 <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
                     Next 3h {selected_stock_ID} Price Movement Prediction<br>{get_prediction_timewindow(df_live)}
                 </div>
+                <br>
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
                     <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
                     <div style="position: relative; height: 45px; flex-grow: 1; border-radius: 5px; background: linear-gradient(to right, #b71c1c, #1b5e20); box-sizing: border-box;">
