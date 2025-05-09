@@ -428,35 +428,57 @@ def main_predictions():
             if st.session_state.show_help_message:
                 # Add vertical space using HTML line breaks instead of horizontal rules
                 st.markdown("<br>" * 3, unsafe_allow_html=True)
-                st.info(
-                    """
-                **How to Read the Prediction Bar**
-
-                - **Next 3-Hour Forecast**  
-                Shows whether our LSTM model expects the stock/ETF to go **Up ⬆️** or **Down ⬇️** over the next ~3 hours.
-
-                - **Confidence (%)**  
-                The model’s predicted probability (0–100%) that the price will move **Up**. A higher percentage means more certainty.
-
-                - **Raw Score**  
-                Under the hood, the model outputs a value between **0.0** and **1.0** via a sigmoid:  
-                    - **> 0.5** → “Up”  
-                    - **< 0.5** → “Down”  
-                    - **0.5** → Neutral
-
-                - **White Marker**  
-                Pinpoints the raw score on the gradient bar.
-
-                - **Color Gradient:**  
-                    - **Red:** at 0.0 = very strong “Down” signal  
-                    - **Green:** at 1.0 = very strong “Up” signal
-
-                - **Model Inputs**  
-                We train our LSTM on two microstructure features—**VWAP** (volume-weighted average price) and **Trade Count**—sampled every 5 minutes over a 3-hour look-back window, using both regular and extended-hours data.
-
-                Click **Help** again to hide this message.
-                        """
-                )
+                
+                help_html = """
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border: 1px solid #2ECC71; border-radius: 8px; padding: 20px; background-color: #1A202C; color: #E2E8F0;">
+                    <h5 style="color: #2ECC71; margin-top: 0; margin-bottom: 15px; font-size: 1.2em;">
+                        <strong style="font-weight: 600;">How to Read the Prediction Bar</strong>
+                    </h5>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                        <li style="margin-bottom: 12px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">Next ~3-Hour Forecast:</strong><br>
+                            Indicates whether our LSTM model predicts the stock/ETF price to move 
+                            <strong style="color: #48BB78;">Up ⬆️</strong> or 
+                            <strong style="color: #F56565;">Down ⬇️</strong> within the next approximately 3 hours of market activity.
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">Confidence in 'Up' (%):</strong><br>
+                            This is the model’s predicted probability (0–100%) that the price will move 
+                            <strong style="color: #48BB78;">Up</strong>. A higher percentage signifies greater model confidence in an upward trend.
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">Raw Score:</strong><br>
+                            The model's direct output, a value between <strong style="color: #CBD5E0;">0.0</strong> and <strong style="color: #CBD5E0;">1.0</strong> (from a sigmoid function):
+                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
+                                <li><strong style="color: #CBD5E0;">&gt; 0.5:</strong> Interpreted as an "Up" signal.</li>
+                                <li><strong style="color: #CBD5E0;">&lt; 0.5:</strong> Interpreted as a "Down" signal.</li>
+                                <li><strong style="color: #CBD5E0;">0.5:</strong> Neutral.</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">White Marker:</strong><br>
+                            Visually pinpoints the <strong style="color: #CBD5E0;">Raw Score</strong> on the color gradient bar, representing the model's confidence in an "Up" movement.
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">Color Gradient:</strong>
+                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
+                                <li><strong style="color: #F56565;">Deep Red (left):</strong> Corresponds to a Raw Score near 0.0, indicating a very strong "Down" signal (low confidence in "Up").</li>
+                                <li><strong style="color: #48BB78;">Deep Green (right):</strong> Corresponds to a Raw Score near 1.0, indicating a very strong "Up" signal (high confidence in "Up").</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <strong style="color: #A0AEC0; font-weight: 600;">Model Inputs:</strong><br>
+                            Our LSTM model is trained on two key microstructure features: 
+                            <strong style="color: #CBD5E0;">VWAP</strong> (Volume-Weighted Average Price) and 
+                            <strong style="color: #CBD5E0;">Trade Count</strong>. Data is sampled every 5 minutes over a 3-hour look-back window, incorporating both regular and extended trading hours.
+                        </li>
+                    </ul>
+                    <p style="font-size: 0.9em; color: #718096; margin-bottom: 0; text-align: center;">
+                        Click <strong>Help</strong> again to hide this message.
+                    </p>
+                </div>
+                """
+                st.markdown(help_html, unsafe_allow_html=True)
 
             with col2:
 
