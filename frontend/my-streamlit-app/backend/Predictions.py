@@ -475,7 +475,7 @@ def main_predictions():
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 18px;">
                             <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Next 3 Hours of Market Activity Forecast:</strong><br>
-                            Indicates whether our <em>LSTM model</em> predicts the stock/ETF price will be 
+                            Indicates whether our <em>Prometheus Models</em> predicts the stock/ETF price will be 
                             <strong style="color: #58D68D;">Higher (Up ⬆️)</strong> or 
                             <strong style="color: #EC7063;">Lower (Down ⬇️)</strong> at the end of the 3 hours of market activity prediction window, compared to its price at the start of the window.
                         </li>
@@ -506,7 +506,7 @@ def main_predictions():
                         </li>
                         <li style="margin-bottom: 18px;">
                             <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Model Inputs:</strong><br>
-                            Our <em>LSTM model</em> is trained on two key microstructure features: 
+                            Our <em>Prometheus Models</em> is trained on two key microstructure features: 
                             <em style="color: #FAD7A0;">VWAP</em> (Volume-Weighted Average Price) and 
                             <em style="color: #FAD7A0;">Trade Count</em>. Data is sampled every <em>5 minutes</em> over a 3-hour look-back window, incorporating both regular and extended trading hours.
                         </li>
