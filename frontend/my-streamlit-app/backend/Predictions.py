@@ -418,7 +418,7 @@ def main_predictions():
 
             with col3:
                 if st.button(
-                    "Help", help="Click to toggle help.", use_container_width=False
+                    "Help", help="Click to get help.", use_container_width=False
                 ):
                     st.session_state.show_help_message = (
                         not st.session_state.show_help_message
