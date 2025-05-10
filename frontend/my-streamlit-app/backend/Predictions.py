@@ -446,7 +446,7 @@ def main_predictions():
         elif "after hours" in market_status:
             st.warning("⏳ Market Status: The market is open for after-hours trading.")
         else:
-            st.error(f"⛔ Market Status: The market is {market_status}")
+            st.error(f"⛔ Market Status: {market_status}")
 
         # Only proceed with predictions if market status was fetched successfully
         if not market_status.startswith("Error:"):
