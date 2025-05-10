@@ -1,4 +1,4 @@
-# Prometheus
+# 🔥 Prometheus
 
 <div align="center">
   <img src="Assets/Images/logo.jpg" alt="Prometheus Logo" width="700"/>
