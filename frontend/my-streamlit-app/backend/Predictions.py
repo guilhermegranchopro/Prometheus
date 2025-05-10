@@ -155,15 +155,24 @@ def get_paths(stock_ID):
     return None, None
 
 
-def get_data(stock_ID):
+def get_alpaca_api():
     API_KEY = os.getenv("ALPACA_API_KEY")
     SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
     BASE_URL = "https://api.alpaca.markets"
+    return tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
+
+
+def get_alpaca_clock():
+    api = get_alpaca_api()
+    clock = api.get_clock()
+    return clock
+
+
+def get_data(stock_ID):
+    api = get_alpaca_api()
 
     delay_safe_df = 5
     df_size = 36
-
-    api = tradeapi.REST(key_id=API_KEY, secret_key=SECRET_KEY, base_url=BASE_URL)
 
     now = datetime.now(timezone.utc)
     start_date = (now - timedelta(days=delay_safe_df)).isoformat()
@@ -301,6 +310,95 @@ def get_clock_emoji(dt_object):
     return clock_emojis[emoji_index]
 
 
+def add_hours_skipping_dynamic(
+    start_ts: pd.Timestamp,
+    hours: float,
+    dynamic_blackout: tuple[pd.Timestamp, pd.Timestamp] | None = None,
+) -> pd.Timestamp:
+    """
+    Add `hours` to start_ts, skipping exactly one dynamic blackout:
+    1) If start_ts is inside the blackout, warp to its end.
+    2) If start_ts is before the blackout start, consume up to it,
+        subtracting that from `hours`.
+    3) Jump to blackout end, then add whatever remains.
+    """
+    current = start_ts
+    remaining = hours
+
+    if dynamic_blackout:
+        db_start, db_end = dynamic_blackout
+
+        # 1) If we begin inside the blackout, warp to its end
+        if db_start <= current < db_end:
+            current = db_end
+
+        # 2) If we begin before the blackout, consume up to its start
+        if current < db_start:
+            # hours available before blackout
+            avail = (db_start - current).total_seconds() / 3600.0
+            if remaining <= avail:
+                # we can finish entirely before blackout
+                return current + timedelta(hours=remaining)
+            # else consume up to the blackout start...
+            remaining -= avail
+            # ...and warp to the blackout end
+            current = db_end
+
+    # 3) No blackout (or we've just jumped past it): finish adding
+    return current + timedelta(hours=remaining)
+
+
+def get_prediction_timewindow_utc(
+    data: pd.DataFrame,
+    status,
+    clock,
+    hours_to_add: float = 3,
+    pre_open_offset: float = 5.5,
+) -> str:
+    """
+    Returns a UTC‐based prediction window string, applying only:
+    • one dynamic blackout [next-midnight UTC, next_open–offset)
+        if in after‐hours/closed.
+    Prints the date only once when start & end share the same day.
+    """
+
+    def ensure_utc(ts):
+        ts = pd.to_datetime(ts)
+        return ts.tz_localize("UTC") if ts.tzinfo is None else ts.tz_convert("UTC")
+
+    # 1) Normalize inputs to UTC
+    last_ts = ensure_utc(data.index[-1])
+
+    next_open = ensure_utc(clock.next_open)
+
+    # 2) Build dynamic blackout when in after-hours:
+    #    from the NEXT UTC midnight after 'now'
+    #    until (next_open – pre_open_offset)
+    if "after hours" in status or "closed" in status:
+        db_start = (last_ts + timedelta(days=1)).normalize()
+        db_end = next_open - timedelta(hours=pre_open_offset)
+        dynamic_blackout = (db_start, db_end)
+    else:
+        dynamic_blackout = None
+
+    # 3) Compute end timestamp, skipping that blackout
+    end_ts = add_hours_skipping_dynamic(last_ts, hours_to_add, dynamic_blackout)
+
+    # 4) Format in UTC, date only once if same day
+    date_fmt = "%b %-d"  # e.g. "May 9"
+    time_fmt = "%-I:%M %p"  # e.g. " at 02:20 PM UTC"
+
+    s_date, s_time = last_ts.strftime(date_fmt), last_ts.strftime(time_fmt)
+    e_date, e_time = end_ts.strftime(date_fmt), end_ts.strftime(time_fmt)
+
+    if s_date == e_date:
+        return f"Prediction valid from {s_date}, {s_time} until {e_time} (UTC)"
+    else:
+        return (
+            f"Prediction valid from {s_date}, {s_time} until {e_date}, {e_time} (UTC)"
+        )
+
+
 def main_predictions():
     st.header("📈 Stock Movement Predictions")  # Added emoji
 
@@ -336,7 +434,7 @@ def main_predictions():
         current_utc_time = datetime.now(timezone.utc)
         clock_emoji = get_clock_emoji(current_utc_time)
         st.subheader(
-            f"{clock_emoji} Last Updated: {pd.to_datetime(current_utc_time).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"{clock_emoji} Last Updated: {pd.to_datetime(current_utc_time).strftime('%b %-d, %H:%M')} (UTC)"
         )
 
         if market_status is None:
@@ -348,7 +446,7 @@ def main_predictions():
         elif "after hours" in market_status:
             st.warning("⏳ Market Status: The market is open for after-hours trading.")
         else:
-            st.error(f"⛔ Market Status: The market is {market_status}")
+            st.error(f"⛔ Market Status: {market_status}")
 
         # Only proceed with predictions if market status was fetched successfully
         if not market_status.startswith("Error:"):
@@ -367,7 +465,7 @@ def main_predictions():
 
             with col3:
                 if st.button(
-                    "Help", help="Click to toggle help.", use_container_width=False
+                    "Help", help="Click to get help.", use_container_width=False
                 ):
                     st.session_state.show_help_message = (
                         not st.session_state.show_help_message
@@ -377,68 +475,110 @@ def main_predictions():
             if st.session_state.show_help_message:
                 # Add vertical space using HTML line breaks instead of horizontal rules
                 st.markdown("<br>" * 3, unsafe_allow_html=True)
-                st.info(
-                    """
-                **How to Read the Prediction Bar**
 
-                - **Next 3-Hour Forecast**  
-                Shows whether our LSTM model expects the stock/ETF to go **Up ⬆️** or **Down ⬇️** over the next ~3 hours.
-
-                - **Confidence (%)**  
-                The model’s predicted probability (0–100%) that the price will move **Up**. A higher percentage means more certainty.
-
-                - **Raw Score**  
-                Under the hood, the model outputs a value between **0.0** and **1.0** via a sigmoid:  
-                    - **> 0.5** → “Up”  
-                    - **< 0.5** → “Down”  
-                    - **0.5** → Neutral
-
-                - **White Marker**  
-                Pinpoints the raw score on the gradient bar.
-
-                - **Color Gradient:**  
-                    - **Red:** at 0.0 = very strong “Down” signal  
-                    - **Green:** at 1.0 = very strong “Up” signal
-
-                - **Model Inputs**  
-                We train our LSTM on two microstructure features—**VWAP** (volume-weighted average price) and **Trade Count**—sampled every 5 minutes over a 3-hour look-back window, using both regular and extended-hours data.
-
-                Click **Help** again to hide this message.
-                        """
-                )
+                help_html = """
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border: 1px solid #3498DB; border-radius: 10px; padding: 25px; background-color: #1C2533; color: #EAEAEA; line-height: 1.6;">
+                    <h5 style="color: #3498DB; margin-top: 0; margin-bottom: 20px; font-size: 1.3em; font-weight: 600; text-align: center; border-bottom: 1px solid #2C3E50; padding-bottom: 10px;">
+                        Understanding the Prediction Bar
+                    </h5>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Next 3 Hours of Market Activity Forecast:</strong><br>
+                            Indicates whether our <em>Prometheus</em> Models predicts the stock/ETF price will be 
+                            <strong style="color: #58D68D;">Higher (Up ⬆️)</strong> or 
+                            <strong style="color: #EC7063;">Lower (Down ⬇️)</strong> at the end of the 3 hours of market activity prediction window, compared to its price at the start of the window.
+                        </li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Confidence in 'Up' (%):</strong><br>
+                            This is the model’s predicted probability (0–100%) that the price at the <strong style="color: #D2B4DE;">end of the ~3-hour window</strong> will be 
+                            <strong style="color: #58D68D;">higher</strong> than the price at the <strong style="color: #D2B4DE;">start of the window</strong>. A higher percentage signifies greater model confidence in this "Up" outcome.
+                        </li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Raw Score:</strong><br>
+                            The model's direct output (a value between <em style="color: #FAD7A0;">0.0</em> and <em style="color: #FAD7A0;">1.0</em> via a sigmoid function), representing the confidence in an "Up" outcome:
+                            <ul style="list-style-type: '→ '; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">&gt; 0.5:</strong> Interpreted as a prediction that the price will be "Up" (higher at end of window).</li>
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">&lt; 0.5:</strong> Interpreted as a prediction that the price will be "Down" (lower at end of window).</li>
+                                <li><strong style="color: #EAEAEA;">0.5:</strong> Neutral (equal chance of price being higher or lower).</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">White Marker:</strong><br>
+                            Visually pinpoints the <em style="color: #FAD7A0;">Raw Score</em> on the color gradient bar. Its position reflects the model's confidence that the price will be higher at the end of the prediction window.
+                        </li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Color Gradient:</strong>
+                            <ul style="list-style-type: '■ '; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EC7063;">Deep Red (left):</strong> Corresponds to a <em>Raw Score</em> near 0.0, indicating very low confidence that the price will be "Up" (i.e., strong prediction for "Down").</li>
+                                <li><strong style="color: #58D68D;">Deep Green (right):</strong> Corresponds to a <em>Raw Score</em> near 1.0, indicating very high confidence that the price will be "Up".</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Model Inputs:</strong><br>
+                            Our <em>Prometheus</em> Models is trained on two key microstructure features: 
+                            <em style="color: #FAD7A0;">VWAP</em> (Volume-Weighted Average Price) and 
+                            <em style="color: #FAD7A0;">Trade Count</em>. Data is sampled every <em>5 minutes</em> over a 3-hour look-back window, incorporating both regular and extended trading hours.
+                        </li>
+                        <li style="margin-bottom: 18px;">
+                            <strong style="color: #A9CCE3; font-weight: 600; font-size: 1.05em;">Prediction Validity & Timing:</strong><br>
+                            <em>Prometheus</em>\\\'s models use live market data aggregated into <em>5-minute intervals</em> to generate real-time predictions for the next ~3 hours of market activity. You might notice a slight delay between the "Last Updated" time and the start of the prediction\\\'s validity window. This is due to two main factors:
+                            <ul style="list-style-type: \\\'• \\\'; padding-left: 25px; margin-top: 8px; color: #BDC3C7;">
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">Data Feed Delay (<em>Free Version</em>):</strong> As you are using the <em>Free Version</em> of <em>Prometheus</em>, all live market data, including that used for predictions, has an inherent <em>15-minute delay</em>. We still provide access to after-hours and pre-market data predictions, but this delay is standard for free-tier data feeds.</li>
+                                <li style="margin-bottom: 5px;"><strong style="color: #EAEAEA;">Data Aggregation Window:</strong> The model processes data in <em>5-minute chunks</em>. It must wait for the current <em>5-minute interval</em> to complete and its data to be aggregated before making a prediction based on that latest information.</li>
+                                <li style="margin-bottom: 5px;">
+                                    <strong style="color: #EAEAEA;">Market Activity Window:</strong> The ~3-hour prediction window specifically refers to <strong style="color: #FAD7A0;"><em>market activity hours</em></strong>. This means that <em>Prometheus</em> models intelligently leap over periods when the market is fully closed (e.g., overnight, weekends, and holidays). For instance, a prediction might state: <code style="background-color: #2C3E50; color: #EAEAEA; padding: 2px 5px; border-radius: 3px;">Prediction valid from May 9, 11:20 PM until May 12, 10:20 AM (UTC)</code>. In this scenario, the model has skipped the weekend closure (e.g., after-hours ending Friday night and pre-market opening Monday morning), ensuring the 3-hour forecast only considers time when trading is possible.
+                                </li>
+                            </ul>
+                            This ensures that predictions are based on the most recently completed dataset and reflect the next period of actual market operation.
+                        </li>
+                    </ul>
+                    <p style="font-size: 0.95em; color: #ABB2B9; margin-top: 20px; margin-bottom: 0; text-align: center; border-top: 1px solid #2C3E50; paddingTop: 15px;">
+                        Click <strong>Help</strong> again to hide this message.
+                    </p>
+                </div>
+                """
+                st.markdown(help_html, unsafe_allow_html=True)
 
             with col2:
                 # --- Reverted marker position calculation ---
                 # Calculate marker position based on certainty and class
                 if pred_class == 1:  # Up
-                    tooltip_text = f"Predicted UP with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+                    tooltip_text = f"Predicted UP with {pred_certainty:.1%} confidence (Raw Score: {raw_pred:.3f})"
                 else:  # Down
-                    tooltip_text = f"Predicted DOWN with {pred_certainty:.1%} certainty (Raw: {raw_pred:.3f})"
+                    tooltip_text = f"Predicted DOWN. Model confidence in UP: {pred_certainty:.1%} (Raw Score: {raw_pred:.3f})"
 
                 # Format the certainty percentage for display
                 marker_position_pct = pred_certainty * 100
-                certainty_display = f"{pred_certainty:.1%}"
+                certainty_display_text = f"{pred_certainty:.2%} Confidence in 'Up'"
 
                 # Ensure position is within bounds (0-100)
                 marker_position_pct = max(0, min(100, marker_position_pct))
 
                 # Custom HTML/CSS for the prediction bar
                 bar_html = f"""
-                <div style="font-family: sans-serif; margin-top: 10px; margin-bottom: 50px; text-align: center; font-weight: bold; font-size: 1.3em;">
-                    Next 3h {selected_stock_ID} Price Movement Prediction<br>{pd.to_datetime(current_utc_time - timedelta(minutes=15)).strftime("%H:%M")} - {pd.to_datetime(current_utc_time + timedelta(hours=2) + timedelta(minutes=45)).strftime("%H:%M")} (UTC)
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin-bottom: 15px;">
+                    <div style="font-size: 1.5em; font-weight: 600; color: #FFFFFF; margin-bottom: 5px;">
+                        {selected_stock_ID} Price Movement Forecast
+                    </div>
+                    <div style="font-size: 0.9em; color: #B0B0B0;">
+                        {get_prediction_timewindow_utc(df_live, market_status, get_alpaca_clock())}
+                    </div>
                 </div>
-                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 5px;">
-                    <span style="color: white; font-weight: bold; font-size: 1.1em; margin-right: 5px;">⬇️ Down</span>
-                    <div style="position: relative; height: 45px; flex-grow: 1; border-radius: 5px; background: linear-gradient(to right, #b71c1c, #1b5e20); box-sizing: border-box;">
-                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -25px; transform: translateX(-50%); background-color: #444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.9em; white-space: nowrap;">
-                            {certainty_display} Certainty
+
+                <br>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 40px; margin-top: 20px;">
+                    <span style="color: #FF7F7F; font-weight: bold; font-size: 1.2em; margin-right: 10px;">⬇️ Down</span>
+                    <div style="position: relative; height: 35px; flex-grow: 1; border-radius: 8px; background: linear-gradient(to right, #D32F2F, #FFCDD2, #C8E6C9, #388E3C); box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: -30px; transform: translateX(-50%); background-color: #333333; color: white; padding: 5px 10px; border-radius: 6px; font-size: 0.95em; white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                            {certainty_display_text}
                         </div>
-                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 4px; height: 30px; background-color: white; border-radius: 2px; box-shadow: 0 0 5px rgba(0,0,0,0.5);"></div>
-                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -25px; transform: translateX(-50%); font-size: 1.5em;">
-                            {"⬆️" if pred_class == 1 else "⬇️"}
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; top: 50%; transform: translate(-50%, -50%); width: 5px; height: 45px; background-color: #FFFFFF; border-radius: 3px; box-shadow: 0 0 8px rgba(0,0,0,0.5); z-index: 10;"></div>
+                        <div title="{tooltip_text}" style="position: absolute; left: {marker_position_pct}%; bottom: -35px; transform: translateX(-50%); font-size: 2em; color: {"#4CAF50" if pred_class == 1 else "#F44336"};">
+                            {"▲" if pred_class == 1 else "▼"}
                         </div>
                     </div>
-                    <span style="color: white; font-weight: bold; font-size: 1.1em; margin-left: 5px;">Up ⬆️</span>
+                    <span style="color: #7FFF7F; font-weight: bold; font-size: 1.2em; margin-left: 10px;">Up ⬆️</span>
                 </div>
                 """
                 st.markdown(bar_html, unsafe_allow_html=True)

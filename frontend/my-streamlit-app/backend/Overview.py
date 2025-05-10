@@ -12,8 +12,8 @@ def get_logo_path():
 
 def main_overview():
     # --- Page Content ---
-    # Wrap content in a div with Tailwind classes - Increased padding
-    st.markdown("<div class='bg-gray-100 min-h-screen p-10'>", unsafe_allow_html=True)
+    # Wrap content in a div with Tailwind classes - Adjusted padding
+    st.markdown("<div class='bg-gray-100 min-h-screen p-8'>", unsafe_allow_html=True)
 
     # Centered Logo
     # Adjusted column proportions to give the image more space
@@ -31,14 +31,14 @@ def main_overview():
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
             )
 
-    # Overview Section - Increased padding, margin, shadow, refined heading border
+    # Overview Section - Enhanced card styling and heading
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>🚀 Overview</h2>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🚀 Overview</h2>
             <p class='text-lg text-gray-700 leading-relaxed'>
                 Prometheus is a sophisticated algorithmic trading platform that leverages the
-                <a href='https://alpaca.markets/' target='_blank' class='text-blue-600 hover:text-blue-800 hover:underline'>Alpaca Markets API</a>
+                <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets API</a>
                 to execute automated trading strategies. This project combines advanced data analysis,
                 machine learning models, and real-time market data to make informed trading decisions.
             </p>
@@ -47,56 +47,56 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Features Section - Updated content
+    # Features Section - Enhanced card styling, heading, and feature item styling
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>✨ Features</h2>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>✨ Features</h2>
             <div class='grid md:grid-cols-2 gap-8'>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-md border border-gray-100'>
-                    <h3 class='text-xl font-medium text-gray-800 mb-3'>Real-time Market Data Integration</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600'>
+                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
+                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Real-time Market Data Integration</h3>
+                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
                         <li>Seamless integration with Alpaca Markets API</li>
                         <li>High-frequency data collection with rate limit management</li>
                         <li>Support for multiple timeframes and market data types (IEX, SIP)</li>
                     </ul>
                 </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-md border border-gray-100'>
-                    <h3 class='text-xl font-medium text-gray-800 mb-3'>Advanced Trading Models</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600'>
+                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
+                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Advanced Trading Models</h3>
+                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
                         <li>Machine learning model integration with TensorFlow</li>
                         <li>Custom trading strategies implementation (Simons, Sun Tzu)</li>
                         <li>Research-based approach with separate modules for different strategies</li>
                         <li>Structured model management and evaluation (see <code>Models/</code> directory)</li>
                     </ul>
                 </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-md border border-gray-100'>
-                    <h3 class='text-xl font-medium text-gray-800 mb-3'>Data Analysis & Visualization</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600'>
+                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
+                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Data Analysis & Visualization</h3>
+                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
                         <li>Comprehensive market data analysis using pandas and numpy</li>
                         <li>Interactive data visualization with matplotlib and Plotly</li>
                         <li>Performance metrics and reporting</li>
                         <li>Historical data analysis and storage for various sources (see <code>Data/</code> directory)</li>
                     </ul>
                 </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-md border border-gray-100'>
-                    <h3 class='text-xl font-medium text-gray-800 mb-3'>Risk Management</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600'>
+                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
+                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Risk Management</h3>
+                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
                         <li>Position sizing algorithms</li>
                         <li>Stop-loss and take-profit mechanisms</li>
                         <li>Portfolio diversification strategies</li>
                         <li>Risk assessment tools</li>
                     </ul>
                 </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-md border border-gray-100'>
-                    <h3 class='text-xl font-medium text-gray-800 mb-3'>Interactive Frontend Dashboard</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600'>
+                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
+                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Interactive Frontend Dashboard</h3>
+                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
                         <li>Streamlit application for monitoring and interaction (see <code>frontend/</code> directory)</li>
                     </ul>
                 </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-md border border-gray-100'>
-                    <h3 class='text-xl font-medium text-gray-800 mb-3'>Live Trading Capabilities</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600'>
+                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
+                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Live Trading Capabilities</h3>
+                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
                         <li>Jupyter notebook for live trading execution and monitoring (see <code>Live_Trading/</code> directory)</li>
                     </ul>
                 </div>
@@ -106,12 +106,12 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Project Structure Section
+    # Project Structure Section - Enhanced card styling, heading, and pre block
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>📊 Project Structure</h2>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto border border-gray-200'><code>Prometheus/
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📊 Project Structure</h2>
+            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto border border-gray-200 border-t-4 border-gray-300'><code>Prometheus/
 ├── Assets/                     # Project assets (e.g., logo)
 │   └── Images/
 ├── Data/                       # Processed and raw market data
@@ -152,18 +152,18 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Streamlit App Navigation Section
+    # Streamlit App Navigation Section - Enhanced card styling, heading, lists, and pre block
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>🧭 Navigating the Dashboard</h2>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🧭 Navigating the Dashboard</h2>
             <p class='text-gray-700 mb-4'>
                 This Streamlit application serves as the main interface for interacting with the Prometheus trading platform. Here's a brief guide on its structure and how to use it:
             </p>
-            <ul class='list-disc list-inside space-y-3 text-gray-700'>
+            <ul class='list-disc list-inside space-y-3 text-gray-700 marker:text-sky-500'>
                 <li><strong>Overview (This Page):</strong> You are currently on the Overview page, which provides a general introduction to the project, its features, setup instructions, and how to use different components.</li>
                 <li><strong>Top Bar Navigation:</strong> At the top of the application, you'll find a navigation bar. This top bar is the primary way to navigate between different sections or pages of the dashboard. Each page will focus on a specific aspect of the platform, such as:
-                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600'>
+                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600 marker:text-sky-400'>
                         <li>Detailed views of trading strategy performance.</li>
                         <li>Market data visualization and analysis tools.</li>
                         <li>Configuration settings for trading parameters.</li>
@@ -171,7 +171,7 @@ def main_overview():
                     </ul>
                 </li>
                 <li><strong>Interactive Elements:</strong> Throughout the application, you will encounter various interactive elements like charts, tables, input fields, and buttons. These are designed to allow you to:
-                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600'>
+                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600 marker:text-sky-400'>
                         <li>Explore data dynamically.</li>
                         <li>Adjust parameters for analysis or trading models.</li>
                         <li>View real-time updates and logs.</li>
@@ -180,7 +180,7 @@ def main_overview():
                 <li><strong>Data Display:</strong> Key information, such as market data, model predictions, portfolio status, and performance metrics, will be displayed in a clear and organized manner using tables, charts, and text summaries.</li>
                 <li><strong>Launching the App:</strong> As mentioned in the 'Usage' section, you can run the Streamlit app using the command:
             </ul>
-            <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-2 border border-gray-200'><code>streamlit run frontend/my-streamlit-app/Home.py</code></pre>
+            <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-2 border border-gray-200 border-t-4 border-gray-300'><code>streamlit run frontend/my-streamlit-app/Home.py</code></pre>
             <p class='text-gray-700 mt-3'>
                 Explore the different pages using the top navigation bar to get a comprehensive understanding of the platform's capabilities. Each section is designed to be intuitive, but specific instructions or tooltips may be provided within those pages for more complex functionalities.
             </p>
@@ -189,14 +189,14 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Implemented Strategies Section - Increased padding, margin, shadow, refined heading border
+    # Implemented Strategies Section - Enhanced card styling, heading, and list
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>📈 Implemented Strategies</h2>
-            <ul class='list-disc list-inside space-y-3 text-gray-700'>
-                <li><strong class='text-gray-800'>Simons Strategy:</strong> An advanced quantitative trading approach.</li>
-                <li><strong class='text-gray-800'>Sun Tzu Strategy:</strong> Focuses on tactical market analysis and execution.</li>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📈 Implemented Strategies</h2>
+            <ul class='list-disc list-inside space-y-3 text-gray-700 marker:text-sky-500'>
+                <li><strong class='text-sky-700'>Simons Strategy:</strong> An advanced quantitative trading approach.</li>
+                <li><strong class='text-sky-700'>Sun Tzu Strategy:</strong> Focuses on tactical market analysis and execution.</li>
             </ul>
             <p class='mt-5 text-sm text-gray-500'>Performance metrics are continuously monitored and updated based on live trading results.</p>
         </div>
@@ -204,30 +204,30 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Installation Section - Updated content
+    # Installation Section - Enhanced card styling, heading, lists, and pre blocks
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>🛠️ Installation</h2>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🛠️ Installation</h2>
             <p class='text-gray-700 mb-4'>Follow these steps to set up the project locally:</p>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4'>
+            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold'>
                 <li>Clone the repository:</li>
             </ol>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200'><code>git clone https://github.com/yourusername/Prometheus.git
+            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200 border-t-4 border-gray-300'><code>git clone https://github.com/yourusername/Prometheus.git
     cd Prometheus</code></pre>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4' start='2'>
+            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold' start='2'>
                 <li>Create and activate a virtual environment:</li>
             </ol>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200'><code>python -m venv .venv
+            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200 border-t-4 border-gray-300'><code>python -m venv .venv
     source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4' start='3'>
+            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold' start='3'>
                 <li>Install required dependencies:</li>
             </ol>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200'><code>pip install -r requirements.txt</code></pre>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4' start='4'>
+            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200 border-t-4 border-gray-300'><code>pip install -r requirements.txt</code></pre>
+            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold' start='4'>
                 <li>Set up your Alpaca API credentials:
-                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600'>
-                        <li>Create an account at <a href='https://alpaca.markets/' target='_blank' class='text-blue-600 hover:text-blue-800 hover:underline'>Alpaca Markets</a></li>
+                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600 marker:text-sky-400'>
+                        <li>Create an account at <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a></li>
                         <li>Generate your API keys</li>
                         <li>Configure your credentials in the appropriate configuration files (e.g., within <code>Simons/Settings/</code> or as environment variables)</li>
                     </ul>
@@ -238,12 +238,12 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Usage Example Section - Updated content
+    # Usage Example Section - Enhanced card styling, heading, and step titles
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>🚀 Usage</h2>
-            <p class='text-gray-700 mb-4'><strong>1. Data Collection and Analysis:</strong></p>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🚀 Usage</h2>
+            <p class='text-gray-700 mb-4 text-lg'><strong>1. Data Collection and Analysis:</strong></p>
             <p class='text-gray-700 mb-2'>Refer to notebooks within <code>Data/</code> subdirectories or specific strategy research. Example of initializing API connection:</p>
         """,
         unsafe_allow_html=True,
@@ -267,7 +267,7 @@ def main_overview():
     )
     st.markdown(
         """
-            <p class='text-gray-700 mt-4 mb-4'><strong>2. Running Trading Strategies:</strong></p>
+            <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>2. Running Trading Strategies:</strong></p>
         """,
         unsafe_allow_html=True,
     )
@@ -285,7 +285,7 @@ def main_overview():
     )
     st.markdown(
         """
-            <p class='text-gray-700 mt-4 mb-4'><strong>3. Launching the Frontend Dashboard:</strong></p>
+            <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>3. Launching the Frontend Dashboard:</strong></p>
             <p class='text-gray-700 mb-2'>Ensure Streamlit is installed (<code>pip install streamlit</code>).</p>
         """,
         unsafe_allow_html=True,
@@ -298,22 +298,22 @@ def main_overview():
     )
     st.markdown(
         """
-            <p class='text-gray-700 mt-4 mb-4'><strong>4. Live Trading:</strong></p>
+            <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>4. Live Trading:</strong></p>
             <p class='text-gray-700'>Open and run cells in <code>Live_Trading/Live_Trading.ipynb</code> after appropriate setup and risk assessment.</p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    # Performance Section
+    # Performance Section - Enhanced card styling, heading, and list
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>📈 Performance</h2>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📈 Performance</h2>
             <p class='text-gray-700 mb-4'>The platform implements multiple trading strategies:</p>
-            <ul class='list-disc list-inside space-y-2 text-gray-700'>
-                <li><strong>Simons Strategy:</strong> Advanced quantitative trading approach.</li>
-                <li><strong>Sun Tzu Strategy:</strong> Tactical market analysis and execution.</li>
+            <ul class='list-disc list-inside space-y-2 text-gray-700 marker:text-sky-500'>
+                <li><strong class='text-sky-700'>Simons Strategy:</strong> Advanced quantitative trading approach.</li>
+                <li><strong class='text-sky-700'>Sun Tzu Strategy:</strong> Tactical market analysis and execution.</li>
             </ul>
             <p class='text-gray-700 mt-4'>Performance metrics are continuously monitored and updated based on live trading results.</p>
         </div>
@@ -321,13 +321,13 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Contributing Section - Increased padding, margin, shadow, refined heading border
+    # Contributing Section - Enhanced card styling, heading, and list
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-lg rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3'>🤝 Contributing</h2>
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🤝 Contributing</h2>
             <p class='text-gray-700 mb-4'>Contributions are welcome! Please follow these steps:</p>
-            <ol class='list-decimal list-inside space-y-2 text-gray-700'>
+            <ol class='list-decimal list-inside space-y-2 text-gray-700 marker:text-sky-600 marker:font-semibold'>
                 <li>Fork the repository.</li>
                 <li>Create your feature branch (`git checkout -b feature/AmazingFeature`).</li>
                 <li>Commit your changes (`git commit -m 'Add some AmazingFeature'`).</li>
@@ -340,20 +340,20 @@ def main_overview():
         unsafe_allow_html=True,
     )
 
-    # Footer - Updated content
+    # Footer - Updated border and link colors
     st.markdown(
         """
-        <footer class='text-center mt-16 py-8 border-t border-gray-300'>
+        <footer class='text-center mt-16 py-8 border-t border-gray-400'>
             <p class='text-base text-gray-600 mb-3'>
-                This project is licensed under the MIT License - see the <a href='https://github.com/yourusername/Prometheus/blob/main/LICENSE' target='_blank' class='text-blue-600 hover:text-blue-800 hover:underline'>LICENSE</a> file for details.
+                This project is licensed under the MIT License - see the <a href='https://github.com/yourusername/Prometheus/blob/main/LICENSE' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>LICENSE</a> file for details.
             </p>
             <p class='text-base text-gray-600 mb-4'>
-                Contact: Guilherme Grancho (<a href='mailto:guilhermegrancho@tecnico.ulisboa.pt' class='text-blue-600 hover:text-blue-800 hover:underline'>guilhermegrancho@tecnico.ulisboa.pt</a> / <a href='mailto:guilherme.fernandes25@imperial.ac.uk' class='text-blue-600 hover:text-blue-800 hover:underline'>guilherme.fernandes25@imperial.ac.uk</a>)
+                Contact: Guilherme Grancho (<a href='mailto:guilhermegrancho@tecnico.ulisboa.pt' class='text-sky-600 hover:text-sky-800 hover:underline'>guilhermegrancho@tecnico.ulisboa.pt</a> / <a href='mailto:guilherme.fernandes25@imperial.ac.uk' class='text-sky-600 hover:text-sky-800 hover:underline'>guilherme.fernandes25@imperial.ac.uk</a>)
                 <br>
-                Vasco Pereira (<a href='mailto:vasco.serpa.pereira@tecnico.ulisboa.pt' class='text-blue-600 hover:text-blue-800 hover:underline'>vasco.serpa.pereira@tecnico.ulisboa.pt</a>)
+                Vasco Pereira (<a href='mailto:vasco.serpa.pereira@tecnico.ulisboa.pt' class='text-sky-600 hover:text-sky-800 hover:underline'>vasco.serpa.pereira@tecnico.ulisboa.pt</a>)
             </p>
             <p class='text-sm text-gray-500 mt-4'>
-                Acknowledgments: <a href='https://alpaca.markets/' target='_blank' class='text-blue-600 hover:text-blue-800 hover:underline'>Alpaca Markets</a>, Contributors, The open-source community.
+                Acknowledgments: <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a>, Contributors, The open-source community.
             </p>
         </footer>
     """,
