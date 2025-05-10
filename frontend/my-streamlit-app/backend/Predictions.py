@@ -434,7 +434,7 @@ def main_predictions():
         current_utc_time = datetime.now(timezone.utc)
         clock_emoji = get_clock_emoji(current_utc_time)
         st.subheader(
-            f"{clock_emoji} Last Updated: {pd.to_datetime(current_utc_time).strftime('%Y-%m-%d %H:%M')} (UTC)"
+            f"{clock_emoji} Last Updated: {pd.to_datetime(current_utc_time).strftime('%b %-d, %H:%M')} (UTC)"
         )
 
         if market_status is None:
