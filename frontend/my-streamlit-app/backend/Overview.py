@@ -332,43 +332,37 @@ def main_overview():
             if i < len(roadmap_items) - 1:
                 st.markdown("---")
 
-    # Interactive Frontend Dashboard Section - Adding from README.md
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-cyan-500 pl-4'>🖥️ Interactive Frontend Dashboard</h2>
-            <p class='text-gray-700 mb-4'>The project includes a Streamlit-based web application that provides:</p>
-            
-            <div class='grid md:grid-cols-2 gap-6 mb-6'>
-                <div class='bg-gradient-to-br from-cyan-50 to-blue-100 p-6 rounded-lg border-l-4 border-cyan-500'>
-                    <h3 class='text-xl font-semibold text-cyan-800 mb-3'>📊 Portfolio Monitoring</h3>
-                    <p class='text-cyan-700'>Tracking of positions and performance metrics</p>
-                </div>
-                
-                <div class='bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-lg border-l-4 border-blue-500'>
-                    <h3 class='text-xl font-semibold text-blue-800 mb-3'>📈 Strategy Visualization</h3>
-                    <p class='text-blue-700'>Charts displaying strategy performance</p>
-                </div>
-                
-                <div class='bg-gradient-to-br from-indigo-50 to-purple-100 p-6 rounded-lg border-l-4 border-indigo-500'>
-                    <h3 class='text-xl font-semibold text-indigo-800 mb-3'>🛡️ Risk Management Interface</h3>
-                    <p class='text-indigo-700'>Tools for monitoring and adjusting risk parameters</p>
-                </div>
-                
-                <div class='bg-gradient-to-br from-purple-50 to-pink-100 p-6 rounded-lg border-l-4 border-purple-500'>
-                    <h3 class='text-xl font-semibold text-purple-800 mb-3'>🔬 Academic Research Integration</h3>
-                    <p class='text-purple-700'>Access to research findings and model insights</p>
-                </div>
-            </div>
-            
-            <div class='bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-lg border-l-4 border-gray-500'>
-                <h3 class='text-lg font-semibold text-gray-800 mb-2'>🖥️ Market Data Analysis</h3>
-                <p class='text-gray-700'>Data visualization and analysis tools integrated into the frontend application located in <code>frontend/my-streamlit-app/</code> directory, serving as the primary user interface for interacting with the Prometheus trading platform.</p>
-            </div>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Interactive Frontend Dashboard Section - Using Streamlit native components
+    st.markdown("### 🖥️ Interactive Frontend Dashboard")
+    st.markdown("The project includes a Streamlit-based web application that provides:")
+    
+    # Create a 2x2 grid using columns
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        with st.container():
+            st.markdown("#### 📊 Portfolio Monitoring")
+            st.markdown("Tracking of positions and performance metrics")
+            st.markdown("---")
+        
+        with st.container():
+            st.markdown("#### 🛡️ Risk Management Interface") 
+            st.markdown("Tools for monitoring and adjusting risk parameters")
+    
+    with col2:
+        with st.container():
+            st.markdown("#### 📈 Strategy Visualization")
+            st.markdown("Charts displaying strategy performance")
+            st.markdown("---")
+        
+        with st.container():
+            st.markdown("#### 🔬 Academic Research Integration")
+            st.markdown("Access to research findings and model insights")
+    
+    # Market Data Analysis section
+    st.info("🖥️ **Market Data Analysis**: Data visualization and analysis tools integrated into the frontend application located in `frontend/my-streamlit-app/` directory, serving as the primary user interface for interacting with the Prometheus trading platform.")
+    
+    st.markdown("---")  # Add separator
 
     # Features Section - Enhanced card styling, heading, and feature item styling
     st.markdown(
