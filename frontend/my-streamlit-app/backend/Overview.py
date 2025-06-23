@@ -663,9 +663,51 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     [Alpaca Markets](https://alpaca.markets/) for providing the trading API • Contributors and maintainers • The open-source community
     """)
     
-    st.info("""
-    **Citation:** If you use this research platform, please cite our work:  
-    `Fernandes, G. G. D. & Pereira, V. (2025). The Financial Torque Hypothesis. SSRN.`
+    # Citation Section - Enhanced with CITATION.cff information
+    st.markdown("#### 📚 How to Cite This Work")
+    
+    with st.expander("📋 Citation Information", expanded=True):
+        st.markdown("""
+        **If you use this software or research platform, please cite it as:**
+        
+        **Software Citation (BibTeX):**
+        ```bibtex
+        @software{grancho_prometheus_2025,
+          author = {Grancho, Guilherme and Pereira, Vasco},
+          title = {Prometheus},
+          version = {1.0.0},
+          date = {2025-04-20},
+          url = {https://github.com/guilhermegranchopro/Prometheus},
+          abstract = {Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.},
+          license = {MIT}
+        }
+        ```
+        
+        **Academic Paper Citation:**
+        ```
+        Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, The Financial Torque Hypothesis: 
+        Predicting Short-Term Stock Price Movements Using LSTM Neural Networks (June 20, 2025). 
+        Available at SSRN: https://ssrn.com/abstract=5288444
+        ```
+        """)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("**📧 Contact Authors:**")
+            st.markdown("""
+            - **Guilherme Grancho**: guilhermegrancho@tecnico.ulisboa.pt
+            - **Vasco Pereira**: vasco.serpa.pereira@tecnico.ulisboa.pt
+            """)
+        
+        with col2:
+            st.markdown("**🏷️ Keywords:**")
+            st.markdown("""
+            `algorithmic trading` • `machine learning` • `TensorFlow` • `data analysis` • `finance` • `trading platform`
+            """)
+    
+    st.success("""
+    🏆 **Research Achievement**: Our Financial Torque Hypothesis research achieved **87%+ accuracy** in stock price predictions, published on SSRN in June 2025.
     """)
 
     # Close the wrapping div
