@@ -35,35 +35,72 @@ def main_overview():
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
             )
 
-    # Technology Stack Badges Section - Complete badges matching README.md
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-4 bg-white shadow-lg rounded-lg mb-6'>
-            <div class='flex flex-wrap justify-center gap-2'>
-                <img src='https://img.shields.io/badge/python-3.10-blue.svg' alt='Python Version'/>
-                <img src='https://img.shields.io/badge/license-MIT-green.svg' alt='License'/>
-                <img src='https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg' alt='Alpaca API'/>
-                <img src='https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white' alt='Streamlit'/>
-                <img src='https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white' alt='TensorFlow'/>
-                <img src='https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white' alt='Pandas'/>
-                <img src='https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white' alt='NumPy'/>
-                <img src='https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikit-learn&logoColor=white' alt='Scikit-learn'/>
-                <img src='https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white' alt='Matplotlib'/>
-                <img src='https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white' alt='Plotly'/>
-                <img src='https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white' alt='Altair'/>
-                <img src='https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white' alt='Joblib'/>
-                <img src='https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white' alt='FuzzyWuzzy'/>
-                <img src='https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white' alt='Ruff'/>
-                <img src='https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white' alt='SciPy'/>
-                <img src='https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white' alt='npm'/>
-                <img src='https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black' alt='Python-Dotenv'/>
-                <img src='https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white' alt='Polygon API Client'/>
-                <img src='https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white' alt='Python-Levenshtein'/>
-            </div>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Technology Stack Badges Section - Centered using Streamlit native components
+    st.markdown("### 🛠️ Technology Stack")
+    
+    # Create centered columns layout for badges
+    badge_col1, badge_col2, badge_col3 = st.columns([1, 8, 1])
+    
+    with badge_col2:
+        # Create multiple rows of badges using columns for proper centering
+        
+        # Row 1 - Core technologies
+        row1_col1, row1_col2, row1_col3, row1_col4 = st.columns(4)
+        with row1_col1:
+            st.image("https://img.shields.io/badge/python-3.10-blue.svg", use_container_width=True)
+        with row1_col2:
+            st.image("https://img.shields.io/badge/license-MIT-green.svg", use_container_width=True)
+        with row1_col3:
+            st.image("https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg", use_container_width=True)
+        with row1_col4:
+            st.image("https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white", use_container_width=True)
+        
+        # Row 2 - ML and Data Science
+        row2_col1, row2_col2, row2_col3, row2_col4 = st.columns(4)
+        with row2_col1:
+            st.image("https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white", use_container_width=True)
+        with row2_col2:
+            st.image("https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white", use_container_width=True)
+        with row2_col3:
+            st.image("https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white", use_container_width=True)
+        with row2_col4:
+            st.image("https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikit-learn&logoColor=white", use_container_width=True)
+        
+        # Row 3 - Visualization
+        row3_col1, row3_col2, row3_col3, row3_col4 = st.columns(4)
+        with row3_col1:
+            st.image("https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white", use_container_width=True)
+        with row3_col2:
+            st.image("https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white", use_container_width=True)
+        with row3_col3:
+            st.image("https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white", use_container_width=True)
+        with row3_col4:
+            st.image("https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white", use_container_width=True)
+        
+        # Row 4 - Utilities and Tools
+        row4_col1, row4_col2, row4_col3, row4_col4 = st.columns(4)
+        with row4_col1:
+            st.image("https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white", use_container_width=True)
+        with row4_col2:
+            st.image("https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white", use_container_width=True)
+        with row4_col3:
+            st.image("https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white", use_container_width=True)
+        with row4_col4:
+            st.image("https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white", use_container_width=True)
+        
+        # Row 5 - Additional tools
+        row5_col1, row5_col2, row5_col3, row5_col4 = st.columns(4)
+        with row5_col1:
+            st.image("https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black", use_container_width=True)
+        with row5_col2:
+            st.image("https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white", use_container_width=True)
+        with row5_col3:
+            st.image("https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white", use_container_width=True)
+        with row5_col4:
+            # Empty column to maintain layout
+            st.empty()
+    
+    st.markdown("---")
 
     # Overview Section - Enhanced card styling and heading
     st.markdown(
