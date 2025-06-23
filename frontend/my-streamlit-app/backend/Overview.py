@@ -202,7 +202,7 @@ pip install -r requirements.txt
         st.progress(0.3, text="Enhanced ML Models - Planning")
     
     with roadmap_col2:
-        st.markdown("**� Active Development**")
+        st.markdown("**📈 Active Development**")
         st.markdown("""
         - ✅ LSTM Neural Networks (87%+ accuracy)
         - ✅ Multi-feed data infrastructure 
@@ -212,7 +212,7 @@ pip install -r requirements.txt
         """)
     
     with roadmap_col3:
-        st.markdown("**� Timeline Milestones**")
+        st.markdown("**📆 Timeline Milestones**")
         st.markdown("""
         - **Q3 2025**: Second paper publication
         - **Q4 2025**: Frontend modernization
