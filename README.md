@@ -200,8 +200,43 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Contributors and maintainers
 - The open-source community
 
-## 📧 Contact
+## � Academic Publications
 
-Guilherme Grancho - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt) / [guilherme.fernandes25@imperial.ac.uk](mailto:guilherme.fernandes25@imperial.ac.uk)
+This project is supported by rigorous academic research published in peer-reviewed venues:
 
-Vasco Pereira - [vasco.serpa.pereira@tecnico.ulisboa.pt](mailto:vasco.serpa.pereira@tecnico.ulisboa.pt)
+### Published Research
+
+**[The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)**
+
+*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
+
+*Abstract:* This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data consistently outperform those built on regular-hours-only data, delivering a 15% improvement in predictive accuracy.
+
+**Citation:**
+
+```bibtex
+Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, The Financial Torque Hypothesis: 
+Predicting Short-Term Stock Price Movements Using LSTM Neural Networks (June 20, 2025). 
+Available at SSRN: https://ssrn.com/abstract=5288444
+```
+
+### Upcoming Research
+
+#### Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management
+
+*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
+
+*Status:* Set to be published in the coming months
+
+This upcoming publication will detail the practical implementation of the Financial Torque Hypothesis within the Prometheus trading platform and its integration into advanced portfolio management strategies.
+
+## �📧 Contact
+
+**[Guilherme Grancho](https://www.linkedin.com/in/guilhermegrancho/)** - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt) / [guilherme.fernandes25@imperial.ac.uk](mailto:guilherme.fernandes25@imperial.ac.uk)
+
+- Department of Earth Science and Engineering, Imperial College London
+- Department of Physics, Instituto Superior Técnico, Lisbon
+
+**[Vasco Pereira](https://www.linkedin.com/in/vasco-pereira03/)** - [vasco.serpa.pereira@tecnico.ulisboa.pt](mailto:vasco.serpa.pereira@tecnico.ulisboa.pt)
+
+- Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon
