@@ -30,12 +30,20 @@ Prometheus is an algorithmic trading research platform that integrates with the 
 
 ### Key Accomplishments
 
-- **Published Academic Research**: Successfully published "The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks" on SSRN, achieving over 87% accuracy in stock price movement predictions
+- **Published Academic Research**: Successfully published ["The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444) on SSRN, achieving over 87% accuracy in stock price movement predictions
 - **Comprehensive Data Infrastructure**: Built extensive market data collection system supporting multiple feeds (IEX, SIP) with both regular trading hours and extended session data
 - **Interactive Research Platform**: Developed a full-featured Streamlit web application for data visualization, model analysis, and research insights
 - **Multi-Strategy Framework**: Implemented research notebooks for different trading approaches (Simons quantitative strategy, Sun Tzu tactical analysis)
 - **Machine Learning Integration**: Successfully integrated TensorFlow-based LSTM neural networks with real market data for predictive modeling
 - **Open Source Contribution**: Created a complete research platform with proper documentation, dependency management, and academic citations
+
+### Future Roadmap
+
+- **Next.js Frontend Migration**: Transition from the current Streamlit-based frontend to a modern Next.js web application for enhanced performance, better user experience, and improved scalability
+- **Advanced Portfolio Management Research**: Currently developing the second academic publication "Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management" which will detail practical implementation strategies and portfolio optimization techniques
+- **Enhanced Machine Learning Models**: Expand the current LSTM framework to include additional deep learning architectures and ensemble methods
+- **Real-time Trading Integration**: Develop production-ready trading execution capabilities with advanced risk management systems
+- **API Development**: Create comprehensive REST APIs for third-party integrations and mobile applications
 
 ## 🪶 Academic Publications
 
