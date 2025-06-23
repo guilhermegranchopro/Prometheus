@@ -128,7 +128,7 @@ def main_academic_references():
         """
     <div class="paper-container">
         <h3>1. The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks</h3>
-        <p><strong>Link:</strong> <a href="#" target="_blank">Link to the paper - *Please provide the actual URL*</a></p>
+        <p><strong>Link:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444" target="_blank">Read the full paper on SSRN</a></p>
         <p><strong>Authors:</strong></p>
         <div class="authors-container">
             <div class="author-block">
@@ -158,7 +158,7 @@ def main_academic_references():
         corroborate the Financial Torque Hypothesis, advancing our understanding of how the distribution of market activity
         across price levels influences subsequent price trends.</em></p>
         <p><strong>How to cite:</strong></p>
-        <p><em>*Please add the citation information here (e.g., Authors, Year, Journal/Conference, DOI).* Example: Johnson, R., & Williams, L. (2024). High-Frequency Algorithmic Portfolio Management. Proceedings of the International Conference on Quantitative Finance, 78-92.</em></p>
+        <p><em>Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks (June 20, 2025). Available at SSRN: https://ssrn.com/abstract=5288444</em></p>
     </div>
     """,
         unsafe_allow_html=True,
