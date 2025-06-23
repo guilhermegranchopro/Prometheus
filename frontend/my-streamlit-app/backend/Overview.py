@@ -340,7 +340,7 @@ def main_overview():
         # Add progress indicator
         progress_col1, progress_col2 = st.columns([3, 1])
         with progress_col1:
-            st.progress(0.75, text="Research Progress: 75% Complete")
+            st.progress(0.75, text="Research Progress: 75% Complete", key="publication_progress")
         with progress_col2:
             st.markdown("**🔬 In Development**")
 
@@ -830,17 +830,6 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         unsafe_allow_html=True,
     )
 
-    # Interactive Performance Dashboard Section
-    st.markdown("---")
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-gradient-to-r from-slate-50 to-blue-50 shadow-xl rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-indigo-500 pl-4'>📊 Interactive Research Dashboard</h2>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
     # Interactive Metrics Section - Enhanced with more detailed metrics
     st.markdown(
         """
@@ -908,7 +897,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
 
         with col1:
             fig2 = create_strategy_comparison()
-            st.plotly_chart(fig2, use_container_width=True)
+            st.plotly_chart(fig2, use_container_width=True, key="strategy_comparison_chart_1")
 
         with col2:
             st.markdown("""
@@ -951,19 +940,19 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             show_metrics = st.checkbox("Show Performance Metrics", value=True, key="show_performance_metrics")
 
         fig1 = create_sample_performance_chart(time_period)
-        st.plotly_chart(fig1, use_container_width=True)
+        st.plotly_chart(fig1, use_container_width=True, key="performance_simulation_chart_1")
 
         if show_metrics:
             # Add some context
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.metric("Simulated Annual Return", "24.7%", "2.1%")
+                st.metric("Simulated Annual Return", "24.7%", "2.1%", key="perf_tab_annual_return")
             with col2:
-                st.metric("Max Drawdown", "-8.3%", "0.5%")
+                st.metric("Max Drawdown", "-8.3%", "0.5%", key="perf_tab_max_drawdown")
             with col3:
-                st.metric("Sharpe Ratio", "1.87", "0.12")
+                st.metric("Sharpe Ratio", "1.87", "0.12", key="perf_tab_sharpe_ratio")
             with col4:
-                st.metric("Win Rate", "68.4%", "3.2%")
+                st.metric("Win Rate", "68.4%", "3.2%", key="perf_tab_win_rate")
 
     with perf_tab3:
         st.markdown("**Model Architecture & Insights**")
@@ -1045,16 +1034,16 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         )
 
         fig1 = create_sample_performance_chart(time_period)
-        st.plotly_chart(fig1, use_container_width=True)
+        st.plotly_chart(fig1, use_container_width=True, key="chart_tab_performance_chart")
 
         # Add some context
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.metric("Simulated Annual Return", "24.7%", "2.1%")
+            st.metric("Simulated Annual Return", "24.7%", "2.1%", key="chart_tab_annual_return")
         with col2:
-            st.metric("Max Drawdown", "-8.3%", "0.5%")
+            st.metric("Max Drawdown", "-8.3%", "0.5%", key="chart_tab_max_drawdown")
         with col3:
-            st.metric("Sharpe Ratio", "1.87", "0.12")
+            st.metric("Sharpe Ratio", "1.87", "0.12", key="chart_tab_sharpe_ratio")
 
     with chart_tab2:
         st.markdown("### Strategy Research Accuracy Comparison")
@@ -1063,7 +1052,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         )
 
         fig2 = create_strategy_comparison()
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, use_container_width=True, key="chart_tab_strategy_comparison")
 
         # Add explanatory text
         st.markdown("""
@@ -1202,9 +1191,9 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
 
     with status_col1:
         st.markdown("**📊 Current Research**")
-        st.progress(1.0, text="Financial Torque Hypothesis - Published ✅")
-        st.progress(0.75, text="Advanced Portfolio Management - 75% Complete")
-        st.progress(0.3, text="Enhanced ML Models - In Planning")
+        st.progress(1.0, text="Financial Torque Hypothesis - Published ✅", key="research_progress_1")
+        st.progress(0.75, text="Advanced Portfolio Management - 75% Complete", key="research_progress_2")
+        st.progress(0.3, text="Enhanced ML Models - In Planning", key="research_progress_3")
 
     with status_col2:
         st.markdown("**🔬 Active Studies**")
