@@ -28,6 +28,56 @@
 
 Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.
 
+## 🪶 Academic Publications
+
+This project is supported by rigorous academic research published in peer-reviewed venues:
+
+### Published Research
+
+**[The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)**
+
+*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
+
+*Abstract:* This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data consistently outperform those built on regular-hours-only data, delivering a 15% improvement in predictive accuracy.
+
+**Citation:**
+
+```bibtex
+Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, The Financial Torque Hypothesis: 
+Predicting Short-Term Stock Price Movements Using LSTM Neural Networks (June 20, 2025). 
+Available at SSRN: https://ssrn.com/abstract=5288444
+```
+
+### Upcoming Research
+
+#### Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management
+
+*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
+
+*Status:* Set to be published in the coming months
+
+This upcoming publication will detail the practical implementation of the Financial Torque Hypothesis within the Prometheus trading platform and its integration into advanced portfolio management strategies.
+
+## 🖥️ Interactive Frontend Dashboard
+
+The project features a comprehensive Streamlit-based web application that provides:
+
+- **Real-time Portfolio Monitoring**: Live tracking of trading positions and performance metrics
+- **Strategy Visualization**: Interactive charts and graphs displaying trading strategy performance
+- **Risk Management Interface**: Tools for monitoring and adjusting risk parameters
+- **Market Data Analysis**: Real-time market data visualization and analysis tools
+- **Academic Research Integration**: Direct access to research findings and model insights
+
+### Launching the Frontend
+
+Ensure Streamlit is installed (`pip install streamlit`).
+
+```bash
+streamlit run frontend/my-streamlit-app/Home.py
+```
+
+The frontend application is located in the `frontend/my-streamlit-app/` directory and serves as the primary user interface for interacting with the Prometheus trading platform.
+
 ## ✨ Features
 
 - **Real-time Market Data Integration**
@@ -53,11 +103,62 @@ Prometheus is a sophisticated algorithmic trading platform that leverages the Al
   - Portfolio diversification strategies
   - Risk assessment tools
 
-- **Interactive Frontend Dashboard**
-  - Streamlit application for monitoring and interaction (see `frontend/` directory)
-
 - **Live Trading Capabilities**
   - Jupyter notebook for live trading execution and monitoring (see `Live_Trading/` directory)
+
+## 🚀 Usage
+
+1. **Launching the Frontend Dashboard**
+
+    Ensure Streamlit is installed (`pip install streamlit`).
+
+    ```bash
+    streamlit run frontend/my-streamlit-app/Home.py
+    ```
+
+2. **Data Collection and Analysis**
+
+    (Refer to notebooks within `Data/` subdirectories or specific strategy research)
+
+    ```python
+    # Example: Initialize API connection (ensure credentials are set)
+    import alpaca_trade_api as tradeapi
+
+    api = tradeapi.REST(
+        key_id='YOUR_API_KEY',          # Preferably set via environment variables
+        secret_key='YOUR_SECRET_KEY',  # Preferably set via environment variables
+        base_url='https://paper-api.alpaca.markets'
+    )
+
+    # Example: Fetch market data
+    # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df # Original example
+    # For more detailed data handling, see scripts/notebooks in Data/ or strategy research folders.
+    ```
+
+3. **Running Trading Strategies**
+
+    ```python
+    # Import your preferred strategy module
+    from Simons.backend import strategy as simons_strategy
+    # or
+    from Sun_Tzu.backend import strategy as sun_tzu_strategy
+
+    # Execute the strategy (ensure strategy-specific configurations are set)
+    # results = strategy.execute() # Placeholder, actual execution might vary
+    ```
+
+4. **Live Trading**
+
+    Open and run cells in `Live_Trading/Live_Trading.ipynb` after appropriate setup and risk assessment.
+
+## 📈 Performance
+
+The platform implements multiple trading strategies:
+
+- **Simons Strategy**: Advanced quantitative trading approach
+- **Sun Tzu Strategy**: Tactical market analysis and execution
+
+Performance metrics are continuously monitored and updated based on live trading results.
 
 ## 🛠️ Installation
 
@@ -126,60 +227,6 @@ Prometheus/
 └── uv.lock                     # Lock file for uv package manager
 ```
 
-## 🚀 Usage
-
-1. **Data Collection and Analysis**
-
-    (Refer to notebooks within `Data/` subdirectories or specific strategy research)
-
-    ```python
-    # Example: Initialize API connection (ensure credentials are set)
-    import alpaca_trade_api as tradeapi
-
-    api = tradeapi.REST(
-        key_id='YOUR_API_KEY',          # Preferably set via environment variables
-        secret_key='YOUR_SECRET_KEY',  # Preferably set via environment variables
-        base_url='https://paper-api.alpaca.markets'
-    )
-
-    # Example: Fetch market data
-    # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df # Original example
-    # For more detailed data handling, see scripts/notebooks in Data/ or strategy research folders.
-    ```
-
-2. **Running Trading Strategies**
-
-    ```python
-    # Import your preferred strategy module
-    from Simons.backend import strategy as simons_strategy
-    # or
-    from Sun_Tzu.backend import strategy as sun_tzu_strategy
-
-    # Execute the strategy (ensure strategy-specific configurations are set)
-    # results = strategy.execute() # Placeholder, actual execution might vary
-    ```
-
-3. **Launching the Frontend Dashboard**
-
-    Ensure Streamlit is installed (`pip install streamlit`).
-
-    ```bash
-    streamlit run frontend/my-streamlit-app/Home.py
-    ```
-
-4. **Live Trading**
-
-    Open and run cells in `Live_Trading/Live_Trading.ipynb` after appropriate setup and risk assessment.
-
-## 📈 Performance
-
-The platform implements multiple trading strategies:
-
-- **Simons Strategy**: Advanced quantitative trading approach
-- **Sun Tzu Strategy**: Tactical market analysis and execution
-
-Performance metrics are continuously monitored and updated based on live trading results.
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
@@ -199,36 +246,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Alpaca Markets](https://alpaca.markets/) for providing the trading API
 - Contributors and maintainers
 - The open-source community
-
-## 🪶 Academic Publications
-
-This project is supported by rigorous academic research published in peer-reviewed venues:
-
-### Published Research
-
-**[The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)**
-
-*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
-
-*Abstract:* This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data consistently outperform those built on regular-hours-only data, delivering a 15% improvement in predictive accuracy.
-
-**Citation:**
-
-```bibtex
-Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, The Financial Torque Hypothesis: 
-Predicting Short-Term Stock Price Movements Using LSTM Neural Networks (June 20, 2025). 
-Available at SSRN: https://ssrn.com/abstract=5288444
-```
-
-### Upcoming Research
-
-#### Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management
-
-*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
-
-*Status:* Set to be published in the coming months
-
-This upcoming publication will detail the practical implementation of the Financial Torque Hypothesis within the Prometheus trading platform and its integration into advanced portfolio management strategies.
 
 ## 📧 Contact
 
