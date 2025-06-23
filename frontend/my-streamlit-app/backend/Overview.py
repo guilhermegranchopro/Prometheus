@@ -14,81 +14,6 @@ def get_logo_path():
     return LOGO_BASE_PATH
 
 
-def create_sample_performance_chart(time_period="1 Year"):
-    """Create a sample performance chart for demonstration"""
-    # Determine date range based on time period
-    if time_period == "3 Months":
-        start_date = "2024-10-01"
-        end_date = "2024-12-31"
-    elif time_period == "6 Months":
-        start_date = "2024-07-01"
-        end_date = "2024-12-31"
-    else:  # 1 Year
-        start_date = "2024-01-01"
-        end_date = "2024-12-31"
-
-    # Create sample data for demonstration
-    dates = pd.date_range(start=start_date, end=end_date, freq="D")
-
-    # Simulate performance data
-    cumulative_return = []
-    current_return = 1.0
-
-    for _ in dates:
-        # Add some randomness with a slight upward bias
-        daily_return = random.normalvariate(
-            0.002, 0.02
-        )  # 0.2% mean daily return, 2% volatility
-        current_return *= 1 + daily_return
-        cumulative_return.append((current_return - 1) * 100)
-
-    df = pd.DataFrame({"Date": dates, "Cumulative Return (%)": cumulative_return})
-
-    fig = px.line(
-        df,
-        x="Date",
-        y="Cumulative Return (%)",
-        title=f"Research Platform Performance Simulation ({time_period})",
-        labels={"Cumulative Return (%)": "Cumulative Return (%)"},
-    )
-
-    fig.update_layout(
-        xaxis_title="Date",
-        yaxis_title="Cumulative Return (%)",
-        template="plotly_white",
-        height=400,
-    )
-
-    return fig
-
-
-def create_strategy_comparison():
-    """Create a comparison chart between strategies"""
-    strategies = ["Simons Strategy", "Sun Tzu Strategy", "Financial Torque Hypothesis"]
-    accuracy = [82.5, 78.3, 87.2]  # Sample accuracy percentages
-
-    fig = go.Figure(
-        data=[
-            go.Bar(
-                name="Accuracy (%)",
-                x=strategies,
-                y=accuracy,
-                marker_color=["#3B82F6", "#10B981", "#F59E0B"],
-            )
-        ]
-    )
-
-    fig.update_layout(
-        title="Strategy Research Accuracy Comparison",
-        xaxis_title="Strategy",
-        yaxis_title="Accuracy (%)",
-        template="plotly_white",
-        height=400,
-    )
-
-    return fig
-
-
 def main_overview():
     # --- Page Content ---
     # Wrap content in a div with Tailwind classes - Adjusted padding
@@ -110,12 +35,14 @@ def main_overview():
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
             )
 
-    # Technology Stack Badges Section - Enhanced with more technologies from README
+    # Technology Stack Badges Section - Complete badges matching README.md
     st.markdown(
         """
         <div class='container mx-auto px-6 py-4 bg-white shadow-lg rounded-lg mb-6'>
             <div class='flex flex-wrap justify-center gap-2'>
                 <img src='https://img.shields.io/badge/python-3.10-blue.svg' alt='Python Version'/>
+                <img src='https://img.shields.io/badge/license-MIT-green.svg' alt='License'/>
+                <img src='https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg' alt='Alpaca API'/>
                 <img src='https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white' alt='Streamlit'/>
                 <img src='https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white' alt='TensorFlow'/>
                 <img src='https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white' alt='Pandas'/>
@@ -124,14 +51,14 @@ def main_overview():
                 <img src='https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white' alt='Matplotlib'/>
                 <img src='https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white' alt='Plotly'/>
                 <img src='https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white' alt='Altair'/>
-                <img src='https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white' alt='SciPy'/>
                 <img src='https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white' alt='Joblib'/>
                 <img src='https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white' alt='FuzzyWuzzy'/>
-                <img src='https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white' alt='Polygon API Client'/>
-                <img src='https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg' alt='Alpaca API'/>
-                <img src='https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black' alt='Python-Dotenv'/>
                 <img src='https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white' alt='Ruff'/>
-                <img src='https://img.shields.io/badge/license-MIT-green.svg' alt='License'/>
+                <img src='https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white' alt='SciPy'/>
+                <img src='https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white' alt='npm'/>
+                <img src='https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black' alt='Python-Dotenv'/>
+                <img src='https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white' alt='Polygon API Client'/>
+                <img src='https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white' alt='Python-Levenshtein'/>
             </div>
         </div>
     """,
@@ -405,6 +332,44 @@ def main_overview():
             if i < len(roadmap_items) - 1:
                 st.markdown("---")
 
+    # Interactive Frontend Dashboard Section - Adding from README.md
+    st.markdown(
+        """
+        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
+            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-cyan-500 pl-4'>🖥️ Interactive Frontend Dashboard</h2>
+            <p class='text-gray-700 mb-4'>The project includes a Streamlit-based web application that provides:</p>
+            
+            <div class='grid md:grid-cols-2 gap-6 mb-6'>
+                <div class='bg-gradient-to-br from-cyan-50 to-blue-100 p-6 rounded-lg border-l-4 border-cyan-500'>
+                    <h3 class='text-xl font-semibold text-cyan-800 mb-3'>📊 Portfolio Monitoring</h3>
+                    <p class='text-cyan-700'>Tracking of positions and performance metrics</p>
+                </div>
+                
+                <div class='bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-lg border-l-4 border-blue-500'>
+                    <h3 class='text-xl font-semibold text-blue-800 mb-3'>📈 Strategy Visualization</h3>
+                    <p class='text-blue-700'>Charts displaying strategy performance</p>
+                </div>
+                
+                <div class='bg-gradient-to-br from-indigo-50 to-purple-100 p-6 rounded-lg border-l-4 border-indigo-500'>
+                    <h3 class='text-xl font-semibold text-indigo-800 mb-3'>🛡️ Risk Management Interface</h3>
+                    <p class='text-indigo-700'>Tools for monitoring and adjusting risk parameters</p>
+                </div>
+                
+                <div class='bg-gradient-to-br from-purple-50 to-pink-100 p-6 rounded-lg border-l-4 border-purple-500'>
+                    <h3 class='text-xl font-semibold text-purple-800 mb-3'>🔬 Academic Research Integration</h3>
+                    <p class='text-purple-700'>Access to research findings and model insights</p>
+                </div>
+            </div>
+            
+            <div class='bg-gradient-to-r from-gray-50 to-gray-100 p-6 rounded-lg border-l-4 border-gray-500'>
+                <h3 class='text-lg font-semibold text-gray-800 mb-2'>🖥️ Market Data Analysis</h3>
+                <p class='text-gray-700'>Data visualization and analysis tools integrated into the frontend application located in <code>frontend/my-streamlit-app/</code> directory, serving as the primary user interface for interacting with the Prometheus trading platform.</p>
+            </div>
+        </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
     # Features Section - Enhanced card styling, heading, and feature item styling
     st.markdown(
         """
@@ -452,16 +417,17 @@ def main_overview():
                         <li>Portfolio monitoring and tracking</li>
                         <li>Strategy visualization with charts</li>
                         <li>Risk management interface</li>
+                        <li>Market data analysis and visualization tools</li>
                         <li>Academic research integration</li>
                     </ul>
                 </div>
                 <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
                     <h3 class='text-xl font-medium text-sky-700 mb-3'>Live Trading Research</h3>
                     <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Jupyter notebook for live trading research</li>
-                        <li>Research and monitoring capabilities</li>
-                        <li>Risk assessment integration</li>
-                        <li>Academic research validation</li>
+                        <li>Jupyter notebook for live trading research and monitoring</li>
+                        <li>Research-focused approach with risk assessment</li>
+                        <li>Academic validation methodologies</li>
+                        <li>Live_Trading/Live_Trading.ipynb implementation</li>
                     </ul>
                 </div>
             </div>
@@ -495,7 +461,7 @@ def main_overview():
 ├── Simons/                     # Simons trading strategy research
 │   ├── backend/                # Research notebooks for Simons strategy
 │   ├── Images/                 # Images related to Simons strategy
-│   ├── Paper/                  # Research paper published on SSRN
+│   ├── Paper/                  # Research paper published on SSRN 
 │   ├── Report/                 # Reports and results for Simons
 │   └── Settings/               # Configuration for Simons strategy
 ├── Sun_Tzu/                    # Sun Tzu trading strategy research
@@ -785,7 +751,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             unsafe_allow_html=True,
         )
 
-    # Footer - Enhanced with license and acknowledgments from README
+    # Footer - Enhanced with license and acknowledgments matching README.md
     st.markdown(
         """
         <footer class='text-center mt-16 py-8 border-t border-gray-400'>
@@ -798,10 +764,10 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             
             <div class='mb-4'>
                 <p class='text-sm text-gray-500'>
-                    <strong>Acknowledgments:</strong> 
-                    <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a> • 
-                    Contributors & Maintainers • 
-                    The Open-Source Community
+                    <strong>🙏 Acknowledgments:</strong> 
+                    <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a> for providing the trading API • 
+                    Contributors and maintainers • 
+                    The open-source community
                 </p>
             </div>
             
@@ -821,249 +787,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
 
     # Interactive Performance Dashboard Section
     st.markdown("---")
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-gradient-to-r from-slate-50 to-blue-50 shadow-xl rounded-lg mb-10'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-indigo-500 pl-4'>📊 Interactive Research Dashboard</h2>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # Interactive Metrics Section - Enhanced with more detailed metrics
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 shadow-lg rounded-lg mb-6'>
-            <h3 class='text-2xl font-semibold text-center text-gray-800 mb-4'>📊 Research Platform Metrics</h3>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # Create metrics columns with enhanced information
-    col1, col2, col3, col4, col5 = st.columns(5)
-
-    with col1:
-        st.metric(
-            label="🎯 ML Model Accuracy",
-            value="87.2%",
-            delta="15% improvement",
-            help="Accuracy achieved by the Financial Torque Hypothesis model on 21 months of unseen test data",
-        )
-
-    with col2:
-        st.metric(
-            label="📈 Test Data Period",
-            value="21 months",
-            delta="Unseen data",
-            help="Duration of previously unseen test data used for validation",
-        )
-
-    with col3:
-        st.metric(
-            label="🔬 Research Strategies",
-            value="3",
-            delta="Active research",
-            help="Number of trading strategies under active research (Financial Torque, Simons, Sun Tzu)",
-        )
-
-    with col4:
-        st.metric(
-            label="📚 Publications",
-            value="1",
-            delta="+1 upcoming",
-            help="Published academic papers with one more in development",
-        )
-
-    with col5:
-        st.metric(
-            label="⏱️ Prediction Horizon",
-            value="3 hours",
-            delta="Real-time",
-            help="Time horizon for stock price movement predictions",
-        )
-
-    # Interactive Performance Comparison Section
-    st.markdown("### 🏆 Research Strategy Performance Comparison")
-
-    # Create tabs for different performance views
-    perf_tab1, perf_tab2, perf_tab3 = st.tabs(
-        ["📊 Accuracy Comparison", "📈 Performance Simulation", "🔍 Model Insights"]
-    )
-
-    with perf_tab1:
-        st.markdown("**Strategy Research Accuracy Rates**")
-        col1, col2 = st.columns([2, 1])
-
-        with col1:
-            fig2 = create_strategy_comparison()
-            st.plotly_chart(fig2, use_container_width=True, key="strategy_comparison_chart_1")
-
-        with col2:
-            st.markdown("""
-            **Key Findings:**
-            
-            🥇 **Financial Torque Hypothesis**
-            - 87.2% accuracy
-            - LSTM neural networks
-            - Published research
-            
-            🥈 **Simons Strategy**
-            - 82.5% accuracy  
-            - Quantitative approach
-            - Mathematical modeling
-            
-            🥉 **Sun Tzu Strategy**
-            - 78.3% accuracy
-            - Tactical analysis
-            - Strategic positioning
-            """)
-
-    with perf_tab2:
-        st.markdown("**Research Platform Performance Simulation**")
-        st.info(
-            "📊 This chart shows a simulated performance based on research methodologies. Actual results may vary."
-        )
-
-        # Add an interactive selector for time period
-        col1, col2 = st.columns([3, 1])
-
-        with col1:
-            time_period = st.selectbox(
-                "Select Time Period for Simulation:",
-                ["1 Year", "6 Months", "3 Months"],
-                index=0,
-                key="performance_simulation_time_period"
-            )
-
-        with col2:
-            show_metrics = st.checkbox("Show Performance Metrics", value=True, key="show_performance_metrics")
-
-        fig1 = create_sample_performance_chart(time_period)
-        st.plotly_chart(fig1, use_container_width=True, key="performance_simulation_chart_1")
-
-        if show_metrics:
-            # Add some context
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("Simulated Annual Return", "24.7%", "2.1%", key="perf_tab_annual_return")
-            with col2:
-                st.metric("Max Drawdown", "-8.3%", "0.5%", key="perf_tab_max_drawdown")
-            with col3:
-                st.metric("Sharpe Ratio", "1.87", "0.12", key="perf_tab_sharpe_ratio")
-            with col4:
-                st.metric("Win Rate", "68.4%", "3.2%", key="perf_tab_win_rate")
-
-    with perf_tab3:
-        st.markdown("**Model Architecture & Insights**")
-
-        # Create expandable sections for technical details
-        with st.expander(
-            "🧠 Financial Torque Hypothesis - Technical Details", expanded=True
-        ):
-            col1, col2 = st.columns(2)
-
-            with col1:
-                st.markdown("""
-                **Model Architecture:**
-                - LSTM Neural Network
-                - TensorFlow implementation
-                - Volume-Weighted Average Price (VWAP)
-                - Trade Count features
-                - 3-hour prediction horizon
-                """)
-
-            with col2:
-                st.markdown("""
-                **Key Performance Factors:**
-                - Full-session data (pre + regular + after hours)
-                - 15% improvement over regular-hours-only
-                - 21 months of unseen test data
-                - Real-time market data integration
-                """)
-
-        with st.expander("📊 Data Infrastructure"):
-            st.markdown("""
-            **Data Sources:**
-            - **IEX Feed**: Real-time market data
-            - **SIP Feed**: Securities Information Processor data
-            - **Regular Hours**: Standard trading session (9:30 AM - 4:00 PM ET)
-            - **Extended Hours**: Pre-market and after-hours sessions
-            
-            **Processing Pipeline:**
-            - Automated data collection
-            - Rate limit management
-            - Data normalization and feature engineering
-            - Real-time scalers for model inputs
-            """)
-
-        with st.expander("🔬 Research Methodology"):
-            st.markdown("""
-            **Academic Rigor:**
-            - Peer-reviewed publication process
-            - Comprehensive backtesting framework
-            - Out-of-sample validation (21 months)
-            - Comparative analysis across multiple datasets
-            
-            **Validation Process:**
-            - Train/validation/test splits
-            - Time-series cross-validation
-            - Performance consistency checks
-            - Risk-adjusted return analysis
-            """)
-
-    # Interactive Metrics Section - Original but enhanced
-    st.markdown("---")
-
-    chart_tab1, chart_tab2 = st.tabs(
-        ["📈 Performance Simulation", "🏆 Strategy Comparison"]
-    )
-
-    with chart_tab1:
-        st.markdown("### Research Platform Performance Simulation")
-        st.info(
-            "📊 This chart shows a simulated performance based on research methodologies. Actual results may vary."
-        )
-
-        # Add an interactive selector for time period
-        time_period = st.selectbox(
-            "Select Time Period for Simulation:",
-            ["1 Year", "6 Months", "3 Months"],
-            index=0,
-            key="chart_tab_time_period"
-        )
-
-        fig1 = create_sample_performance_chart(time_period)
-        st.plotly_chart(fig1, use_container_width=True, key="chart_tab_performance_chart")
-
-        # Add some context
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("Simulated Annual Return", "24.7%", "2.1%", key="chart_tab_annual_return")
-        with col2:
-            st.metric("Max Drawdown", "-8.3%", "0.5%", key="chart_tab_max_drawdown")
-        with col3:
-            st.metric("Sharpe Ratio", "1.87", "0.12", key="chart_tab_sharpe_ratio")
-
-    with chart_tab2:
-        st.markdown("### Strategy Research Accuracy Comparison")
-        st.info(
-            "🎯 Comparison of accuracy rates achieved by different research strategies."
-        )
-
-        fig2 = create_strategy_comparison()
-        st.plotly_chart(fig2, use_container_width=True, key="chart_tab_strategy_comparison")
-
-        # Add explanatory text
-        st.markdown("""
-        **Research Findings:**
-        - **Financial Torque Hypothesis**: Highest accuracy at 87.2% using LSTM neural networks
-        - **Simons Strategy**: Quantitative approach achieving 82.5% accuracy
-        - **Sun Tzu Strategy**: Tactical analysis with 78.3% accuracy
-        
-        *All accuracy measurements are based on historical backtesting and research validation.*
-        """)
-
+    
     # Interactive FAQ Section
     st.markdown(
         """
