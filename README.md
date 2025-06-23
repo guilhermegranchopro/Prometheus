@@ -26,7 +26,7 @@
 
 ## 🚀 Overview
 
-Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.
+Prometheus is an algorithmic trading research platform that integrates with the Alpaca Markets API for trading strategies. This project combines data analysis, machine learning models, and market data analysis to support trading research and development.
 
 ## 🪶 Academic Publications
 
@@ -60,13 +60,13 @@ This upcoming publication will detail the practical implementation of the Financ
 
 ## 🖥️ Interactive Frontend Dashboard
 
-The project features a comprehensive Streamlit-based web application that provides:
+The project includes a Streamlit-based web application that provides:
 
-- **Real-time Portfolio Monitoring**: Live tracking of trading positions and performance metrics
-- **Strategy Visualization**: Interactive charts and graphs displaying trading strategy performance
+- **Portfolio Monitoring**: Tracking of positions and performance metrics
+- **Strategy Visualization**: Charts displaying strategy performance  
 - **Risk Management Interface**: Tools for monitoring and adjusting risk parameters
-- **Market Data Analysis**: Real-time market data visualization and analysis tools
-- **Academic Research Integration**: Direct access to research findings and model insights
+- **Market Data Analysis**: Data visualization and analysis tools
+- **Academic Research Integration**: Access to research findings and model insights
 
 ### Launching the Frontend
 
@@ -80,31 +80,31 @@ The frontend application is located in the `frontend/my-streamlit-app/` director
 
 ## ✨ Features
 
-- **Real-time Market Data Integration**
-  - Seamless integration with Alpaca Markets API
-  - High-frequency data collection with rate limit management
+- **Market Data Integration**
+  - Integration with Alpaca Markets API
+  - Data collection with rate limit management
   - Support for multiple timeframes and market data types (IEX, SIP)
 
-- **Advanced Trading Models**
+- **Trading Research Models**
   - Machine learning model integration with TensorFlow
-  - Custom trading strategies implementation (Simons, Sun Tzu)
+  - Custom trading strategies research (Simons, Sun Tzu)
   - Research-based approach with separate modules for different strategies
   - Structured model management and evaluation (see `Models/` directory)
 
 - **Data Analysis & Visualization**
-  - Comprehensive market data analysis using pandas and numpy
-  - Interactive data visualization with matplotlib
+  - Market data analysis using pandas and numpy
+  - Data visualization with matplotlib and plotly
   - Performance metrics and reporting
   - Historical data analysis and storage for various sources (see `Data/` directory)
 
-- **Risk Management**
-  - Position sizing algorithms
-  - Stop-loss and take-profit mechanisms
-  - Portfolio diversification strategies
-  - Risk assessment tools
+- **Risk Management Research**
+  - Position sizing algorithms research
+  - Stop-loss and take-profit mechanisms research
+  - Portfolio diversification strategies research
+  - Risk assessment tools research
 
-- **Live Trading Capabilities**
-  - Jupyter notebook for live trading execution and monitoring (see `Live_Trading/` directory)
+- **Live Trading Research**
+  - Jupyter notebook for live trading research and monitoring (see `Live_Trading/` directory)
 
 ## 🚀 Usage
 
@@ -132,19 +132,18 @@ The frontend application is located in the `frontend/my-streamlit-app/` director
 
     # Example: Fetch market data
     # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df # Original example
-    # For more detailed data handling, see scripts/notebooks in Data/ or strategy research folders.
+    # For more detailed data handling, see notebooks in Data/ or strategy research folders.
     ```
 
 3. **Running Trading Strategies**
 
     ```python
-    # Import your preferred strategy module
-    from Simons.backend import strategy as simons_strategy
-    # or
-    from Sun_Tzu.backend import strategy as sun_tzu_strategy
-
-    # Execute the strategy (ensure strategy-specific configurations are set)
-    # results = strategy.execute() # Placeholder, actual execution might vary
+    # Note: The strategy modules referenced below are research notebooks
+    # and not standalone importable modules. Refer to the actual notebook files:
+    # - Simons/backend/Simons.ipynb 
+    # - Sun_Tzu/backend/Ronin_SunTzu.ipynb
+    
+    # For actual strategy implementation, see the notebook files directly
     ```
 
 4. **Live Trading**
@@ -153,19 +152,19 @@ The frontend application is located in the `frontend/my-streamlit-app/` director
 
 ## 📈 Performance
 
-The platform implements multiple trading strategies:
+The platform supports research into multiple trading strategies:
 
-- **Simons Strategy**: Advanced quantitative trading approach
-- **Sun Tzu Strategy**: Tactical market analysis and execution
+- **Simons Strategy**: Quantitative trading research approach (see `Simons/backend/Simons.ipynb`)
+- **Sun Tzu Strategy**: Tactical market analysis research (see `Sun_Tzu/backend/Ronin_SunTzu.ipynb`)
 
-Performance metrics are continuously monitored and updated based on live trading results.
+Performance metrics can be analyzed through the provided research notebooks.
 
 ## 🛠️ Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/Prometheus.git
+    git clone [YOUR_REPOSITORY_URL]
     cd Prometheus
     ```
 
@@ -207,14 +206,14 @@ Prometheus/
 │   ├── Regular Hours/
 │   ├── SIP/
 │   └── Table.ipynb
-├── Simons/                     # Simons trading strategy
-│   ├── backend/                # Backend logic for Simons strategy
+├── Simons/                     # Simons trading strategy research
+│   ├── backend/                # Research notebooks for Simons strategy
 │   ├── Images/                 # Images related to Simons strategy
-│   ├── Paper/                  # Research paper published on Arxiv based on the quantitative software develop for Simons
+│   ├── Paper/                  # Research paper published on SSRN 
 │   ├── Report/                 # Reports and results for Simons
 │   └── Settings/               # Configuration for Simons strategy
-├── Sun_Tzu/                    # Sun Tzu trading strategy
-│   ├── backend/                # Backend logic for Sun Tzu strategy
+├── Sun_Tzu/                    # Sun Tzu trading strategy research
+│   ├── backend/                # Research notebooks for Sun Tzu strategy
 │   └── research/               # Research for Sun Tzu strategy
 ├── .venv/                      # Python virtual environment
 ├── .git/                       # Git version control files
