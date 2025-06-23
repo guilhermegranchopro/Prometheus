@@ -60,9 +60,10 @@ def main_overview():
         st.markdown("""
         **Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management**
         
-        **Status:** 🔄 75% Complete - Expected publication in coming months
+        **Status:** 🔄 75% Complete - Expected publication in coming months  
+        **Research Focus:** Sun Tzu strategy development
         
-        This upcoming research will detail the practical implementation of our Financial Torque Hypothesis within advanced portfolio management strategies, covering optimization techniques and risk management integration.
+        This upcoming research (Sun Tzu) will detail the practical implementation of our Financial Torque Hypothesis within advanced portfolio management strategies. Building upon the Simons quantitative models, Sun Tzu optimizes algorithmic portfolio management to take full advantage of the predictions made by Simons models for quantitative portfolio management.
         """)
         st.progress(0.75, text="Research Progress: 75% Complete")
     
@@ -114,9 +115,9 @@ def main_overview():
     with tab4:
         st.markdown("""
         **Trading Strategy Research**
-        - 🎲 **Simons Strategy**: Quantitative mathematical modeling (`Simons/backend/`)
-        - ⚔️ **Sun Tzu Strategy**: Tactical market analysis (`Sun_Tzu/backend/`)
-        - 🔬 **Financial Torque**: Published LSTM-based predictions
+        - 🎲 **Simons Strategy**: ML quantitative models implementing the Financial Torque Hypothesis for stock price predictions (`Simons/backend/`)
+        - ⚔️ **Sun Tzu Strategy**: Advanced portfolio management optimization leveraging Simons predictions for quantitative portfolio management (`Sun_Tzu/backend/`)
+        - 🔬 **Financial Torque**: Published LSTM-based predictions achieving 87%+ accuracy
         - 📊 Multi-strategy comparative analysis framework
         - 🧪 Live trading research environment (`Live_Trading/`)
         """)
@@ -325,8 +326,8 @@ https://github.com/guilhermegranchopro/Prometheus
         with st.expander("📊 What strategies are researched?"):
             st.markdown("""
             - **Financial Torque**: Published LSTM research (87%+ accuracy)
-            - **Simons**: Quantitative mathematical modeling
-            - **Sun Tzu**: Tactical market analysis
+            - **Simons**: First paper's ML quantitative models for stock price predictions based on Financial Torque Hypothesis
+            - **Sun Tzu**: Second paper's continuation of Simons - optimizes algorithmic portfolio management using Simons predictions
             
             Performance metrics can be analyzed through the provided research notebooks with structured model management and evaluation.
             """)
