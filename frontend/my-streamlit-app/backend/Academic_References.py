@@ -132,14 +132,14 @@ def main_academic_references():
         <p><strong>Authors:</strong></p>
         <div class="authors-container">
             <div class="author-block">
-                <p><em>Guilherme Grancho D. Fernandes</em><br>
+                <p><em><a href="https://www.linkedin.com/in/guilhermegrancho/" target="_blank">Guilherme Grancho D. Fernandes</a></em><br>
                 Department of Earth Science and Engineering, Imperial College London, London, United Kingdom<br>
                 <a href="mailto:guilherme.fernandes25@imperial.ac.uk">guilherme.fernandes25@imperial.ac.uk</a><br>
                 Department of Physics, Instituto Superior Técnico, Lisbon, Portugal<br>
                 <a href="mailto:guilhermegrancho@tecnico.ulisboa.pt">guilhermegrancho@tecnico.ulisboa.pt</a></p>
             </div>
             <div class="author-block">
-                <p><em>Vasco V. R. Serpa Pereira</em><br>
+                <p><em><a href="https://www.linkedin.com/in/vasco-pereira03/" target="_blank">Vasco V. R. Serpa Pereira</a></em><br>
                 Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon, Portugal<br>
                 <a href="mailto:vasco.serpa.pereira@tecnico.ulisboa.pt">vasco.serpa.pereira@tecnico.ulisboa.pt</a></p>
             </div>
@@ -173,14 +173,14 @@ def main_academic_references():
         <p><strong>Authors:</strong></p>
         <div class="authors-container">
             <div class="author-block">
-                <p><em>Guilherme Grancho D. Fernandes</em><br>
+                <p><em><a href="https://www.linkedin.com/in/guilhermegrancho/" target="_blank">Guilherme Grancho D. Fernandes</a></em><br>
                 Department of Earth Science and Engineering, Imperial College London, London, United Kingdom<br>
                 <a href="mailto:guilherme.fernandes25@imperial.ac.uk">guilherme.fernandes25@imperial.ac.uk</a><br>
                 Department of Physics, Instituto Superior Técnico, Lisbon, Portugal<br>
                 <a href="mailto:guilhermegrancho@tecnico.ulisboa.pt">guilhermegrancho@tecnico.ulisboa.pt</a></p>
             </div>
             <div class="author-block">
-                <p><em>Vasco V. R. Serpa Pereira</em><br>
+                <p><em><a href="https://www.linkedin.com/in/vasco-pereira03/" target="_blank">Vasco V. R. Serpa Pereira</a></em><br>
                 Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon, Portugal<br>
                 <a href="mailto:vasco.serpa.pereira@tecnico.ulisboa.pt">vasco.serpa.pereira@tecnico.ulisboa.pt</a></p>
             </div>
