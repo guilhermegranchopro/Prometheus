@@ -25,23 +25,12 @@ def main_overview():
             st.warning(f"Could not load logo. Error: {e}")
 
     # Hero Section
-    st.markdown("# 🚀 Prometheus Trading Research Platform")
+    st.markdown("# 🚀 Welcome to Prometheus")
     
     st.markdown("""
     An advanced algorithmic trading research platform achieving **87%+ accuracy** in stock price predictions through our published **Financial Torque Hypothesis**. 
     This open-source platform combines rigorous academic research with practical trading applications.
     """)
-    
-    # Key Metrics Row
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Research Accuracy", "87%+", "Published SSRN")
-    with col2:
-        st.metric("Test Data", "21 months", "Unseen validation")
-    with col3:
-        st.metric("Python Version", "3.10+", "Latest features")
-    with col4:
-        st.metric("License", "MIT", "Open source")
     
     st.markdown("---")
 
@@ -133,41 +122,6 @@ def main_overview():
         - 📊 Multi-strategy comparative analysis framework
         - 🧪 Live trading research environment (`Live_Trading/`)
         """)
-    
-    st.markdown("---")
-
-    # Project Structure - Simplified
-    st.markdown("## 📁 Project Structure")
-    
-    col1, col2 = st.columns([2, 1])
-    
-    with col1:
-        st.code("""
-Prometheus/
-├── 📊 Data/                    # Market data (IEX, SIP, Regular Hours)
-├── 🖥️ frontend/               # Streamlit web application
-├── 🤖 Models/                 # ML models and analysis notebooks
-├── 🧪 Live_Trading/           # Live trading research environment
-├── 🎲 Simons/                 # Quantitative strategy research
-├── ⚔️ Sun_Tzu/               # Tactical strategy research
-├── 🖼️ Assets/                # Project assets and images
-├── 📄 requirements.txt        # Python dependencies
-└── 📋 CITATION.cff           # Academic citation information
-        """, language="text")
-    
-    with col2:
-        st.markdown("**📊 Data Sources**")
-        st.markdown("- IEX Cloud feed")
-        st.markdown("- SIP (Securities Information Processor)")
-        st.markdown("- Extended & regular trading hours")
-        st.markdown("- Polygon API integration")
-        
-        st.markdown("**🔬 Research Areas**")
-        st.markdown("- Financial Torque Hypothesis")
-        st.markdown("- Quantitative modeling")
-        st.markdown("- Tactical analysis")
-        st.markdown("- Portfolio management")
-        st.markdown("- Risk assessment tools")
     
     st.markdown("---")
     
