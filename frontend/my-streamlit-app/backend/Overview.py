@@ -910,44 +910,6 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - **Q3 2026**: Production trading integration
         """)
 
-    # Quick navigation section
-    st.markdown("---")
-    st.markdown("### 🧭 Quick Navigation & Resources")
-
-    nav_col1, nav_col2, nav_col3, nav_col4 = st.columns(4)
-
-    with nav_col1:
-        st.markdown("""
-        **📚 Research Papers**
-        - [SSRN Publication](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)
-        - Citation Guidelines
-        - Academic References
-        """)
-
-    with nav_col2:
-        st.markdown("""
-        **💻 Code & Data**
-        - Jupyter Notebooks
-        - Strategy Implementations
-        - Data Processing Scripts
-        """)
-
-    with nav_col3:
-        st.markdown("""
-        **🔧 Setup & Config**
-        - Installation Guide
-        - API Configuration
-        - Environment Setup
-        """)
-
-    with nav_col4:
-        st.markdown("""
-        **🤝 Community**
-        - LinkedIn Profiles
-        - GitHub Repository
-        - Academic Affiliations
-        """)
-
     # Add a final call-to-action
     st.markdown("---")
     st.markdown(
@@ -959,31 +921,3 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         unsafe_allow_html=True,
     )
-
-    # Create action buttons
-    action_col1, action_col2, action_col3, action_col4 = st.columns(4)
-
-    with action_col1:
-        if st.button("📖 Read the Paper", use_container_width=True, key="read_paper_btn"):
-            st.success("🔗 Opening SSRN publication...")
-            st.markdown(
-                "[The Financial Torque Hypothesis](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)"
-            )
-
-    with action_col2:
-        if st.button("📊 View Strategies", use_container_width=True, key="view_strategies_btn"):
-            st.info(
-                "🎯 Navigate to the strategy pages in the sidebar to explore different research approaches."
-            )
-
-    with action_col3:
-        if st.button("🔧 Setup Guide", use_container_width=True, key="setup_guide_btn"):
-            st.info(
-                "📋 Scroll up to view the detailed installation and setup instructions."
-            )
-
-    with action_col4:
-        if st.button("👥 Contact Authors", use_container_width=True, key="contact_authors_btn"):
-            st.success(
-                "📧 Contact information is available in the Authors & Contact section above."
-            )
