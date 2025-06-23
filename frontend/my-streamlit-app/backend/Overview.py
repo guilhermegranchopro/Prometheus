@@ -28,23 +28,70 @@ def main_overview():
     st.markdown("# 🚀 Welcome to Prometheus")
     
     st.markdown("""
-    An advanced algorithmic trading research platform featuring two groundbreaking projects: **Simons** - implementing our published Financial Torque Hypothesis with **87%+ accuracy** in stock price predictions, and **Sun Tzu** - optimizing portfolio management strategies to leverage these predictions. 
+    Prometheus is an algorithmic trading research platform **divided into two main projects**: **Simons** and **Sun Tzu**. 
+    
+    - **🎲 Simons Project**: Develops ML quantitative models implementing the Financial Torque Hypothesis (First Publication - 87%+ accuracy)
+    - **⚔️ Sun Tzu Project**: Optimizes portfolio management strategies using Simons predictions (Second Publication - In Development)
+    - **🖥️ Streamlit Platform**: Where everything comes together - our best models running live and free for everyone
     
     This open-source MIT-licensed platform combines rigorous academic research with practical quantitative trading applications.
     """)
     
     st.markdown("---")
 
-    # Academic Publications - Move to prominent position
-    st.markdown("## 🪶 Published Research")
+    # Platform Structure - New section
+    st.markdown("## 🏗️ Platform Structure")
     
-    with st.expander("📄 The Financial Torque Hypothesis - Published on SSRN", expanded=True):
+    structure_col1, structure_col2, structure_col3 = st.columns(3)
+    
+    with structure_col1:
+        st.markdown("### 🎲 Simons Project")
+        st.info("""
+        **First Publication Focus**
+        - ML quantitative models
+        - Financial Torque Hypothesis implementation
+        - 87%+ accuracy in stock predictions
+        - LSTM neural networks
+        - Published on SSRN June 2025
+        """)
+    
+    with structure_col2:
+        st.markdown("### ⚔️ Sun Tzu Project") 
+        st.warning("""
+        **Second Publication Focus**
+        - Portfolio management optimization
+        - Leverages Simons predictions
+        - Algorithmic portfolio strategies
+        - Risk management integration
+        - 75% complete - Coming months
+        """)
+    
+    with structure_col3:
+        st.markdown("### 🖥️ Streamlit Platform")
+        st.success("""
+        **Live Integration Hub**
+        - Best models running live
+        - Free access for everyone
+        - Interactive research tools
+        - Real-time data visualization
+        - Where everything comes together
+        """)
+    
+    st.markdown("---")
+
+    # Academic Publications - Move to prominent position
+    st.markdown("## 🪶 Academic Publications")
+    
+    st.info("**📚 Two-Publication Strategy**: Each Prometheus project contributes to academic research with dedicated publications.")
+    
+    with st.expander("📄 Simons Project Publication - Published on SSRN", expanded=True):
         col1, col2 = st.columns([3, 1])
         
         with col1:
             st.markdown("""
             **[The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)**
             
+            **Project:** Simons  
             **Authors:** [Guilherme Grancho](https://www.linkedin.com/in/guilhermegrancho/) & [Vasco Pereira](https://www.linkedin.com/in/vasco-pereira03/)  
             **Published:** June 20, 2025 - SSRN
             
@@ -57,16 +104,18 @@ def main_overview():
             st.metric("Horizon", "3 hours", "Real-time")
             st.metric("Improvement", "15%", "Full vs RTH")
     
-    with st.expander("🔬 Upcoming Research - Advanced Portfolio Management"):
+    with st.expander("🔬 Sun Tzu Project Publication - In Development"):
         st.markdown("""
         **Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management**
         
+        **Project:** Sun Tzu  
         **Status:** 🔄 75% Complete - Expected publication in coming months  
-        **Research Focus:** Sun Tzu strategy development
+        **Research Focus:** Advanced portfolio management optimization
         
-        This upcoming research (Sun Tzu) will detail the practical implementation of our Financial Torque Hypothesis within advanced portfolio management strategies. Building upon the Simons quantitative models, Sun Tzu optimizes algorithmic portfolio management to take full advantage of the predictions made by Simons models for quantitative portfolio management.
+        This upcoming Sun Tzu publication will detail how to optimize algorithmic portfolio management using the predictions from Simons models. Building upon the Financial Torque Hypothesis, Sun Tzu develops sophisticated portfolio management strategies that take full advantage of the 87%+ accurate predictions for quantitative portfolio management and risk optimization.
         """)
         st.progress(0.75, text="Research Progress: 75% Complete")
+    
     
     st.markdown("---")
 
@@ -318,37 +367,39 @@ https://github.com/guilhermegranchopro/Prometheus
     faq_col1, faq_col2 = st.columns(2)
     
     with faq_col1:
-        with st.expander("🤖 What is the Financial Torque Hypothesis?"):
+        with st.expander("🏗️ How is Prometheus structured?"):
             st.markdown("""
-            Our research hypothesis that **VWAP and Trade Count** are critical for predicting stock movements. 
-            Our LSTM model achieved **87%+ accuracy** over 3-hour horizons with 21 months of test data.
+            Prometheus is **divided into two main projects**:
+            - **🎲 Simons**: ML models for stock predictions (First Publication)
+            - **⚔️ Sun Tzu**: Portfolio optimization (Second Publication)
+            - **🖥️ Streamlit Platform**: Where everything comes together with live models free for everyone
             """)
         
-        with st.expander("📊 What strategies are researched?"):
+        with st.expander("📊 What are the two main projects?"):
             st.markdown("""
-            - **Financial Torque**: Published LSTM research (87%+ accuracy)
-            - **Simons**: First paper's ML quantitative models for stock price predictions based on Financial Torque Hypothesis
-            - **Sun Tzu**: Second paper's continuation of Simons - optimizes algorithmic portfolio management using Simons predictions
-            
-            Performance metrics can be analyzed through the provided research notebooks with structured model management and evaluation.
+            - **Simons Project**: First paper's ML quantitative models implementing Financial Torque Hypothesis (87%+ accuracy)
+            - **Sun Tzu Project**: Second paper's portfolio management optimization using Simons predictions
+            - **Integration**: Both projects' best models run live on this Streamlit platform for free public access
             """)
     
     with faq_col2:
-        with st.expander("🔬 Is this academic or commercial?"):
+        with st.expander("🔬 What about the publications?"):
             st.markdown("""
-            **Primarily academic** - MIT licensed research platform with published papers, 
-            open-source contributions, and rigorous validation methodologies.
+            **Two-Publication Strategy:**
+            - **First Publication (Simons)**: Published June 2025 on SSRN
+            - **Second Publication (Sun Tzu)**: 75% complete, coming months
+            - **Platform**: Streamlit dashboard showcases live models from both projects
             """)
         
-        with st.expander("🚀 How to get started?"):
+        with st.expander("🚀 How to access the live models?"):
             st.markdown("""
-            1. Clone repo and install requirements
-            2. Run `streamlit run frontend/my-streamlit-app/Home.py`
-            3. Set up Alpaca API for research
-            4. Explore Jupyter notebooks
+            1. This Streamlit platform runs our best models **live and free**
+            2. Navigate through sections using the top navigation bar
+            3. Access real-time predictions and portfolio insights
+            4. Everything from both Simons and Sun Tzu projects integrated here
             """)
     
     # Success banner
     st.success("""
-    🏆 **Research Achievement**: 87%+ accuracy in stock price predictions • Published on SSRN June 2025 • Open source MIT license
+    🏆 **Prometheus Platform**: Two groundbreaking projects (Simons & Sun Tzu) • 87%+ accuracy models running live • Published research on SSRN • Free access for everyone
     """)
