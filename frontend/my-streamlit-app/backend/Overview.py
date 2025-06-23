@@ -393,7 +393,7 @@ https://github.com/guilhermegranchopro/Prometheus
             - **Platform**: Streamlit dashboard showcases live models from both projects
             """)
         
-        with st.expander("� What models are currently deployed?"):
+        with st.expander("🤖 What models are currently deployed?"):
             st.markdown("""
             **Current Coverage (8 assets):**
             - **Tech Stocks**: NVDA, AAPL, MSFT, AMZN, GOOG
@@ -402,7 +402,7 @@ https://github.com/guilhermegranchopro/Prometheus
             - **Expansion**: Actively developing additional models for broader market coverage
             """)
         
-        with st.expander("�🚀 How to access the live models?"):
+        with st.expander("🚀 How to access the live models?"):
             st.markdown("""
             1. This Streamlit platform runs our best models **live and free**
             2. Navigate through sections using the top navigation bar
