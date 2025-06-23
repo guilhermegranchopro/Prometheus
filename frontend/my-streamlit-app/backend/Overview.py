@@ -635,37 +635,27 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         unsafe_allow_html=True,
     )
 
-    # Performance Section - Enhanced card styling, heading, and list
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📈 Research Performance</h2>
-            <p class='text-gray-700 mb-4'>The platform supports research into multiple trading strategies:</p>
-            
-            <div class='grid md:grid-cols-2 gap-6 mb-6'>
-                <div class='bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border-l-4 border-blue-500'>
-                    <h3 class='text-xl font-semibold text-blue-800 mb-3'>📊 Simons Strategy</h3>
-                    <p class='text-blue-700 mb-2'>Quantitative trading research approach</p>
-                    <p class='text-sm text-blue-600'>Research notebooks available in <code>Simons/backend/Simons.ipynb</code></p>
-                </div>
-                
-                <div class='bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border-l-4 border-green-500'>
-                    <h3 class='text-xl font-semibold text-green-800 mb-3'>⚔️ Sun Tzu Strategy</h3>
-                    <p class='text-green-700 mb-2'>Tactical market analysis research</p>
-                    <p class='text-sm text-green-600'>Research notebooks available in <code>Sun_Tzu/backend/Ronin_SunTzu.ipynb</code></p>
-                </div>
-            </div>
-            
-            <div class='bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-lg border-l-4 border-amber-500'>
-                <h3 class='text-lg font-semibold text-amber-800 mb-2'>🏆 Academic Achievement</h3>
-                <p class='text-amber-700'>Published research achieving <strong>87%+ accuracy</strong> in stock price predictions with the Financial Torque Hypothesis implementation.</p>
-            </div>
-            
-            <p class='text-gray-700 mt-4'>Performance metrics can be analyzed through the provided research notebooks and academic publications.</p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Research Performance Section - Using Streamlit native components
+    st.markdown("### 📈 Research Performance")
+    st.markdown("The platform supports research into multiple trading strategies:")
+    
+    # Create columns for the strategy cards
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("#### 📊 Simons Strategy")
+        st.markdown("Quantitative trading research approach")
+        st.markdown("Research notebooks available in `Simons/backend/Simons.ipynb`")
+    
+    with col2:
+        st.markdown("#### ⚔️ Sun Tzu Strategy")
+        st.markdown("Tactical market analysis research")
+        st.markdown("Research notebooks available in `Sun_Tzu/backend/Ronin_SunTzu.ipynb`")
+    
+    # Academic Achievement section
+    st.success("🏆 **Academic Achievement**: Published research achieving **87%+ accuracy** in stock price predictions with the Financial Torque Hypothesis implementation.")
+    
+    st.markdown("Performance metrics can be analyzed through the provided research notebooks and academic publications.")
 
     # Contributing Section - Enhanced card styling, heading, and list
     st.markdown(
@@ -745,36 +735,23 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             unsafe_allow_html=True,
         )
 
-    # Footer - Enhanced with license and acknowledgments matching README.md
-    st.markdown(
-        """
-        <footer class='text-center mt-16 py-8 border-t border-gray-400'>
-            <div class='mb-6'>
-                <h3 class='text-lg font-semibold text-gray-700 mb-3'>📄 License & Acknowledgments</h3>
-                <p class='text-base text-gray-600 mb-3'>
-                    This project is licensed under the MIT License - see the <a href='https://github.com/yourusername/Prometheus/blob/main/LICENSE' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>LICENSE</a> file for details.
-                </p>
-            </div>
-            
-            <div class='mb-4'>
-                <p class='text-sm text-gray-500'>
-                    <strong>🙏 Acknowledgments:</strong> 
-                    <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a> for providing the trading API • 
-                    Contributors and maintainers • 
-                    The open-source community
-                </p>
-            </div>
-            
-            <div class='text-xs text-gray-400'>
-                <p><strong>Citation:</strong> If you use this research platform, please cite our work:</p>
-                <p class='font-mono bg-gray-100 inline-block px-2 py-1 rounded mt-1'>
-                    Fernandes, G. G. D. & Pereira, V. (2025). The Financial Torque Hypothesis. SSRN.
-                </p>
-            </div>
-        </footer>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Footer - Using Streamlit native components
+    st.markdown("---")
+    st.markdown("### 📄 License & Acknowledgments")
+    
+    st.markdown("""
+    This project is licensed under the MIT License - see the [LICENSE](https://github.com/yourusername/Prometheus/blob/main/LICENSE) file for details.
+    """)
+    
+    st.markdown("""
+    **🙏 Acknowledgments:**  
+    [Alpaca Markets](https://alpaca.markets/) for providing the trading API • Contributors and maintainers • The open-source community
+    """)
+    
+    st.info("""
+    **Citation:** If you use this research platform, please cite our work:  
+    `Fernandes, G. G. D. & Pereira, V. (2025). The Financial Torque Hypothesis. SSRN.`
+    """)
 
     # Close the wrapping div
     st.markdown("</div>", unsafe_allow_html=True)
