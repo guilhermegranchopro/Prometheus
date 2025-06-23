@@ -200,7 +200,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Contributors and maintainers
 - The open-source community
 
-## � Academic Publications
+## 🪶 Academic Publications
 
 This project is supported by rigorous academic research published in peer-reviewed venues:
 
