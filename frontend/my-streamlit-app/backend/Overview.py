@@ -944,10 +944,11 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
                 "Select Time Period for Simulation:",
                 ["1 Year", "6 Months", "3 Months"],
                 index=0,
+                key="performance_simulation_time_period"
             )
 
         with col2:
-            show_metrics = st.checkbox("Show Performance Metrics", value=True)
+            show_metrics = st.checkbox("Show Performance Metrics", value=True, key="show_performance_metrics")
 
         fig1 = create_sample_performance_chart(time_period)
         st.plotly_chart(fig1, use_container_width=True)
@@ -1040,6 +1041,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             "Select Time Period for Simulation:",
             ["1 Year", "6 Months", "3 Months"],
             index=0,
+            key="chart_tab_time_period"
         )
 
         fig1 = create_sample_performance_chart(time_period)
@@ -1278,26 +1280,26 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     action_col1, action_col2, action_col3, action_col4 = st.columns(4)
 
     with action_col1:
-        if st.button("📖 Read the Paper", use_container_width=True):
+        if st.button("📖 Read the Paper", use_container_width=True, key="read_paper_btn"):
             st.success("🔗 Opening SSRN publication...")
             st.markdown(
                 "[The Financial Torque Hypothesis](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)"
             )
 
     with action_col2:
-        if st.button("📊 View Strategies", use_container_width=True):
+        if st.button("📊 View Strategies", use_container_width=True, key="view_strategies_btn"):
             st.info(
                 "🎯 Navigate to the strategy pages in the sidebar to explore different research approaches."
             )
 
     with action_col3:
-        if st.button("🔧 Setup Guide", use_container_width=True):
+        if st.button("🔧 Setup Guide", use_container_width=True, key="setup_guide_btn"):
             st.info(
                 "📋 Scroll up to view the detailed installation and setup instructions."
             )
 
     with action_col4:
-        if st.button("👥 Contact Authors", use_container_width=True):
+        if st.button("👥 Contact Authors", use_container_width=True, key="contact_authors_btn"):
             st.success(
                 "📧 Contact information is available in the Authors & Contact section above."
             )
