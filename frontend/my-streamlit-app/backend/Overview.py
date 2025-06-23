@@ -28,8 +28,9 @@ def main_overview():
     st.markdown("# 🚀 Welcome to Prometheus")
     
     st.markdown("""
-    An advanced algorithmic trading research platform achieving **87%+ accuracy** in stock price predictions through our published **Financial Torque Hypothesis**. 
-    This open-source platform combines rigorous academic research with practical trading applications.
+    An advanced algorithmic trading research platform featuring two groundbreaking projects: **Simons** - implementing our published Financial Torque Hypothesis with **87%+ accuracy** in stock price predictions, and **Sun Tzu** - optimizing portfolio management strategies to leverage these predictions. 
+    
+    This open-source MIT-licensed platform combines rigorous academic research with practical quantitative trading applications.
     """)
     
     st.markdown("---")
