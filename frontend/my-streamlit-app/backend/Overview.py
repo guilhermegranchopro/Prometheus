@@ -138,6 +138,7 @@ def main_overview():
         - 🔬 Academic research integration and validation
         - 📈 Real-time predictive modeling capabilities
         - 🎯 Three-hour prediction horizon with 21-month validation
+        - 🚀 Currently deployed models for 8 major stocks/ETFs with plans to expand
         """)
     
     with tab2:
@@ -170,6 +171,7 @@ def main_overview():
         - 🔬 **Financial Torque**: Published LSTM-based predictions achieving 87%+ accuracy
         - 📊 Multi-strategy comparative analysis framework
         - 🧪 Live trading research environment (`Live_Trading/`)
+        - 🚀 **Currently Deployed Models**: Rigorously validated models covering 8 major stocks/ETFs (NVDA, AAPL, MSFT, AMZN, GOOG, VOO, DIA, IWM) with active development of additional models
         """)
     
     st.markdown("---")
@@ -391,7 +393,16 @@ https://github.com/guilhermegranchopro/Prometheus
             - **Platform**: Streamlit dashboard showcases live models from both projects
             """)
         
-        with st.expander("🚀 How to access the live models?"):
+        with st.expander("� What models are currently deployed?"):
+            st.markdown("""
+            **Current Coverage (8 assets):**
+            - **Tech Stocks**: NVDA, AAPL, MSFT, AMZN, GOOG
+            - **Market ETFs**: VOO (S&P 500), DIA (Dow Jones), IWM (Small Cap)
+            - **Validation**: All models rigorously tested with 87%+ accuracy
+            - **Expansion**: Actively developing additional models for broader market coverage
+            """)
+        
+        with st.expander("�🚀 How to access the live models?"):
             st.markdown("""
             1. This Streamlit platform runs our best models **live and free**
             2. Navigate through sections using the top navigation bar
