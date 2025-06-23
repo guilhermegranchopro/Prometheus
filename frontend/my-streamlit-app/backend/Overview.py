@@ -1,5 +1,9 @@
 import streamlit as st
 import os
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import random
 
 
 def get_logo_path():
@@ -11,354 +15,430 @@ def get_logo_path():
 
 
 def main_overview():
-    # --- Page Content ---
-    # Wrap content in a div with Tailwind classes - Adjusted padding
-    st.markdown("<div class='bg-gray-100 min-h-screen p-8'>", unsafe_allow_html=True)
-
     # Centered Logo
-    # Adjusted column proportions to give the image more space
-    col1, col2, col3 = st.columns(
-        [0.5, 2, 0.5]
-    )  # Give middle column more relative width
+    col1, col2, col3 = st.columns([0.5, 2, 0.5])
     with col2:
         try:
-            # Corrected path relative to Home.py and used use_container_width
             st.image(get_logo_path(), use_container_width=True)
-            # Add some space below the logo
-            st.markdown("<div class='h-8'></div>", unsafe_allow_html=True)
+            st.markdown("<br>", unsafe_allow_html=True)
         except Exception as e:
-            st.warning(
-                f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
+            st.warning(f"Could not load logo. Error: {e}")
+
+    # Hero Section
+    st.markdown("# 🚀 Welcome to Prometheus")
+
+    st.markdown("""
+    Prometheus is an algorithmic trading research platform **divided into two main projects**: **Simons** and **Sun Tzu**. 
+    
+    - **🎲 Simons Project**: Develops ML quantitative models implementing the Financial Torque Hypothesis (First Publication - 87%+ accuracy)
+    - **⚔️ Sun Tzu Project**: Optimizes portfolio management strategies using Simons predictions (Second Publication - In Development)
+    - **🖥️ Streamlit Platform**: Where everything comes together - our best models running live and free for everyone
+    
+    This open-source MIT-licensed platform combines rigorous academic research with practical quantitative trading applications.
+    """)
+
+    st.markdown("---")
+
+    # Platform Structure - New section
+    st.markdown("## 🏗️ Platform Structure")
+
+    structure_col1, structure_col2, structure_col3 = st.columns(3)
+
+    with structure_col1:
+        st.markdown("### 🎲 Simons Project")
+        st.info("""
+        **First Publication Focus**
+        - ML quantitative models
+        - Financial Torque Hypothesis implementation
+        - 87%+ accuracy in stock predictions
+        - LSTM neural networks
+        - Published on SSRN June 2025
+        """)
+
+    with structure_col2:
+        st.markdown("### ⚔️ Sun Tzu Project")
+        st.warning("""
+        **Second Publication Focus**
+        - Portfolio management optimization
+        - Leverages Simons predictions
+        - Algorithmic portfolio strategies
+        - Risk management integration
+        - 75% complete - Coming months
+        """)
+
+    with structure_col3:
+        st.markdown("### 🖥️ Streamlit Platform")
+        st.success("""
+        **Live Integration Hub**
+        - Best models running live
+        - Free access for everyone
+        - Interactive research tools
+        - Real-time data visualization
+        - Where everything comes together
+        """)
+
+    st.markdown("---")
+
+    # Academic Publications - Move to prominent position
+    st.markdown("## 🪶 Academic Publications")
+
+    st.info(
+        "**📚 Two-Publication Strategy**: Each Prometheus project contributes to academic research with dedicated publications."
+    )
+
+    with st.expander(
+        "📄 Simons Project Publication - Published on SSRN", expanded=True
+    ):
+        col1, col2 = st.columns([3, 1])
+
+        with col1:
+            st.markdown("""
+            **[The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)**
+            
+            **Project:** Simons  
+            **Authors:** [Guilherme Grancho](https://www.linkedin.com/in/guilhermegrancho/) & [Vasco Pereira](https://www.linkedin.com/in/vasco-pereira03/)  
+            **Published:** June 20, 2025 - SSRN
+            
+            **Abstract:** This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data consistently outperform those built on regular-hours-only data, delivering a 15% improvement in predictive accuracy. Furthermore, we evaluate and compare three feature normalization techniques—Standard, MinMax, and Robust—against non-normalized data. The paper highlights the value of incorporating raw extended-hours data into intraday forecasting models and market microstructure indicators to inform more robust, data-driven trading strategies. The results also help corroborate the Financial Torque Hypothesis, advancing our understanding of how the distribution of market activity across price levels influences subsequent price trends.
+            """)
+
+        with col2:
+            st.metric("Accuracy", "87%+", "Published research")
+            st.metric("Test", "21 months", "Unseen data")
+            st.metric("Horizon", "3 hours", "Real-time")
+            st.metric("Improvement", "15%", "Full vs RTH")
+
+    with st.expander("🔬 Sun Tzu Project Publication - In Development"):
+        st.markdown("""
+        **Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management**
+        
+        **Project:** Sun Tzu  
+        **Status:** 🔄 75% Complete - Expected publication in coming months  
+        **Research Focus:** Advanced portfolio management optimization
+        
+        This upcoming Sun Tzu publication will detail how to optimize algorithmic portfolio management using the predictions from Simons models. Building upon the Financial Torque Hypothesis, Sun Tzu develops sophisticated portfolio management strategies that take full advantage of the 87%+ accurate predictions for quantitative portfolio management and risk optimization.
+        """)
+        st.progress(0.75, text="Research Progress: 75% Complete")
+
+    st.markdown("---")
+
+    # Platform Capabilities - Consolidated section
+    st.markdown("## ⚡ Platform Capabilities")
+
+    # Core capabilities in tabs
+    tab1, tab2, tab3, tab4 = st.tabs(
+        [
+            "🤖 ML & Research",
+            "📊 Data & Infrastructure",
+            "🖥️ Interface & Tools",
+            "📈 Trading Strategies",
+        ]
+    )
+
+    with tab1:
+        st.markdown("""
+        **Machine Learning & Research**
+        - 🧠 TensorFlow LSTM neural networks achieving 87%+ accuracy
+        - 📊 Financial Torque Hypothesis implementation
+        - 🔬 Academic research integration and validation
+        - 📈 Real-time predictive modeling capabilities
+        - 🎯 Three-hour prediction horizon with 21-month validation
+        - 🚀 Currently deployed models for 8 major stocks/ETFs with plans to expand
+        """)
+
+    with tab2:
+        st.markdown("""
+        **Data Infrastructure & Analysis**
+        - 🔌 Alpaca Markets API integration (v3.2.0) with rate limiting
+        - 📡 Multiple data feeds (IEX, SIP) with extended hours support
+        - 💾 Automated data collection and scalable storage
+        - 📊 Comprehensive analysis using pandas, numpy, and scipy
+        - ⏰ Real-time and historical data processing
+        - 📈 Advanced visualization with matplotlib, plotly, and altair
+        """)
+
+    with tab3:
+        st.markdown("""
+        **User Interface & Research Tools**
+        - 🖥️ Interactive Streamlit web dashboard
+        - 📈 Advanced data visualization with Plotly
+        - 📓 Jupyter notebooks for strategy research
+        - 🔍 Portfolio monitoring and performance tracking
+        - 🛡️ Risk management interface and tools
+        - 🔧 Additional tools: scikit-learn, joblib, fuzzywuzzy
+        """)
+
+    with tab4:
+        st.markdown("""
+        **Trading Strategy Research**
+        - 🎲 **Simons Strategy**: ML quantitative models implementing the Financial Torque Hypothesis for stock price predictions (`Simons/backend/`)
+        - ⚔️ **Sun Tzu Strategy**: Advanced portfolio management optimization leveraging Simons predictions for quantitative portfolio management (`Sun_Tzu/backend/`)
+        - 🔬 **Financial Torque**: Published LSTM-based predictions achieving 87%+ accuracy
+        - 📊 Multi-strategy comparative analysis framework
+        - 🧪 Live trading research environment (`Live_Trading/`)
+        - 🚀 **Currently Deployed Models**: Rigorously validated models covering 8 major stocks/ETFs (NVDA, AAPL, MSFT, AMZN, GOOG, VOO, DIA, IWM) with active development of additional models
+        """)
+
+    st.markdown("---")
+
+    # Technology Stack - New section
+    st.markdown("## 🛠️ Technology Stack")
+
+    tech_col1, tech_col2, tech_col3 = st.columns(3)
+
+    with tech_col1:
+        st.markdown("**🐍 Core Python (3.10+)**")
+        st.markdown("""
+        - **TensorFlow** - Deep learning framework
+        - **Pandas & NumPy** - Data manipulation
+        - **Scikit-learn** - Machine learning tools
+        - **SciPy** - Scientific computing
+        """)
+
+    with tech_col2:
+        st.markdown("**📊 Visualization & Analysis**")
+        st.markdown("""
+        - **Streamlit** - Web application framework
+        - **Plotly** - Interactive visualizations
+        - **Matplotlib** - Static plotting
+        - **Altair** - Statistical visualization
+        """)
+
+    with tech_col3:
+        st.markdown("**🔌 APIs & Integration**")
+        st.markdown("""
+        - **Alpaca API v3.2.0** - Trading data
+        - **Polygon API** - Market data
+        - **Python-Dotenv** - Configuration
+        - **Joblib** - Model persistence
+        """)
+
+    # Getting Started - Simplified
+    st.markdown("## 🚀 Getting Started")
+
+    start_tab1, start_tab2, start_tab3 = st.tabs(
+        ["⚙️ Installation", "🖥️ Running the App", "🔬 Research Setup"]
+    )
+
+    with start_tab1:
+        st.markdown("**Quick Setup:**")
+        st.code(
+            """
+# Clone and setup
+git clone [repository-url]
+cd Prometheus
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt
+        """,
+            language="bash",
+        )
+
+    with start_tab2:
+        st.markdown("**Launch the Dashboard:**")
+        st.code("streamlit run frontend/my-streamlit-app/Home.py", language="bash")
+        st.markdown("📍 Navigate between sections using the top navigation bar")
+
+    with start_tab3:
+        st.markdown("**For Trading Research:**")
+        st.markdown("""
+        1. 🔑 **Set up Alpaca API**: Create account at [Alpaca Markets](https://alpaca.markets/)
+        2. 📓 **Explore Notebooks**: Check `Simons/backend/` and `Sun_Tzu/backend/` 
+        3. 🧪 **Live Research**: Open `Live_Trading/Live_Trading.ipynb` for live analysis
+        4. 📊 **Data Analysis**: Review processed data in `Data/` directories
+        5. ⚙️ **Configure credentials**: Set up in `Simons/Settings/` or environment variables
+        """)
+
+    st.markdown("---")
+
+    # Development Roadmap
+    st.markdown("## 🛣️ Development Roadmap")
+
+    roadmap_col1, roadmap_col2, roadmap_col3 = st.columns(3)
+
+    with roadmap_col1:
+        st.markdown("**📊 Current Research**")
+        st.progress(1.0, text="Financial Torque Hypothesis - Published ✅")
+        st.progress(0.75, text="Portfolio Management Research - 75%")
+        st.progress(0.3, text="Enhanced ML Models - Planning")
+
+    with roadmap_col2:
+        st.markdown("**📈 Active Development**")
+        st.markdown("""
+        - ✅ LSTM Neural Networks (87%+ accuracy)
+        - ✅ Multi-feed data infrastructure 
+        - 🔄 Advanced portfolio management
+        - 🔄 Next.js frontend migration
+        - 📅 API development planning
+        """)
+
+    with roadmap_col3:
+        st.markdown("**📆 Timeline Milestones**")
+        st.markdown("""
+        - **Q3 2025**: Second paper publication
+        - **Q4 2025**: Frontend modernization
+        - **Q1 2026**: Enhanced ML models
+        - **Q2 2026**: REST API development
+        - **Q3 2026**: Production integration
+        """)
+
+    st.markdown("---")
+
+    # Authors & Contact
+    st.markdown("## 👥 Authors & Contact")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("**👨‍🎓 Guilherme Grancho**")
+        st.markdown("""
+        - 🏫 Imperial College London (Earth Science & Engineering)
+        - 🏫 Instituto Superior Técnico (Physics)
+        - 🔗 [LinkedIn](https://www.linkedin.com/in/guilhermegrancho/)
+        - 📧 guilhermegrancho@tecnico.ulisboa.pt
+        - 📧 guilherme.fernandes25@imperial.ac.uk
+        """)
+
+    with col2:
+        st.markdown("**👨‍💻 Vasco Pereira**")
+        st.markdown("""
+        - 🏫 Instituto Superior Técnico (Computer Science)
+        - 🔗 [LinkedIn](https://www.linkedin.com/in/vasco-pereira03/)
+        - 📧 vasco.serpa.pereira@tecnico.ulisboa.pt
+        """)
+
+    st.markdown("---")
+
+    # Contributing & License
+    st.markdown("## 🤝 Contributing & License")
+
+    contrib_col1, contrib_col2 = st.columns(2)
+
+    with contrib_col1:
+        st.markdown("**🔧 Contributing**")
+        st.markdown("""
+        1. Fork the repository
+        2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+        3. Commit changes (`git commit -m 'Add feature'`)
+        4. Push branch (`git push origin feature/AmazingFeature`)
+        5. Open Pull Request
+        """)
+
+    with contrib_col2:
+        st.markdown("**📄 License & Acknowledgments**")
+        st.markdown("""
+        - 📋 **MIT License** - Open source and free to use
+        - 🙏 **Thanks to:** [Alpaca Markets](https://alpaca.markets/) API
+        - 🌟 **Open Source Community** contributions
+        """)
+
+    st.markdown("---")
+
+    # Citation Information
+    st.markdown("## 📚 Citation Information")
+
+    with st.expander("📖 How to Cite This Work", expanded=False):
+        cite_col1, cite_col2 = st.columns(2)
+
+        with cite_col1:
+            st.markdown("**Academic Paper:**")
+            st.code(
+                """
+Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, 
+The Financial Torque Hypothesis: Predicting Short-Term 
+Stock Price Movements Using LSTM Neural Networks 
+(June 20, 2025). 
+Available at SSRN: https://ssrn.com/abstract=5288444
+            """,
+                language="text",
             )
 
-    # Overview Section - Enhanced card styling and heading
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🚀 Overview</h2>
-            <p class='text-lg text-gray-700 leading-relaxed'>
-                Prometheus is a sophisticated algorithmic trading platform that leverages the
-                <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets API</a>
-                to execute automated trading strategies. This project combines advanced data analysis,
-                machine learning models, and real-time market data to make informed trading decisions.
-            </p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+            st.markdown("**Simple Software Citation:**")
+            st.code(
+                """
+Grancho, G., & Pereira, V. (2025). 
+Prometheus (Version 1.0.0) [Computer software]. 
+https://github.com/guilhermegranchopro/Prometheus
+            """,
+                language="text",
+            )
 
-    # Features Section - Enhanced card styling, heading, and feature item styling
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>✨ Features</h2>
-            <div class='grid md:grid-cols-2 gap-8'>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
-                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Real-time Market Data Integration</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Seamless integration with Alpaca Markets API</li>
-                        <li>High-frequency data collection with rate limit management</li>
-                        <li>Support for multiple timeframes and market data types (IEX, SIP)</li>
-                    </ul>
-                </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
-                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Advanced Trading Models</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Machine learning model integration with TensorFlow</li>
-                        <li>Custom trading strategies implementation (Simons, Sun Tzu)</li>
-                        <li>Research-based approach with separate modules for different strategies</li>
-                        <li>Structured model management and evaluation (see <code>Models/</code> directory)</li>
-                    </ul>
-                </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
-                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Data Analysis & Visualization</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Comprehensive market data analysis using pandas and numpy</li>
-                        <li>Interactive data visualization with matplotlib and Plotly</li>
-                        <li>Performance metrics and reporting</li>
-                        <li>Historical data analysis and storage for various sources (see <code>Data/</code> directory)</li>
-                    </ul>
-                </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
-                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Risk Management</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Position sizing algorithms</li>
-                        <li>Stop-loss and take-profit mechanisms</li>
-                        <li>Portfolio diversification strategies</li>
-                        <li>Risk assessment tools</li>
-                    </ul>
-                </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
-                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Interactive Frontend Dashboard</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Streamlit application for monitoring and interaction (see <code>frontend/</code> directory)</li>
-                    </ul>
-                </div>
-                <div class='bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out'>
-                    <h3 class='text-xl font-medium text-sky-700 mb-3'>Live Trading Capabilities</h3>
-                    <ul class='list-disc list-inside space-y-2 text-gray-600 marker:text-sky-500'>
-                        <li>Jupyter notebook for live trading execution and monitoring (see <code>Live_Trading/</code> directory)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+        with cite_col2:
+            st.markdown("**BibTeX Software Citation:**")
+            st.code(
+                """
+@software{prometheus_2025,
+  author = {Grancho, Guilherme and Pereira, Vasco},
+  title = {Prometheus},
+  version = {1.0.0},
+  date = {2025-04-20},
+  url = {https://github.com/guilhermegranchopro/Prometheus},
+  license = {MIT},
+  abstract = {Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.}
+}
+            """,
+                language="bibtex",
+            )
 
-    # Project Structure Section - Enhanced card styling, heading, and pre block
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📊 Project Structure</h2>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto border border-gray-200 border-t-4 border-gray-300'><code>Prometheus/
-├── Assets/                     # Project assets (e.g., logo)
-│   └── Images/
-├── Data/                       # Processed and raw market data
-│   ├── IEX/                    # Data from IEX feed
-│   ├── Regular Hours/          # Data filtered for regular trading hours
-│   └── SIP/                    # Data from SIP feed
-├── frontend/                   # Streamlit frontend application
-│   └── my-streamlit-app/
-│       └── Home.py             # Main Streamlit app file
-├── Live_Trading/               # Notebooks and scripts for live trading
-│   └── Live_Trading.ipynb
-├── Models/                     # Trained models, evaluation, and related notebooks
-│   ├── IEX/
-│   ├── Regular Hours/
-│   ├── SIP/
-│   └── Table.ipynb
-├── Simons/                     # Simons trading strategy
-│   ├── backend/                # Backend logic for Simons strategy
-│   ├── Images/                 # Images related to Simons strategy
-│   ├── Paper/                  # Research paper published on Arxiv
-│   ├── Report/                 # Reports and results for Simons
-│   └── Settings/               # Configuration for Simons strategy
-├── Sun_Tzu/                    # Sun Tzu trading strategy
-│   ├── backend/                # Backend logic for Sun Tzu strategy
-│   └── research/               # Research for Sun Tzu strategy
-├── .venv/                      # Python virtual environment
-├── .git/                       # Git version control files
-├── .gitignore                  # Specifies intentionally untracked files
-├── CITATION.cff                # Citation file for the project
-├── LICENSE                     # Project license (MIT)
-├── pyproject.toml              # Project build configuration
-├── README.md                   # Project documentation
-├── requirements.txt            # Project dependencies
-└── uv.lock                     # Lock file for uv package manager
-</code></pre>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    st.markdown("---")
 
-    # Streamlit App Navigation Section - Enhanced card styling, heading, lists, and pre block
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🧭 Navigating the Dashboard</h2>
-            <p class='text-gray-700 mb-4'>
-                This Streamlit application serves as the main interface for interacting with the Prometheus trading platform. Here's a brief guide on its structure and how to use it:
-            </p>
-            <ul class='list-disc list-inside space-y-3 text-gray-700 marker:text-sky-500'>
-                <li><strong>Overview (This Page):</strong> You are currently on the Overview page, which provides a general introduction to the project, its features, setup instructions, and how to use different components.</li>
-                <li><strong>Top Bar Navigation:</strong> At the top of the application, you'll find a navigation bar. This top bar is the primary way to navigate between different sections or pages of the dashboard. Each page will focus on a specific aspect of the platform, such as:
-                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600 marker:text-sky-400'>
-                        <li>Detailed views of trading strategy performance.</li>
-                        <li>Market data visualization and analysis tools.</li>
-                        <li>Configuration settings for trading parameters.</li>
-                        <li>Live trading monitoring (if applicable and enabled).</li>
-                    </ul>
-                </li>
-                <li><strong>Interactive Elements:</strong> Throughout the application, you will encounter various interactive elements like charts, tables, input fields, and buttons. These are designed to allow you to:
-                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600 marker:text-sky-400'>
-                        <li>Explore data dynamically.</li>
-                        <li>Adjust parameters for analysis or trading models.</li>
-                        <li>View real-time updates and logs.</li>
-                    </ul>
-                </li>
-                <li><strong>Data Display:</strong> Key information, such as market data, model predictions, portfolio status, and performance metrics, will be displayed in a clear and organized manner using tables, charts, and text summaries.</li>
-                <li><strong>Launching the App:</strong> As mentioned in the 'Usage' section, you can run the Streamlit app using the command:
-            </ul>
-            <pre class='bg-gray-100 p-3 rounded text-sm overflow-x-auto mt-2 mb-2 border border-gray-200 border-t-4 border-gray-300'><code>streamlit run frontend/my-streamlit-app/Home.py</code></pre>
-            <p class='text-gray-700 mt-3'>
-                Explore the different pages using the top navigation bar to get a comprehensive understanding of the platform's capabilities. Each section is designed to be intuitive, but specific instructions or tooltips may be provided within those pages for more complex functionalities.
-            </p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Frequently Asked Questions
+    st.markdown("## ❓ Frequently Asked Questions")
 
-    # Implemented Strategies Section - Enhanced card styling, heading, and list
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📈 Implemented Strategies</h2>
-            <ul class='list-disc list-inside space-y-3 text-gray-700 marker:text-sky-500'>
-                <li><strong class='text-sky-700'>Simons Strategy:</strong> An advanced quantitative trading approach.</li>
-                <li><strong class='text-sky-700'>Sun Tzu Strategy:</strong> Focuses on tactical market analysis and execution.</li>
-            </ul>
-            <p class='mt-5 text-sm text-gray-500'>Performance metrics are continuously monitored and updated based on live trading results.</p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    faq_col1, faq_col2 = st.columns(2)
 
-    # Installation Section - Enhanced card styling, heading, lists, and pre blocks
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🛠️ Installation</h2>
-            <p class='text-gray-700 mb-4'>Follow these steps to set up the project locally:</p>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold'>
-                <li>Clone the repository:</li>
-            </ol>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200 border-t-4 border-gray-300'><code>git clone https://github.com/yourusername/Prometheus.git
-    cd Prometheus</code></pre>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold' start='2'>
-                <li>Create and activate a virtual environment:</li>
-            </ol>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200 border-t-4 border-gray-300'><code>python -m venv .venv
-    source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold' start='3'>
-                <li>Install required dependencies:</li>
-            </ol>
-            <pre class='bg-gray-100 p-4 rounded text-sm overflow-x-auto mt-2 mb-4 border border-gray-200 border-t-4 border-gray-300'><code>pip install -r requirements.txt</code></pre>
-            <ol class='list-decimal list-inside space-y-3 text-gray-700 mb-4 marker:text-sky-600 marker:font-semibold' start='4'>
-                <li>Set up your Alpaca API credentials:
-                    <ul class='list-disc list-inside pl-6 space-y-1 text-gray-600 marker:text-sky-400'>
-                        <li>Create an account at <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a></li>
-                        <li>Generate your API keys</li>
-                        <li>Configure your credentials in the appropriate configuration files (e.g., within <code>Simons/Settings/</code> or as environment variables)</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    with faq_col1:
+        with st.expander("🏗️ How is Prometheus structured?"):
+            st.markdown("""
+            Prometheus is **divided into two main projects**:
+            - **🎲 Simons**: ML models for stock predictions (First Publication)
+            - **⚔️ Sun Tzu**: Portfolio optimization (Second Publication)
+            - **🖥️ Streamlit Platform**: Where everything comes together with live models free for everyone
+            """)
 
-    # Usage Example Section - Enhanced card styling, heading, and step titles
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🚀 Usage</h2>
-            <p class='text-gray-700 mb-4 text-lg'><strong>1. Data Collection and Analysis:</strong></p>
-            <p class='text-gray-700 mb-2'>Refer to notebooks within <code>Data/</code> subdirectories or specific strategy research. Example of initializing API connection:</p>
-        """,
-        unsafe_allow_html=True,
-    )
+        with st.expander("📊 What are the two main projects?"):
+            st.markdown("""
+            - **Simons Project**: First paper's ML quantitative models implementing Financial Torque Hypothesis (87%+ accuracy)
+            - **Sun Tzu Project**: Second paper's portfolio management optimization using Simons predictions
+            - **Integration**: Both projects' best models run live on this Streamlit platform for free public access
+            """)
 
-    st.code(
-        """
-    import alpaca_trade_api as tradeapi
+        with st.expander("🎯 How accurate are the models?"):
+            st.markdown("""
+            **Rigorous Validation Process:**
+            - **87%+ accuracy** achieved on 21 months of test data
+            - **Financial Torque Hypothesis** validated through peer review
+            - **Out-of-sample testing** ensures real-world performance
+            - **Academic standards** applied to all model development
+            """)
 
-    # Initialize API connection (ensure credentials are set)
-    api = tradeapi.REST(
-        key_id='YOUR_API_KEY',          # Preferably set via environment variables
-        secret_key='YOUR_SECRET_KEY',  # Preferably set via environment variables
-        base_url='https://paper-api.alpaca.markets'
-    )
+    with faq_col2:
+        with st.expander("🔬 What about the publications?"):
+            st.markdown("""
+            **Two-Publication Strategy:**
+            - **First Publication (Simons)**: Published June 2025 on SSRN
+            - **Second Publication (Sun Tzu)**: 75% complete, coming months
+            - **Platform**: Streamlit dashboard showcases live models from both projects
+            """)
 
-    # Example: Fetch market data (for more detailed data handling, see scripts/notebooks in Data/ or strategy research folders)
-    # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df
-    """,
-        language="python",
-    )
-    st.markdown(
-        """
-            <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>2. Running Trading Strategies:</strong></p>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.code(
-        """
-    # Import your preferred strategy module
-    from Simons.backend import strategy as simons_strategy
-    # or
-    from Sun_Tzu.backend import strategy as sun_tzu_strategy
+        with st.expander("🤖 What models are currently deployed?"):
+            st.markdown("""
+            **Current Coverage (8 assets):**
+            - **Tech Stocks**: NVDA, AAPL, MSFT, AMZN, GOOG
+            - **Market ETFs**: VOO (S&P 500), DIA (Dow Jones), IWM (Small Cap)
+            - **Validation**: All models rigorously tested with 87%+ accuracy
+            - **Expansion**: Actively developing additional models for broader market coverage
+            """)
 
-    # Execute the strategy (ensure strategy-specific configurations are set)
-    # results = strategy.execute() # Placeholder, actual execution might vary
-    """,
-        language="python",
-    )
-    st.markdown(
-        """
-            <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>3. Launching the Frontend Dashboard:</strong></p>
-            <p class='text-gray-700 mb-2'>Ensure Streamlit is installed (<code>pip install streamlit</code>).</p>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.code(
-        """
-    streamlit run frontend/my-streamlit-app/Home.py
-    """,
-        language="bash",
-    )
-    st.markdown(
-        """
-            <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>4. Live Trading:</strong></p>
-            <p class='text-gray-700'>Open and run cells in <code>Live_Trading/Live_Trading.ipynb</code> after appropriate setup and risk assessment.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+        with st.expander("🚀 How to access the live models?"):
+            st.markdown("""
+            1. This Streamlit platform runs our best models **live and free**
+            2. Navigate through sections using the top navigation bar
+            3. Access real-time predictions and portfolio insights
+            4. Everything from both Simons and Sun Tzu projects integrated here
+            """)
 
-    # Performance Section - Enhanced card styling, heading, and list
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>📈 Performance</h2>
-            <p class='text-gray-700 mb-4'>The platform implements multiple trading strategies:</p>
-            <ul class='list-disc list-inside space-y-2 text-gray-700 marker:text-sky-500'>
-                <li><strong class='text-sky-700'>Simons Strategy:</strong> Advanced quantitative trading approach.</li>
-                <li><strong class='text-sky-700'>Sun Tzu Strategy:</strong> Tactical market analysis and execution.</li>
-            </ul>
-            <p class='text-gray-700 mt-4'>Performance metrics are continuously monitored and updated based on live trading results.</p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # Contributing Section - Enhanced card styling, heading, and list
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🤝 Contributing</h2>
-            <p class='text-gray-700 mb-4'>Contributions are welcome! Please follow these steps:</p>
-            <ol class='list-decimal list-inside space-y-2 text-gray-700 marker:text-sky-600 marker:font-semibold'>
-                <li>Fork the repository.</li>
-                <li>Create your feature branch (`git checkout -b feature/AmazingFeature`).</li>
-                <li>Commit your changes (`git commit -m 'Add some AmazingFeature'`).</li>
-                <li>Push to the branch (`git push origin feature/AmazingFeature`).</li>
-                <li>Open a Pull Request.</li>
-            </ol>
-            <p class='text-gray-700 mt-5'>For major changes, please open an issue first to discuss what you would like to change.</p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # Footer - Updated border and link colors
-    st.markdown(
-        """
-        <footer class='text-center mt-16 py-8 border-t border-gray-400'>
-            <p class='text-base text-gray-600 mb-3'>
-                This project is licensed under the MIT License - see the <a href='https://github.com/yourusername/Prometheus/blob/main/LICENSE' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>LICENSE</a> file for details.
-            </p>
-            <p class='text-base text-gray-600 mb-4'>
-                Contact: Guilherme Grancho (<a href='mailto:guilhermegrancho@tecnico.ulisboa.pt' class='text-sky-600 hover:text-sky-800 hover:underline'>guilhermegrancho@tecnico.ulisboa.pt</a> / <a href='mailto:guilherme.fernandes25@imperial.ac.uk' class='text-sky-600 hover:text-sky-800 hover:underline'>guilherme.fernandes25@imperial.ac.uk</a>)
-                <br>
-                Vasco Pereira (<a href='mailto:vasco.serpa.pereira@tecnico.ulisboa.pt' class='text-sky-600 hover:text-sky-800 hover:underline'>vasco.serpa.pereira@tecnico.ulisboa.pt</a>)
-            </p>
-            <p class='text-sm text-gray-500 mt-4'>
-                Acknowledgments: <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets</a>, Contributors, The open-source community.
-            </p>
-        </footer>
-    """,
-        unsafe_allow_html=True,
-    )
-
-    # Close the wrapping div
-    st.markdown("</div>", unsafe_allow_html=True)
+    # Success banner
+    st.success("""
+    🏆 **Prometheus Platform**: Two groundbreaking projects (Simons & Sun Tzu) • 87%+ accuracy models running live • Published research on SSRN • Free access for everyone
+    """)
