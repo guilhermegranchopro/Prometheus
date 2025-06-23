@@ -383,6 +383,15 @@ https://github.com/guilhermegranchopro/Prometheus
             - **Sun Tzu Project**: Second paper's portfolio management optimization using Simons predictions
             - **Integration**: Both projects' best models run live on this Streamlit platform for free public access
             """)
+        
+        with st.expander("🎯 How accurate are the models?"):
+            st.markdown("""
+            **Rigorous Validation Process:**
+            - **87%+ accuracy** achieved on 21 months of test data
+            - **Financial Torque Hypothesis** validated through peer review
+            - **Out-of-sample testing** ensures real-world performance
+            - **Academic standards** applied to all model development
+            """)
     
     with faq_col2:
         with st.expander("🔬 What about the publications?"):
