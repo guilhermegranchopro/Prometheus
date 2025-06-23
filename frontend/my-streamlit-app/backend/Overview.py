@@ -340,7 +340,7 @@ def main_overview():
         # Add progress indicator
         progress_col1, progress_col2 = st.columns([3, 1])
         with progress_col1:
-            st.progress(0.75, text="Research Progress: 75% Complete", key="publication_progress")
+            st.progress(0.75, text="Research Progress: 75% Complete")
         with progress_col2:
             st.markdown("**🔬 In Development**")
 
@@ -1191,9 +1191,9 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
 
     with status_col1:
         st.markdown("**📊 Current Research**")
-        st.progress(1.0, text="Financial Torque Hypothesis - Published ✅", key="research_progress_1")
-        st.progress(0.75, text="Advanced Portfolio Management - 75% Complete", key="research_progress_2")
-        st.progress(0.3, text="Enhanced ML Models - In Planning", key="research_progress_3")
+        st.progress(1.0, text="Financial Torque Hypothesis - Published ✅")
+        st.progress(0.75, text="Advanced Portfolio Management - 75% Complete")
+        st.progress(0.3, text="Enhanced ML Models - In Planning")
 
     with status_col2:
         st.markdown("**🔬 Active Studies**")
