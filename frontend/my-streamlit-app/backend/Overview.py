@@ -54,7 +54,7 @@ def main_overview():
         
         with col2:
             st.metric("Accuracy", "87%+", "Published research")
-            st.metric("Validation", "21 months", "Unseen data")
+            st.metric("Test", "21 months", "Unseen data")
             st.metric("Horizon", "3 hours", "Real-time")
             st.metric("Improvement", "15%", "Full vs RTH")
     
@@ -288,15 +288,25 @@ Stock Price Movements Using LSTM Neural Networks
 (June 20, 2025). 
 Available at SSRN: https://ssrn.com/abstract=5288444
             """, language="text")
+            
+            st.markdown("**Simple Software Citation:**")
+            st.code("""
+Grancho, G., & Pereira, V. (2025). 
+Prometheus (Version 1.0.0) [Computer software]. 
+https://github.com/guilhermegranchopro/Prometheus
+            """, language="text")
         
         with cite_col2:
-            st.markdown("**Software Citation:**")
+            st.markdown("**BibTeX Software Citation:**")
             st.code("""
 @software{prometheus_2025,
   author = {Grancho, Guilherme and Pereira, Vasco},
-  title = {Prometheus Trading Research Platform},
-  year = {2025},
-  url = {https://github.com/your-repo/Prometheus}
+  title = {Prometheus},
+  version = {1.0.0},
+  date = {2025-04-20},
+  url = {https://github.com/guilhermegranchopro/Prometheus},
+  license = {MIT},
+  abstract = {Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.}
 }
             """, language="bibtex")
     
@@ -311,7 +321,7 @@ Available at SSRN: https://ssrn.com/abstract=5288444
         with st.expander("🤖 What is the Financial Torque Hypothesis?"):
             st.markdown("""
             Our research hypothesis that **VWAP and Trade Count** are critical for predicting stock movements. 
-            Our LSTM model achieved **87%+ accuracy** over 3-hour horizons with 21 months of validation data.
+            Our LSTM model achieved **87%+ accuracy** over 3-hour horizons with 21 months of test data.
             """)
         
         with st.expander("📊 What strategies are researched?"):
