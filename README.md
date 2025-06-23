@@ -230,7 +230,7 @@ Available at SSRN: https://ssrn.com/abstract=5288444
 
 This upcoming publication will detail the practical implementation of the Financial Torque Hypothesis within the Prometheus trading platform and its integration into advanced portfolio management strategies.
 
-## �📧 Contact
+## 📧 Contact
 
 **[Guilherme Grancho](https://www.linkedin.com/in/guilhermegrancho/)** - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt) / [guilherme.fernandes25@imperial.ac.uk](mailto:guilherme.fernandes25@imperial.ac.uk)
 
