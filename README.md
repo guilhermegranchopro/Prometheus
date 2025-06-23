@@ -26,45 +26,162 @@
 
 ## 🚀 Overview
 
-Prometheus is a sophisticated algorithmic trading platform that leverages the Alpaca Markets API to execute automated trading strategies. This project combines advanced data analysis, machine learning models, and real-time market data to make informed trading decisions.
+Prometheus is an algorithmic trading research platform that integrates with the Alpaca Markets API for trading strategies. This project combines data analysis, machine learning models, and market data analysis to support trading research and development.
+
+### Key Accomplishments
+
+- **Published Academic Research**: Successfully published ["The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444) on SSRN, achieving over 87% accuracy in stock price movement predictions
+- **Comprehensive Data Infrastructure**: Built extensive market data collection system supporting multiple feeds (IEX, SIP) with both regular trading hours and extended session data
+- **Interactive Research Platform**: Developed a full-featured Streamlit web application for data visualization, model analysis, and research insights
+- **Multi-Strategy Framework**: Implemented research notebooks for different trading approaches (Simons quantitative strategy, Sun Tzu tactical analysis)
+- **Machine Learning Integration**: Successfully integrated TensorFlow-based LSTM neural networks with real market data for predictive modeling
+- **Open Source Contribution**: Created a complete research platform with proper documentation, dependency management, and academic citations
+
+### Future Roadmap
+
+- **Next.js Frontend Migration**: Transition from the current Streamlit-based frontend to a modern Next.js web application for enhanced performance, better user experience, and improved scalability
+- **Advanced Portfolio Management Research**: Currently developing the second academic publication "Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management" which will detail practical implementation strategies and portfolio optimization techniques
+- **Enhanced Machine Learning Models**: Expand the current LSTM framework to include additional deep learning architectures and ensemble methods
+- **Real-time Trading Integration**: Develop production-ready trading execution capabilities with advanced risk management systems
+- **API Development**: Create comprehensive REST APIs for third-party integrations and mobile applications
+
+## 🪶 Academic Publications
+
+This project is supported by rigorous academic research published in peer-reviewed venues:
+
+### Published Research
+
+**[The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)**
+
+*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
+
+*Abstract:* This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long Short-Term Memory Neural Network, our model achieved over 87% accuracy in predicting stock-price increases over a three-hour horizon, based on 21 months of previously unseen test data. We also perform a comprehensive comparative analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data consistently outperform those built on regular-hours-only data, delivering a 15% improvement in predictive accuracy.
+
+**Citation:**
+
+```bibtex
+Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, The Financial Torque Hypothesis: 
+Predicting Short-Term Stock Price Movements Using LSTM Neural Networks (June 20, 2025). 
+Available at SSRN: https://ssrn.com/abstract=5288444
+```
+
+### Upcoming Research
+
+#### Integrating The Financial Torque Hypothesis into Advanced Algorithmic Portfolio Management
+
+*Authors:* [Guilherme Grancho Duarte Fernandes](https://www.linkedin.com/in/guilhermegrancho/), [Vasco V. R. Serpa Pereira](https://www.linkedin.com/in/vasco-pereira03/)
+
+*Status:* Set to be published in the coming months
+
+This upcoming publication will detail the practical implementation of the Financial Torque Hypothesis within the Prometheus trading platform and its integration into advanced portfolio management strategies.
+
+## 🖥️ Interactive Frontend Dashboard
+
+The project includes a Streamlit-based web application that provides:
+
+- **Portfolio Monitoring**: Tracking of positions and performance metrics
+- **Strategy Visualization**: Charts displaying strategy performance  
+- **Risk Management Interface**: Tools for monitoring and adjusting risk parameters
+- **Market Data Analysis**: Data visualization and analysis tools
+- **Academic Research Integration**: Access to research findings and model insights
+
+### Launching the Frontend
+
+Ensure Streamlit is installed (`pip install streamlit`).
+
+```bash
+streamlit run frontend/my-streamlit-app/Home.py
+```
+
+The frontend application is located in the `frontend/my-streamlit-app/` directory and serves as the primary user interface for interacting with the Prometheus trading platform.
 
 ## ✨ Features
 
-- **Real-time Market Data Integration**
-  - Seamless integration with Alpaca Markets API
-  - High-frequency data collection with rate limit management
+- **Market Data Integration**
+  - Integration with Alpaca Markets API
+  - Data collection with rate limit management
   - Support for multiple timeframes and market data types (IEX, SIP)
 
-- **Advanced Trading Models**
+- **Trading Research Models**
   - Machine learning model integration with TensorFlow
-  - Custom trading strategies implementation (Simons, Sun Tzu)
+  - Custom trading strategies research (Simons, Sun Tzu)
   - Research-based approach with separate modules for different strategies
   - Structured model management and evaluation (see `Models/` directory)
 
 - **Data Analysis & Visualization**
-  - Comprehensive market data analysis using pandas and numpy
-  - Interactive data visualization with matplotlib
+  - Market data analysis using pandas and numpy
+  - Data visualization with matplotlib and plotly
   - Performance metrics and reporting
   - Historical data analysis and storage for various sources (see `Data/` directory)
 
-- **Risk Management**
-  - Position sizing algorithms
-  - Stop-loss and take-profit mechanisms
-  - Portfolio diversification strategies
-  - Risk assessment tools
+- **Risk Management Research**
+  - Position sizing algorithms research
+  - Stop-loss and take-profit mechanisms research
+  - Portfolio diversification strategies research
+  - Risk assessment tools research
 
-- **Interactive Frontend Dashboard**
-  - Streamlit application for monitoring and interaction (see `frontend/` directory)
+- **Live Trading Research**
+  - Jupyter notebook for live trading research and monitoring (see `Live_Trading/` directory)
 
-- **Live Trading Capabilities**
-  - Jupyter notebook for live trading execution and monitoring (see `Live_Trading/` directory)
+## 🚀 Usage
+
+1. **Launching the Frontend Dashboard**
+
+    Ensure Streamlit is installed (`pip install streamlit`).
+
+    ```bash
+    streamlit run frontend/my-streamlit-app/Home.py
+    ```
+
+2. **Data Collection and Analysis**
+
+    (Refer to notebooks within `Data/` subdirectories or specific strategy research)
+
+    ```python
+    # Example: Initialize API connection (ensure credentials are set)
+    import alpaca_trade_api as tradeapi
+
+    api = tradeapi.REST(
+        key_id='YOUR_API_KEY',          # Preferably set via environment variables
+        secret_key='YOUR_SECRET_KEY',  # Preferably set via environment variables
+        base_url='https://paper-api.alpaca.markets'
+    )
+
+    # Example: Fetch market data
+    # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df # Original example
+    # For more detailed data handling, see notebooks in Data/ or strategy research folders.
+    ```
+
+3. **Running Trading Strategies**
+
+    ```python
+    # Note: The strategy modules referenced below are research notebooks
+    # and not standalone importable modules. Refer to the actual notebook files:
+    # - Simons/backend/Simons.ipynb 
+    # - Sun_Tzu/backend/Ronin_SunTzu.ipynb
+    
+    # For actual strategy implementation, see the notebook files directly
+    ```
+
+4. **Live Trading**
+
+    Open and run cells in `Live_Trading/Live_Trading.ipynb` after appropriate setup and risk assessment.
+
+## 📈 Performance
+
+The platform supports research into multiple trading strategies:
+
+- **Simons Strategy**: Quantitative trading research approach (see `Simons/backend/Simons.ipynb`)
+- **Sun Tzu Strategy**: Tactical market analysis research (see `Sun_Tzu/backend/Ronin_SunTzu.ipynb`)
+
+Performance metrics can be analyzed through the provided research notebooks.
 
 ## 🛠️ Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/Prometheus.git
+    git clone [YOUR_REPOSITORY_URL]
     cd Prometheus
     ```
 
@@ -106,14 +223,14 @@ Prometheus/
 │   ├── Regular Hours/
 │   ├── SIP/
 │   └── Table.ipynb
-├── Simons/                     # Simons trading strategy
-│   ├── backend/                # Backend logic for Simons strategy
+├── Simons/                     # Simons trading strategy research
+│   ├── backend/                # Research notebooks for Simons strategy
 │   ├── Images/                 # Images related to Simons strategy
-│   ├── Paper/                  # Research paper published on Arxiv based on the quantitative software develop for Simons
+│   ├── Paper/                  # Research paper published on SSRN 
 │   ├── Report/                 # Reports and results for Simons
 │   └── Settings/               # Configuration for Simons strategy
-├── Sun_Tzu/                    # Sun Tzu trading strategy
-│   ├── backend/                # Backend logic for Sun Tzu strategy
+├── Sun_Tzu/                    # Sun Tzu trading strategy research
+│   ├── backend/                # Research notebooks for Sun Tzu strategy
 │   └── research/               # Research for Sun Tzu strategy
 ├── .venv/                      # Python virtual environment
 ├── .git/                       # Git version control files
@@ -125,60 +242,6 @@ Prometheus/
 ├── requirements.txt            # Project dependencies
 └── uv.lock                     # Lock file for uv package manager
 ```
-
-## 🚀 Usage
-
-1. **Data Collection and Analysis**
-
-    (Refer to notebooks within `Data/` subdirectories or specific strategy research)
-
-    ```python
-    # Example: Initialize API connection (ensure credentials are set)
-    import alpaca_trade_api as tradeapi
-
-    api = tradeapi.REST(
-        key_id='YOUR_API_KEY',          # Preferably set via environment variables
-        secret_key='YOUR_SECRET_KEY',  # Preferably set via environment variables
-        base_url='https://paper-api.alpaca.markets'
-    )
-
-    # Example: Fetch market data
-    # data = api.get_bars('AAPL', '1D', '2024-01-01', '2024-04-15').df # Original example
-    # For more detailed data handling, see scripts/notebooks in Data/ or strategy research folders.
-    ```
-
-2. **Running Trading Strategies**
-
-    ```python
-    # Import your preferred strategy module
-    from Simons.backend import strategy as simons_strategy
-    # or
-    from Sun_Tzu.backend import strategy as sun_tzu_strategy
-
-    # Execute the strategy (ensure strategy-specific configurations are set)
-    # results = strategy.execute() # Placeholder, actual execution might vary
-    ```
-
-3. **Launching the Frontend Dashboard**
-
-    Ensure Streamlit is installed (`pip install streamlit`).
-
-    ```bash
-    streamlit run frontend/my-streamlit-app/Home.py
-    ```
-
-4. **Live Trading**
-
-    Open and run cells in `Live_Trading/Live_Trading.ipynb` after appropriate setup and risk assessment.
-
-## 📈 Performance
-
-The platform implements multiple trading strategies:
-
-- **Simons Strategy**: Advanced quantitative trading approach
-- **Sun Tzu Strategy**: Tactical market analysis and execution
-
-Performance metrics are continuously monitored and updated based on live trading results.
 
 ## 🤝 Contributing
 
@@ -202,6 +265,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Guilherme Grancho - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt) / [guilherme.fernandes25@imperial.ac.uk](mailto:guilherme.fernandes25@imperial.ac.uk)
+**[Guilherme Grancho](https://www.linkedin.com/in/guilhermegrancho/)** - [guilhermegrancho@tecnico.ulisboa.pt](mailto:guilhermegrancho@tecnico.ulisboa.pt) / [guilherme.fernandes25@imperial.ac.uk](mailto:guilherme.fernandes25@imperial.ac.uk)
 
-Vasco Pereira - [vasco.serpa.pereira@tecnico.ulisboa.pt](mailto:vasco.serpa.pereira@tecnico.ulisboa.pt)
+- Department of Earth Science and Engineering, Imperial College London
+- Department of Physics, Instituto Superior Técnico, Lisbon
+
+**[Vasco Pereira](https://www.linkedin.com/in/vasco-pereira03/)** - [vasco.serpa.pereira@tecnico.ulisboa.pt](mailto:vasco.serpa.pereira@tecnico.ulisboa.pt)
+
+- Department of Computer Science and Engineering, Instituto Superior Técnico, Lisbon
