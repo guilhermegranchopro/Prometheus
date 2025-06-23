@@ -35,50 +35,8 @@ def main_overview():
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
             )
 
-    # Technology Stack Badges Section - Fully centered with container
-    st.markdown("### 🔧 Technology Stack")
-    
-    # Create centered layout with background container
-    st.markdown(
-        """
-        <div style='text-align: center; padding: 20px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
-                    border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin: 20px 0;'>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px;">
-                <img src='https://img.shields.io/badge/python-3.10-blue.svg' alt='Python Version'/>
-                <img src='https://img.shields.io/badge/license-MIT-green.svg' alt='License'/>
-                <img src='https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg' alt='Alpaca API'/>
-                <img src='https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white' alt='Streamlit'/>
-                <img src='https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white' alt='TensorFlow'/>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px;">
-                <img src='https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white' alt='Pandas'/>
-                <img src='https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white' alt='NumPy'/>
-                <img src='https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikit-learn&logoColor=white' alt='Scikit-learn'/>
-                <img src='https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white' alt='Matplotlib'/>
-                <img src='https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white' alt='Plotly'/>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px;">
-                <img src='https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white' alt='Altair'/>
-                <img src='https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white' alt='Joblib'/>
-                <img src='https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white' alt='FuzzyWuzzy'/>
-                <img src='https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white' alt='Ruff'/>
-                <img src='https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white' alt='SciPy'/>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
-                <img src='https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white' alt='npm'/>
-                <img src='https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black' alt='Python-Dotenv'/>
-                <img src='https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white' alt='Polygon API Client'/>
-                <img src='https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white' alt='Python-Levenshtein'/>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    
-    st.markdown("---")  # Add separator after badges
-
     # Overview Section - Streamlit native components
-    st.markdown("## 🚀 Overview")
+    st.markdown("## 🚀 Ready to Explore Prometheus?")
     
     st.markdown("""
     Prometheus is an algorithmic trading research platform that integrates with the 
@@ -866,15 +824,3 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - **Q2 2026**: API development
         - **Q3 2026**: Production trading integration
         """)
-
-    # Add a final call-to-action
-    st.markdown("---")
-    st.markdown(
-        """
-        <div class='text-center py-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg'>
-            <h3 class='text-2xl font-semibold text-gray-800 mb-4'>🚀 Ready to Explore Prometheus?</h3>
-            <p class='text-lg text-gray-600 mb-6'>Start your journey in algorithmic trading research today!</p>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
