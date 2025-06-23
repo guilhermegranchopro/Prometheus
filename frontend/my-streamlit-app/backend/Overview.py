@@ -18,65 +18,74 @@ def create_sample_performance_chart(time_period="1 Year"):
     """Create a sample performance chart for demonstration"""
     # Determine date range based on time period
     if time_period == "3 Months":
-        start_date = '2024-10-01'
-        end_date = '2024-12-31'
+        start_date = "2024-10-01"
+        end_date = "2024-12-31"
     elif time_period == "6 Months":
-        start_date = '2024-07-01'
-        end_date = '2024-12-31'
+        start_date = "2024-07-01"
+        end_date = "2024-12-31"
     else:  # 1 Year
-        start_date = '2024-01-01'
-        end_date = '2024-12-31'
-    
+        start_date = "2024-01-01"
+        end_date = "2024-12-31"
+
     # Create sample data for demonstration
-    dates = pd.date_range(start=start_date, end=end_date, freq='D')
-    
+    dates = pd.date_range(start=start_date, end=end_date, freq="D")
+
     # Simulate performance data
     cumulative_return = []
     current_return = 1.0
-    
+
     for _ in dates:
         # Add some randomness with a slight upward bias
-        daily_return = random.normalvariate(0.002, 0.02)  # 0.2% mean daily return, 2% volatility
-        current_return *= (1 + daily_return)
+        daily_return = random.normalvariate(
+            0.002, 0.02
+        )  # 0.2% mean daily return, 2% volatility
+        current_return *= 1 + daily_return
         cumulative_return.append((current_return - 1) * 100)
-    
-    df = pd.DataFrame({
-        'Date': dates,
-        'Cumulative Return (%)': cumulative_return
-    })
-    
-    fig = px.line(df, x='Date', y='Cumulative Return (%)', 
-                  title=f'Research Platform Performance Simulation ({time_period})',
-                  labels={'Cumulative Return (%)': 'Cumulative Return (%)'})
-    
-    fig.update_layout(
-        xaxis_title='Date',
-        yaxis_title='Cumulative Return (%)',
-        template='plotly_white',
-        height=400
+
+    df = pd.DataFrame({"Date": dates, "Cumulative Return (%)": cumulative_return})
+
+    fig = px.line(
+        df,
+        x="Date",
+        y="Cumulative Return (%)",
+        title=f"Research Platform Performance Simulation ({time_period})",
+        labels={"Cumulative Return (%)": "Cumulative Return (%)"},
     )
-    
+
+    fig.update_layout(
+        xaxis_title="Date",
+        yaxis_title="Cumulative Return (%)",
+        template="plotly_white",
+        height=400,
+    )
+
     return fig
 
 
 def create_strategy_comparison():
     """Create a comparison chart between strategies"""
-    strategies = ['Simons Strategy', 'Sun Tzu Strategy', 'Financial Torque Hypothesis']
+    strategies = ["Simons Strategy", "Sun Tzu Strategy", "Financial Torque Hypothesis"]
     accuracy = [82.5, 78.3, 87.2]  # Sample accuracy percentages
-    
-    fig = go.Figure(data=[
-        go.Bar(name='Accuracy (%)', x=strategies, y=accuracy, 
-               marker_color=['#3B82F6', '#10B981', '#F59E0B'])
-    ])
-    
-    fig.update_layout(
-        title='Strategy Research Accuracy Comparison',
-        xaxis_title='Strategy',
-        yaxis_title='Accuracy (%)',
-        template='plotly_white',
-        height=400
+
+    fig = go.Figure(
+        data=[
+            go.Bar(
+                name="Accuracy (%)",
+                x=strategies,
+                y=accuracy,
+                marker_color=["#3B82F6", "#10B981", "#F59E0B"],
+            )
+        ]
     )
-    
+
+    fig.update_layout(
+        title="Strategy Research Accuracy Comparison",
+        xaxis_title="Strategy",
+        yaxis_title="Accuracy (%)",
+        template="plotly_white",
+        height=400,
+    )
+
     return fig
 
 
@@ -157,17 +166,19 @@ def main_overview():
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create interactive tabs for accomplishments
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-        "📚 Academic Research", 
-        "🏗️ Data Infrastructure", 
-        "🖥️ Research Platform", 
-        "📊 Multi-Strategy Framework", 
-        "🤖 ML Integration", 
-        "🌐 Open Source"
-    ])
-    
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+        [
+            "📚 Academic Research",
+            "🏗️ Data Infrastructure",
+            "🖥️ Research Platform",
+            "📊 Multi-Strategy Framework",
+            "🤖 ML Integration",
+            "🌐 Open Source",
+        ]
+    )
+
     with tab1:
         st.markdown(
             """
@@ -183,7 +194,7 @@ def main_overview():
             """,
             unsafe_allow_html=True,
         )
-    
+
     with tab2:
         st.markdown(
             """
@@ -200,7 +211,7 @@ def main_overview():
             """,
             unsafe_allow_html=True,
         )
-    
+
     with tab3:
         st.markdown(
             """
@@ -217,7 +228,7 @@ def main_overview():
             """,
             unsafe_allow_html=True,
         )
-    
+
     with tab4:
         st.markdown(
             """
@@ -234,7 +245,7 @@ def main_overview():
             """,
             unsafe_allow_html=True,
         )
-    
+
     with tab5:
         st.markdown(
             """
@@ -251,7 +262,7 @@ def main_overview():
             """,
             unsafe_allow_html=True,
         )
-    
+
     with tab6:
         st.markdown(
             """
@@ -278,11 +289,13 @@ def main_overview():
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create expandable sections for publications
-    with st.expander("📄 Published Research - The Financial Torque Hypothesis", expanded=True):
+    with st.expander(
+        "📄 Published Research - The Financial Torque Hypothesis", expanded=True
+    ):
         col1, col2 = st.columns([3, 1])
-        
+
         with col1:
             st.markdown(
                 """
@@ -302,13 +315,13 @@ def main_overview():
                 ```
                 """
             )
-        
+
         with col2:
             st.metric("Accuracy", "87%+", "15% improvement")
             st.metric("Test Period", "21 months", "Unseen data")
             st.metric("Prediction Horizon", "3 hours", "Real-time")
             st.metric("Data Improvement", "15%", "Full-session vs RTH")
-    
+
     with st.expander("🔬 Upcoming Research - Advanced Portfolio Management"):
         st.markdown(
             """
@@ -321,9 +334,9 @@ def main_overview():
             This upcoming publication will detail the practical implementation of the Financial Torque Hypothesis within the Prometheus trading platform and its integration into advanced portfolio management strategies. The research will cover portfolio optimization techniques, risk management integration, and real-world application scenarios.
             """
         )
-        
+
         st.info("📅 Expected Publication: Coming Months - Stay tuned for updates!")
-        
+
         # Add progress indicator
         progress_col1, progress_col2 = st.columns([3, 1])
         with progress_col1:
@@ -340,55 +353,55 @@ def main_overview():
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create roadmap with progress indicators
     roadmap_items = [
         {
             "title": "Next.js Frontend Migration",
             "description": "Transition to modern Next.js web application",
             "status": "🔄 In Planning",
-            "color": "blue"
+            "color": "blue",
         },
         {
             "title": "Advanced Portfolio Management Research",
             "description": "Second academic publication development",
             "status": "📝 In Progress",
-            "color": "green"
+            "color": "green",
         },
         {
             "title": "Enhanced ML Models",
             "description": "Expand LSTM framework with ensemble methods",
             "status": "🔄 In Planning",
-            "color": "purple"
+            "color": "purple",
         },
         {
             "title": "Real-time Trading Integration",
             "description": "Production-ready trading execution",
             "status": "🔮 Future",
-            "color": "orange"
+            "color": "orange",
         },
         {
             "title": "API Development",
             "description": "REST APIs for third-party integrations",
             "status": "🔮 Future",
-            "color": "teal"
-        }
+            "color": "teal",
+        },
     ]
-    
+
     for i, item in enumerate(roadmap_items):
         with st.container():
             col1, col2, col3 = st.columns([1, 8, 2])
-            
+
             with col1:
-                st.markdown(f"**{i+1}.**")
-            
+                st.markdown(f"**{i + 1}.**")
+
             with col2:
                 st.markdown(f"**{item['title']}**")
                 st.markdown(f"*{item['description']}*")
-            
+
             with col3:
                 st.markdown(f"**{item['status']}**")
-            
+
             if i < len(roadmap_items) - 1:
                 st.markdown("---")
 
@@ -607,7 +620,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         language="bash",
     )
-    
+
     st.markdown(
         """
             <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>2. Data Collection and Analysis:</strong></p>
@@ -633,7 +646,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         language="python",
     )
-    
+
     st.markdown(
         """
             <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>3. Running Trading Strategies:</strong></p>
@@ -652,7 +665,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         language="python",
     )
-    
+
     st.markdown(
         """
             <p class='text-gray-700 mt-4 mb-4 text-lg'><strong>4. Live Trading Research:</strong></p>
@@ -722,10 +735,10 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create two columns for authors
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.markdown(
             """
@@ -749,7 +762,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             """,
             unsafe_allow_html=True,
         )
-    
+
     with col2:
         st.markdown(
             """
@@ -837,64 +850,66 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create metrics columns with enhanced information
     col1, col2, col3, col4, col5 = st.columns(5)
-    
+
     with col1:
         st.metric(
             label="🎯 ML Model Accuracy",
             value="87.2%",
             delta="15% improvement",
-            help="Accuracy achieved by the Financial Torque Hypothesis model on 21 months of unseen test data"
+            help="Accuracy achieved by the Financial Torque Hypothesis model on 21 months of unseen test data",
         )
-    
+
     with col2:
         st.metric(
             label="📈 Test Data Period",
             value="21 months",
             delta="Unseen data",
-            help="Duration of previously unseen test data used for validation"
+            help="Duration of previously unseen test data used for validation",
         )
-    
+
     with col3:
         st.metric(
             label="🔬 Research Strategies",
             value="3",
             delta="Active research",
-            help="Number of trading strategies under active research (Financial Torque, Simons, Sun Tzu)"
+            help="Number of trading strategies under active research (Financial Torque, Simons, Sun Tzu)",
         )
-    
+
     with col4:
         st.metric(
             label="📚 Publications",
             value="1",
             delta="+1 upcoming",
-            help="Published academic papers with one more in development"
+            help="Published academic papers with one more in development",
         )
-    
+
     with col5:
         st.metric(
             label="⏱️ Prediction Horizon",
             value="3 hours",
             delta="Real-time",
-            help="Time horizon for stock price movement predictions"
+            help="Time horizon for stock price movement predictions",
         )
 
     # Interactive Performance Comparison Section
     st.markdown("### 🏆 Research Strategy Performance Comparison")
-    
+
     # Create tabs for different performance views
-    perf_tab1, perf_tab2, perf_tab3 = st.tabs(["📊 Accuracy Comparison", "📈 Performance Simulation", "🔍 Model Insights"])
-    
+    perf_tab1, perf_tab2, perf_tab3 = st.tabs(
+        ["📊 Accuracy Comparison", "📈 Performance Simulation", "🔍 Model Insights"]
+    )
+
     with perf_tab1:
         st.markdown("**Strategy Research Accuracy Rates**")
         col1, col2 = st.columns([2, 1])
-        
+
         with col1:
             fig2 = create_strategy_comparison()
             st.plotly_chart(fig2, use_container_width=True)
-        
+
         with col2:
             st.markdown("""
             **Key Findings:**
@@ -914,27 +929,29 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             - Tactical analysis
             - Strategic positioning
             """)
-    
+
     with perf_tab2:
         st.markdown("**Research Platform Performance Simulation**")
-        st.info("📊 This chart shows a simulated performance based on research methodologies. Actual results may vary.")
-        
+        st.info(
+            "📊 This chart shows a simulated performance based on research methodologies. Actual results may vary."
+        )
+
         # Add an interactive selector for time period
         col1, col2 = st.columns([3, 1])
-        
+
         with col1:
             time_period = st.selectbox(
                 "Select Time Period for Simulation:",
                 ["1 Year", "6 Months", "3 Months"],
-                index=0
+                index=0,
             )
-        
+
         with col2:
             show_metrics = st.checkbox("Show Performance Metrics", value=True)
-        
+
         fig1 = create_sample_performance_chart(time_period)
         st.plotly_chart(fig1, use_container_width=True)
-        
+
         if show_metrics:
             # Add some context
             col1, col2, col3, col4 = st.columns(4)
@@ -946,14 +963,16 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
                 st.metric("Sharpe Ratio", "1.87", "0.12")
             with col4:
                 st.metric("Win Rate", "68.4%", "3.2%")
-    
+
     with perf_tab3:
         st.markdown("**Model Architecture & Insights**")
-        
+
         # Create expandable sections for technical details
-        with st.expander("🧠 Financial Torque Hypothesis - Technical Details", expanded=True):
+        with st.expander(
+            "🧠 Financial Torque Hypothesis - Technical Details", expanded=True
+        ):
             col1, col2 = st.columns(2)
-            
+
             with col1:
                 st.markdown("""
                 **Model Architecture:**
@@ -963,7 +982,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
                 - Trade Count features
                 - 3-hour prediction horizon
                 """)
-            
+
             with col2:
                 st.markdown("""
                 **Key Performance Factors:**
@@ -972,7 +991,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
                 - 21 months of unseen test data
                 - Real-time market data integration
                 """)
-        
+
         with st.expander("📊 Data Infrastructure"):
             st.markdown("""
             **Data Sources:**
@@ -987,7 +1006,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             - Data normalization and feature engineering
             - Real-time scalers for model inputs
             """)
-        
+
         with st.expander("🔬 Research Methodology"):
             st.markdown("""
             **Academic Rigor:**
@@ -1005,23 +1024,27 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
 
     # Interactive Metrics Section - Original but enhanced
     st.markdown("---")
-    
-    chart_tab1, chart_tab2 = st.tabs(["📈 Performance Simulation", "🏆 Strategy Comparison"])
-    
+
+    chart_tab1, chart_tab2 = st.tabs(
+        ["📈 Performance Simulation", "🏆 Strategy Comparison"]
+    )
+
     with chart_tab1:
         st.markdown("### Research Platform Performance Simulation")
-        st.info("📊 This chart shows a simulated performance based on research methodologies. Actual results may vary.")
-        
+        st.info(
+            "📊 This chart shows a simulated performance based on research methodologies. Actual results may vary."
+        )
+
         # Add an interactive selector for time period
         time_period = st.selectbox(
             "Select Time Period for Simulation:",
             ["1 Year", "6 Months", "3 Months"],
-            index=0
+            index=0,
         )
-        
+
         fig1 = create_sample_performance_chart(time_period)
         st.plotly_chart(fig1, use_container_width=True)
-        
+
         # Add some context
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -1030,14 +1053,16 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
             st.metric("Max Drawdown", "-8.3%", "0.5%")
         with col3:
             st.metric("Sharpe Ratio", "1.87", "0.12")
-    
+
     with chart_tab2:
         st.markdown("### Strategy Research Accuracy Comparison")
-        st.info("🎯 Comparison of accuracy rates achieved by different research strategies.")
-        
+        st.info(
+            "🎯 Comparison of accuracy rates achieved by different research strategies."
+        )
+
         fig2 = create_strategy_comparison()
         st.plotly_chart(fig2, use_container_width=True)
-        
+
         # Add explanatory text
         st.markdown("""
         **Research Findings:**
@@ -1057,7 +1082,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         unsafe_allow_html=True,
     )
-    
+
     with st.expander("🤖 What is the Financial Torque Hypothesis?"):
         st.markdown("""
         The **Financial Torque Hypothesis** is our groundbreaking research that asserts Volume-Weighted Average Price (VWAP) and Trade Count are critical indicators for predicting stock price movements. 
@@ -1069,7 +1094,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - 🎯 87%+ accuracy rate with real market data validation
         - 📈 Robust performance across different market conditions
         """)
-    
+
     with st.expander("🔬 How does this research platform work?"):
         st.markdown("""
         Prometheus is designed as a **research-first platform** that combines:
@@ -1089,7 +1114,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - Interactive Streamlit dashboard for visualization
         - Academic publication integration
         """)
-    
+
     with st.expander("📊 What trading strategies are researched here?"):
         st.markdown("""
         We currently research **three main strategies**:
@@ -1109,7 +1134,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - Strategic positioning methods
         - Available in `Sun_Tzu/backend/Ronin_SunTzu.ipynb`
         """)
-    
+
     with st.expander("🎓 Is this for academic or commercial use?"):
         st.markdown("""
         **Prometheus is primarily an academic research platform** with the following characteristics:
@@ -1129,7 +1154,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - Transparent reporting of results
         - Emphasis on academic integrity
         """)
-    
+
     with st.expander("🚀 How can I get started?"):
         st.markdown("""
         **Getting Started with Prometheus:**
@@ -1169,16 +1194,16 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create a status dashboard
     status_col1, status_col2, status_col3 = st.columns(3)
-    
+
     with status_col1:
         st.markdown("**📊 Current Research**")
         st.progress(1.0, text="Financial Torque Hypothesis - Published ✅")
         st.progress(0.75, text="Advanced Portfolio Management - 75% Complete")
         st.progress(0.3, text="Enhanced ML Models - In Planning")
-    
+
     with status_col2:
         st.markdown("**🔬 Active Studies**")
         st.markdown("""
@@ -1188,7 +1213,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - 🔄 Risk Management Integration
         - 📅 API Development Planning
         """)
-    
+
     with status_col3:
         st.markdown("**📈 Next Milestones**")
         st.markdown("""
@@ -1198,13 +1223,13 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - **Q2 2026**: API development
         - **Q3 2026**: Production trading integration
         """)
-    
+
     # Quick navigation section
     st.markdown("---")
     st.markdown("### 🧭 Quick Navigation & Resources")
-    
+
     nav_col1, nav_col2, nav_col3, nav_col4 = st.columns(4)
-    
+
     with nav_col1:
         st.markdown("""
         **📚 Research Papers**
@@ -1212,7 +1237,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - Citation Guidelines
         - Academic References
         """)
-    
+
     with nav_col2:
         st.markdown("""
         **💻 Code & Data**
@@ -1220,7 +1245,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - Strategy Implementations
         - Data Processing Scripts
         """)
-    
+
     with nav_col3:
         st.markdown("""
         **🔧 Setup & Config**
@@ -1228,7 +1253,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - API Configuration
         - Environment Setup
         """)
-    
+
     with nav_col4:
         st.markdown("""
         **🤝 Community**
@@ -1236,7 +1261,7 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
         - GitHub Repository
         - Academic Affiliations
         """)
-    
+
     # Add a final call-to-action
     st.markdown("---")
     st.markdown(
@@ -1248,23 +1273,31 @@ source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate</code></pre>
     """,
         unsafe_allow_html=True,
     )
-    
+
     # Create action buttons
     action_col1, action_col2, action_col3, action_col4 = st.columns(4)
-    
+
     with action_col1:
         if st.button("📖 Read the Paper", use_container_width=True):
             st.success("🔗 Opening SSRN publication...")
-            st.markdown("[The Financial Torque Hypothesis](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)")
-    
+            st.markdown(
+                "[The Financial Torque Hypothesis](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5288444)"
+            )
+
     with action_col2:
         if st.button("📊 View Strategies", use_container_width=True):
-            st.info("🎯 Navigate to the strategy pages in the sidebar to explore different research approaches.")
-    
+            st.info(
+                "🎯 Navigate to the strategy pages in the sidebar to explore different research approaches."
+            )
+
     with action_col3:
         if st.button("🔧 Setup Guide", use_container_width=True):
-            st.info("📋 Scroll up to view the detailed installation and setup instructions.")
-    
+            st.info(
+                "📋 Scroll up to view the detailed installation and setup instructions."
+            )
+
     with action_col4:
         if st.button("👥 Contact Authors", use_container_width=True):
-            st.success("📧 Contact information is available in the Authors & Contact section above.")
+            st.success(
+                "📧 Contact information is available in the Authors & Contact section above."
+            )
