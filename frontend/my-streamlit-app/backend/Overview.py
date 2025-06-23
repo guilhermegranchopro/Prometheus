@@ -39,7 +39,7 @@ def main_overview():
     with col2:
         st.metric("Test Data", "21 months", "Unseen validation")
     with col3:
-        st.metric("Data Sources", "IEX + SIP", "Multiple feeds")
+        st.metric("Python Version", "3.10+", "Latest features")
     with col4:
         st.metric("License", "MIT", "Open source")
     
@@ -58,9 +58,9 @@ def main_overview():
             **Authors:** [Guilherme Grancho](https://www.linkedin.com/in/guilhermegrancho/) & [Vasco Pereira](https://www.linkedin.com/in/vasco-pereira03/)  
             **Published:** June 20, 2025 - SSRN
             
-            Our research demonstrates that Volume-Weighted Average Price (VWAP) and Trade Count are critical indicators for predicting stock price movements. Using LSTM neural networks, we achieved **over 87% accuracy** in predicting stock price increases over a three-hour horizon with 21 months of previously unseen test data.
+            **Abstract:** This paper introduces the Financial Torque Hypothesis, which asserts that Volume-Weighted Average Price and Trade Count are critical indicators for predicting stock price movements. By incorporating these features into a Long Short-Term Memory Neural Network, our model achieved **over 87% accuracy** in predicting stock-price increases over a three-hour horizon, based on 21 months of previously unseen test data. 
             
-            **Key Finding:** Models trained on full-session data (pre-market + regular + after-hours) outperform regular-hours-only models by 15%.
+            We also perform a comprehensive comparative analysis of model performance using two datasets: one that spans the entire trading session—pre-market, regular-market and after-hours—and one confined to regular-market hours. Our results reveal that models trained on full-session data consistently outperform those built on regular-hours-only data, delivering a **15% improvement** in predictive accuracy.
             """)
         
         with col2:
@@ -105,11 +105,12 @@ def main_overview():
     with tab2:
         st.markdown("""
         **Data Infrastructure & Analysis**
-        - 🔌 Alpaca Markets API integration with rate limiting
+        - 🔌 Alpaca Markets API integration (v3.2.0) with rate limiting
         - 📡 Multiple data feeds (IEX, SIP) with extended hours support
         - 💾 Automated data collection and scalable storage
-        - 📊 Comprehensive market data analysis tools
+        - 📊 Comprehensive analysis using pandas, numpy, and scipy
         - ⏰ Real-time and historical data processing
+        - 📈 Advanced visualization with matplotlib, plotly, and altair
         """)
     
     with tab3:
@@ -118,8 +119,9 @@ def main_overview():
         - 🖥️ Interactive Streamlit web dashboard
         - 📈 Advanced data visualization with Plotly
         - 📓 Jupyter notebooks for strategy research
-        - � Portfolio monitoring and performance tracking
+        - 🔍 Portfolio monitoring and performance tracking
         - 🛡️ Risk management interface and tools
+        - 🔧 Additional tools: scikit-learn, joblib, fuzzywuzzy
         """)
     
     with tab4:
@@ -127,9 +129,9 @@ def main_overview():
         **Trading Strategy Research**
         - 🎲 **Simons Strategy**: Quantitative mathematical modeling (`Simons/backend/`)
         - ⚔️ **Sun Tzu Strategy**: Tactical market analysis (`Sun_Tzu/backend/`)
-        - � **Financial Torque**: Published LSTM-based predictions
+        - 🔬 **Financial Torque**: Published LSTM-based predictions
         - 📊 Multi-strategy comparative analysis framework
-        - 🧪 Live trading research environment
+        - 🧪 Live trading research environment (`Live_Trading/`)
         """)
     
     st.markdown("---")
@@ -158,14 +160,48 @@ Prometheus/
         st.markdown("- IEX Cloud feed")
         st.markdown("- SIP (Securities Information Processor)")
         st.markdown("- Extended & regular trading hours")
+        st.markdown("- Polygon API integration")
         
         st.markdown("**🔬 Research Areas**")
         st.markdown("- Financial Torque Hypothesis")
         st.markdown("- Quantitative modeling")
         st.markdown("- Tactical analysis")
         st.markdown("- Portfolio management")
+        st.markdown("- Risk assessment tools")
     
     st.markdown("---")
+    
+    # Technology Stack - New section
+    st.markdown("## 🛠️ Technology Stack")
+    
+    tech_col1, tech_col2, tech_col3 = st.columns(3)
+    
+    with tech_col1:
+        st.markdown("**🐍 Core Python (3.10+)**")
+        st.markdown("""
+        - **TensorFlow** - Deep learning framework
+        - **Pandas & NumPy** - Data manipulation
+        - **Scikit-learn** - Machine learning tools
+        - **SciPy** - Scientific computing
+        """)
+    
+    with tech_col2:
+        st.markdown("**📊 Visualization & Analysis**")
+        st.markdown("""
+        - **Streamlit** - Web application framework
+        - **Plotly** - Interactive visualizations
+        - **Matplotlib** - Static plotting
+        - **Altair** - Statistical visualization
+        """)
+    
+    with tech_col3:
+        st.markdown("**🔌 APIs & Integration**")
+        st.markdown("""
+        - **Alpaca API v3.2.0** - Trading data
+        - **Polygon API** - Market data
+        - **Python-Dotenv** - Configuration
+        - **Joblib** - Model persistence
+        """)
 
     # Getting Started - Simplified
     st.markdown("## 🚀 Getting Started")
@@ -195,6 +231,7 @@ pip install -r requirements.txt
         2. 📓 **Explore Notebooks**: Check `Simons/backend/` and `Sun_Tzu/backend/` 
         3. 🧪 **Live Research**: Open `Live_Trading/Live_Trading.ipynb` for live analysis
         4. 📊 **Data Analysis**: Review processed data in `Data/` directories
+        5. ⚙️ **Configure credentials**: Set up in `Simons/Settings/` or environment variables
         """)
     
     st.markdown("---")
@@ -243,7 +280,8 @@ pip install -r requirements.txt
         - 🏫 Imperial College London (Earth Science & Engineering)
         - 🏫 Instituto Superior Técnico (Physics)
         - 🔗 [LinkedIn](https://www.linkedin.com/in/guilhermegrancho/)
-        - � guilhermegrancho@tecnico.ulisboa.pt
+        - 📧 guilhermegrancho@tecnico.ulisboa.pt
+        - 📧 guilherme.fernandes25@imperial.ac.uk
         """)
     
     with col2:
@@ -290,10 +328,10 @@ pip install -r requirements.txt
         with cite_col1:
             st.markdown("**Academic Paper:**")
             st.code("""
-Fernandes, G.G.D. and Pereira, V., 
-The Financial Torque Hypothesis: Predicting 
-Short-Term Stock Price Movements Using LSTM 
-Neural Networks (June 20, 2025). 
+Fernandes, Guilherme Grancho Duarte and Pereira, Vasco, 
+The Financial Torque Hypothesis: Predicting Short-Term 
+Stock Price Movements Using LSTM Neural Networks 
+(June 20, 2025). 
 Available at SSRN: https://ssrn.com/abstract=5288444
             """, language="text")
         
@@ -327,6 +365,8 @@ Available at SSRN: https://ssrn.com/abstract=5288444
             - **Financial Torque**: Published LSTM research (87%+ accuracy)
             - **Simons**: Quantitative mathematical modeling
             - **Sun Tzu**: Tactical market analysis
+            
+            Performance metrics can be analyzed through the provided research notebooks with structured model management and evaluation.
             """)
     
     with faq_col2:
