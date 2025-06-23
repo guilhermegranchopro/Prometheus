@@ -35,101 +35,64 @@ def main_overview():
                 f"Could not load logo. Place it in an accessible location relative to Home.py. Error: {e}"
             )
 
-    # Technology Stack Badges Section - Centered using Streamlit native components
-    st.markdown("### 🛠️ Technology Stack")
+    # Technology Stack Badges Section - Fully centered with container
+    st.markdown("### 🔧 Technology Stack")
     
-    # Create centered columns layout for badges
-    badge_col1, badge_col2, badge_col3 = st.columns([1, 8, 1])
-    
-    with badge_col2:
-        # Create multiple rows of badges using columns for proper centering
-        
-        # Row 1 - Core technologies
-        row1_col1, row1_col2, row1_col3, row1_col4 = st.columns(4)
-        with row1_col1:
-            st.image("https://img.shields.io/badge/python-3.10-blue.svg", use_container_width=True)
-        with row1_col2:
-            st.image("https://img.shields.io/badge/license-MIT-green.svg", use_container_width=True)
-        with row1_col3:
-            st.image("https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg", use_container_width=True)
-        with row1_col4:
-            st.image("https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white", use_container_width=True)
-        
-        # Row 2 - ML and Data Science
-        row2_col1, row2_col2, row2_col3, row2_col4 = st.columns(4)
-        with row2_col1:
-            st.image("https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white", use_container_width=True)
-        with row2_col2:
-            st.image("https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white", use_container_width=True)
-        with row2_col3:
-            st.image("https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white", use_container_width=True)
-        with row2_col4:
-            st.image("https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikit-learn&logoColor=white", use_container_width=True)
-        
-        # Row 3 - Visualization
-        row3_col1, row3_col2, row3_col3, row3_col4 = st.columns(4)
-        with row3_col1:
-            st.image("https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white", use_container_width=True)
-        with row3_col2:
-            st.image("https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white", use_container_width=True)
-        with row3_col3:
-            st.image("https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white", use_container_width=True)
-        with row3_col4:
-            st.image("https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white", use_container_width=True)
-        
-        # Row 4 - Utilities and Tools
-        row4_col1, row4_col2, row4_col3, row4_col4 = st.columns(4)
-        with row4_col1:
-            st.image("https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white", use_container_width=True)
-        with row4_col2:
-            st.image("https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white", use_container_width=True)
-        with row4_col3:
-            st.image("https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white", use_container_width=True)
-        with row4_col4:
-            st.image("https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white", use_container_width=True)
-        
-        # Row 5 - Additional tools
-        row5_col1, row5_col2, row5_col3, row5_col4 = st.columns(4)
-        with row5_col1:
-            st.image("https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black", use_container_width=True)
-        with row5_col2:
-            st.image("https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white", use_container_width=True)
-        with row5_col3:
-            st.image("https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white", use_container_width=True)
-        with row5_col4:
-            # Empty column to maintain layout
-            st.empty()
-    
-    st.markdown("---")
-
-    # Overview Section - Enhanced card styling and heading
+    # Create centered layout with background container
     st.markdown(
         """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-sky-500 pl-4'>🚀 Overview</h2>
-            <p class='text-lg text-gray-700 leading-relaxed mb-4'>
-                Prometheus is an algorithmic trading research platform that integrates with the 
-                <a href='https://alpaca.markets/' target='_blank' rel='noopener noreferrer' class='text-sky-600 hover:text-sky-800 hover:underline'>Alpaca Markets API</a> 
-                for trading strategies. This project combines data analysis, machine learning models, and market data analysis to support trading research and development.
-            </p>
-            <div class='bg-gradient-to-r from-sky-50 to-blue-50 p-4 rounded-lg border-l-4 border-sky-400'>
-                <p class='text-sky-800 font-medium'>🎯 Research Platform Focus</p>
-                <p class='text-sky-700 text-sm mt-1'>This platform emphasizes rigorous academic research and open-source contributions to the algorithmic trading community.</p>
+        <div style='text-align: center; padding: 20px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+                    border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); margin: 20px 0;'>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                <img src='https://img.shields.io/badge/python-3.10-blue.svg' alt='Python Version'/>
+                <img src='https://img.shields.io/badge/license-MIT-green.svg' alt='License'/>
+                <img src='https://img.shields.io/badge/Alpaca%20API-v3.2.0-blue.svg' alt='Alpaca API'/>
+                <img src='https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white' alt='Streamlit'/>
+                <img src='https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white' alt='TensorFlow'/>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                <img src='https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white' alt='Pandas'/>
+                <img src='https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white' alt='NumPy'/>
+                <img src='https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikit-learn&logoColor=white' alt='Scikit-learn'/>
+                <img src='https://img.shields.io/badge/Matplotlib-11557c?logo=matplotlib&logoColor=white' alt='Matplotlib'/>
+                <img src='https://img.shields.io/badge/Plotly-3F4F75?logo=plotly&logoColor=white' alt='Plotly'/>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                <img src='https://img.shields.io/badge/Altair-15B8D5?logo=altair&logoColor=white' alt='Altair'/>
+                <img src='https://img.shields.io/badge/Joblib-007ACC?logo=python&logoColor=white' alt='Joblib'/>
+                <img src='https://img.shields.io/badge/FuzzyWuzzy-4169E1?logo=python&logoColor=white' alt='FuzzyWuzzy'/>
+                <img src='https://img.shields.io/badge/Ruff-D37D37?logo=python&logoColor=white' alt='Ruff'/>
+                <img src='https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white' alt='SciPy'/>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+                <img src='https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white' alt='npm'/>
+                <img src='https://img.shields.io/badge/Python--Dotenv-FFD700?logo=python&logoColor=black' alt='Python-Dotenv'/>
+                <img src='https://img.shields.io/badge/Polygon%20API-3957FF?logo=polygon&logoColor=white' alt='Polygon API Client'/>
+                <img src='https://img.shields.io/badge/Python--Levenshtein-4B8BBE?logo=python&logoColor=white' alt='Python-Levenshtein'/>
             </div>
         </div>
-    """,
-        unsafe_allow_html=True,
+        """,
+        unsafe_allow_html=True
     )
+    
+    st.markdown("---")  # Add separator after badges
 
-    # Key Accomplishments Section - New Interactive Section
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-green-500 pl-4'>🏆 Key Accomplishments</h2>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Overview Section - Streamlit native components
+    st.markdown("## 🚀 Overview")
+    
+    st.markdown("""
+    Prometheus is an algorithmic trading research platform that integrates with the 
+    [Alpaca Markets API](https://alpaca.markets/) for trading strategies. This project combines 
+    data analysis, machine learning models, and market data analysis to support trading research and development.
+    """)
+    
+    st.info("""
+    **🎯 Research Platform Focus**  
+    This platform emphasizes rigorous academic research and open-source contributions to the algorithmic trading community.
+    """)
+
+    # Key Accomplishments Section
+    st.markdown("## 🏆 Key Accomplishments")
 
     # Create interactive tabs for accomplishments
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
@@ -144,115 +107,72 @@ def main_overview():
     )
 
     with tab1:
-        st.markdown(
-            """
-            <div class='bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg border-l-4 border-green-400 mb-4'>
-                <h3 class='text-xl font-semibold text-green-800 mb-3'>📚 Published Academic Research</h3>
-                <p class='text-green-700 mb-3'>Successfully published research achieving <strong>over 87% accuracy</strong> in stock price movement predictions</p>
-                <div class='bg-white p-4 rounded-lg shadow-sm'>
-                    <p class='text-sm text-gray-600 mb-2'><strong>Paper:</strong> "The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks"</p>
-                    <p class='text-sm text-gray-600 mb-2'><strong>Published:</strong> SSRN (June 2025)</p>
-                    <p class='text-sm text-gray-600'><strong>Achievement:</strong> 87%+ accuracy with 21 months of unseen test data</p>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.success("**📚 Published Academic Research**")
+        st.markdown("""
+        Successfully published research achieving **over 87% accuracy** in stock price movement predictions
+        
+        **Paper:** "The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks"  
+        **Published:** SSRN (June 2025)  
+        **Achievement:** 87%+ accuracy with 21 months of unseen test data
+        """)
 
     with tab2:
-        st.markdown(
-            """
-            <div class='bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-lg border-l-4 border-blue-400 mb-4'>
-                <h3 class='text-xl font-semibold text-blue-800 mb-3'>🏗️ Comprehensive Data Infrastructure</h3>
-                <p class='text-blue-700 mb-3'>Built extensive market data collection system with multiple feed support</p>
-                <ul class='list-disc list-inside space-y-1 text-blue-600'>
-                    <li>Multiple data feeds (IEX, SIP)</li>
-                    <li>Regular trading hours + extended session data</li>
-                    <li>Automated data collection and processing</li>
-                    <li>Scalable storage architecture</li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.info("**🏗️ Comprehensive Data Infrastructure**")
+        st.markdown("""
+        Built extensive market data collection system with multiple feed support
+        
+        - Multiple data feeds (IEX, SIP)
+        - Regular trading hours + extended session data
+        - Automated data collection and processing
+        - Scalable storage architecture
+        """)
 
     with tab3:
-        st.markdown(
-            """
-            <div class='bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg border-l-4 border-purple-400 mb-4'>
-                <h3 class='text-xl font-semibold text-purple-800 mb-3'>🖥️ Interactive Research Platform</h3>
-                <p class='text-purple-700 mb-3'>Full-featured Streamlit web application for research insights</p>
-                <ul class='list-disc list-inside space-y-1 text-purple-600'>
-                    <li>Data visualization and analysis tools</li>
-                    <li>Model analysis and insights</li>
-                    <li>Interactive research interface</li>
-                    <li>Real-time data exploration</li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.info("**🖥️ Interactive Research Platform**")
+        st.markdown("""
+        Full-featured Streamlit web application for research insights
+        
+        - Data visualization and analysis tools
+        - Model analysis and insights
+        - Interactive research interface
+        - Real-time data exploration
+        """)
 
     with tab4:
-        st.markdown(
-            """
-            <div class='bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-lg border-l-4 border-orange-400 mb-4'>
-                <h3 class='text-xl font-semibold text-orange-800 mb-3'>📊 Multi-Strategy Framework</h3>
-                <p class='text-orange-700 mb-3'>Research notebooks for different trading approaches</p>
-                <ul class='list-disc list-inside space-y-1 text-orange-600'>
-                    <li>Simons quantitative strategy research</li>
-                    <li>Sun Tzu tactical analysis</li>
-                    <li>Modular strategy development</li>
-                    <li>Comparative analysis tools</li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.warning("**📊 Multi-Strategy Framework**")
+        st.markdown("""
+        Research notebooks for different trading approaches
+        
+        - Simons quantitative strategy research
+        - Sun Tzu tactical analysis
+        - Modular strategy development
+        - Comparative analysis tools
+        """)
 
     with tab5:
-        st.markdown(
-            """
-            <div class='bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-lg border-l-4 border-indigo-400 mb-4'>
-                <h3 class='text-xl font-semibold text-indigo-800 mb-3'>🤖 Machine Learning Integration</h3>
-                <p class='text-indigo-700 mb-3'>TensorFlow-based LSTM neural networks with real market data</p>
-                <ul class='list-disc list-inside space-y-1 text-indigo-600'>
-                    <li>LSTM neural network implementation</li>
-                    <li>Real-time market data integration</li>
-                    <li>Predictive modeling capabilities</li>
-                    <li>Model performance optimization</li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.info("**🤖 Machine Learning Integration**")
+        st.markdown("""
+        TensorFlow-based LSTM neural networks with real market data
+        
+        - LSTM neural network implementation
+        - Real-time market data integration
+        - Predictive modeling capabilities
+        - Model performance optimization
+        """)
 
     with tab6:
-        st.markdown(
-            """
-            <div class='bg-gradient-to-r from-teal-50 to-green-50 p-6 rounded-lg border-l-4 border-teal-400 mb-4'>
-                <h3 class='text-xl font-semibold text-teal-800 mb-3'>🌐 Open Source Contribution</h3>
-                <p class='text-teal-700 mb-3'>Complete research platform with academic contributions</p>
-                <ul class='list-disc list-inside space-y-1 text-teal-600'>
-                    <li>MIT License for open access</li>
-                    <li>Comprehensive documentation</li>
-                    <li>Dependency management</li>
-                    <li>Academic citations and references</li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.success("**🌐 Open Source Contribution**")
+        st.markdown("""
+        Complete research platform with academic contributions
+        
+        - MIT License for open access
+        - Comprehensive documentation
+        - Dependency management
+        - Academic citations and references
+        """)
 
-    # Academic Publications Section - New Interactive Section
-    st.markdown(
-        """
-        <div class='container mx-auto px-6 py-8 bg-white shadow-xl rounded-lg mb-10 transition-shadow duration-300 hover:shadow-2xl'>
-            <h2 class='text-3xl font-semibold text-gray-800 mb-6 border-b border-gray-200 pb-3 border-l-4 border-amber-500 pl-4'>🪶 Academic Publications</h2>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
+    # Academic Publications Section
+    st.markdown("## 🪶 Academic Publications")
 
     # Create expandable sections for publications
     with st.expander(
