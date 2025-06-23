@@ -28,6 +28,15 @@
 
 Prometheus is an algorithmic trading research platform that integrates with the Alpaca Markets API for trading strategies. This project combines data analysis, machine learning models, and market data analysis to support trading research and development.
 
+### Key Accomplishments
+
+- **Published Academic Research**: Successfully published "The Financial Torque Hypothesis: Predicting Short-Term Stock Price Movements Using LSTM Neural Networks" on SSRN, achieving over 87% accuracy in stock price movement predictions
+- **Comprehensive Data Infrastructure**: Built extensive market data collection system supporting multiple feeds (IEX, SIP) with both regular trading hours and extended session data
+- **Interactive Research Platform**: Developed a full-featured Streamlit web application for data visualization, model analysis, and research insights
+- **Multi-Strategy Framework**: Implemented research notebooks for different trading approaches (Simons quantitative strategy, Sun Tzu tactical analysis)
+- **Machine Learning Integration**: Successfully integrated TensorFlow-based LSTM neural networks with real market data for predictive modeling
+- **Open Source Contribution**: Created a complete research platform with proper documentation, dependency management, and academic citations
+
 ## 🪶 Academic Publications
 
 This project is supported by rigorous academic research published in peer-reviewed venues:
