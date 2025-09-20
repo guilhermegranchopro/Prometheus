@@ -181,7 +181,7 @@ Performance metrics can be analyzed through the provided research notebooks.
 1. Clone the repository:
 
     ```bash
-    git clone [YOUR_REPOSITORY_URL]
+    git clone https://github.com/guilhermegranchopro/Prometheus.git
     cd Prometheus
     ```
 
